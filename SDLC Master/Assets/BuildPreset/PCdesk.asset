@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1d5c03096960546b77beba07a15100, type: 3}
+  m_Name: PCdesk
+  m_EditorClassIdentifier: 
+  buildName: PCdesk
+  prefab: {fileID: 3743694163232461825, guid: 369122e81a3c0ed44b6aa78a6ac0ab99, type: 3}
+  previewPrefab: {fileID: 3743694163232461825, guid: e5d7e7fdfe184774a9de17811be0f9ca, type: 3}
+  material: {fileID: 2100000, guid: b547f46e577871b42938bdbc9837b316, type: 2}
+  mesh: {fileID: 4300000, guid: 8a46a18674a4b8e42b093cfbf4d1ab9d, type: 2}
+  price: 2000
