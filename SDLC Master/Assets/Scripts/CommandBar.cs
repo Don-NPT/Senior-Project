@@ -6,6 +6,7 @@ public class CommandBar : MonoBehaviour, IPointerEnterHandler, IPointerDownHandl
     public bool assignStaff = false;
     public bool assignWork = false;
     public bool openShop = false;
+    public bool hireStaff = false;
     public Vector3 offsetY = new Vector3(0, 2.1f, 0);
     private StaffManager staffManager;
     private GameObject staffGO;
@@ -35,5 +36,6 @@ public class CommandBar : MonoBehaviour, IPointerEnterHandler, IPointerDownHandl
         if(assignStaff) staffManager.AssignStaff();
         if(assignWork) staffGO.GetComponent<StaffBehavior>().AssignWork();
         if(openShop) ShopOpener.instance.OpenPanel();
+        if(hireStaff) PanelOpener.instance.OpenPanel();
     }
 }

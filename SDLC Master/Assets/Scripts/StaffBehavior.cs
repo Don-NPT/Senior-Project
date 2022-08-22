@@ -8,7 +8,7 @@ public enum StaffState {IDLE, WORKING, COMPLETE}
 public class StaffBehavior : MonoBehaviour
 {
     public GameObject uiPrefab;
-    private GameObject ui;
+    public GameObject ui;
     public Vector3 offsetY = new Vector3(0, 2.1f, 0);
     // public Ease customEase = Ease.OutBack;
     private bool showUI = false;
@@ -31,7 +31,7 @@ public class StaffBehavior : MonoBehaviour
             ui.transform.position = Camera.main.WorldToScreenPoint(transform.position + offsetY);
         }
         if(showUI == false){
-            DestroyUI();
+            ui.SetActive(false);
         }
         if(state == StaffState.WORKING){
             ManageProgressBar();
@@ -67,30 +67,38 @@ public class StaffBehavior : MonoBehaviour
                  if (hit.transform.gameObject == this.gameObject)
                  {
                     // Debug.Log("Click!!!");
-                    if(ui == null)
+                    // if(ui == null)
+                    // {
+                    //     ui = (GameObject)Instantiate(uiPrefab, FindObjectOfType<Canvas>().transform);
+                    //     foreach(CommandBar child in ui.GetComponentsInChildren<CommandBar>()){
+                    //         child.Setup(gameObject);
+                    //     }
+                    //     // ui.gameObject.transform.localScale = new Vector3(0.1f,0.1f,0.1f);
+                    //     // ui.gameObject.transform.DOScale(1, 0.5f).SetEase(customEase);
+                    //     RectTransform[] childrenTransform = ui.GetComponentsInChildren<RectTransform>();
+                    //     StartCoroutine(ChildPopup(childrenTransform));
+                        
+                    //     showUI = true;
+                    // }
+                    if(!ui.activeSelf)
                     {
-                        ui = (GameObject)Instantiate(uiPrefab, FindObjectOfType<Canvas>().transform);
-                        foreach(CommandBar child in ui.GetComponentsInChildren<CommandBar>()){
-                            child.Setup(gameObject);
-                        }
-                        // ui.gameObject.transform.localScale = new Vector3(0.1f,0.1f,0.1f);
-                        // ui.gameObject.transform.DOScale(1, 0.5f).SetEase(customEase);
+                        Debug.Log("Click!!!");
+                        ui.SetActive(true);
                         RectTransform[] childrenTransform = ui.GetComponentsInChildren<RectTransform>();
                         StartCoroutine(ChildPopup(childrenTransform));
-                        
-                        showUI = true;
                     }
                     FindObjectOfType<AudioManager>().Play("Click");
+                    showUI = true;
                  }
                  else
                  {
                     //  Debug.Log("Click outside");
-                    DestroyUI();
+                    ui.SetActive(false);
                  }
              }
              else
              {
-                DestroyUI();
+                ui.SetActive(false);
                 Debug.Log("Click outside of any object");
              }
         }else if(Input.GetButtonDown("Fire1")){
