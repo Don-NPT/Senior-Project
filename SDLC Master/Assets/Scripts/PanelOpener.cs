@@ -3,7 +3,17 @@ using DG.Tweening;
 
 public class PanelOpener : MonoBehaviour
 {
+    public static PanelOpener instance;
     public GameObject panel;
+
+     void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
+
     public void OpenPanel()
     {
         if(panel != null)
