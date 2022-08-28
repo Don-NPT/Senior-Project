@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc1d5c03096960546b77beba07a15100, type: 3}
+  m_Name: PlantPot
+  m_EditorClassIdentifier: 
+  buildName: PlantPot
+  prefab: {fileID: 5142410847081606391, guid: 63e753bdda7d128418a17ad6d12ffc05, type: 3}
+  previewPrefab: {fileID: 5142410847081606391, guid: c0c522cb9c550e3419426c1e22938f56, type: 3}
+  material: {fileID: 2100000, guid: b547f46e577871b42938bdbc9837b316, type: 2}
+  mesh: {fileID: 4300000, guid: 8a46a18674a4b8e42b093cfbf4d1ab9d, type: 2}
+  price: 100
