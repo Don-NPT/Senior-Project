@@ -7,6 +7,7 @@ public class StaffManager : MonoBehaviour
     public GameObject staffPrefab;
     public GameObject staffPreviewPrefab;
     public GameObject PCsetPrefab;
+    public GameObject PCsetPreviewPrefab;
     private GameObject[] PCsets;
     private GameObject preview;
     public LayerMask mask;
@@ -29,7 +30,7 @@ public class StaffManager : MonoBehaviour
         if(staff_Selected)
         {
             DrawMesh();
-            HighLightDesk();
+            // HighLightDesk();
             CheckClick();
         }
     }
@@ -74,10 +75,13 @@ public class StaffManager : MonoBehaviour
                 {
                     var rotationVector = obj.transform.rotation.eulerAngles;
                     rotationVector.y += 180;
-                    GameObject staff = (GameObject)Instantiate(staffPrefab, obj.transform.position+yOffset, Quaternion.Euler(rotationVector));
+                    GameObject staff = GameManager.instance.staffToAssign;
+                    staff.transform.position = obj.transform.position+yOffset;
+                    staff.transform.rotation = Quaternion.Euler(rotationVector);
+                    staff.GetComponent<StaffProperties>().isAssign = true;
+                    // GameObject staff = (GameObject)Instantiate(staffPrefab, obj.transform.position+yOffset, Quaternion.Euler(rotationVector));
                     staff_Selected = false;
                     if(preview != null) Destroy(preview);
-                    StopHighLight();
                 }
              }     
         }
@@ -86,36 +90,13 @@ public class StaffManager : MonoBehaviour
     void HighLightDesk()
     {
         PCsets = GameObject.FindGameObjectsWithTag("PCset");
-        foreach(GameObject Pcset in PCsets)
-        {
-            Renderer[] rends = Pcset.gameObject.GetComponentsInChildren<Renderer>();
-            foreach(Renderer rend in rends)
-            {
-                Material[] mats = new Material[rend.materials.Length];
-                for(int j=0; j<rend.materials.Length;j++)
-                {
-                    mats[j] = highlightMat;
-                }
-                rend.materials = mats;
-            }
-        }
-    }
 
-    void StopHighLight()
-    {
-        PCsets = GameObject.FindGameObjectsWithTag("PCset");
-        foreach(GameObject Pcset in PCsets)
-        {
-            Renderer[] rends = Pcset.gameObject.GetComponentsInChildren<Renderer>();
-            foreach(Renderer rend in rends)
+        GameObject[] PCsetPreview = new GameObject[PCsets.Length];
+            for (int i=0;i<PCsets.Length;i++)
             {
-                Material[] mats = new Material[rend.materials.Length];
-                for(int j=0; j<rend.materials.Length;j++)
-                {
-                    mats[j] = defaultMat;
-                }
-                rend.materials = mats;
+                PCsetPreview[i] = Instantiate(PCsetPreviewPrefab, PCsets[i].transform.position, PCsets[i].transform.rotation);
+                PCsets[i].SetActive(false);
             }
-        }
+            Debug.Log(PCsets.Length);
     }
 }

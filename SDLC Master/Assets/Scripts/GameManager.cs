@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public Text moneyPrefab;
     public GameState gameState;
     public GameObject pauseScreen;
+    public GameObject staffToAssign;
     // Start is called before the first frame update
     void Start()
     {

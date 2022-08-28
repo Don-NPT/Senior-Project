@@ -4,13 +4,14 @@ using UnityEngine;
 public class CommandBar : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler
 {
     public bool assignStaff = false;
-    public bool assignWork = false;
+    // public bool assignWork = false;
     public bool openShop = false;
     public bool hireStaff = false;
     public Vector3 offsetY = new Vector3(0, 2.1f, 0);
     private StaffManager staffManager;
     private GameObject staffGO;
     private ShopOpener shopOpener;
+    public PanelOpener panelOpener;
 
     private void Start() 
     {
@@ -34,8 +35,8 @@ public class CommandBar : MonoBehaviour, IPointerEnterHandler, IPointerDownHandl
     {
         FindObjectOfType<AudioManager>().Play("Click");
         if(assignStaff) staffManager.AssignStaff();
-        if(assignWork) staffGO.GetComponent<StaffBehavior>().AssignWork();
+        // if(assignWork) staffGO.GetComponent<PlayerController>().AssignWork();
         if(openShop) ShopOpener.instance.OpenPanel();
-        if(hireStaff) PanelOpener.instance.OpenPanel();
+        if(hireStaff) panelOpener.OpenPanel();
     }
 }

@@ -2,19 +2,17 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 using System.Collections;
+using TMPro;
 
-public enum StaffState {IDLE, WORKING, COMPLETE}
-
-public class StaffBehavior : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-    public GameObject uiPrefab;
     public GameObject ui;
     public Vector3 offsetY = new Vector3(0, 2.1f, 0);
     // public Ease customEase = Ease.OutBack;
     private bool showUI = false;
-    public GameObject progressBarPrefab;
-    private GameObject progressBar;
-    public StaffState state;
+    // public GameObject progressBarPrefab;
+    // private GameObject progressBar;
+    // public StaffState state;
 
     // Start is called before the first frame update
     void Start()
@@ -33,28 +31,28 @@ public class StaffBehavior : MonoBehaviour
         if(showUI == false){
             ui.SetActive(false);
         }
-        if(state == StaffState.WORKING){
-            ManageProgressBar();
-        }
+        // if(state == StaffState.WORKING){
+        //     ManageProgressBar();
+        // }
     }
 
-    void ManageProgressBar()
-    {
-        if(progressBar == null)
-        {
-            progressBar = (GameObject)Instantiate(progressBarPrefab, FindObjectOfType<Canvas>().transform);
-            progressBar.transform.position = Camera.main.WorldToScreenPoint(transform.position + offsetY);
-            progressBar.GetComponent<ProgressBar>().SetupBar(100, 5f);
-        }
-        if(progressBar.GetComponent<ProgressBar>().IsCompleted())
-        {
-            state = StaffState.COMPLETE;
-        }
+    // void ManageProgressBar()
+    // {
+    //     if(progressBar == null)
+    //     {
+    //         progressBar = (GameObject)Instantiate(progressBarPrefab, FindObjectOfType<Canvas>().transform);
+    //         progressBar.transform.position = Camera.main.WorldToScreenPoint(transform.position + offsetY);
+    //         progressBar.GetComponent<ProgressBar>().SetupBar(100, 5f);
+    //     }
+    //     if(progressBar.GetComponent<ProgressBar>().IsCompleted())
+    //     {
+    //         state = StaffState.COMPLETE;
+    //     }
 
-        progressBar.GetComponent<ProgressBar>().UpdateBar();
-        // progressBar.GetComponent<ProgressBar>().UpdateBar();
+    //     progressBar.GetComponent<ProgressBar>().UpdateBar();
+    //     // progressBar.GetComponent<ProgressBar>().UpdateBar();
         
-    }
+    // }
 
     private void CheckClick(){
         if (Input.GetButtonDown("Fire1")  && !EventSystem.current.IsPointerOverGameObject())
@@ -119,9 +117,9 @@ public class StaffBehavior : MonoBehaviour
         }
     }
 
-    public void AssignWork(){
-        state = StaffState.WORKING;
-    }
+    // public void AssignWork(){
+    //     state = StaffState.WORKING;
+    // }
 
     public void DestroyUI()
     {
