@@ -5,7 +5,7 @@ public class PanelOpener : MonoBehaviour
 {
     public GameObject panel;
 
-    public void OpenPanel()
+    public void OpenPanelPunch()
     {
         if(panel != null)
         {
@@ -13,6 +13,12 @@ public class PanelOpener : MonoBehaviour
             panel.SetActive(true);
             panel.transform.DOScale(1, 0.3f).SetEase(Ease.OutQuad);
         }
+    }
+
+    public void OpenPanel()
+    {
+        if(panel != null)
+            panel.SetActive(true);
     }
 
     public void ClosePanel()

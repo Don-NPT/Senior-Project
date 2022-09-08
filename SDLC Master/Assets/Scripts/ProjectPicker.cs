@@ -5,68 +5,105 @@ using TMPro;
 
 public class ProjectPicker : MonoBehaviour
 {
-    public GameObject ProjectMenu;
-
-    public Sprite Sprite; //List of Sprites added from the Editor to be created as GameObjects at runtime
-    public Transform ParentPanel; //Parent Panel you want the new Images to be children of
-    public Font Font;
+    public Transform rightContent;
     public Project[] projects;
-    public GameObject itemPrefab;
+    public SDLCModel[] models;
+    public GameObject[] projectItems;
+    public GameObject[] modelItems;
+    public GameObject projectDetail;
+    public GameObject projectConfirm;
+    public GameObject modelConfirm;
+    private Project selectedProject;
+    private SDLCModel selectedModel;
+    private Color defaultItemColor;
 
-    // private string[] data = {"Visage", "Layer of Fear", "Fatal Frame"};
-
-    public void ShowProjects() {
-
-        for(int i=0; i<projects.Length;i++){
-            GameObject item = (GameObject)Instantiate(itemPrefab);
-            item.transform.SetParent(ParentPanel);
-            item.transform.localScale = new Vector3(1, 1, 1);
-
-            TMP_Text[] childs = item.GetComponentsInChildren<TMP_Text>();
-            childs[0].text = projects[i].pjName;
-            childs[1].text = projects[i].description;
-            childs[2].text = projects[i].reward.ToString() + " บาท";
+    public void OnEnable() {
+        // set texts for 3 projects
+        for(int i=0; i<projectItems.Length;i++){
+            TextMeshProUGUI[] textMeshPros = projectItems[i].GetComponentsInChildren<TextMeshProUGUI>();
+            textMeshPros[0].text = projects[i].pjName;
+            textMeshPros[1].text = projects[i].description;
+            textMeshPros[2].text = "ผลตอบแทน: " + projects[i].reward.ToString() + " บาท";
         }
-
-        // for(int i=0; i<projects.Length;i++){
-        // GameObject newObj = new GameObject();
-        // newObj.AddComponent<Image>();
-        // newObj.GetComponent<Image>().color = Color.white;
-        // newObj.AddComponent<Button>();
-        // newObj.transform.SetParent(ParentPanel);
-        // newObj.transform.localScale = new Vector3(1, 1, 1);
-
-        // GameObject text = new GameObject();
-        // text.AddComponent<Text>();
-        // text.GetComponent<Text>().text = projects[i].pjName;
-        // text.GetComponent<Text>().font = Font;
-        // text.GetComponent<Text>().fontSize = 24;
-        // text.GetComponent<Text>().color = Color.black;
-        // text.GetComponent<Text>().alignment = TextAnchor.MiddleCenter;
-        // text.GetComponent<RectTransform>().SetParent(newObj.transform);
-        // text.transform.localScale = new Vector3(1, 1, 1);
-        // }
-
-    }
-
-    public void OpenPanel()
-    {
-        if(ProjectMenu != null)
+        // reset outline if no selectedProject
+        if(!selectedProject)
         {
-            ProjectMenu.transform.localScale = Vector3.zero;
-            ProjectMenu.SetActive(true);
-            ProjectMenu.transform.DOScale(1, 0.3f).SetEase(Ease.OutQuad);
-        }
-    }
-
-    public void ClosePanel()
-    {
-        if(ProjectMenu != null)
-        {
-            ProjectMenu.SetActive(false);
-            foreach (Transform child in ParentPanel) {
-                Destroy(child.gameObject);
+            foreach(var projectItem in projectItems)
+            {
+                projectItem.GetComponent<Outline>().enabled = false;
             }
+        }
+        // reset outline if no selectedModel
+        if(!selectedModel)
+        {
+            foreach(var modelItem in modelItems)
+            {
+                modelItem.GetComponent<Outline>().enabled = false;
+            }
+        }
+    }
+
+    public void SeeProjectDetail(int index)
+    {
+        // set text for project detail
+        TextMeshProUGUI[] projectDetailText = projectDetail.GetComponentsInChildren<TextMeshProUGUI>();
+        projectDetailText[0].text = projects[index].pjName;
+        projectDetailText[1].text = projects[index].description;
+        projectDetailText[3].text = "ผลตอบแทน: " + projects[index].reward.ToString() + " บาท";
+    }
+
+    public void selectProject(int index)
+    {
+        selectedProject = projects[index];
+
+        // set outline for selected project
+        for(int i=0; i<projectItems.Length; i++)
+        {
+            if(i == index) projectItems[index].GetComponent<Outline>().enabled = true;
+            else projectItems[i].GetComponent<Outline>().enabled = false;
+        }
+
+        // set text for project confirm
+        TextMeshProUGUI[] projectConfirmText = projectConfirm.GetComponentsInChildren<TextMeshProUGUI>();
+        projectConfirmText[0].text = selectedProject.pjName;
+        projectConfirmText[1].text = selectedProject.description;
+        projectConfirmText[2].text = "ผลตอบแทน: " + selectedProject.reward.ToString() + " บาท";
+
+        print(selectedProject);
+    }
+
+    public void SelectModel(int index)
+    {
+        selectedModel = models[index];
+
+        // set outline for selected model
+        for(int i=0; i<modelItems.Length; i++)
+        {
+            if(i == index) modelItems[index].GetComponent<Outline>().enabled = true;
+            else modelItems[i].GetComponent<Outline>().enabled = false;
+        }
+
+        // set text for model confirm
+        TextMeshProUGUI modelConfirmText = modelConfirm.GetComponentInChildren<TextMeshProUGUI>();
+        modelConfirmText.text = selectedModel.modelName;
+        Image[] modelConfirmImage = modelConfirm.GetComponentsInChildren<Image>();
+        modelConfirmImage[1].sprite = selectedModel.image;
+
+        print(selectedModel);
+    }
+
+    public void ConfirmProject()
+    {
+        GameManager.instance.currentProjects.Add(selectedProject);
+        selectedProject = null;
+        selectedModel = null;
+    }
+
+    public void CloseRightPanel()
+    {
+        foreach(Transform child in rightContent)
+        {
+            child.gameObject.SetActive(false);
         }
     }
 }

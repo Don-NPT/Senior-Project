@@ -7,6 +7,7 @@ public enum GameState {PLAY, PAUSE}
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public List<Project> currentProjects;
     public int startDate = 1;
     private float date;
     public Text datePrefab;
