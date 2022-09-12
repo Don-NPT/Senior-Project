@@ -7,5 +7,6 @@ public class Staff
     public int social;
     public int analysis;
     public int wage;
+    public string position;
 
 }
