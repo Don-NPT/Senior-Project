@@ -9,5 +9,6 @@ public class StaffProperties : MonoBehaviour
     public int social;
     public int analysis;
     public int wage;
+    public string position;
     public bool isAssign;
 }
