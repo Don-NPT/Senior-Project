@@ -7,5 +7,11 @@ public class Project : ScriptableObject
 {
     public string pjName;
     public string description;
+    public int requireAnalysis;
+    public int requireDesign;
+    public int requireCoding;
+    public int requireTesting;
+    public int requireDeployment;
     public int reward;
+    public int deadline;
 }

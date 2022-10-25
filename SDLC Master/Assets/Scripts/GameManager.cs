@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour
         money = 5000;
 
         gameState = GameState.PLAY;
+        currentProjects = new List<Project>();
     }
 
     // Update is called once per frame
@@ -46,6 +47,11 @@ public class GameManager : MonoBehaviour
         {
             monthIndex += 1;
             date = 1;
+        }
+        if(monthIndex > 11)
+        {
+            date = 1;
+            monthIndex = 0;
         }
 
         moneyPrefab.text = money.ToString();

@@ -10,17 +10,13 @@ public class StaffManager : MonoBehaviour
     public GameObject PCsetPreviewPrefab;
     private GameObject[] PCsets;
     private GameObject preview;
-    public LayerMask mask;
-    public Material highlightMat;
-    private Material defaultMat;
 
-    public Vector3 yOffset = new Vector3(0, 0.4f, 0);
+    public Vector3 yOffset = new Vector3(0, 0.1f, 0);
 
     // Start is called before the first frame update
     void Start()
     {
         staff_Selected = false;
-        defaultMat = GameObject.FindGameObjectsWithTag("PCset")[0].gameObject.GetComponentInChildren<Renderer>().material;
     }
 
     // Update is called once per frame

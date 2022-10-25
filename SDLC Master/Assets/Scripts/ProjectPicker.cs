@@ -15,7 +15,6 @@ public class ProjectPicker : MonoBehaviour
     public GameObject modelConfirm;
     private Project selectedProject;
     private SDLCModel selectedModel;
-    private Color defaultItemColor;
 
     public void OnEnable() {
         // set texts for 3 projects
@@ -49,7 +48,13 @@ public class ProjectPicker : MonoBehaviour
         TextMeshProUGUI[] projectDetailText = projectDetail.GetComponentsInChildren<TextMeshProUGUI>();
         projectDetailText[0].text = projects[index].pjName;
         projectDetailText[1].text = projects[index].description;
-        projectDetailText[3].text = "ผลตอบแทน: " + projects[index].reward.ToString() + " บาท";
+        projectDetailText[3].text = "Analysis: " + projects[index].requireAnalysis.ToString();
+        projectDetailText[4].text = "Design: " + projects[index].requireDesign.ToString();
+        projectDetailText[5].text = "Coding: " + projects[index].requireCoding.ToString();
+        projectDetailText[6].text = "Testing: " + projects[index].requireTesting.ToString();
+        projectDetailText[7].text = "Deployment: " + projects[index].requireDeployment.ToString();
+        projectDetailText[8].text = "ผลตอบแทน: " + projects[index].reward.ToString() + " บาท";
+        projectDetailText[9].text = "ต้องการภายใน: " + projects[index].deadline.ToString() + " วัน";
     }
 
     public void selectProject(int index)
@@ -95,6 +100,7 @@ public class ProjectPicker : MonoBehaviour
     public void ConfirmProject()
     {
         GameManager.instance.currentProjects.Add(selectedProject);
+        ProjectHUD.instance.UpdateList();
         selectedProject = null;
         selectedModel = null;
     }
