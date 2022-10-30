@@ -8,6 +8,6 @@ public class StaffMemberItem : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown (PointerEventData eventData) 
     {
         FindObjectOfType<TeamManager>().UnselectStaff(GetComponentsInChildren<TextMeshProUGUI>()[0].text.ToString());
-        Destroy(this.gameObject);
+        // Destroy(this.gameObject);
     }
 }

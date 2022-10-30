@@ -3,7 +3,6 @@ using UnityEngine;
 public class StaffProperties : MonoBehaviour
 {
     public string fname;
-    public string lname;
     public int coding;
     public int design;
     public int social;
@@ -11,4 +10,5 @@ public class StaffProperties : MonoBehaviour
     public int wage;
     public string position;
     public bool isAssign;
+    public bool inTeam;
 }

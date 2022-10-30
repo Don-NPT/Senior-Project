@@ -2,6 +2,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections.Generic;
 
 public class ProjectPicker : MonoBehaviour
 {
@@ -10,11 +11,14 @@ public class ProjectPicker : MonoBehaviour
     public SDLCModel[] models;
     public GameObject[] projectItems;
     public GameObject[] modelItems;
+    public GameObject[] teamItems;
     public GameObject projectDetail;
     public GameObject projectConfirm;
     public GameObject modelConfirm;
+    public GameObject teamConfirm;
     private Project selectedProject;
     private SDLCModel selectedModel;
+    private List<StaffProperties> selectedTeam;
 
     public void OnEnable() {
         // set texts for 3 projects
@@ -95,6 +99,21 @@ public class ProjectPicker : MonoBehaviour
         modelConfirmImage[1].sprite = selectedModel.image;
 
         print(selectedModel);
+    }
+
+    public void SelectTeam(int index)
+    {
+        selectedTeam = TeamManager2.instance.teams[index];
+        foreach(var item in teamItems)
+        {
+            item.GetComponent<Outline>().enabled = false;
+        }
+        teamItems[index].GetComponent<Outline>().enabled = true;
+
+        // set text for model confirm
+        TextMeshProUGUI[] teamConfirmText = teamConfirm.GetComponentsInChildren<TextMeshProUGUI>();
+        teamConfirmText[0].text = "Team " + (index+1);
+        teamConfirmText[1].text = "จำนวนสมาชิก: " + TeamManager2.instance.getSize(index);
     }
 
     public void ConfirmProject()

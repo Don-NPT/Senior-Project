@@ -15,8 +15,7 @@ public class StaffGenerator : MonoBehaviour
     Text[] info;
 
     Staff[] tempStaff;
-    string[] firstnames = {"Harry", "Peter", "Robert", "Steve", "Conan", "Zero"};
-    string[] lastnames = {"Potter", "Parker", "Anderson", "Smith", "Jameson", "Omega"};
+    string[] firstnames = {"สมศักด์", "เพ็นศรี", "พบทอง", "ตุ๊ตู่", "แดง", "ณโดช", "ยิ่งศักดิ์", "ปังปอนด์", "กล้วยไม้"};
     string[] positions = {"Analyst", "Designer", "Programmer", "Tester"};
     public int index = 0;
     public GameObject staffPrefab;
@@ -34,7 +33,7 @@ public class StaffGenerator : MonoBehaviour
         if(index >= 0)
         {
             rightText = rightContent.GetComponentsInChildren<TextMeshProUGUI>();
-            rightText[0].text = tempStaff[index].fname + " " + tempStaff[index].lname;
+            rightText[0].text = tempStaff[index].fname;
             rightText[1].text = "Coding: " + tempStaff[index].coding.ToString();
             rightText[2].text = "Design: " + tempStaff[index].design.ToString();
             rightText[3].text = "Social: " + tempStaff[index].social.ToString();
@@ -64,7 +63,6 @@ public class StaffGenerator : MonoBehaviour
         {
             tempStaff[i] = new Staff();
             tempStaff[i].fname = firstnames[Random.Range(0, 6)];
-            tempStaff[i].lname = lastnames[Random.Range(0, 6)];
             tempStaff[i].coding = Random.Range(1, 20);
             tempStaff[i].design = Random.Range(1, 20);
             tempStaff[i].social = Random.Range(1, 20);
@@ -75,9 +73,9 @@ public class StaffGenerator : MonoBehaviour
         
         // Show generated staff on the left side content
         leftText = leftContent.GetComponentsInChildren<TextMeshProUGUI>();
-        leftText[0].text = tempStaff[0].fname + " " + tempStaff[0].lname;
-        leftText[1].text = tempStaff[1].fname + " " + tempStaff[1].lname;
-        leftText[2].text = tempStaff[2].fname + " " + tempStaff[2].lname;
+        leftText[0].text = tempStaff[0].fname;
+        leftText[1].text = tempStaff[1].fname;
+        leftText[2].text = tempStaff[2].fname;
         
     }
 
@@ -90,7 +88,6 @@ public class StaffGenerator : MonoBehaviour
 
             // Tranfer the generated stat to the new staff
             staff.GetComponent<StaffProperties>().fname = tempStaff[index].fname;
-            staff.GetComponent<StaffProperties>().lname = tempStaff[index].lname;
             staff.GetComponent<StaffProperties>().coding = tempStaff[index].coding;
             staff.GetComponent<StaffProperties>().design = tempStaff[index].design;
             staff.GetComponent<StaffProperties>().social = tempStaff[index].social;

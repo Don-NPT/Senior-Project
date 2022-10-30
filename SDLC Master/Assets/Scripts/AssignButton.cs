@@ -31,7 +31,7 @@ public class AssignButton : MonoBehaviour, IPointerEnterHandler, IPointerDownHan
         GameObject[] allStaffs = GameObject.FindGameObjectsWithTag("Staff");
         foreach(var staff in allStaffs)
         {
-            var name = staff.GetComponent<StaffProperties>().fname + " " + staff.GetComponent<StaffProperties>().lname;
+            var name = staff.GetComponent<StaffProperties>().fname;
             if(name  == staffName)
                 // staffToAssign = staff;
                 GameManager.instance.staffToAssign = staff;

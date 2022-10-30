@@ -81,7 +81,7 @@ public class StaffList : MonoBehaviour
         staffItem[i].transform.localScale = new Vector3(1, 1, 1);
 
         // Set staff name on the list
-        string name = staffs[i].GetComponent<StaffProperties>().fname + " " + staffs[i].GetComponent<StaffProperties>().lname;
+        string name = staffs[i].GetComponent<StaffProperties>().fname;
         staffItem[i].GetComponentsInChildren<TextMeshProUGUI>()[0].text = name;
         
         // Set staff wage on the list
