@@ -14,4 +14,19 @@ public class Project : ScriptableObject
     public int requireDeployment;
     public int reward;
     public int deadline;
+    public float finishPoints;
+    [HideInInspector]
+    public float currentPoints;
+    [HideInInspector]
+    public SDLCModel model;
+    [HideInInspector]
+    public int teamIndex;
+    [HideInInspector]
+    public enum Status {READY, DOING, PAUSE, FINISHED};
+    [HideInInspector]
+    public Status state;
+    [HideInInspector]
+    public enum phase {ANALYSIS, DESIGN, CODING, TESTING, DEPLOYMENT};
+    
+
 }

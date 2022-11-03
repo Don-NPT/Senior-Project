@@ -84,6 +84,7 @@ public class ProjectPicker : MonoBehaviour
     public void SelectModel(int index)
     {
         selectedModel = models[index];
+        selectedProject.model = models[index];
 
         // set outline for selected model
         for(int i=0; i<modelItems.Length; i++)
@@ -104,6 +105,7 @@ public class ProjectPicker : MonoBehaviour
     public void SelectTeam(int index)
     {
         selectedTeam = TeamManager2.instance.teams[index];
+        selectedProject.teamIndex = index;
         foreach(var item in teamItems)
         {
             item.GetComponent<Outline>().enabled = false;
@@ -118,8 +120,11 @@ public class ProjectPicker : MonoBehaviour
 
     public void ConfirmProject()
     {
-        GameManager.instance.currentProjects.Add(selectedProject);
+        selectedProject.currentPoints = 0;
+        selectedProject.state = Project.Status.READY;
+        ProjectManager.instance.currentProjects.Add(selectedProject);
         ProjectHUD.instance.UpdateList();
+        
         selectedProject = null;
         selectedModel = null;
     }

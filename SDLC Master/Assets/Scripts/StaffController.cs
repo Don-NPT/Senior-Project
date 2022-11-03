@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 using System.Collections;
-using TMPro;
+using UnityEngine.UI;
 
 public enum StaffState {IDLE, WORKING, COMPLETE}
 
@@ -46,15 +46,16 @@ public class StaffController : MonoBehaviour
             progressBar = (GameObject)Instantiate(progressBarPrefab, FindObjectOfType<Canvas>().transform);
             progressBar.transform.position = Camera.main.WorldToScreenPoint(transform.position + offsetY);
             progressBar.GetComponent<ProgressBar>().SetupBar(100, 5f);
+            progressBar.GetComponentInChildren<Slider>().value = 0;
+            progressBar.GetComponentInChildren<Slider>().maxValue = ProjectManager.instance.currentProjects[ProjectHUD.instance.projectIndex].finishPoints;
         }
         if(progressBar.GetComponent<ProgressBar>().IsCompleted())
         {
             state = StaffState.COMPLETE;
         }
 
-        progressBar.GetComponent<ProgressBar>().UpdateBar();
-        // progressBar.GetComponent<ProgressBar>().UpdateBar();
-        
+        // progressBar.GetComponent<ProgressBar>().UpdateBar(); 
+        progressBar.GetComponentInChildren<Slider>().DOValue(ProjectManager.instance.currentProjects[ProjectHUD.instance.projectIndex].currentPoints, 0.3f).Play();       
     }
 
     private void CheckClick(){
