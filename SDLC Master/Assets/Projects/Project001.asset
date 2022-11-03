@@ -19,6 +19,11 @@ MonoBehaviour:
   requireDesign: 7
   requireCoding: 13
   requireTesting: 4
-  rewardDeployment: 2
+  requireDeployment: 0
   reward: 25000
   deadline: 60
+  finishPoints: 25
+  currentPoints: 27
+  model: {fileID: 11400000, guid: fefd9c0d5471bbd4b8ed0775ef1e6143, type: 2}
+  teamIndex: 0
+  state: 3

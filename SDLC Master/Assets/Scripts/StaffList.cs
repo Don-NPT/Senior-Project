@@ -41,6 +41,9 @@ public class StaffList : MonoBehaviour
         {
             switch(button.name)
             {
+                case "AllBtn":
+                    positionToShow = "All";
+                    break;
                 case "AnalysisBtn":
                     positionToShow = "Analyst";
                     break;
@@ -66,7 +69,7 @@ public class StaffList : MonoBehaviour
 
         for(int i=0;i<staffs.Length;i++)
         {
-            if(staffs[i].GetComponent<StaffProperties>().position == positionToShow)
+            if(staffs[i].GetComponent<StaffProperties>().position == positionToShow || positionToShow == "All")
             {
                 SetupStaffItem(i);
             }
@@ -83,10 +86,6 @@ public class StaffList : MonoBehaviour
         // Set staff name on the list
         string name = staffs[i].GetComponent<StaffProperties>().fname;
         staffItem[i].GetComponentsInChildren<TextMeshProUGUI>()[0].text = name;
-        
-        // Set staff wage on the list
-        // string wage = staffs[i].GetComponent<StaffProperties>().wage.ToString();
-        // staffItem[i].GetComponentsInChildren<TextMeshProUGUI>()[1].text = "ค่าจ้าง/เดือน: " + wage;
 
         // Set assign button according the isAssign
         if(staffs[i].GetComponent<StaffProperties>().isAssign)

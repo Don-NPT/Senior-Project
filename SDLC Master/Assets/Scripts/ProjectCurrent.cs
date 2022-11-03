@@ -15,9 +15,9 @@ public class ProjectCurrent : MonoBehaviour
     }
 
     private void OnEnable() {
-        projectCurrentItem = new GameObject[GameManager.instance.currentProjects.Count];
+        projectCurrentItem = new GameObject[ProjectManager.instance.getNumProject()];
 
-        for(int i=0; i<GameManager.instance.currentProjects.Count; i++)
+        for(int i=0; i<ProjectManager.instance.getNumProject(); i++)
         {
             // Spawn current project items
             projectCurrentItem[i] = (GameObject)Instantiate(projectCurrentItemPrefab);
@@ -26,8 +26,8 @@ public class ProjectCurrent : MonoBehaviour
 
             // set text for project confirm
             TextMeshProUGUI[] projectCurrentText = projectCurrentItem[i].GetComponentsInChildren<TextMeshProUGUI>();
-            projectCurrentText[0].text = GameManager.instance.currentProjects[i].pjName;
-            projectCurrentText[1].text = GameManager.instance.currentProjects[i].reward.ToString();
+            projectCurrentText[0].text = ProjectManager.instance.currentProjects[i].pjName;
+            projectCurrentText[1].text = ProjectManager.instance.currentProjects[i].reward.ToString();
         }
     }
 
