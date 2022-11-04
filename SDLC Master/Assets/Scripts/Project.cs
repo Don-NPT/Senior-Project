@@ -26,7 +26,9 @@ public class Project : ScriptableObject
     [HideInInspector]
     public Status state;
     [HideInInspector]
-    public enum phase {ANALYSIS, DESIGN, CODING, TESTING, DEPLOYMENT};
+    public enum Phases {ANALYSIS, DESIGN, CODING, TESTING, DEPLOYMENT};
+    [HideInInspector]
+    public Phases phase;
     
 
 }
