@@ -28,6 +28,7 @@ public class ProjectHUD : MonoBehaviour
         {
             // hudDetailItem.GetComponentInChildren<Slider>().value = ProjectManager.instance.currentProjects[projectIndex].currentPoints;
             hudDetailItem.GetComponentInChildren<Slider>().DOValue(ProjectManager.instance.currentProjects[projectIndex].currentPoints, 0.3f).Play();
+            hudDetailItem.GetComponentsInChildren<TextMeshProUGUI>()[1].text = ProjectManager.instance.currentProjects[projectIndex].phase.ToString();
         }
     }
 
@@ -64,6 +65,7 @@ public class ProjectHUD : MonoBehaviour
 
             // setup text info
             hudDetailItem.GetComponentsInChildren<TextMeshProUGUI>()[0].text = ProjectManager.instance.currentProjects[index].model.modelName;
+            hudDetailItem.GetComponentsInChildren<TextMeshProUGUI>()[1].text = ProjectManager.instance.currentProjects[index].phase.ToString();
             hudDetailItem.GetComponentInChildren<Slider>().maxValue = ProjectManager.instance.currentProjects[index].finishPoints;
             return;
         }
