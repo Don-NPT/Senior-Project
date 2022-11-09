@@ -2298,9 +2298,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6180597388215782942}
   - component: {fileID: 226807535958676580}
-  - component: {fileID: 8631155957763852742}
-  - component: {fileID: 6406879789831995095}
   - component: {fileID: 5857992255557544609}
+  - component: {fileID: 8102843778994995287}
+  - component: {fileID: 6065531531460408735}
   m_Layer: 0
   m_Name: male-fix
   m_TagString: Staff
@@ -2344,43 +2344,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8631155957763852742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6813440703712941220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7354113969840a448e8ecd5e5e7090f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fname: 
-  lname: 
-  coding: 0
-  design: 0
-  social: 0
-  analysis: 0
-  wage: 0
-  position: 
-  isAssign: 0
---- !u!114 &6406879789831995095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6813440703712941220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e38d2cf12a4882488ace005dc336ef6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uiPrefab: {fileID: 5744955277718794952, guid: f38efa688f4c835488519a2527519abe, type: 3}
-  offsetY: {x: 0, y: 2.1, z: 0}
-  progressBarPrefab: {fileID: 6994759422632325876, guid: 2044e959f8228734783cf2fcf12327f4, type: 3}
-  state: 0
 --- !u!65 &5857992255557544609
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2394,6 +2357,45 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.4009, z: 1}
   m_Center: {x: 0, y: 0.7502133, z: 0}
+--- !u!114 &8102843778994995287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6813440703712941220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31c43f7a21c3bfb4bb2ee2c707e1d573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiPrefab: {fileID: 5744955277718794952, guid: f38efa688f4c835488519a2527519abe, type: 3}
+  offsetY: {x: 0, y: 2.1, z: 0}
+  progressBarPrefab: {fileID: 6994759422632325876, guid: 2044e959f8228734783cf2fcf12327f4, type: 3}
+  state: 0
+--- !u!114 &6065531531460408735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6813440703712941220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3386e560c7acfa54795d790064ab84a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fname: 
+  coding: 0
+  design: 0
+  testing: 0
+  analysis: 0
+  wage: 0
+  position: 
+  isAssign: 0
+  inTeam: 0
+  location: {x: 0, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &6828765772302736754
 GameObject:
   m_ObjectHideFlags: 0

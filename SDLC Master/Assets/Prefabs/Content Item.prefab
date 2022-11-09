@@ -106,19 +106,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 571005086490876644}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7571952978032532434, guid: b249c2f854687c24282a55d6c725506d, type: 3}
-        m_TargetAssemblyTypeName: BuildManager, Assembly-CSharp
-        m_MethodName: Select
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!222 &571005086490876647
 CanvasRenderer:
   m_ObjectHideFlags: 0

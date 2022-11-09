@@ -1,17 +1,25 @@
 using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
+using System;
 
+[Serializable]
 public class TimeManager : MonoBehaviour
 {
     public static TimeManager instance;
-    public int startDate = 1;
-    private float date;
-    public TextMeshProUGUI datePrefab;
-    public TextMeshProUGUI monthPrefab;
-    public TextMeshProUGUI yearPrefab;
+    private int date;
+    private int monthIndex;
+    private int year;
+    
+    [SerializeField] int startDate = 1;
+    [SerializeField] int startMonthIndex = 0;
+    [SerializeField] int startYear = 2022;
+    [SerializeField] TextMeshProUGUI datePrefab;
+    [SerializeField] TextMeshProUGUI monthPrefab;
+    [SerializeField] TextMeshProUGUI yearPrefab;
+    private float datetime;
     private string[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-    private int monthIndex = 0;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -22,28 +30,39 @@ public class TimeManager : MonoBehaviour
             instance = this; 
 
         date = startDate;
+        monthIndex = startMonthIndex;
+        year = startYear;
         datePrefab.text = startDate.ToString();
         monthPrefab.text = "Jan";
         yearPrefab.text = "2022";
+        datetime = date;
     }
 
     // Update is called once per frame
     void Update()
-    {   
-        if(GameManager.instance.gameState == GameState.FASTFORWARD)
+    {
+        datePrefab.text = date.ToString();
+        monthPrefab.text = months[monthIndex].ToString();
+        yearPrefab.text = year.ToString();
+
+        if(GameManager.instance.gameState != GameState.PAUSE)
         {
-            date += Time.deltaTime;
-            datePrefab.text = Mathf.Round(date).ToString();
-            monthPrefab.text = months[monthIndex].ToString();
+            datetime += Time.deltaTime;
+            date = (int) Mathf.Floor(datetime);
+            // datePrefab.text = Mathf.Round(datetime).ToString();
+            // monthPrefab.text = months[monthIndex].ToString();
             if(date > 30)
             {
                 monthIndex += 1;
                 date = 1;
+                datetime = date;
             }
             if(monthIndex > 11)
             {
                 date = 1;
+                datetime = date;
                 monthIndex = 0;
+                year += 1;
             }
         }
     }
@@ -55,5 +74,44 @@ public class TimeManager : MonoBehaviour
     public void FastForward()
     {
         GameManager.instance.gameState = GameState.FASTFORWARD;
+    }
+
+    public void Save()
+    {
+        TimeAdapter timeAdapter = new TimeAdapter();
+        timeAdapter.Save(date, monthIndex, year);
+    }
+
+    public void Load()
+    {
+        TimeAdapter timeAdapter = new TimeAdapter();
+        TimeAdapter saveData = timeAdapter.Load();
+        date = saveData.date;
+        monthIndex = saveData.monthIndex;
+        year = saveData.year;
+
+        datetime = date;
+    }
+}
+
+[Serializable]
+public class TimeAdapter
+{
+    public int date;
+    public int monthIndex;
+    public int year;
+
+    public void Save(int _date, int _monthIndex, int _year)
+    {
+        date = _date;
+        monthIndex = _monthIndex;
+        year = _year;
+        FileHandler.SaveToJSON<TimeAdapter> (this, "timesave.json");   
+    }
+
+    public TimeAdapter Load()
+    {
+        TimeAdapter dataToLoad = FileHandler.ReadFromJSON<TimeAdapter> ("timesave.json");
+        return dataToLoad;
     }
 }

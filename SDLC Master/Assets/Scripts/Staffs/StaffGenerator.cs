@@ -36,7 +36,7 @@ public class StaffGenerator : MonoBehaviour
             rightText[0].text = tempStaff[index].fname;
             rightText[1].text = "Coding: " + tempStaff[index].coding.ToString();
             rightText[2].text = "Design: " + tempStaff[index].design.ToString();
-            rightText[3].text = "Social: " + tempStaff[index].social.ToString();
+            rightText[3].text = "Social: " + tempStaff[index].testing.ToString();
             rightText[4].text = "Analysis: " + tempStaff[index].analysis.ToString();
             rightText[5].text = "ตำแหน่ง: " + tempStaff[index].position.ToString();
             rightText[6].text = "ค่าจ้าง: " + tempStaff[index].wage.ToString() + " บาท/เดือน";
@@ -65,7 +65,7 @@ public class StaffGenerator : MonoBehaviour
             tempStaff[i].fname = firstnames[Random.Range(0, 6)];
             tempStaff[i].coding = Random.Range(1, 20);
             tempStaff[i].design = Random.Range(1, 20);
-            tempStaff[i].social = Random.Range(1, 20);
+            tempStaff[i].testing = Random.Range(1, 20);
             tempStaff[i].analysis = Random.Range(1, 20);
             tempStaff[i].position = positions[Random.Range(0, 4)];
             tempStaff[i].wage = Random.Range(1000, 5000);
@@ -90,7 +90,7 @@ public class StaffGenerator : MonoBehaviour
             staff.GetComponent<StaffProperties>().fname = tempStaff[index].fname;
             staff.GetComponent<StaffProperties>().coding = tempStaff[index].coding;
             staff.GetComponent<StaffProperties>().design = tempStaff[index].design;
-            staff.GetComponent<StaffProperties>().social = tempStaff[index].social;
+            staff.GetComponent<StaffProperties>().testing = tempStaff[index].testing;
             staff.GetComponent<StaffProperties>().analysis = tempStaff[index].analysis;
             staff.GetComponent<StaffProperties>().position = tempStaff[index].position;
             staff.GetComponent<StaffProperties>().wage = tempStaff[index].wage;

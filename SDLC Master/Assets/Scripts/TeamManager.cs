@@ -199,7 +199,7 @@ public class TeamManager : MonoBehaviour
                     prefab.GetComponentsInChildren<Image>()[1].sprite = positionLogo[2];
                     break;
                 case "Tester":
-                    prefab.GetComponentsInChildren<TextMeshProUGUI>()[1].text = staffProperties.social.ToString();
+                    prefab.GetComponentsInChildren<TextMeshProUGUI>()[1].text = staffProperties.testing.ToString();
                     prefab.GetComponentsInChildren<Image>()[1].sprite = positionLogo[3];
                     break;
             }

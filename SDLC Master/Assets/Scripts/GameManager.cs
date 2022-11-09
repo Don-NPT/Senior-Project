@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using System;
 using TMPro;
 
 public enum GameState {PLAY, PAUSE, FASTFORWARD}
@@ -63,5 +63,36 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         gameState = GameState.PLAY;
         pauseScreen.SetActive(false);
+    }
+
+    public void Save()
+    {
+        GameAdapter gameAdapter = new GameAdapter();
+        gameAdapter.Save(money);
+    }
+
+    public void Load()
+    {
+        GameAdapter gameAdapter = new GameAdapter();
+        GameAdapter saveData = gameAdapter.Load();
+        money = saveData.money;
+    }
+}
+
+[Serializable]
+public class GameAdapter
+{
+    public int money;
+
+    public void Save(int _money)
+    {
+        money = _money;
+        FileHandler.SaveToJSON<GameAdapter> (this, "gamesave.json");   
+    }
+
+    public GameAdapter Load()
+    {
+        GameAdapter dataToLoad = FileHandler.ReadFromJSON<GameAdapter> ("gamesave.json");
+        return dataToLoad;
     }
 }

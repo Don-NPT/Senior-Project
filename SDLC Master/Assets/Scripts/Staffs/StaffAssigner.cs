@@ -1,7 +1,7 @@
 using UnityEngine.EventSystems;
 using UnityEngine;
 
-public class StaffManager : MonoBehaviour
+public class StaffAssigner : MonoBehaviour
 {
     private bool staff_Selected;
     public GameObject staffPrefab;
