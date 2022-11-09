@@ -8,14 +8,14 @@ public class CommandBar : MonoBehaviour, IPointerEnterHandler, IPointerDownHandl
     public bool openShop = false;
     public bool hireStaff = false;
     public Vector3 offsetY = new Vector3(0, 2.1f, 0);
-    private StaffManager staffManager;
+    private StaffAssigner staffAssigner;
     private GameObject staffGO;
     private ShopOpener shopOpener;
     public PanelOpener panelOpener;
 
     private void Start() 
     {
-        if(assignStaff) staffManager = FindObjectOfType(typeof(StaffManager)) as StaffManager; 
+        if(assignStaff) staffAssigner = FindObjectOfType(typeof(StaffAssigner)) as StaffAssigner; 
         if(openShop) shopOpener = FindObjectOfType(typeof(ShopOpener)) as ShopOpener; 
     }
 
@@ -34,7 +34,7 @@ public class CommandBar : MonoBehaviour, IPointerEnterHandler, IPointerDownHandl
     public void OnPointerDown (PointerEventData eventData) 
     {
         FindObjectOfType<AudioManager>().Play("Click");
-        if(assignStaff) staffManager.AssignStaff();
+        if(assignStaff) staffAssigner.AssignStaff();
         // if(assignWork) staffGO.GetComponent<PlayerController>().AssignWork();
         if(openShop) ShopOpener.instance.OpenPanel();
         if(hireStaff) panelOpener.OpenPanel();

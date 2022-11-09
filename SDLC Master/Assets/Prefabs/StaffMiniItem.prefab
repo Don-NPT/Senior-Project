@@ -581,8 +581,8 @@ GameObject:
   - component: {fileID: 9019529878056450804}
   - component: {fileID: 9019529878056450805}
   - component: {fileID: 9019529878056450806}
-  - component: {fileID: 2519736323812702698}
   - component: {fileID: 1583543445}
+  - component: {fileID: 7025385125445365522}
   m_Layer: 5
   m_Name: StaffMiniItem
   m_TagString: Untagged
@@ -753,18 +753,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 1
---- !u!114 &2519736323812702698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9019529878056450568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8996a282cc48ab84f89924ebecc3fec4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1583543445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -780,3 +768,15 @@ MonoBehaviour:
   m_EffectColor: {r: 0.86666673, g: 0.5647059, b: 0.10980393, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
+--- !u!114 &7025385125445365522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9019529878056450568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 169972bfa2014fd4587f83eeb4a44350, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

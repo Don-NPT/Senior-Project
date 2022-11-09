@@ -11,11 +11,11 @@ public class ButtonManager : MonoBehaviour, IPointerEnterHandler, IPointerDownHa
     public bool assign = false;
     public bool doPunch = false;
     public bool isTabButton = false;
-    private StaffManager staffManager;
+    private StaffAssigner staffAssigner;
     public bool isSelected = false;
 
     private void Start() {
-        if(assign) staffManager = FindObjectOfType(typeof(StaffManager)) as StaffManager; 
+        if(assign) staffAssigner = FindObjectOfType(typeof(StaffAssigner)) as StaffAssigner; 
         if(isTabButton) isSelected = false;
     }
 
@@ -28,7 +28,7 @@ public class ButtonManager : MonoBehaviour, IPointerEnterHandler, IPointerDownHa
     public void OnPointerDown (PointerEventData eventData) 
      {
         if(isButton) FindObjectOfType<AudioManager>().Play(clickSound);
-        if(assign) staffManager.AssignStaff();
+        if(assign) staffAssigner.AssignStaff();
         if(doPunch) transform.DOPunchScale (new Vector3 (0.2f, 0.2f, 0.2f), .25f);
         if(isTabButton) isSelected = true;
      }
