@@ -24,4 +24,35 @@ public class TeamManager2 : MonoBehaviour
     {
         return teams[index].Count;
     }
+    
+    public List<GameObject> getStaffbyPhase(Project.Phases phase, List<StaffProperties> team)
+    {
+        List<GameObject> staffs = new List<GameObject>();
+        foreach(var staff in team)
+        {
+            if(staff.position == getPositionFromPhase(phase))
+            {
+                staffs.Add(staff.gameObject);
+            }
+        }
+        return staffs;
+    }
+
+    string getPositionFromPhase(Project.Phases phase)
+    {
+        switch(phase)
+        {
+            case Project.Phases.ANALYSIS:
+                return "Analyst";
+            case Project.Phases.DESIGN:
+                return "Designer";
+            case Project.Phases.CODING:
+                return "Programmer";
+            case Project.Phases.TESTING:
+                return "Tester";
+            case Project.Phases.DEPLOYMENT:
+                return "Programmer";
+        }
+        return "";
+    }
 }

@@ -14,6 +14,8 @@ public class Project : ScriptableObject
     public int requireDeployment;
     public int reward;
     public int deadline;
+    public int scale;
+    public int estimateDaysInPhase;
     public float finishPoints;
     [HideInInspector]
     public float currentPoints;
