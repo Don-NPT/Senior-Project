@@ -7,10 +7,12 @@ public class StaffProperties : MonoBehaviour
     public int design;
     public int testing;
     public int analysis;
+    public float stamina;
     public int wage;
     public string position;
     public bool isAssign;
     public bool inTeam;
+    public int teamIndex;
     public Vector3 location;
     public Quaternion rotation;
 
@@ -32,6 +34,7 @@ public class StaffProperties : MonoBehaviour
         testing = staff.testing;
         analysis = staff.analysis;
         wage = staff.wage;
+        stamina = staff.stamina;
         position = staff.position;
         isAssign = staff.isAssign;
         inTeam = staff.inTeam;
@@ -52,6 +55,7 @@ public class Staff
     public int coding;
     public int testing;
     public int wage;
+    public float stamina;
     public string position;
     public bool isAssign;
     public bool inTeam;
@@ -66,6 +70,7 @@ public class Staff
         testing = staffProperties.testing;
         analysis = staffProperties.analysis;
         wage = staffProperties.wage;
+        stamina = staffProperties.stamina;
         position = staffProperties.position;
         isAssign = staffProperties.isAssign;
         inTeam = staffProperties.inTeam;

@@ -4,7 +4,7 @@ using DG.Tweening;
 using System.Collections;
 using UnityEngine.UI;
 
-public enum StaffState {IDLE, WORKING, COMPLETE}
+public enum StaffState {IDLE, WAITING, WORKING, COMPLETE}
 
 public class StaffController : MonoBehaviour
 {
@@ -16,12 +16,6 @@ public class StaffController : MonoBehaviour
     public GameObject progressBarPrefab;
     private GameObject progressBar;
     public StaffState state;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -45,17 +39,14 @@ public class StaffController : MonoBehaviour
         {
             progressBar = (GameObject)Instantiate(progressBarPrefab, FindObjectOfType<Canvas>().transform);
             progressBar.transform.position = Camera.main.WorldToScreenPoint(transform.position + offsetY);
-            progressBar.GetComponent<ProgressBar>().SetupBar(100, 5f);
-            progressBar.GetComponentInChildren<Slider>().value = 0;
-            progressBar.GetComponentInChildren<Slider>().maxValue = ProjectManager.instance.currentProjects[ProjectHUD.instance.projectIndex].finishPoints;
+            progressBar.GetComponent<ProgressBar>().SetupBarWithColor(DevelopmentManager.instance.DayEachPhase, 0.3f, DevelopmentManager.instance.currentPhase);
         }
         if(progressBar.GetComponent<ProgressBar>().IsCompleted())
         {
             state = StaffState.COMPLETE;
         }
-
         // progressBar.GetComponent<ProgressBar>().UpdateBar(); 
-        progressBar.GetComponentInChildren<Slider>().DOValue(ProjectManager.instance.currentProjects[ProjectHUD.instance.projectIndex].currentPoints, 0.3f).Play();       
+        progressBar.GetComponentInChildren<Slider>().DOValue(DevelopmentManager.instance.currentDayInPhase, 0.3f).Play();       
     }
 
     private void CheckClick(){
@@ -77,27 +68,16 @@ public class StaffController : MonoBehaviour
                         foreach(CommandBar child in ui.GetComponentsInChildren<CommandBar>()){
                             child.Setup(gameObject);
                         }
-                        // ui.gameObject.transform.localScale = new Vector3(0.1f,0.1f,0.1f);
-                        // ui.gameObject.transform.DOScale(1, 0.5f).SetEase(Ease.OutBounce);
                         RectTransform[] childrenTransform = ui.GetComponentsInChildren<RectTransform>();
                         StartCoroutine(ChildPopup(childrenTransform));
                         
                         showUI = true;
                     }
-                    // GameObject ui = GameObject.FindInActiveObjectByName("StaffBar");
-                    // if(!ui.activeSelf)
-                    // {
-                    //     Debug.Log("Click!!!");
-                    //     ui.SetActive(true);
-                    //     RectTransform[] childrenTransform = ui.GetComponentsInChildren<RectTransform>();
-                    //     StartCoroutine(ChildPopup(childrenTransform));
-                    // }
                     FindObjectOfType<AudioManager>().Play("Click");
                     showUI = true;
                  }
                  else
                  {
-                    //  Debug.Log("Click outside");
                     DestroyUI();
                  }
              }
@@ -125,7 +105,7 @@ public class StaffController : MonoBehaviour
     }
 
     public void AssignWork(){
-        state = StaffState.WORKING;
+        state = StaffState.WAITING;
     }
 
     public void DestroyUI()

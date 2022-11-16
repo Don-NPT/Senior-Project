@@ -62,13 +62,14 @@ public class StaffGenerator : MonoBehaviour
         for(int i=0;i<3;i++)
         {
             tempStaff[i] = new Staff();
-            tempStaff[i].fname = firstnames[Random.Range(0, 6)];
+            tempStaff[i].fname = firstnames[Random.Range(0, 9)];
             tempStaff[i].coding = Random.Range(1, 20);
             tempStaff[i].design = Random.Range(1, 20);
             tempStaff[i].testing = Random.Range(1, 20);
             tempStaff[i].analysis = Random.Range(1, 20);
             tempStaff[i].position = positions[Random.Range(0, 4)];
             tempStaff[i].wage = Random.Range(1000, 5000);
+            tempStaff[i].stamina = Random.Range(80, 150);
         }
         
         // Show generated staff on the left side content
@@ -94,6 +95,7 @@ public class StaffGenerator : MonoBehaviour
             staff.GetComponent<StaffProperties>().analysis = tempStaff[index].analysis;
             staff.GetComponent<StaffProperties>().position = tempStaff[index].position;
             staff.GetComponent<StaffProperties>().wage = tempStaff[index].wage;
+            staff.GetComponent<StaffProperties>().stamina = tempStaff[index].stamina;
 
             // Disable the selected item on the left content
             Transform staffItem = leftContent.transform.GetChild(index);

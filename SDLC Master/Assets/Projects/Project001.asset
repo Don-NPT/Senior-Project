@@ -22,9 +22,11 @@ MonoBehaviour:
   requireDeployment: 0
   reward: 25000
   deadline: 60
+  scale: 2
+  estimateDaysInPhase: 10
   finishPoints: 20
-  currentPoints: 20
+  currentPoints: 0
   model: {fileID: 11400000, guid: fefd9c0d5471bbd4b8ed0775ef1e6143, type: 2}
   teamIndex: 0
   state: 3
-  phase: 4
+  phase: 1

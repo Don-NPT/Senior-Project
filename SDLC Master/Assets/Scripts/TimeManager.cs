@@ -2,6 +2,7 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 using System;
+using System.Collections;
 
 [Serializable]
 public class TimeManager : MonoBehaviour
@@ -10,6 +11,8 @@ public class TimeManager : MonoBehaviour
     private int date;
     private int monthIndex;
     private int year;
+
+    public int dayCount;
     
     [SerializeField] int startDate = 1;
     [SerializeField] int startMonthIndex = 0;
@@ -66,6 +69,15 @@ public class TimeManager : MonoBehaviour
             }
         }
     }
+
+    // public IEnumerator dayTimer(int days){
+    //     dayCount = 0;
+    //     while (dayCount < days)
+    //     {
+    //         yield return new WaitForSeconds(1);
+    //         dayCount++;
+    //     }
+    // }
 
     public void Play()
     {
