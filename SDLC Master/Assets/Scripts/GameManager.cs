@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using TMPro;
+using DG.Tweening;
 
 public enum GameState {PLAY, PAUSE, FASTFORWARD}
 public class GameManager : MonoBehaviour
@@ -13,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameState gameState;
     public GameObject pauseScreen;
     public GameObject staffToAssign;
+    public bool panelOpen = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,9 +38,25 @@ public class GameManager : MonoBehaviour
 
         if(Input.GetButtonDown("Cancel"))
         {
-            if(gameState == GameState.PLAY) Pause();
-            else Resume();
+            if(panelOpen == false)
+            {
+                if(gameState == GameState.PLAY) Pause();
+                else Resume();
+            }else{
+                panelOpen = false;
+            }
         }
+    }
+
+    void PaySalary()
+    {
+        int totalSalary = 0;
+        GameObject[] staffs = GameObject.FindGameObjectsWithTag("Staff");
+        foreach(var staff in staffs)
+        {
+            totalSalary += staff.GetComponent<StaffProperties>().wage;
+        }
+        AddMoney(-totalSalary);
     }
 
     public int getMoney()
@@ -49,6 +67,7 @@ public class GameManager : MonoBehaviour
     public void AddMoney(int num)
     {
         money += num;
+        moneyPrefab.transform.DOPunchScale (new Vector3 (0.2f, 0.2f, 0.2f), .25f);
     }
 
     public void Pause()
@@ -63,6 +82,24 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         gameState = GameState.PLAY;
         pauseScreen.SetActive(false);
+    }
+
+    public void Stop()
+    {
+        Time.timeScale = 0;
+        gameState = GameState.PAUSE;
+    }
+
+    public void Play()
+    {
+        Time.timeScale = 1;
+        gameState = GameState.PLAY;
+    }
+
+    public void FastForward()
+    {
+        Time.timeScale = 3;
+        gameState = GameState.FASTFORWARD;
     }
 
     public void Save()

@@ -1,5 +1,5 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -15,7 +15,7 @@ public class StaffGenerator : MonoBehaviour
     Text[] info;
 
     Staff[] tempStaff;
-    string[] firstnames = {"สมศักด์", "เพ็นศรี", "พบทอง", "ตุ๊ตู่", "แดง", "ณโดช", "ยิ่งศักดิ์", "ปังปอนด์", "กล้วยไม้"};
+    string[] firstnames = {"สมศักด์", "เพ็นศรี", "พบทอง", "ตุ๊ตู่", "แดง", "ณโดช", "ยิ่งศักดิ์", "ปังปอนด์", "กล้วยไม้", "แกง", "ธอร์", "โลกิ", "ยุงบินวน"};
     string[] positions = {"Analyst", "Designer", "Programmer", "Tester"};
     public int index = 0;
     public GameObject staffPrefab;
@@ -34,10 +34,10 @@ public class StaffGenerator : MonoBehaviour
         {
             rightText = rightContent.GetComponentsInChildren<TextMeshProUGUI>();
             rightText[0].text = tempStaff[index].fname;
-            rightText[1].text = "Coding: " + tempStaff[index].coding.ToString();
+            rightText[1].text = "Analysis: " + tempStaff[index].analysis.ToString();
             rightText[2].text = "Design: " + tempStaff[index].design.ToString();
-            rightText[3].text = "Social: " + tempStaff[index].testing.ToString();
-            rightText[4].text = "Analysis: " + tempStaff[index].analysis.ToString();
+            rightText[3].text = "Coding: " + tempStaff[index].coding.ToString();
+            rightText[4].text = "Testing: " + tempStaff[index].testing.ToString();
             rightText[5].text = "ตำแหน่ง: " + tempStaff[index].position.ToString();
             rightText[6].text = "ค่าจ้าง: " + tempStaff[index].wage.ToString() + " บาท/เดือน";
         }
@@ -62,14 +62,19 @@ public class StaffGenerator : MonoBehaviour
         for(int i=0;i<3;i++)
         {
             tempStaff[i] = new Staff();
-            tempStaff[i].fname = firstnames[Random.Range(0, 9)];
-            tempStaff[i].coding = Random.Range(1, 20);
-            tempStaff[i].design = Random.Range(1, 20);
-            tempStaff[i].testing = Random.Range(1, 20);
-            tempStaff[i].analysis = Random.Range(1, 20);
-            tempStaff[i].position = positions[Random.Range(0, 4)];
-            tempStaff[i].wage = Random.Range(1000, 5000);
-            tempStaff[i].stamina = Random.Range(80, 150);
+            tempStaff[i].id = Guid.NewGuid().ToString();
+            tempStaff[i].fname = firstnames[UnityEngine.Random.Range(0, 9)];
+            while(CheckStaffName(tempStaff[i].fname) == false)
+            {
+                tempStaff[i].fname = firstnames[UnityEngine.Random.Range(0, 9)];
+            }
+            tempStaff[i].coding = UnityEngine.Random.Range(1, 10);
+            tempStaff[i].design = UnityEngine.Random.Range(1, 10);
+            tempStaff[i].testing = UnityEngine.Random.Range(1, 10);
+            tempStaff[i].analysis = UnityEngine.Random.Range(1, 10);
+            tempStaff[i].position = positions[UnityEngine.Random.Range(0, 4)];
+            tempStaff[i].wage = UnityEngine.Random.Range(1000, 5000);
+            tempStaff[i].stamina = 100;
         }
         
         // Show generated staff on the left side content
@@ -88,6 +93,7 @@ public class StaffGenerator : MonoBehaviour
             GameObject staff = (GameObject)Instantiate(staffPrefab, new Vector3(5000,5000,5000), Quaternion.identity);
 
             // Tranfer the generated stat to the new staff
+            staff.GetComponent<StaffProperties>().id = tempStaff[index].id;
             staff.GetComponent<StaffProperties>().fname = tempStaff[index].fname;
             staff.GetComponent<StaffProperties>().coding = tempStaff[index].coding;
             staff.GetComponent<StaffProperties>().design = tempStaff[index].design;
@@ -108,5 +114,19 @@ public class StaffGenerator : MonoBehaviour
     public void SetIndex(int i)
     {
         index = i;
+    }
+
+    bool CheckStaffName(string name)
+    {
+        bool result = true;
+        GameObject[] staffs = GameObject.FindGameObjectsWithTag("Staff");
+        for(int i=0; i<staffs.Length; i++)
+        {
+            if(staffs[i].GetComponent<StaffProperties>().fname == name)
+            {
+                result = false;
+            }
+        }
+        return result;
     }
 }

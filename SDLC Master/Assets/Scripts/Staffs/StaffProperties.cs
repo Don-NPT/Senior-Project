@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class StaffProperties : MonoBehaviour
 {
+    public string id;
     public string fname;
     public int coding;
     public int design;
@@ -28,6 +29,7 @@ public class StaffProperties : MonoBehaviour
 
     public void setData(Staff staff)
     {
+        id = staff.id;
         fname = staff.fname;
         coding = staff.coding;
         design = staff.design;
@@ -48,8 +50,8 @@ public class StaffProperties : MonoBehaviour
 [System.Serializable]
 public class Staff
 {
+    public string id;
     public string fname;
-    
     public int analysis;
     public int design;
     public int coding;
@@ -64,6 +66,7 @@ public class Staff
 
     public void setData(StaffProperties staffProperties)
     {
+        id = staffProperties.id;
         fname = staffProperties.fname;
         coding = staffProperties.coding;
         design = staffProperties.design;
