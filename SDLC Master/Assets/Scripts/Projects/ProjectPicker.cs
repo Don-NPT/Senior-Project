@@ -120,7 +120,6 @@ public class ProjectPicker : MonoBehaviour
 
     public void ConfirmProject()
     {
-        selectedProject.currentPoints = 0;
         selectedProject.state = Project.Status.READY;
         ProjectManager.instance.currentProjects.Add(selectedProject);
         ProjectHUD.instance.UpdateList();

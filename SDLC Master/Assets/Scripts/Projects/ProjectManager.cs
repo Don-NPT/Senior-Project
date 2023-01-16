@@ -6,6 +6,7 @@ public class ProjectManager : MonoBehaviour
 {
     public static ProjectManager instance;
     public List<Project> currentProjects;
+    public List<Project> oldProject;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,10 +16,22 @@ public class ProjectManager : MonoBehaviour
             instance = this;
 
         currentProjects = new List<Project>();
+        oldProject = new List<Project>();
+    }
+
+    public void FinishProject(Project project)
+    {
+        currentProjects.Remove(project);
+        oldProject.Add(project);
     }
 
     public int getNumProject()
     {
         return currentProjects.Count;
+    }
+
+    public int getNumOldProject()
+    {
+        return oldProject.Count;
     }
 }

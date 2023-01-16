@@ -14,11 +14,14 @@ public class Project : ScriptableObject
     public int requireDeployment;
     public int reward;
     public int deadline;
+    public int dayUsed;
     public int scale;
     public int estimateDaysInPhase;
-    public float finishPoints;
-    [HideInInspector]
-    public float currentPoints;
+    public int actualAnalysis;
+    public int actualDesign;
+    public int actualCoding;
+    public int actualTesting;
+    public int actualDeployment;
     [HideInInspector]
     public SDLCModel model;
     [HideInInspector]
@@ -32,5 +35,15 @@ public class Project : ScriptableObject
     [HideInInspector]
     public Phases phase;
     
+    public int getAllRequireQuality()
+    {
+        int result = requireAnalysis + requireDesign + requireCoding + requireTesting + requireDeployment;
+        return result;
+    }
 
+    public int getAllActualQuality()
+    {
+        int result = actualAnalysis + actualDesign + actualCoding + actualTesting + actualDeployment;
+        return result;
+    }
 }
