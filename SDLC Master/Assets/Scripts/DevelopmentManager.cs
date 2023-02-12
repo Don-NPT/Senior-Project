@@ -15,6 +15,8 @@ public class DevelopmentManager : MonoBehaviour
     int totalQuality;
     public int currentQuality;
     public Project.Phases currentPhase;
+    public GameObject[] requirementUIs;
+    public GameObject[] designUIs;
 
     void Start()
     {
@@ -34,6 +36,7 @@ public class DevelopmentManager : MonoBehaviour
             {
                 project.state = Project.Status.DOING;
                 project.phase = Project.Phases.ANALYSIS;
+                requirementUIs[0].SetActive(true);
                 ProjectHUD.instance.UpdateList();
                 foreach(var staff in TeamManager2.instance.teams[project.teamIndex])
                 {
@@ -197,8 +200,13 @@ public class DevelopmentManager : MonoBehaviour
         switch(project.phase)
         {
             case Project.Phases.ANALYSIS:
+                requirementUIs[0].SetActive(false);
+                requirementUIs[1].SetActive(false);
+                designUIs[0].SetActive(true);
                 return Project.Phases.DESIGN;
             case Project.Phases.DESIGN:
+                designUIs[0].SetActive(false);
+                designUIs[1].SetActive(false);
                 return Project.Phases.CODING;
             case Project.Phases.CODING:
                 return Project.Phases.TESTING;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class BalloonBoom : MonoBehaviour
 {
@@ -57,9 +58,14 @@ public class BalloonBoom : MonoBehaviour
             float yPos = 0;
             Vector3 spawnPosition = new Vector3(xPos, yPos, 0f);
             balloons[i] = (GameObject) Instantiate(balloonPrefab, spawnPosition, Quaternion.identity);
-            balloons[i].transform.parent = canvas.transform;
+            balloons[i].transform.SetParent(canvas.transform);
             balloons[i].transform.position = spawnPosition;
-            yield return new WaitForSeconds(3);
+
+            // Set text
+            int index = Random.Range(0, ProjectManager.instance.currentProjects[0].balloons.Length-1);
+            balloons[i].GetComponentInChildren<TextMeshProUGUI>().text = ProjectManager.instance.currentProjects[0].balloons[index].word;
+            balloons[i].GetComponent<Balloon>().index = index;
+            yield return new WaitForSeconds(1);
         }
         
     }

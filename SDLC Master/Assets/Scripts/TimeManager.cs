@@ -50,7 +50,7 @@ public class TimeManager : MonoBehaviour
 
         if(GameManager.instance.gameState != GameState.PAUSE)
         {
-            datetime += Time.deltaTime;
+            datetime += Time.deltaTime * 0.2f;
             date = (int) Mathf.Floor(datetime);
             // datePrefab.text = Mathf.Round(datetime).ToString();
             // monthPrefab.text = months[monthIndex].ToString();
