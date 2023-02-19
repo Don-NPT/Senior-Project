@@ -98,7 +98,7 @@ public class DevelopmentManager : MonoBehaviour
             List<GameObject> workingStaffs = TeamManager2.instance.getStaffbyPhase(project.phase, TeamManager2.instance.teams[project.teamIndex]);
             while(currentDayInPhase < totalDayEachPhase[i])
             {
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(10);
                 currentDayInPhase++;
                 currentDayUsed++;
                 currentQuality += (int) Mathf.Round(totalQuality/DayEachPhase);
@@ -207,6 +207,7 @@ public class DevelopmentManager : MonoBehaviour
             case Project.Phases.DESIGN:
                 designUIs[0].SetActive(false);
                 designUIs[1].SetActive(false);
+                GameManager.instance.Play();
                 return Project.Phases.CODING;
             case Project.Phases.CODING:
                 return Project.Phases.TESTING;
