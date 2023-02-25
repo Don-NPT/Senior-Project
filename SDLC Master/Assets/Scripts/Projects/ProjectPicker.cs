@@ -16,6 +16,7 @@ public class ProjectPicker : MonoBehaviour
     public GameObject projectConfirm;
     public GameObject modelConfirm;
     public GameObject teamConfirm;
+    public GameObject ProjectSummary;
     private Project selectedProject;
     private SDLCModel selectedModel;
     private List<StaffProperties> selectedTeam;
@@ -126,6 +127,11 @@ public class ProjectPicker : MonoBehaviour
         
         selectedProject = null;
         selectedModel = null;
+    }
+
+    public void ViewSummary()
+    {
+        //ProjectSummary.setActive(true);
     }
 
     public void CloseRightPanel()
