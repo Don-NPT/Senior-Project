@@ -71,7 +71,7 @@ public class BuildManager : MonoBehaviour
                 GameObject buildObj = (GameObject)Instantiate(prefab, hit.point + new Vector3(0, 0, 0), preview.transform.rotation);
                 buildObj.transform.localScale = new Vector3(0.1f,0.1f,0.1f);
                 buildObj.transform.DOScale(1, 0.5f).SetEase(customEase);
-                GameManager.instance.setMoney(-1*buildPreset[buildIndex].price);
+                GameManager.instance.AddMoney(-1*buildPreset[buildIndex].price);
                 FindObjectOfType<AudioManager>().Play("Purchase");
             }else{
                 FindObjectOfType<AudioManager>().Play("Warning");

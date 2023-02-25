@@ -8,11 +8,11 @@ public class AssignButton : MonoBehaviour, IPointerEnterHandler, IPointerDownHan
 {
     public string hoverSound = "Hover";
     public string clickSound = "Click";
-    private StaffManager staffManager;
+    private StaffAssigner staffAssigner;
     public GameObject staffToAssign;
 
     private void Start() {
-        staffManager = FindObjectOfType(typeof(StaffManager)) as StaffManager; 
+        staffAssigner = FindObjectOfType(typeof(StaffAssigner)) as StaffAssigner; 
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -24,14 +24,14 @@ public class AssignButton : MonoBehaviour, IPointerEnterHandler, IPointerDownHan
     public void OnPointerDown (PointerEventData eventData) 
      {
         FindObjectOfType<AudioManager>().Play(clickSound);
-        staffManager.AssignStaff();
+        staffAssigner.AssignStaff();
         transform.DOPunchScale (new Vector3 (0.2f, 0.2f, 0.2f), .25f);
 
         string staffName = transform.parent.GetComponentsInChildren<TextMeshProUGUI>()[0].text;
         GameObject[] allStaffs = GameObject.FindGameObjectsWithTag("Staff");
         foreach(var staff in allStaffs)
         {
-            var name = staff.GetComponent<StaffProperties>().fname + " " + staff.GetComponent<StaffProperties>().lname;
+            var name = staff.GetComponent<StaffProperties>().fname;
             if(name  == staffName)
                 // staffToAssign = staff;
                 GameManager.instance.staffToAssign = staff;
