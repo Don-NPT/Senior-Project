@@ -129,11 +129,6 @@ public class ProjectPicker : MonoBehaviour
         selectedModel = null;
     }
 
-    public void ViewSummary()
-    {
-        //ProjectSummary.setActive(true);
-    }
-
     public void CloseRightPanel()
     {
         foreach(Transform child in rightContent)
