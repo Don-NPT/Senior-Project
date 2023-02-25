@@ -7,6 +7,7 @@ using UnityEngine;
 public class Project : ScriptableObject
 {
     [Header("Project Info")]
+    public string projectId;
     public string pjName;
     public string description;
     public int reward;
