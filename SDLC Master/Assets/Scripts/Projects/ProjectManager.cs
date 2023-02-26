@@ -6,6 +6,7 @@ public class ProjectManager : MonoBehaviour
 {
     public static ProjectManager instance;
     public List<Project> currentProjects;
+    public Project currentProject;
     public List<Project> oldProject;
 
     public GameObject ProjectSummary;
@@ -23,7 +24,7 @@ public class ProjectManager : MonoBehaviour
 
     public void FinishProject(Project project)
     {
-        currentProjects.Remove(project);
+        currentProject = null;
         oldProject.Add(project);
     }
 
