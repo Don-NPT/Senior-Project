@@ -9,11 +9,9 @@ public class ProjectHUD : MonoBehaviour
 {
     public static ProjectHUD instance;
     GameManager gameManager = GameManager.instance;
-    GameObject[] projectHudItem;
     public GameObject uiPrefab;
     public Transform parent;
     public GameObject hudDetail;
-    public GameObject hudDetailItem;
     public int projectIndex;
     GameObject submitBTN;
     // Start is called before the first frame update
@@ -28,108 +26,92 @@ public class ProjectHUD : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(hudDetailItem != null)
+        if(hudDetail.activeSelf && ProjectManager.instance.currentProject != null)
         {
-            hudDetailItem.GetComponentsInChildren<Slider>()[0].DOValue(DevelopmentManager.instance.currentDayInPhase, 0.3f).Play();
-            hudDetailItem.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "ขั้นตอน: " + ProjectManager.instance.currentProjects[projectIndex].phase.ToString();
-            hudDetailItem.GetComponentsInChildren<TextMeshProUGUI>()[8].text = "เหลือเวลา: " + (ProjectManager.instance.currentProjects[projectIndex].deadline - DevelopmentManager.instance.currentDayUsed);
+            hudDetail.GetComponentsInChildren<Slider>()[0].maxValue = WaterFallManager.instance.currentWorkAmount;
+            hudDetail.GetComponentsInChildren<Slider>()[0].DOValue(WaterFallManager.instance.progress, 0.3f).Play();
+            hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "ขั้นตอน: " + ProjectManager.instance.currentProject.phase.ToString();
+            // hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[8].text = "เหลือเวลา: " + (ProjectManager.instance.currentProject.deadline - DevelopmentManager.instance.currentDayUsed);
 
             // if(ProjectManager.instance.currentProjects[projectIndex].phase == Project.Phases.ANALYSIS)
-                hudDetailItem.GetComponentsInChildren<TextMeshProUGUI>()[3].text = DevelopmentManager.instance.currentQualityEachPhase[0] + "/" + ProjectManager.instance.currentProjects[projectIndex].requireAnalysis;
-                hudDetailItem.GetComponentsInChildren<Slider>()[1].DOValue(DevelopmentManager.instance.currentQualityEachPhase[0],0.3f).Play();
+                hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[3].text = WaterFallManager.instance.qualityEachPhase[0] + "/" + ProjectManager.instance.currentProject.analysisWork;
+                hudDetail.GetComponentsInChildren<Slider>()[1].DOValue(WaterFallManager.instance.qualityEachPhase[0],0.3f).Play();
             // if(ProjectManager.instance.currentProjects[projectIndex].phase == Project.Phases.DESIGN)
-                hudDetailItem.GetComponentsInChildren<TextMeshProUGUI>()[4].text = DevelopmentManager.instance.currentQualityEachPhase[1] + "/" + ProjectManager.instance.currentProjects[projectIndex].requireDesign;
-                hudDetailItem.GetComponentsInChildren<Slider>()[2].DOValue(DevelopmentManager.instance.currentQualityEachPhase[1],0.3f).Play();
+                hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[4].text = WaterFallManager.instance.qualityEachPhase[1] + "/" + ProjectManager.instance.currentProject.designWork;
+                hudDetail.GetComponentsInChildren<Slider>()[2].DOValue(WaterFallManager.instance.qualityEachPhase[1],0.3f).Play();
             // if(ProjectManager.instance.currentProjects[projectIndex].phase == Project.Phases.CODING)
-                hudDetailItem.GetComponentsInChildren<TextMeshProUGUI>()[5].text = DevelopmentManager.instance.currentQualityEachPhase[2] + "/" + ProjectManager.instance.currentProjects[projectIndex].requireCoding;
-                hudDetailItem.GetComponentsInChildren<Slider>()[3].DOValue(DevelopmentManager.instance.currentQualityEachPhase[2],0.3f).Play();
+                hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[5].text = WaterFallManager.instance.qualityEachPhase[2] + "/" + ProjectManager.instance.currentProject.codingWork;
+                hudDetail.GetComponentsInChildren<Slider>()[3].DOValue(WaterFallManager.instance.qualityEachPhase[2],0.3f).Play();
             // if(ProjectManager.instance.currentProjects[projectIndex].phase == Project.Phases.TESTING)
-                hudDetailItem.GetComponentsInChildren<TextMeshProUGUI>()[6].text = DevelopmentManager.instance.currentQualityEachPhase[3] + "/" + ProjectManager.instance.currentProjects[projectIndex].requireTesting;
-                hudDetailItem.GetComponentsInChildren<Slider>()[4].DOValue(DevelopmentManager.instance.currentQualityEachPhase[3],0.3f).Play();
+                hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[6].text = WaterFallManager.instance.qualityEachPhase[3] + "/" + ProjectManager.instance.currentProject.testingWork;
+                hudDetail.GetComponentsInChildren<Slider>()[4].DOValue(WaterFallManager.instance.qualityEachPhase[3],0.3f).Play();
             // if(ProjectManager.instance.currentProjects[projectIndex].phase == Project.Phases.DEPLOYMENT)
-                hudDetailItem.GetComponentsInChildren<TextMeshProUGUI>()[7].text = DevelopmentManager.instance.currentQualityEachPhase[4] + "/" + ProjectManager.instance.currentProjects[projectIndex].requireDeployment;
-                hudDetailItem.GetComponentsInChildren<Slider>()[5].DOValue(DevelopmentManager.instance.currentQualityEachPhase[4],0.3f).Play();
+                hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[7].text = WaterFallManager.instance.qualityEachPhase[4] + "/" + ProjectManager.instance.currentProject.deploymentWork;
+                hudDetail.GetComponentsInChildren<Slider>()[5].DOValue(WaterFallManager.instance.qualityEachPhase[4],0.3f).Play();
         }
     }
 
     public void UpdateList() {
-        if(ProjectManager.instance.getNumProject() > 0)
+        if(ProjectManager.instance.currentProject != null)
         {
-            DestroyAllItem();
-            projectHudItem = new GameObject[ProjectManager.instance.getNumProject()];
-            for(int i=0; i<ProjectManager.instance.getNumProject(); i++)
-            {
-                // Setup project hud tab
-                projectHudItem[i] = (GameObject)Instantiate(uiPrefab);
-                projectHudItem[i].transform.SetParent(parent);
-                projectHudItem[i].transform.localScale = new Vector3(1, 1, 1);
-                int index = i;
-                projectHudItem[i].GetComponent<Button>().onClick.AddListener(() => {ShowDetail(index);});
+            // Setup project hud tab
+            uiPrefab.SetActive(true);
+            // uiPrefab.GetComponent<Button>().onClick.AddListener(() => {ShowDetail();});
 
-                // Setup text info
-                projectHudItem[i].GetComponentsInChildren<TextMeshProUGUI>()[0].text = ProjectManager.instance.currentProjects[i].pjName;
-                projectHudItem[i].GetComponentsInChildren<TextMeshProUGUI>()[1].text = ProjectManager.instance.currentProjects[i].state.ToString();
-                ShowDetail(index);
-            }
+            // Setup text info
+            uiPrefab.GetComponentsInChildren<TextMeshProUGUI>()[0].text = ProjectManager.instance.currentProject.pjName;
+            uiPrefab.GetComponentsInChildren<TextMeshProUGUI>()[1].text = ProjectManager.instance.currentProject.state.ToString();
+            
+            hudDetail.SetActive(false);
+            ShowDetail();
         }
     }
 
-    public void ShowDetail(int index)
+    public void ShowDetail()
     {
-        if(hudDetailItem == null){
-            projectIndex = index;
+        if(hudDetail.activeSelf == false){
             // Setup project detail hud
-            hudDetailItem = (GameObject)Instantiate(hudDetail);
-            hudDetailItem.transform.SetParent(parent);
-            hudDetailItem.transform.SetSiblingIndex(index+1);
-            hudDetailItem.transform.localScale = new Vector3(1, 1, 1);
-            submitBTN = hudDetailItem.transform.GetChild(5).gameObject;
+            hudDetail.SetActive(true);
+
+            submitBTN = hudDetail.transform.GetChild(5).gameObject;
             submitBTN.SetActive(false);
 
             // setup text info
-            hudDetailItem.GetComponentsInChildren<TextMeshProUGUI>()[0].text = ProjectManager.instance.currentProjects[index].model.modelName;
-            hudDetailItem.GetComponentsInChildren<TextMeshProUGUI>()[1].text = ProjectManager.instance.currentProjects[index].phase.ToString();
-            hudDetailItem.GetComponentsInChildren<Slider>()[0].maxValue = DevelopmentManager.instance.DayEachPhase;
-            hudDetailItem.GetComponentsInChildren<Slider>()[1].value = 0;
-            hudDetailItem.GetComponentsInChildren<Slider>()[2].value = 0;
-            hudDetailItem.GetComponentsInChildren<Slider>()[3].value = 0;
-            hudDetailItem.GetComponentsInChildren<Slider>()[4].value = 0;
-            hudDetailItem.GetComponentsInChildren<Slider>()[5].value = 0;
-            hudDetailItem.GetComponentsInChildren<Slider>()[1].maxValue = ProjectManager.instance.currentProjects[index].requireAnalysis;
-            hudDetailItem.GetComponentsInChildren<Slider>()[2].maxValue = ProjectManager.instance.currentProjects[index].requireDesign;
-            hudDetailItem.GetComponentsInChildren<Slider>()[3].maxValue = ProjectManager.instance.currentProjects[index].requireCoding;
-            hudDetailItem.GetComponentsInChildren<Slider>()[4].maxValue = ProjectManager.instance.currentProjects[index].requireTesting;
-            hudDetailItem.GetComponentsInChildren<Slider>()[5].maxValue = ProjectManager.instance.currentProjects[index].requireDeployment;
+            hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[0].text = ProjectManager.instance.currentProject.model.modelName;
+            hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[1].text = ProjectManager.instance.currentProject.phase.ToString();
+            hudDetail.GetComponentsInChildren<Slider>()[1].value = 0;
+            hudDetail.GetComponentsInChildren<Slider>()[2].value = 0;
+            hudDetail.GetComponentsInChildren<Slider>()[3].value = 0;
+            hudDetail.GetComponentsInChildren<Slider>()[4].value = 0;
+            hudDetail.GetComponentsInChildren<Slider>()[5].value = 0;
+            hudDetail.GetComponentsInChildren<Slider>()[1].maxValue = ProjectManager.instance.currentProject.analysisWork;
+            hudDetail.GetComponentsInChildren<Slider>()[2].maxValue = ProjectManager.instance.currentProject.designWork;
+            hudDetail.GetComponentsInChildren<Slider>()[3].maxValue = ProjectManager.instance.currentProject.codingWork;
+            hudDetail.GetComponentsInChildren<Slider>()[4].maxValue = ProjectManager.instance.currentProject.testingWork;
+            hudDetail.GetComponentsInChildren<Slider>()[5].maxValue = ProjectManager.instance.currentProject.deploymentWork;
             return;
+        }else{
+            hudDetail.SetActive(false);
         }
-        Destroy(hudDetailItem);
     }
 
     public void ShowFinishBTN(Project project)
     {
-        if(hudDetailItem != null){
+        if(hudDetail.activeSelf){
             submitBTN.SetActive(true);
             submitBTN.GetComponent<Button>().onClick.AddListener(delegate {
                 Debug.Log("Submit");
                 GameManager.instance.AddMoney(project.reward);
                 GameManager.instance.Play();
                 ProjectManager.instance.ViewProjectSummary();
-                DestroyAllItem();
+                HideHUD();
             });
         }
     }
 
-    void DestroyAllItem()
+    void HideHUD()
     {
-        if(projectHudItem != null){
-            foreach(GameObject child in projectHudItem)
-            {
-                Destroy(child);
-            }
-        }
-        if(hudDetailItem != null){
-            Destroy(hudDetailItem);
-        } 
+        uiPrefab.SetActive(false);
+        hudDetail.SetActive(false);
     }
-
 }

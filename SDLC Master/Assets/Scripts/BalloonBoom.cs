@@ -31,23 +31,23 @@ public class BalloonBoom : MonoBehaviour
         
     }
     private void FixedUpdate() {
-        if(DevelopmentManager.instance.currentPhase == Project.Phases.CODING && isStarted == false)
-        {
-            isStarted = true;
-            Debug.Log("Starting Balloon Boom");
-            StartCoroutine(SpawnBalloon());
-        }
-        else if(DevelopmentManager.instance.currentPhase == Project.Phases.TESTING)
-        {
-            isStarted = false;
-            Debug.Log("Stopping Balloon Boom");
-            StopCoroutine(SpawnBalloon());
-            foreach (var balloon in balloons)
-            {
-                if(balloon.gameObject)
-                    Destroy(balloon.gameObject);
-            }
-        }
+        // if(DevelopmentManager.instance.currentPhase == Project.Phases.CODING && isStarted == false)
+        // {
+        //     isStarted = true;
+        //     Debug.Log("Starting Balloon Boom");
+        //     StartCoroutine(SpawnBalloon());
+        // }
+        // else if(DevelopmentManager.instance.currentPhase == Project.Phases.TESTING)
+        // {
+        //     isStarted = false;
+        //     Debug.Log("Stopping Balloon Boom");
+        //     StopCoroutine(SpawnBalloon());
+        //     foreach (var balloon in balloons)
+        //     {
+        //         if(balloon.gameObject)
+        //             Destroy(balloon.gameObject);
+        //     }
+        // }
     }
 
     IEnumerator SpawnBalloon()

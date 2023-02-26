@@ -21,11 +21,11 @@ MonoBehaviour:
   dayUsed: 50
   scale: 2
   estimateDaysInPhase: 10
-  requireAnalysis: 100
-  requireDesign: 100
-  requireCoding: 110
-  requireTesting: 80
-  requireDeployment: 50
+  analysisWork: 15
+  designWork: 20
+  codingWork: 30
+  testingWork: 15
+  deploymentWork: 5
   actualAnalysis: 80
   actualDesign: 1000
   actualCoding: 250
@@ -92,4 +92,4 @@ MonoBehaviour:
   model: {fileID: 11400000, guid: fefd9c0d5471bbd4b8ed0775ef1e6143, type: 2}
   teamIndex: 0
   state: 1
-  phase: 2
+  phase: 0

@@ -30,9 +30,9 @@ public class ProjectOld : MonoBehaviour
             TextMeshProUGUI[] projectOldText = projectOldItem[i].GetComponentsInChildren<TextMeshProUGUI>();
             Project project =  ProjectManager.instance.oldProject[i];
             projectOldText[0].text = ProjectManager.instance.oldProject[i].pjName;
-            projectOldText[2].text = project.getAllActualQuality() + "/" + project.getAllRequireQuality();
+            projectOldText[2].text = project.getAllActualQuality() + "/" + project.getAllWorkAmount();
             Slider slider = projectOldItem[i].GetComponentInChildren<Slider>();
-            slider.maxValue = project.getAllRequireQuality();
+            slider.maxValue = project.getAllWorkAmount();
             slider.value = project.getAllActualQuality();
             int index = i;
             projectOldItem[i].GetComponent<Button>().onClick.AddListener(() => ShowOldProjectDetail(index));

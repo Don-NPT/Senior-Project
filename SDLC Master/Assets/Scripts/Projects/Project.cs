@@ -15,12 +15,12 @@ public class Project : ScriptableObject
     public int dayUsed;
     public int scale;
     public int estimateDaysInPhase;
-    [Header("Require")]
-    public int requireAnalysis;
-    public int requireDesign;
-    public int requireCoding;
-    public int requireTesting;
-    public int requireDeployment;
+    [Header("Work Amount")]
+    public int analysisWork;
+    public int designWork;
+    public int codingWork;
+    public int testingWork;
+    public int deploymentWork;
     [Header("Actual")]
     public int actualAnalysis;
     public int actualDesign;
@@ -44,13 +44,13 @@ public class Project : ScriptableObject
     [HideInInspector]
     public Status state;
     [HideInInspector]
-    public enum Phases {ANALYSIS, DESIGN, CODING, TESTING, DEPLOYMENT};
+    public enum Phases {ANALYSIS, DESIGN, CODING, TESTING, DEPLOYMENT, MAINTENANCE};
     [HideInInspector]
     public Phases phase;
     
-    public int getAllRequireQuality()
+    public int getAllWorkAmount()
     {
-        int result = requireAnalysis + requireDesign + requireCoding + requireTesting + requireDeployment;
+        int result = analysisWork + designWork + codingWork + testingWork + deploymentWork;
         return result;
     }
 

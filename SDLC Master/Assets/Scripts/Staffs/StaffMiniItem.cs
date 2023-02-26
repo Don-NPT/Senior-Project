@@ -8,6 +8,6 @@ public class StaffMiniItem : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown (PointerEventData eventData) 
     {
         // gameObject.SetActive(false);
-        FindObjectOfType<TeamManager>().SelectStaff(GetComponentsInChildren<TextMeshProUGUI>()[0].text.ToString());
+        // FindObjectOfType<TeamManager>().SelectStaff(GetComponentsInChildren<TextMeshProUGUI>()[0].text.ToString());
     }
 }
