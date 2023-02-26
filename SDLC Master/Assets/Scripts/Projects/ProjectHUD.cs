@@ -34,19 +34,19 @@ public class ProjectHUD : MonoBehaviour
             // hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[8].text = "เหลือเวลา: " + (ProjectManager.instance.currentProject.deadline - DevelopmentManager.instance.currentDayUsed);
 
             // if(ProjectManager.instance.currentProjects[projectIndex].phase == Project.Phases.ANALYSIS)
-                hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[3].text = WaterFallManager.instance.qualityEachPhase[0] + "/" + ProjectManager.instance.currentProject.analysisWork;
+                hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[3].text = WaterFallManager.instance.qualityEachPhase[0] + "/" + ProjectManager.instance.currentProject.analysisWork*10;
                 hudDetail.GetComponentsInChildren<Slider>()[1].DOValue(WaterFallManager.instance.qualityEachPhase[0],0.3f).Play();
             // if(ProjectManager.instance.currentProjects[projectIndex].phase == Project.Phases.DESIGN)
-                hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[4].text = WaterFallManager.instance.qualityEachPhase[1] + "/" + ProjectManager.instance.currentProject.designWork;
+                hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[4].text = WaterFallManager.instance.qualityEachPhase[1] + "/" + ProjectManager.instance.currentProject.designWork*10;
                 hudDetail.GetComponentsInChildren<Slider>()[2].DOValue(WaterFallManager.instance.qualityEachPhase[1],0.3f).Play();
             // if(ProjectManager.instance.currentProjects[projectIndex].phase == Project.Phases.CODING)
-                hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[5].text = WaterFallManager.instance.qualityEachPhase[2] + "/" + ProjectManager.instance.currentProject.codingWork;
+                hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[5].text = WaterFallManager.instance.qualityEachPhase[2] + "/" + ProjectManager.instance.currentProject.codingWork*10;
                 hudDetail.GetComponentsInChildren<Slider>()[3].DOValue(WaterFallManager.instance.qualityEachPhase[2],0.3f).Play();
             // if(ProjectManager.instance.currentProjects[projectIndex].phase == Project.Phases.TESTING)
-                hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[6].text = WaterFallManager.instance.qualityEachPhase[3] + "/" + ProjectManager.instance.currentProject.testingWork;
+                hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[6].text = WaterFallManager.instance.qualityEachPhase[3] + "/" + ProjectManager.instance.currentProject.testingWork*10;
                 hudDetail.GetComponentsInChildren<Slider>()[4].DOValue(WaterFallManager.instance.qualityEachPhase[3],0.3f).Play();
             // if(ProjectManager.instance.currentProjects[projectIndex].phase == Project.Phases.DEPLOYMENT)
-                hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[7].text = WaterFallManager.instance.qualityEachPhase[4] + "/" + ProjectManager.instance.currentProject.deploymentWork;
+                hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[7].text = WaterFallManager.instance.qualityEachPhase[4] + "/" + ProjectManager.instance.currentProject.deploymentWork*10;
                 hudDetail.GetComponentsInChildren<Slider>()[5].DOValue(WaterFallManager.instance.qualityEachPhase[4],0.3f).Play();
         }
     }
@@ -84,11 +84,11 @@ public class ProjectHUD : MonoBehaviour
             hudDetail.GetComponentsInChildren<Slider>()[3].value = 0;
             hudDetail.GetComponentsInChildren<Slider>()[4].value = 0;
             hudDetail.GetComponentsInChildren<Slider>()[5].value = 0;
-            hudDetail.GetComponentsInChildren<Slider>()[1].maxValue = ProjectManager.instance.currentProject.analysisWork;
-            hudDetail.GetComponentsInChildren<Slider>()[2].maxValue = ProjectManager.instance.currentProject.designWork;
-            hudDetail.GetComponentsInChildren<Slider>()[3].maxValue = ProjectManager.instance.currentProject.codingWork;
-            hudDetail.GetComponentsInChildren<Slider>()[4].maxValue = ProjectManager.instance.currentProject.testingWork;
-            hudDetail.GetComponentsInChildren<Slider>()[5].maxValue = ProjectManager.instance.currentProject.deploymentWork;
+            hudDetail.GetComponentsInChildren<Slider>()[1].maxValue = ProjectManager.instance.currentProject.analysisWork * 10;
+            hudDetail.GetComponentsInChildren<Slider>()[2].maxValue = ProjectManager.instance.currentProject.designWork * 10;
+            hudDetail.GetComponentsInChildren<Slider>()[3].maxValue = ProjectManager.instance.currentProject.codingWork * 10;
+            hudDetail.GetComponentsInChildren<Slider>()[4].maxValue = ProjectManager.instance.currentProject.testingWork * 10;
+            hudDetail.GetComponentsInChildren<Slider>()[5].maxValue = ProjectManager.instance.currentProject.deploymentWork * 10;
             return;
         }else{
             hudDetail.SetActive(false);

@@ -59,6 +59,24 @@ public class Project : ScriptableObject
         int result = actualAnalysis + actualDesign + actualCoding + actualTesting + actualDeployment;
         return result;
     }
+
+    public int getWorkAmountbyIndex(int index)
+    {
+        switch(index)
+        {
+            case 0:
+                return analysisWork;
+            case 1:
+                return designWork;
+            case 2:
+                return codingWork;
+            case 3:
+                return testingWork;
+            case 4:
+                return deploymentWork;
+        }
+        return 0;
+    }
     
 }
 

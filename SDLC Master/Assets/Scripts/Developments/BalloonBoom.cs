@@ -17,7 +17,8 @@ public class BalloonBoom : MonoBehaviour
         if (instance != null && instance != this) 
             Destroy(this); 
         else 
-            instance = this; 
+            instance = this;
+ 
     }
 
     // Update is called once per frame
@@ -31,23 +32,25 @@ public class BalloonBoom : MonoBehaviour
         
     }
     private void FixedUpdate() {
-        // if(DevelopmentManager.instance.currentPhase == Project.Phases.CODING && isStarted == false)
-        // {
-        //     isStarted = true;
-        //     Debug.Log("Starting Balloon Boom");
-        //     StartCoroutine(SpawnBalloon());
-        // }
-        // else if(DevelopmentManager.instance.currentPhase == Project.Phases.TESTING)
-        // {
-        //     isStarted = false;
-        //     Debug.Log("Stopping Balloon Boom");
-        //     StopCoroutine(SpawnBalloon());
-        //     foreach (var balloon in balloons)
-        //     {
-        //         if(balloon.gameObject)
-        //             Destroy(balloon.gameObject);
-        //     }
-        // }
+        if(ProjectManager.instance.currentProject != null){
+            if(ProjectManager.instance.currentProject.phase == Project.Phases.CODING && isStarted == false)
+            {
+                isStarted = true;
+                Debug.Log("Starting Balloon Boom");
+                StartCoroutine(SpawnBalloon());
+            }
+            else if(ProjectManager.instance.currentProject.phase == Project.Phases.TESTING)
+            {
+                isStarted = false;
+                Debug.Log("Stopping Balloon Boom");
+                StopCoroutine(SpawnBalloon());
+                foreach (var balloon in balloons)
+                {
+                    if(balloon.gameObject)
+                        Destroy(balloon.gameObject);
+                }
+            }
+        }
     }
 
     IEnumerator SpawnBalloon()

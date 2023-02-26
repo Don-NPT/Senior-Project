@@ -54,18 +54,20 @@ public class StaffManager : MonoBehaviour
         return staffProperties;
     }
 
-    public int getSumStatbyPosition(string position)
+    public int getStaffStat(StaffProperties staff, string position)
     {
-        GameObject[] staffs = GameObject.FindGameObjectsWithTag("Staff");
-        int sum = 0;
-        for(int i=0; i<staffs.Length; i++)
+        switch(position)
         {
-            if(staffs[i].GetComponent<StaffProperties>().position == position)
-            {
-                sum += staffs[i].GetComponent<StaffProperties>().analysis;
-            }
+            case "Analyst":
+                return staff.analysis;
+            case "Designer":
+                return staff.design;
+            case "Programmer":
+                return staff.coding;
+            case "Tester":
+                return staff.testing;
         }
-        return sum;
+        return 0;
     }
 
     public List<Staff> getAllSerializableStaff()

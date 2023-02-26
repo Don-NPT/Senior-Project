@@ -6,11 +6,20 @@ public class WaterFallManager : MonoBehaviour
 {
     public static WaterFallManager instance;
 
-    public int[] qualityEachPhase;
-    public int currentWorkAmount;
-    public int progress;
+    public GameObject[] requirementUIs;
+    public GameObject[] designUIs;
 
-    private Project project;
+    [HideInInspector]
+    public int[] qualityEachPhase;
+    [HideInInspector]
+    public int[] TotalQualityEachPhase;
+    [HideInInspector]
+    public int currentWorkAmount;
+    [HideInInspector]
+    public int progress;
+    [HideInInspector]
+    public Project project;
+
     private string staffPosition;
     private int phaseIndex;
 
@@ -37,7 +46,8 @@ public class WaterFallManager : MonoBehaviour
             staffPosition = "Analyst";
             phaseIndex = 0;
             qualityEachPhase = new int[6];  
-            // requirementUIs[0].SetActive(true);
+            TotalQualityEachPhase = new int[6];  
+            requirementUIs[0].SetActive(true);
             ProjectHUD.instance.UpdateList();
             foreach(var staff in StaffManager.instance.getAllStaff())
             {
@@ -50,17 +60,33 @@ public class WaterFallManager : MonoBehaviour
     IEnumerator UpdateProgress()
     {
         progress = 0;
+        TotalQualityEachPhase[phaseIndex] = ComputeQuality();
+        // int TotalTime = (int) Mathf.Round(project.getWorkAmountbyIndex(phaseIndex) / StaffManager.instance.getTotalStaffbyPosition(staffPosition));
+        
         while(progress < currentWorkAmount)
         {
             yield return new WaitForSeconds(1);
 
             progress += StaffManager.instance.getTotalStaffbyPosition(staffPosition);
-            qualityEachPhase[phaseIndex] += StaffManager.instance.getSumStatbyPosition(staffPosition);
+            qualityEachPhase[phaseIndex] = (int) Mathf.Round(((float)progress / currentWorkAmount) * TotalQualityEachPhase[phaseIndex]);
         }
         if(project.phase != Project.Phases.DEPLOYMENT)
             NextPhase();
         else
             FinishProject();
+    }
+
+    int ComputeQuality()
+    {
+        float quality = 0;
+        foreach(var staff in StaffManager.instance.getAllStaff())
+        {
+            if(staff.position == staffPosition)
+            {
+                quality += (StaffManager.instance.getStaffStat(staff, staffPosition) * staff.stamina) / project.scale;
+            }
+        }
+        return (int) Mathf.Round(quality);
     }
 
     public void NextPhase()
@@ -71,16 +97,16 @@ public class WaterFallManager : MonoBehaviour
             case Project.Phases.ANALYSIS:
                 currentWorkAmount = project.designWork;
                 staffPosition = "Designer";
-                // requirementUIs[0].SetActive(false);
-                // requirementUIs[1].SetActive(false);
-                // designUIs[0].SetActive(true);
+                requirementUIs[0].SetActive(false);
+                requirementUIs[1].SetActive(false);
+                designUIs[0].SetActive(true);
                 project.phase = Project.Phases.DESIGN;
                 break;
             case Project.Phases.DESIGN:
                 currentWorkAmount = project.codingWork;
                 staffPosition = "Programmer";
-                // designUIs[0].SetActive(false);
-                // designUIs[1].SetActive(false);
+                designUIs[0].SetActive(false);
+                designUIs[1].SetActive(false);
                 project.phase = Project.Phases.CODING;
                 break;
             case Project.Phases.CODING:

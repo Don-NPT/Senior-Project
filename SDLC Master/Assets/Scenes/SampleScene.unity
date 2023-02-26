@@ -3317,8 +3317,8 @@ GameObject:
   m_Component:
   - component: {fileID: 140431329}
   - component: {fileID: 140431328}
-  - component: {fileID: 140431331}
   - component: {fileID: 140431332}
+  - component: {fileID: 140431330}
   m_Layer: 0
   m_Name: ProjectManager
   m_TagString: Untagged
@@ -3356,7 +3356,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &140431331
+--- !u!114 &140431330
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3365,7 +3365,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 140431327}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb9320bdd89a4674495918dcd5ce54e1, type: 3}
+  m_Script: {fileID: 11500000, guid: 014267ed5654e9247923a6223565f32a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   balloonPrefab: {fileID: 6599916849591706149, guid: 442cd2c77f00ed943bcf870511dbd4cf, type: 3}
@@ -3383,9 +3383,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 065ce5177ce04ab4d84f853f94bea3e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  requirementUIs:
+  - {fileID: 1765719883}
+  - {fileID: 2006779431}
+  designUIs:
+  - {fileID: 764311299}
+  - {fileID: 2126200779}
   qualityEachPhase: 
+  TotalQualityEachPhase: 
   currentWorkAmount: 0
   progress: 0
+  project: {fileID: 0}
 --- !u!1 &148512116
 GameObject:
   m_ObjectHideFlags: 0
@@ -3846,10 +3854,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1180274700}
+        m_TargetAssemblyTypeName: PanelOpener, Assembly-CSharp
+        m_MethodName: ClosePanel
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -12088,7 +12096,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6065531531460408735, guid: bad2e592e8cece543b805d07a2855da0, type: 3}
       propertyPath: stamina
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6065531531460408735, guid: bad2e592e8cece543b805d07a2855da0, type: 3}
       propertyPath: testing
@@ -20530,7 +20538,7 @@ MonoBehaviour:
   design: 4
   testing: 5
   analysis: 5
-  stamina: 100
+  stamina: 10
   wage: 5000
   position: Programmer
   isAssign: 1
@@ -32891,7 +32899,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6065531531460408735, guid: bad2e592e8cece543b805d07a2855da0, type: 3}
       propertyPath: stamina
-      value: 100
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6065531531460408735, guid: bad2e592e8cece543b805d07a2855da0, type: 3}
       propertyPath: testing
@@ -37665,6 +37673,7 @@ GameObject:
   - component: {fileID: 1180274697}
   - component: {fileID: 1180274699}
   - component: {fileID: 1180274698}
+  - component: {fileID: 1180274700}
   m_Layer: 5
   m_Name: ProjectSummary
   m_TagString: Untagged
@@ -37731,6 +37740,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1180274696}
   m_CullTransparentMesh: 1
+--- !u!114 &1180274700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180274696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8757aafa1bcea1641832e1b83a4c9b99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 1180274696}
 --- !u!1 &1181914132
 GameObject:
   m_ObjectHideFlags: 0
@@ -41148,7 +41170,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6065531531460408735, guid: bad2e592e8cece543b805d07a2855da0, type: 3}
       propertyPath: stamina
-      value: 80
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6065531531460408735, guid: bad2e592e8cece543b805d07a2855da0, type: 3}
       propertyPath: testing
@@ -51832,7 +51854,7 @@ GameObject:
   - component: {fileID: 1670231172}
   - component: {fileID: 1670231174}
   m_Layer: 5
-  m_Name: Design1
+  m_Name: Requirement_old
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -65148,12 +65170,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2106443543}
   m_Layer: 5
-  m_Name: Development UI
+  m_Name: Waterfall UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2106443543
 RectTransform:
   m_ObjectHideFlags: 0
