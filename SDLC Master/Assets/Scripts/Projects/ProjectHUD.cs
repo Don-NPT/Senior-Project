@@ -113,6 +113,7 @@ public class ProjectHUD : MonoBehaviour
                 Debug.Log("Submit");
                 GameManager.instance.AddMoney(project.reward);
                 GameManager.instance.Play();
+                ProjectManager.instance.ViewProjectSummary();
                 DestroyAllItem();
             });
         }
