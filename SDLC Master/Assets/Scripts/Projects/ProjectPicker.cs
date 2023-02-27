@@ -16,6 +16,7 @@ public class ProjectPicker : MonoBehaviour
     public GameObject projectConfirm;
     public GameObject modelConfirm;
     public GameObject teamConfirm;
+    public GameObject ProjectSummary;
     private Project selectedProject;
     private SDLCModel selectedModel;
     private List<StaffProperties> selectedTeam;
@@ -52,11 +53,11 @@ public class ProjectPicker : MonoBehaviour
         TextMeshProUGUI[] projectDetailText = projectDetail.GetComponentsInChildren<TextMeshProUGUI>();
         projectDetailText[0].text = projects[index].pjName;
         projectDetailText[1].text = projects[index].description;
-        projectDetailText[3].text = "Analysis: " + projects[index].requireAnalysis.ToString();
-        projectDetailText[4].text = "Design: " + projects[index].requireDesign.ToString();
-        projectDetailText[5].text = "Coding: " + projects[index].requireCoding.ToString();
-        projectDetailText[6].text = "Testing: " + projects[index].requireTesting.ToString();
-        projectDetailText[7].text = "Deployment: " + projects[index].requireDeployment.ToString();
+        projectDetailText[3].text = "Analysis: " + projects[index].analysisWork.ToString();
+        projectDetailText[4].text = "Design: " + projects[index].designWork.ToString();
+        projectDetailText[5].text = "Coding: " + projects[index].codingWork.ToString();
+        projectDetailText[6].text = "Testing: " + projects[index].testingWork.ToString();
+        projectDetailText[7].text = "Deployment: " + projects[index].deploymentWork.ToString();
         projectDetailText[8].text = "ผลตอบแทน: " + projects[index].reward.ToString() + " บาท";
         projectDetailText[9].text = "ต้องการภายใน: " + projects[index].deadline.ToString() + " วัน";
     }
@@ -102,27 +103,29 @@ public class ProjectPicker : MonoBehaviour
         print(selectedModel);
     }
 
-    public void SelectTeam(int index)
-    {
-        selectedTeam = TeamManager2.instance.teams[index];
-        selectedProject.teamIndex = index;
-        foreach(var item in teamItems)
-        {
-            item.GetComponent<Outline>().enabled = false;
-        }
-        teamItems[index].GetComponent<Outline>().enabled = true;
+    // public void SelectTeam(int index)
+    // {
+    //     selectedTeam = TeamManager2.instance.teams[index];
+    //     selectedProject.teamIndex = index;
+    //     foreach(var item in teamItems)
+    //     {
+    //         item.GetComponent<Outline>().enabled = false;
+    //     }
+    //     teamItems[index].GetComponent<Outline>().enabled = true;
 
-        // set text for model confirm
-        TextMeshProUGUI[] teamConfirmText = teamConfirm.GetComponentsInChildren<TextMeshProUGUI>();
-        teamConfirmText[0].text = "Team " + (index+1);
-        teamConfirmText[1].text = "จำนวนสมาชิก: " + TeamManager2.instance.getSize(index);
-    }
+    //     // set text for model confirm
+    //     TextMeshProUGUI[] teamConfirmText = teamConfirm.GetComponentsInChildren<TextMeshProUGUI>();
+    //     teamConfirmText[0].text = "Team " + (index+1);
+    //     teamConfirmText[1].text = "จำนวนสมาชิก: " + TeamManager2.instance.getSize(index);
+    // }
 
     public void ConfirmProject()
     {
         selectedProject.state = Project.Status.READY;
-        ProjectManager.instance.currentProjects.Add(selectedProject);
+        // ProjectManager.instance.currentProjects.Add(selectedProject);
+        ProjectManager.instance.currentProject = selectedProject;
         ProjectHUD.instance.UpdateList();
+        WaterFallManager.instance.InitiateWaterfall();
         
         selectedProject = null;
         selectedModel = null;

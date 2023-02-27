@@ -12,20 +12,76 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bbf17822536ded48b1f3147096b6117, type: 3}
   m_Name: Project003
   m_EditorClassIdentifier: 
+  projectId: 3
   pjName: Project Senior
   description: "\u0E02\u0E49\u0E2D\u0E40\u0E2A\u0E19\u0E2D\u0E42\u0E1B\u0E23\u0E40\u0E08\u0E04\u0E08\u0E32\u0E01\u0E1A\u0E23\u0E34\u0E29\u0E31\u0E17
     ICT"
-  requireAnalysis: 100
-  requireDesign: 250
-  requireCoding: 500
-  requireTesting: 250
-  requireDeployment: 0
   reward: 70000
   deadline: 120
+  dayUsed: 0
   scale: 5
   estimateDaysInPhase: 25
-  finishPoints: 50
-  currentPoints: 24
+  analysisWork: 0
+  designWork: 0
+  codingWork: 0
+  testingWork: 0
+  deploymentWork: 0
+  actualAnalysis: 0
+  actualDesign: 0
+  actualCoding: 0
+  actualTesting: 0
+  actualDeployment: 0
+  requirement1:
+  - word: Sometext
+    isCorrect: 1
+  - word: Sometext
+    isCorrect: 1
+  - word: Sometext
+    isCorrect: 1
+  - word: Sometext
+    isCorrect: 1
+  - word: Sometext
+    isCorrect: 1
+  - word: Sometext
+    isCorrect: 1
+  requirement2_new:
+  - word: Sometext
+    isCorrect: 1
+  - word: Sometext
+    isCorrect: 1
+  - word: Sometext
+    isCorrect: 1
+  - word: Sometext
+    isCorrect: 1
+  requirement2:
+  - word: Sometext
+    isCorrect: 1
+  - word: Sometext
+    isCorrect: 1
+  - word: Sometext
+    isCorrect: 1
+  - word: Sometext
+    isCorrect: 1
+  balloons:
+  - word: Sometext
+    isCorrect: 1
+  - word: Sometext
+    isCorrect: 1
+  - word: Sometext
+    isCorrect: 1
+  - word: Sometext
+    isCorrect: 1
+  - word: Sometext
+    isCorrect: 1
+  keyInput:
+  - word: Sometext
+    hint: description
+    showNum: 0
+    additionalChar: 
+  - word: Sometext
+    hint: description
+    showNum: 0
+    additionalChar: 
   model: {fileID: 11400000, guid: 5ef74cd8a8ad44943a62f7d834d77d1c, type: 2}
   teamIndex: 3
   state: 1
