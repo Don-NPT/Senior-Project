@@ -25,15 +25,15 @@ public class KeyInput : MonoBehaviour
     {
         DestroyAllBlock();
 
-        string vocab = ProjectManager.instance.currentProjects[0].keyInput[index].word;
-        hint.text = ProjectManager.instance.currentProjects[0].keyInput[index].hint;
-        char[] additionalChar = ProjectManager.instance.currentProjects[0].keyInput[index].additionalChar;
+        string vocab = ProjectManager.instance.currentProject.keyInput[index].word;
+        hint.text = ProjectManager.instance.currentProject.keyInput[index].hint;
+        char[] additionalChar = ProjectManager.instance.currentProject.keyInput[index].additionalChar;
 
         inputBlocks = new GameObject[vocab.Length];
         charBlocks = new GameObject[vocab.Length + additionalChar.Length];
 
         //input block
-        char[] randomChars = GetrandomCharacters(ProjectManager.instance.currentProjects[0].keyInput[index].showNum, vocab);
+        char[] randomChars = GetrandomCharacters(ProjectManager.instance.currentProject.keyInput[index].showNum, vocab);
         for(int i=0; i<vocab.Length; i++)
         {
             inputBlocks[i] = (GameObject)Instantiate(inputBlockPrefab);
@@ -82,7 +82,7 @@ public class KeyInput : MonoBehaviour
                 if (Input.GetKeyDown(key))
                 {
                     string keyName = key.ToString();
-                    if (ProjectManager.instance.currentProjects[0].keyInput[index].word.Contains(keyName))
+                    if (ProjectManager.instance.currentProject.keyInput[index].word.Contains(keyName))
                     {
                         foreach(var block in inputBlocks)
                         {
@@ -117,7 +117,7 @@ public class KeyInput : MonoBehaviour
 
     void NextKeyInput()
     {
-        if(index < ProjectManager.instance.currentProjects[0].keyInput.Length)
+        if(index < ProjectManager.instance.currentProject.keyInput.Length)
         {
             index++;
             SetupKeyInput();

@@ -21,11 +21,11 @@ MonoBehaviour:
   dayUsed: 0
   scale: 5
   estimateDaysInPhase: 25
-  requireAnalysis: 100
-  requireDesign: 250
-  requireCoding: 500
-  requireTesting: 250
-  requireDeployment: 0
+  analysisWork: 0
+  designWork: 0
+  codingWork: 0
+  testingWork: 0
+  deploymentWork: 0
   actualAnalysis: 0
   actualDesign: 0
   actualCoding: 0

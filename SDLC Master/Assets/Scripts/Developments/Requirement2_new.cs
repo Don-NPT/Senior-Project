@@ -14,15 +14,15 @@ public class Requirement2_new : MonoBehaviour
     void onEnable()
     {
         index = 0;
-        TMP.text = ProjectManager.instance.currentProjects[0].requirement2_new[index].word;
+        TMP.text = ProjectManager.instance.currentProject.requirement2_new[index].word;
     }
     public void Functional()
     {
         index++;
-        Debug.Log("index: "+ index + ", Length:" + ProjectManager.instance.currentProjects[0].requirement2_new.Length);
-        if(index < ProjectManager.instance.currentProjects[0].requirement2_new.Length)
+        Debug.Log("index: "+ index + ", Length:" + ProjectManager.instance.currentProject.requirement2_new.Length);
+        if(index < ProjectManager.instance.currentProject.requirement2_new.Length)
         {
-            TMP.text = ProjectManager.instance.currentProjects[0].requirement2_new[index].word;
+            TMP.text = ProjectManager.instance.currentProject.requirement2_new[index].word;
         }else{
             gameObject.SetActive(false);
         }
@@ -31,10 +31,10 @@ public class Requirement2_new : MonoBehaviour
     public void NonFunctional()
     {
         index++;
-         Debug.Log("index: "+ index + ", Length:" + ProjectManager.instance.currentProjects[0].requirement2_new.Length);
-        if(index < ProjectManager.instance.currentProjects[0].requirement2_new.Length)
+         Debug.Log("index: "+ index + ", Length:" + ProjectManager.instance.currentProject.requirement2_new.Length);
+        if(index < ProjectManager.instance.currentProject.requirement2_new.Length)
         {
-            TMP.text = ProjectManager.instance.currentProjects[0].requirement2_new[index].word;
+            TMP.text = ProjectManager.instance.currentProject.requirement2_new[index].word;
         }else{
             gameObject.SetActive(false);
         }
