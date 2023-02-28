@@ -21,12 +21,14 @@ public class Project : ScriptableObject
     public int codingWork;
     public int testingWork;
     public int deploymentWork;
-    [Header("Actual")]
-    public int actualAnalysis;
-    public int actualDesign;
-    public int actualCoding;
-    public int actualTesting;
-    public int actualDeployment;
+
+    [Header("Require Quality")]
+    public int requireAnalysis;
+    public int requireDesign;
+    public int requireCoding;
+    public int requireTesting;
+    public int requireDeployment;
+
     [Header("Words")]
 
     public Word[] requirement1 = new Word[6];
@@ -34,7 +36,18 @@ public class Project : ScriptableObject
     public Word[] requirement2 = new Word[4];
     public Word[] balloons = new Word[5];
     public Keyword[] keyInput = new Keyword[2];
-    
+
+    [HideInInspector]
+    public int actualAnalysis;
+    [HideInInspector]
+    public int actualDesign;
+    [HideInInspector]
+    public int actualCoding;
+    [HideInInspector]
+    public int actualTesting;
+    [HideInInspector]
+    public int actualDeployment;
+
     [HideInInspector]
     public SDLCModel model;
     [HideInInspector]
@@ -47,7 +60,11 @@ public class Project : ScriptableObject
     public enum Phases {ANALYSIS, DESIGN, CODING, TESTING, DEPLOYMENT, MAINTENANCE};
     [HideInInspector]
     public Phases phase;
-    
+    [HideInInspector]
+    public int[] staffEachPhase;
+    [HideInInspector]
+    public int[] statEachPhase;
+
     public int getAllWorkAmount()
     {
         int result = analysisWork + designWork + codingWork + testingWork + deploymentWork;
@@ -57,6 +74,12 @@ public class Project : ScriptableObject
     public int getAllActualQuality()
     {
         int result = actualAnalysis + actualDesign + actualCoding + actualTesting + actualDeployment;
+        return result;
+    }
+
+    public int getAllRequireQuality()
+    {
+        int result = requireAnalysis + requireDesign + requireCoding + requireTesting + requireDeployment;
         return result;
     }
 

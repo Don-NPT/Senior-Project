@@ -46,7 +46,9 @@ public class WaterFallManager : MonoBehaviour
             staffPosition = "Analyst";
             phaseIndex = 0;
             qualityEachPhase = new int[6];  
-            TotalQualityEachPhase = new int[6];  
+            TotalQualityEachPhase = new int[6]; 
+            project.staffEachPhase = new int[6];
+            project.statEachPhase = new int[6];
             requirementUIs[0].SetActive(true);
             ProjectHUD.instance.UpdateList();
             foreach(var staff in StaffManager.instance.getAllStaff())
@@ -60,33 +62,21 @@ public class WaterFallManager : MonoBehaviour
     IEnumerator UpdateProgress()
     {
         progress = 0;
-        TotalQualityEachPhase[phaseIndex] = ComputeQuality();
         // int TotalTime = (int) Mathf.Round(project.getWorkAmountbyIndex(phaseIndex) / StaffManager.instance.getTotalStaffbyPosition(staffPosition));
-        
+        project.staffEachPhase[phaseIndex] = StaffManager.instance.getTotalStaffbyPosition(staffPosition);
+        project.statEachPhase[phaseIndex] = StaffManager.instance.getSumStaffStat(staffPosition);
+
         while(progress < currentWorkAmount)
         {
             yield return new WaitForSeconds(1);
 
-            progress += StaffManager.instance.getTotalStaffbyPosition(staffPosition);
-            qualityEachPhase[phaseIndex] = (int) Mathf.Round(((float)progress / currentWorkAmount) * TotalQualityEachPhase[phaseIndex]);
+            progress += project.staffEachPhase[phaseIndex];
+            qualityEachPhase[phaseIndex] += project.statEachPhase[phaseIndex];
         }
         if(project.phase != Project.Phases.DEPLOYMENT)
             NextPhase();
         else
             FinishProject();
-    }
-
-    int ComputeQuality()
-    {
-        float quality = 0;
-        foreach(var staff in StaffManager.instance.getAllStaff())
-        {
-            if(staff.position == staffPosition)
-            {
-                quality += (StaffManager.instance.getStaffStat(staff, staffPosition) * staff.stamina) / project.scale;
-            }
-        }
-        return (int) Mathf.Round(quality);
     }
 
     public void NextPhase()
@@ -138,11 +128,13 @@ public class WaterFallManager : MonoBehaviour
         project.actualCoding = qualityEachPhase[2];
         project.actualTesting = qualityEachPhase[3];
         project.actualDeployment = qualityEachPhase[4];
+
         // project.dayUsed = totalDayToFinished;
         ProjectManager.instance.FinishProject(project);
         // ProjectManager.instance.currentProjects.Remove(project);
         // ProjectHUD.instance.UpdateList();
         ProjectHUD.instance.ShowFinishBTN(project);
+        GameManager.instance.Play();
     }
 
 }
