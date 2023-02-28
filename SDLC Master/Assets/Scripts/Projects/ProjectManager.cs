@@ -8,8 +8,7 @@ public class ProjectManager : MonoBehaviour
     public List<Project> currentProjects;
     public Project currentProject;
     public List<Project> oldProject;
-
-    public GameObject ProjectSummary;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -38,8 +37,5 @@ public class ProjectManager : MonoBehaviour
         return oldProject.Count;
     }
 
-    public void ViewProjectSummary()
-    {
-        ProjectSummary.SetActive(true);
-    }
+    
 }

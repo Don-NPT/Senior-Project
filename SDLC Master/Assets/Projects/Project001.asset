@@ -26,11 +26,11 @@ MonoBehaviour:
   codingWork: 30
   testingWork: 15
   deploymentWork: 5
-  actualAnalysis: 80
-  actualDesign: 1000
-  actualCoding: 250
-  actualTesting: 50
-  actualDeployment: 250
+  requireAnalysis: 40
+  requireDesign: 42
+  requireCoding: 55
+  requireTesting: 50
+  requireDeployment: 25
   requirement1:
   - word: "\u0E43\u0E0A\u0E49\u0E07\u0E48\u0E32\u0E22"
     isCorrect: 1
@@ -89,7 +89,12 @@ MonoBehaviour:
       Product (\u0E15\u0E31\u0E27\u0E22\u0E48\u0E2D)"
     showNum: 0
     additionalChar: 4100460049005a00
+  actualAnalysis: 20
+  actualDesign: 45
+  actualCoding: 80
+  actualTesting: 25
+  actualDeployment: 120
   model: {fileID: 11400000, guid: fefd9c0d5471bbd4b8ed0775ef1e6143, type: 2}
   teamIndex: 0
-  state: 1
-  phase: 0
+  state: 3
+  phase: 4

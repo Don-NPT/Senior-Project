@@ -5,7 +5,6 @@ using UnityEngine;
 public class StaffManager : MonoBehaviour
 {   
     public static StaffManager instance;
-    List<StaffProperties> staffProperties;
     public GameObject staffPrefab;
 
     // Start is called before the first frame update
@@ -17,7 +16,6 @@ public class StaffManager : MonoBehaviour
         else 
             instance = this;
         
-        staffProperties = new List<StaffProperties>();
     }
 
     // Update is called once per frame
@@ -46,6 +44,7 @@ public class StaffManager : MonoBehaviour
 
     public List<StaffProperties> getAllStaff()
     {
+        List<StaffProperties> staffProperties = new List<StaffProperties>();
         GameObject[] staffs = GameObject.FindGameObjectsWithTag("Staff");
         for(int i=0; i<staffs.Length; i++)
         {
@@ -68,6 +67,33 @@ public class StaffManager : MonoBehaviour
                 return staff.testing;
         }
         return 0;
+    }
+
+    public int getSumStaffStat(string position)
+    {
+        int sum = 0;
+        foreach(var staff in getAllStaff())
+        {
+            if(staff.position == position)
+            {
+                switch(position)
+                {
+                    case "Analyst":
+                        sum += staff.analysis;
+                        break;
+                    case "Designer":
+                        sum += staff.design;
+                        break;
+                    case "Programmer":
+                        sum += staff.coding;
+                        break;
+                    case "Tester":
+                        sum += staff.testing;
+                        break;
+                }
+            }
+        }
+        return sum;
     }
 
     public List<Staff> getAllSerializableStaff()
