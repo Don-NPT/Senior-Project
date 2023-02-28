@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
 
     public void FastForward()
     {
-        Time.timeScale = 3;
+        Time.timeScale = 5;
         gameState = GameState.FASTFORWARD;
     }
 
