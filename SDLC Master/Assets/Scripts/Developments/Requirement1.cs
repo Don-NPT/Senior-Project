@@ -8,6 +8,10 @@ public class Requirement1 : MonoBehaviour
 {
     public Button[] buttons;
     public Outline[] outlines;
+    public Sprite normalBlueSprite;
+    public Sprite selectBlueSprite;
+    public Sprite normalPinkSprite;
+    public Sprite selectPinkSprite;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,13 +43,25 @@ public class Requirement1 : MonoBehaviour
     {
         if(index % 2 == 0)
         {
-            outlines[index].enabled = true;
-            outlines[index+1].enabled = !outlines[index].enabled;
+            // outlines[index].enabled = true;
+            // outlines[index+1].enabled = !outlines[index].enabled;
+
+            buttons[index].gameObject.GetComponent<Image>().sprite = selectBlueSprite;
+            buttons[index+1].gameObject.GetComponent<Image>().sprite = normalPinkSprite;
+
+            buttons[index].gameObject.GetComponentInChildren<TextMeshProUGUI>().color = new Color(34,38,42);
+            buttons[index+1].gameObject.GetComponentInChildren<TextMeshProUGUI>().color = new Color(183,183,183);
         }
         else if(index % 2 == 1)
         {
-            outlines[index].enabled = true;
-            outlines[index-1].enabled = !outlines[index].enabled;
+            // outlines[index].enabled = true;
+            // outlines[index-1].enabled = !outlines[index].enabled;
+
+            buttons[index].gameObject.GetComponent<Image>().sprite = selectPinkSprite;
+            buttons[index-1].gameObject.GetComponent<Image>().sprite = normalBlueSprite;
+
+            buttons[index].gameObject.GetComponentInChildren<TextMeshProUGUI>().color = new Color(183,183,183);
+            buttons[index-1].gameObject.GetComponentInChildren<TextMeshProUGUI>().color = new Color(34,38,42);
         }
     }
 }
