@@ -300,7 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd3c154c13937004ebf67155da039243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseCounter: {fileID: 0}
+  baseCounter: {fileID: 4116956333688845176}
   visualGameObjectArray:
   - {fileID: 5529187455986705666}
   - {fileID: 5891090735689566859}
