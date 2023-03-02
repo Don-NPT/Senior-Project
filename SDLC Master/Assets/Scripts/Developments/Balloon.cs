@@ -19,7 +19,7 @@ public class Balloon : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown (PointerEventData eventData) 
      {
-        if(ProjectManager.instance.currentProjects[0].balloons[index].isCorrect)
+        if(ProjectManager.instance.currentProject.balloons[index].isCorrect)
         {
             Debug.Log("Point up");
         }else{

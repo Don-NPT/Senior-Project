@@ -97,6 +97,7 @@ public class WaterFallManager : MonoBehaviour
                 staffPosition = "Programmer";
                 designUIs[0].SetActive(false);
                 designUIs[1].SetActive(false);
+                GameManager.instance.Play();
                 project.phase = Project.Phases.CODING;
                 break;
             case Project.Phases.CODING:

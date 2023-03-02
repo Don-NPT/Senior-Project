@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 5517949274859103324}
   - component: {fileID: 1848273836276870702}
   - component: {fileID: 2531541323274873943}
-  - component: {fileID: 1458090024}
+  - component: {fileID: 1272240648458751959}
   m_Layer: 5
   m_Name: Balloon
   m_TagString: Untagged
@@ -256,7 +256,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1458090024
+--- !u!114 &1272240648458751959
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -265,6 +265,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6599916849591706149}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43edc64f3ff243d4294a84fab41ef2f9, type: 3}
+  m_Script: {fileID: 11500000, guid: 314b2fe25c5b48c47a3cd67d4785c236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  index: 0

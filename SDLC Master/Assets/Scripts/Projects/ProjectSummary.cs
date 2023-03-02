@@ -87,10 +87,10 @@ public class ProjectSummary : MonoBehaviour
     void SetupQuality(Project project)
     {
         analysisQuality.GetComponentsInChildren<TextMeshProUGUI>()[1].text = project.actualAnalysis + "/" + project.requireAnalysis;
-        designQuality.GetComponentsInChildren<TextMeshProUGUI>()[1].text = project.actualAnalysis + "/" + project.requireDesign;
-        codingQuality.GetComponentsInChildren<TextMeshProUGUI>()[1].text = project.actualAnalysis + "/" + project.requireCoding;
-        testingQuality.GetComponentsInChildren<TextMeshProUGUI>()[1].text = project.actualAnalysis + "/" + project.requireTesting;
-        deploymentQuality.GetComponentsInChildren<TextMeshProUGUI>()[1].text = project.actualAnalysis + "/" + project.requireDeployment;
+        designQuality.GetComponentsInChildren<TextMeshProUGUI>()[1].text = project.actualDesign + "/" + project.requireDesign;
+        codingQuality.GetComponentsInChildren<TextMeshProUGUI>()[1].text = project.actualCoding + "/" + project.requireCoding;
+        testingQuality.GetComponentsInChildren<TextMeshProUGUI>()[1].text = project.actualTesting + "/" + project.requireTesting;
+        deploymentQuality.GetComponentsInChildren<TextMeshProUGUI>()[1].text = project.actualDeployment + "/" + project.requireDeployment;
 
         analysisQuality.GetComponentInChildren<Slider>().maxValue = project.requireAnalysis;
         designQuality.GetComponentInChildren<Slider>().maxValue = project.requireDesign;

@@ -16,11 +16,11 @@ MonoBehaviour:
   pjName: Project Jooks
   description: "\u0E02\u0E49\u0E2D\u0E40\u0E2A\u0E19\u0E2D\u0E42\u0E1B\u0E23\u0E40\u0E08\u0E04\u0E08\u0E32\u0E01\u0E1A\u0E23\u0E34\u0E29\u0E31\u0E17
     A"
+  requirement: 
   reward: 25000
+  expense: 0
   deadline: 60
-  dayUsed: 50
   scale: 2
-  estimateDaysInPhase: 10
   analysisWork: 15
   designWork: 20
   codingWork: 30
@@ -35,15 +35,15 @@ MonoBehaviour:
   - word: "\u0E43\u0E0A\u0E49\u0E07\u0E48\u0E32\u0E22"
     isCorrect: 1
   - word: "\u0E1F\u0E35\u0E40\u0E08\u0E2D\u0E23\u0E4C\u0E40\u0E22\u0E2D\u0E30"
-    isCorrect: 1
+    isCorrect: 0
   - word: "\u0E1A\u0E19\u0E40\u0E04\u0E23\u0E37\u0E48\u0E2D\u0E07"
     isCorrect: 1
   - word: "\u0E1A\u0E19\u0E40\u0E27\u0E47\u0E1A"
-    isCorrect: 1
+    isCorrect: 0
   - word: "\u0E40\u0E23\u0E35\u0E22\u0E1A\u0E07\u0E48\u0E32\u0E22"
     isCorrect: 1
   - word: "\u0E2A\u0E27\u0E22\u0E07\u0E32\u0E21"
-    isCorrect: 1
+    isCorrect: 0
   requirement2_new:
   - word: "\u0E2A\u0E32\u0E21\u0E32\u0E23\u0E16\u0E43\u0E0A\u0E49\u0E07\u0E32\u0E19\u0E44\u0E14\u0E49\u0E44\u0E21\u0E48\u0E15\u0E48\u0E33\u0E01\u0E27\u0E48\u0E32
       10,000 \u0E04\u0E19\u0E1E\u0E23\u0E49\u0E2D\u0E21\u0E01\u0E31\u0E19"
@@ -89,12 +89,16 @@ MonoBehaviour:
       Product (\u0E15\u0E31\u0E27\u0E22\u0E48\u0E2D)"
     showNum: 0
     additionalChar: 4100460049005a00
-  actualAnalysis: 20
-  actualDesign: 45
-  actualCoding: 80
-  actualTesting: 25
-  actualDeployment: 120
+  actualAnalysis: 30
+  actualDesign: 60
+  actualCoding: 120
+  actualTesting: 15
+  actualDeployment: 20
   model: {fileID: 11400000, guid: fefd9c0d5471bbd4b8ed0775ef1e6143, type: 2}
   teamIndex: 0
   state: 3
   phase: 4
+  staffEachPhase: 010000000100000001000000010000000100000000000000
+  statEachPhase: 020000000300000004000000010000000400000000000000
+  dayUsed: 50
+  estimateDaysInPhase: 10
