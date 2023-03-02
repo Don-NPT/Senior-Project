@@ -18,7 +18,7 @@ MonoBehaviour:
     A"
   requirement: 
   reward: 25000
-  expense: 0
+  expense: 10000
   deadline: 60
   scale: 2
   analysisWork: 15

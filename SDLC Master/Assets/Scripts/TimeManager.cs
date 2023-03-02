@@ -8,6 +8,8 @@ using System.Collections;
 public class TimeManager : MonoBehaviour
 {
     public static TimeManager instance;
+    public DateTime currentDate;
+    private Coroutine dayCoroutine;
     private int date;
     private int monthIndex;
     private int year;
@@ -39,49 +41,56 @@ public class TimeManager : MonoBehaviour
         monthPrefab.text = "Jan";
         yearPrefab.text = "2022";
         datetime = date;
+
+        currentDate = new DateTime(2022, 1, 1);
+        dayCoroutine = StartCoroutine(IncreaseDay());
+    }
+
+    IEnumerator IncreaseDay()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            currentDate = currentDate.AddDays(1);
+            Debug.Log(currentDate);
+        }
+    }
+
+    void StartDayCoroutine()
+    {
+        if (dayCoroutine == null)
+        {
+            dayCoroutine = StartCoroutine(IncreaseDay());
+        }
+    }
+
+    void StopDayCoroutine()
+    {
+        if (dayCoroutine != null)
+        {
+            StopCoroutine(dayCoroutine);
+            dayCoroutine = null;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        datePrefab.text = date.ToString();
-        monthPrefab.text = months[monthIndex].ToString();
-        yearPrefab.text = year.ToString();
+        datePrefab.text = currentDate.Day.ToString();
+        monthPrefab.text = months[currentDate.Month-1].ToString();
+        yearPrefab.text = currentDate.Year.ToString();
 
-        if(GameManager.instance.gameState != GameState.PAUSE)
-        {
-            datetime += Time.deltaTime * 0.2f;
-            date = (int) Mathf.Floor(datetime);
-            // datePrefab.text = Mathf.Round(datetime).ToString();
-            // monthPrefab.text = months[monthIndex].ToString();
-            if(date > 30)
-            {
-                monthIndex += 1;
-                date = 1;
-                datetime = date;
-            }
-            if(monthIndex > 11)
-            {
-                date = 1;
-                datetime = date;
-                monthIndex = 0;
-                year += 1;
-            }
-        }
     }
-
-    // public IEnumerator dayTimer(int days){
-    //     dayCount = 0;
-    //     while (dayCount < days)
-    //     {
-    //         yield return new WaitForSeconds(1);
-    //         dayCount++;
-    //     }
-    // }
 
     public void Play()
     {
+        StartDayCoroutine();
         GameManager.instance.gameState = GameState.PLAY;
+    }
+    public void Pause()
+    {
+        StopDayCoroutine();
+        GameManager.instance.gameState = GameState.PAUSE;
     }
     public void FastForward()
     {

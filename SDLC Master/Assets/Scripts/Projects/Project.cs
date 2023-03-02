@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Project", menuName = "ScriptableObject/Project", order = 2)]
@@ -71,6 +70,8 @@ public class Project : ScriptableObject
     public int dayUsed;
     [HideInInspector]
     public int estimateDaysInPhase;
+    [HideInInspector] public DateTime[] startDates = new DateTime[6];
+    [HideInInspector] public DateTime[] finishDates = new DateTime[6];
 
     public int getAllWorkAmount()
     {
@@ -87,6 +88,22 @@ public class Project : ScriptableObject
     public int getAllRequireQuality()
     {
         int result = requireAnalysis + requireDesign + requireCoding + requireTesting + requireDeployment;
+        return result;
+    }
+
+    public int getTimeUsed(int index)
+    {
+        int result = (finishDates[index] - startDates[index]).Days;
+        return result;
+    }
+
+    public int getOverallTimeUsed()
+    {
+        int result = 0;
+        for (int i=0; i<6 ; i++)
+        {
+            result += (finishDates[i] - startDates[i]).Days;
+        }
         return result;
     }
 

@@ -61,8 +61,8 @@ public class ProjectSummary : MonoBehaviour
         deploymentQuality.GetComponentInChildren<Button>().onClick.AddListener(delegate { ShowDetail(project, 5); });
 
         reward.text = project.reward.ToString();
-        expense.text = "???";
-        timeUsed.text = "???";
+        expense.text = project.expense.ToString();
+        timeUsed.text = project.getOverallTimeUsed() + " / " + project.deadline + " วัน";
 
     }
 
@@ -73,7 +73,7 @@ public class ProjectSummary : MonoBehaviour
             detailUI.transform.SetSiblingIndex(index);
             detailUI.SetActive(true);
 
-            detailUI.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "??? วัน";
+            detailUI.GetComponentsInChildren<TextMeshProUGUI>()[1].text = project.getTimeUsed(index-1) + " วัน";
             detailUI.GetComponentsInChildren<TextMeshProUGUI>()[3].text = "??? บาท";
             detailUI.GetComponentsInChildren<TextMeshProUGUI>()[5].text = project.staffEachPhase[index-1].ToString() + " คน";
             detailUI.GetComponentsInChildren<TextMeshProUGUI>()[7].text = project.statEachPhase[index-1].ToString() + " หน่วย";
