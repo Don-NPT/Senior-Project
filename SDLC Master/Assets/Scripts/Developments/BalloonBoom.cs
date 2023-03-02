@@ -9,7 +9,7 @@ public class BalloonBoom : MonoBehaviour
     public GameObject balloonPrefab;
     public Transform canvas;
     public bool isStarted = false;
-    GameObject[] balloons = new GameObject[10];
+    GameObject[] balloons;
     // Start is called before the first frame update
     void Start()
     {
@@ -55,7 +55,9 @@ public class BalloonBoom : MonoBehaviour
 
     IEnumerator SpawnBalloon()
     {
-        for(int i=0; i<10; i++)
+        balloons = new GameObject[30];
+
+        for(int i=0; i<30; i++)
         {
             float xPos = Random.Range(0, Screen.width);
             float yPos = 0;
@@ -65,8 +67,8 @@ public class BalloonBoom : MonoBehaviour
             balloons[i].transform.position = spawnPosition;
 
             // Set text
-            int index = Random.Range(0, ProjectManager.instance.currentProjects[0].balloons.Length-1);
-            balloons[i].GetComponentInChildren<TextMeshProUGUI>().text = ProjectManager.instance.currentProjects[0].balloons[index].word;
+            int index = Random.Range(0, ProjectManager.instance.currentProject.balloons.Length-1);
+            balloons[i].GetComponentInChildren<TextMeshProUGUI>().text = ProjectManager.instance.currentProject.balloons[index].word;
             balloons[i].GetComponent<Balloon>().index = index;
             yield return new WaitForSeconds(1);
         }
