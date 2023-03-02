@@ -9,12 +9,15 @@ public class Project : ScriptableObject
     [Header("Project Info")]
     public string projectId;
     public string pjName;
+    [TextArea(2, 10)]
     public string description;
+    [TextArea(5, 10)]
+    public string requirement;
     public int reward;
-    public int deadline;
-    public int dayUsed;
+    public int expense;
+    public int deadline;    
     public int scale;
-    public int estimateDaysInPhase;
+    
     [Header("Work Amount")]
     public int analysisWork;
     public int designWork;
@@ -64,6 +67,10 @@ public class Project : ScriptableObject
     public int[] staffEachPhase;
     [HideInInspector]
     public int[] statEachPhase;
+    [HideInInspector]
+    public int dayUsed;
+    [HideInInspector]
+    public int estimateDaysInPhase;
 
     public int getAllWorkAmount()
     {
