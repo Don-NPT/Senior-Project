@@ -23,7 +23,7 @@ MonoBehaviour:
   scale: 2
   analysisWork: 15
   designWork: 20
-  codingWork: 30
+  codingWork: 15
   testingWork: 15
   deploymentWork: 5
   requireAnalysis: 40
@@ -92,9 +92,10 @@ MonoBehaviour:
   dayUsed: 50
   estimateDaysInPhase: 10
   requirement1Answer:
-  - "\u0E43\u0E0A\u0E49\u0E07\u0E48\u0E32\u0E22"
+  - "\u0E1F\u0E35\u0E40\u0E08\u0E2D\u0E23\u0E4C\u0E40\u0E22\u0E2D\u0E30"
   - "\u0E1A\u0E19\u0E40\u0E27\u0E47\u0E1A"
-  - "\u0E40\u0E23\u0E35\u0E22\u0E1A\u0E07\u0E48\u0E32\u0E22"
-  requirement2Answer: 01010000
-  designAnswer: 0101
-  keyInputPass: 2
+  - "\u0E2A\u0E27\u0E22\u0E07\u0E32\u0E21"
+  requirement2Answer: 01010101
+  designAnswer: 01010101
+  keyInputPass: 0
+  balloonPoint: 18

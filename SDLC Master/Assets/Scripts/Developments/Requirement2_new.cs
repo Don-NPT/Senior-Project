@@ -9,6 +9,7 @@ public class Requirement2_new : MonoBehaviour
     TextMeshProUGUI TMP;
     int index;
     private Project project;
+
     // Start is called before the first frame update
     private void Start() {
         
@@ -23,39 +24,38 @@ public class Requirement2_new : MonoBehaviour
     }
     public void Functional()
     {
-        project.requirement2Answer.Add(true);
-        if(index < project.requirement2.Length)
+        CheckAnswer(true);
+    }
+
+    public void NonFunctional()
+    {
+        CheckAnswer(false);
+    }
+
+    void CheckAnswer(bool answer)
+    {
+        project.requirement2Answer.Add(answer);
+        if(index < project.requirement2.Length -1)
         {
             if(project.requirement2[index].isCorrect){
-                // float jumpHeight = 20f;
-                // float jumpDuration = 0.5f;
-                // transform.DOJump(transform.position + Vector3.up * jumpHeight, jumpHeight, 1, jumpDuration)
-                //     .SetEase(Ease.InOutQuad)
-                //     .OnComplete(() => {
-                //         // Animate the return to the original position
-                //         transform.DOMove(transform.position, jumpDuration)
-                //             .SetEase(Ease.InOutQuad);
-                //     });
+                FindObjectOfType<AudioManager>().Play("Purchase");
+                Vector3 originalScale = transform.localScale;
+                // Animate the scale of the GameObject
+                transform.DOScale(Vector3.one * 1.05f, 0.2f)
+                    .SetEase(Ease.OutQuad)
+                    .OnComplete(() => transform.localScale = Vector3.one);
+            }else{
+                FindObjectOfType<AudioManager>().Play("Warning");
+                float shakeDuration = 0.5f;
+                float shakeStrength = 7.0f;
+                int shakeVibrato = 10;
+                float shakeRandomness = 90.0f;
+                transform.DOShakePosition(shakeDuration, shakeStrength, shakeVibrato, shakeRandomness);
             }
-
             index++;
             TMP.text = project.requirement2[index].word;
         }else{
             gameObject.SetActive(false);
         }
-        
-    }
-
-    public void NonFunctional()
-    {
-        index++;
-        project.requirement2Answer.Add(false);
-        if(index < project.requirement2.Length)
-        {
-            TMP.text = project.requirement2[index].word;
-        }else{
-            gameObject.SetActive(false);
-        }
-        
     }
 }

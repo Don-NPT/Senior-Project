@@ -28,28 +28,35 @@ public class BalloonBoom : MonoBehaviour
     }
 
     public void Initiate() {
-        
-        
-    }
-    private void FixedUpdate() {
         if(ProjectManager.instance.currentProject != null){
-            if(ProjectManager.instance.currentProject.phase == Project.Phases.CODING && isStarted == false)
-            {
-                isStarted = true;
+            // if(ProjectManager.instance.currentProject.phase == Project.Phases.CODING && isStarted == false)
+            // {
+                // isStarted = true;
                 Debug.Log("Starting Balloon Boom");
                 StartCoroutine(SpawnBalloon());
-            }
-            else if(ProjectManager.instance.currentProject.phase == Project.Phases.TESTING)
-            {
-                isStarted = false;
-                Debug.Log("Stopping Balloon Boom");
-                StopCoroutine(SpawnBalloon());
-                foreach (var balloon in balloons)
-                {
-                    if(balloon.gameObject)
-                        Destroy(balloon.gameObject);
-                }
-            }
+            // }
+            // else if(ProjectManager.instance.currentProject.phase == Project.Phases.TESTING)
+            // {
+            //     isStarted = false;
+            //     Debug.Log("Stopping Balloon Boom");
+            //     StopCoroutine(SpawnBalloon());
+            //     foreach (var balloon in balloons)
+            //     {
+            //         if(balloon.gameObject)
+            //             Destroy(balloon.gameObject);
+            //     }
+            // }
+        }
+        
+    }
+    public void Stop() {
+        // isStarted = false;
+        Debug.Log("Stopping Balloon Boom");
+        StopCoroutine(SpawnBalloon());
+        foreach (var balloon in balloons)
+        {
+            if(balloon.gameObject)
+                Destroy(balloon.gameObject);
         }
     }
 

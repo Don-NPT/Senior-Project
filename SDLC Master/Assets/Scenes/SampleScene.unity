@@ -5775,6 +5775,7 @@ GameObject:
   - component: {fileID: 193818718}
   - component: {fileID: 193818717}
   - component: {fileID: 193818716}
+  - component: {fileID: 193818719}
   m_Layer: 5
   m_Name: Old
   m_TagString: Untagged
@@ -5908,6 +5909,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 193818714}
   m_CullTransparentMesh: 1
+--- !u!114 &193818719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193818714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6de7a7dad2731744bb45a0a6d061865b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isButton: 1
+  hoverSound: Hover
+  clickSound: Click
+  assign: 0
+  doPunch: 0
+  isTabButton: 0
+  isSelected: 0
+  SpriteSwap: 0
+  defaultSprite: {fileID: 0}
+  newSprite: {fileID: 0}
 --- !u!1 &195624307
 GameObject:
   m_ObjectHideFlags: 0
@@ -24345,7 +24368,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0E16\u0E31\u0E14\u0E44\u0E1B"
+  m_text: "\u0E22\u0E37\u0E19\u0E22\u0E31\u0E19"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b449ea53f1765c149affc1e21d9b6c29, type: 2}
   m_sharedMaterial: {fileID: 4818805058079969214, guid: b449ea53f1765c149affc1e21d9b6c29, type: 2}
@@ -31598,6 +31621,7 @@ GameObject:
   - component: {fileID: 891051743}
   - component: {fileID: 891051741}
   - component: {fileID: 891051742}
+  - component: {fileID: 891051745}
   m_Layer: 5
   m_Name: New
   m_TagString: Untagged
@@ -31731,6 +31755,28 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -18.7998}
   m_SizeDelta: {x: 0, y: 37.5997}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &891051745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891051740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6de7a7dad2731744bb45a0a6d061865b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isButton: 1
+  hoverSound: Hover
+  clickSound: Click
+  assign: 0
+  doPunch: 0
+  isTabButton: 0
+  isSelected: 0
+  SpriteSwap: 0
+  defaultSprite: {fileID: 0}
+  newSprite: {fileID: 0}
 --- !u!1 &891291060
 GameObject:
   m_ObjectHideFlags: 0
@@ -35746,7 +35792,7 @@ RectTransform:
   m_Children:
   - {fileID: 1455370858}
   m_Father: {fileID: 1530824414}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -35851,18 +35897,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1765719887}
-        m_TargetAssemblyTypeName: Requirement1, Assembly-CSharp
-        m_MethodName: Confirm
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -41996,7 +42030,7 @@ GameObject:
   - component: {fileID: 1188436487}
   - component: {fileID: 1188436486}
   m_Layer: 5
-  m_Name: Next (1)
+  m_Name: Submit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42015,7 +42049,7 @@ RectTransform:
   m_Children:
   - {fileID: 703344298}
   m_Father: {fileID: 1530824414}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -42088,22 +42122,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1765719883}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2006779431}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1765719887}
+        m_TargetAssemblyTypeName: Requirement1, Assembly-CSharp
+        m_MethodName: Confirm
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -42112,10 +42134,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1765719887}
-        m_TargetAssemblyTypeName: Requirement1, Assembly-CSharp
-        m_MethodName: Confirm
-        m_Mode: 1
+      - m_Target: {fileID: 999278501}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -42144,7 +42166,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 040be0e474e09894ca320b08d9462cc8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1258ac417dd158a48b05eeedb739c469, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -50573,6 +50595,7 @@ GameObject:
   - component: {fileID: 1455494714}
   - component: {fileID: 1455494719}
   - component: {fileID: 1455494720}
+  - component: {fileID: 1455494721}
   m_Layer: 5
   m_Name: Project Item 3
   m_TagString: Untagged
@@ -50807,6 +50830,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 1
+--- !u!114 &1455494721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455494712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6de7a7dad2731744bb45a0a6d061865b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isButton: 1
+  hoverSound: Hover
+  clickSound: Click
+  assign: 0
+  doPunch: 0
+  isTabButton: 0
+  isSelected: 0
+  SpriteSwap: 0
+  defaultSprite: {fileID: 0}
+  newSprite: {fileID: 0}
 --- !u!1 &1460318557
 GameObject:
   m_ObjectHideFlags: 0
@@ -54083,8 +54128,8 @@ RectTransform:
   - {fileID: 1983928988}
   - {fileID: 58346193}
   - {fileID: 738705021}
-  - {fileID: 999278502}
   - {fileID: 1188436485}
+  - {fileID: 999278502}
   m_Father: {fileID: 1765719884}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -61202,6 +61247,7 @@ GameObject:
   - component: {fileID: 1740720387}
   - component: {fileID: 1740720392}
   - component: {fileID: 1740720393}
+  - component: {fileID: 1740720394}
   m_Layer: 5
   m_Name: Project Item 2
   m_TagString: Untagged
@@ -61437,6 +61483,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 1
+--- !u!114 &1740720394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740720385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6de7a7dad2731744bb45a0a6d061865b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isButton: 1
+  hoverSound: Hover
+  clickSound: Click
+  assign: 0
+  doPunch: 0
+  isTabButton: 0
+  isSelected: 0
+  SpriteSwap: 0
+  defaultSprite: {fileID: 0}
+  newSprite: {fileID: 0}
 --- !u!1 &1745552913
 GameObject:
   m_ObjectHideFlags: 0
@@ -62176,7 +62244,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1765719884
 RectTransform:
   m_ObjectHideFlags: 0
@@ -78771,6 +78839,7 @@ GameObject:
   - component: {fileID: 5281462500523345588}
   - component: {fileID: 6911326035225488618}
   - component: {fileID: 6911326035225488619}
+  - component: {fileID: 6911326035225488620}
   m_Layer: 5
   m_Name: Project Item 1
   m_TagString: Untagged
@@ -78806,6 +78875,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 1
+--- !u!114 &6911326035225488620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6911326035225488617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6de7a7dad2731744bb45a0a6d061865b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isButton: 1
+  hoverSound: Hover
+  clickSound: Click
+  assign: 0
+  doPunch: 0
+  isTabButton: 0
+  isSelected: 0
+  SpriteSwap: 0
+  defaultSprite: {fileID: 0}
+  newSprite: {fileID: 0}
 --- !u!222 &6981497289734650697
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -78986,6 +79077,7 @@ GameObject:
   - component: {fileID: 930128621620681083}
   - component: {fileID: 8411442074383638433}
   - component: {fileID: 7068683564485899773}
+  - component: {fileID: 7068683564485899774}
   m_Layer: 5
   m_Name: Model Item
   m_TagString: Untagged
@@ -79008,6 +79100,28 @@ MonoBehaviour:
   m_EffectColor: {r: 0.86666673, g: 0.5647059, b: 0.10980393, a: 0.5}
   m_EffectDistance: {x: 3, y: -3}
   m_UseGraphicAlpha: 1
+--- !u!114 &7068683564485899774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7068683564485899772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6de7a7dad2731744bb45a0a6d061865b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isButton: 1
+  hoverSound: Hover
+  clickSound: Click
+  assign: 0
+  doPunch: 0
+  isTabButton: 0
+  isSelected: 0
+  SpriteSwap: 0
+  defaultSprite: {fileID: 0}
+  newSprite: {fileID: 0}
 --- !u!114 &7069653459050452862
 MonoBehaviour:
   m_ObjectHideFlags: 0

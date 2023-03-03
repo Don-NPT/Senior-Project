@@ -102,6 +102,7 @@ public class WaterFallManager : MonoBehaviour
                 designUIs[0].SetActive(false);
                 designUIs[1].SetActive(false);
                 GameManager.instance.Play();
+                BalloonBoom.instance.Initiate();
                 project.phase = Project.Phases.CODING;
                 break;
             case Project.Phases.CODING:

@@ -67,6 +67,7 @@ public class ProjectSummary : MonoBehaviour
         Debug.Log(string.Join(", ", project.requirement2Answer));
         Debug.Log(string.Join(", ", project.designAnswer));
         Debug.Log(project.keyInputPass);
+        Debug.Log(project.balloonPoint);
     }
 
     void ShowDetail(Project project, int index)
