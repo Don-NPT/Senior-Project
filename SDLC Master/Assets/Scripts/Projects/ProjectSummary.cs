@@ -63,7 +63,10 @@ public class ProjectSummary : MonoBehaviour
         reward.text = project.reward.ToString();
         expense.text = project.expense.ToString();
         timeUsed.text = project.getOverallTimeUsed() + " / " + project.deadline + " วัน";
-
+        Debug.Log(string.Join(", ", project.requirement1Answer));
+        Debug.Log(string.Join(", ", project.requirement2Answer));
+        Debug.Log(string.Join(", ", project.designAnswer));
+        Debug.Log(project.keyInputPass);
     }
 
     void ShowDetail(Project project, int index)

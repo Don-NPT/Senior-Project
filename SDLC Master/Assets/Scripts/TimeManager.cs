@@ -52,7 +52,6 @@ public class TimeManager : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
             currentDate = currentDate.AddDays(1);
-            Debug.Log(currentDate);
         }
     }
 

@@ -9,9 +9,14 @@ public class Design : MonoBehaviour
     public GameObject toolExistUI;
     Button[] toolUsedBtn;
     Button[] toolExistBtn;
-    // Start is called before the first frame update
+    private Project project;
+
     void Start()
     {
+        
+    }
+
+    private void OnEnable() {
         toolUsedBtn = toolUsedUI.GetComponentsInChildren<Button>();
         toolExistBtn = toolExistUI.GetComponentsInChildren<Button>();
 
@@ -29,6 +34,14 @@ public class Design : MonoBehaviour
         {
             button.gameObject.SetActive(false);
         }
+        
+        project = ProjectManager.instance.currentProject;
+        project.designAnswer = new List<bool>();
+
+        foreach(var button in toolUsedBtn)
+        {
+            button.gameObject.SetActive(false);
+        }
     }
 
     void ToolUsedClick(int index)
@@ -41,5 +54,15 @@ public class Design : MonoBehaviour
     {
         toolExistBtn[index].gameObject.SetActive(!toolExistBtn[index].gameObject.activeSelf);
         toolUsedBtn[index].gameObject.SetActive(!toolExistBtn[index].gameObject.activeSelf);
+    }
+
+    public void Confirm()
+    {
+        foreach(var button in toolUsedBtn)
+        {
+            if(button.gameObject.activeSelf){
+                project.designAnswer.Add(true);
+            }
+        }
     }
 }

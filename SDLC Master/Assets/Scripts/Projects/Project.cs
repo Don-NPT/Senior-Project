@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Project", menuName = "ScriptableObject/Project", order = 2)]
@@ -34,44 +35,33 @@ public class Project : ScriptableObject
     [Header("Words")]
 
     public Word[] requirement1 = new Word[6];
-    public Word[] requirement2_new = new Word[4];
     public Word[] requirement2 = new Word[4];
+    // public Word[] requirement2_new;
     public Word[] balloons = new Word[5];
     public Keyword[] keyInput = new Keyword[2];
 
-    [HideInInspector]
-    public int actualAnalysis;
-    [HideInInspector]
-    public int actualDesign;
-    [HideInInspector]
-    public int actualCoding;
-    [HideInInspector]
-    public int actualTesting;
-    [HideInInspector]
-    public int actualDeployment;
+    [HideInInspector] public int actualAnalysis;
+    [HideInInspector] public int actualDesign;
+    [HideInInspector] public int actualCoding;
+    [HideInInspector] public int actualTesting;
+    [HideInInspector] public int actualDeployment;
 
-    [HideInInspector]
-    public SDLCModel model;
-    [HideInInspector]
-    public int teamIndex;
-    [HideInInspector]
-    public enum Status {READY, DOING, PAUSE, FINISHED};
-    [HideInInspector]
-    public Status state;
-    [HideInInspector]
-    public enum Phases {ANALYSIS, DESIGN, CODING, TESTING, DEPLOYMENT, MAINTENANCE};
-    [HideInInspector]
-    public Phases phase;
-    [HideInInspector]
-    public int[] staffEachPhase;
-    [HideInInspector]
-    public int[] statEachPhase;
-    [HideInInspector]
-    public int dayUsed;
-    [HideInInspector]
-    public int estimateDaysInPhase;
+    [HideInInspector] public SDLCModel model;
+    [HideInInspector] public int teamIndex;
+    [HideInInspector] public enum Status {READY, DOING, PAUSE, FINISHED};
+    [HideInInspector] public Status state;
+    [HideInInspector] public enum Phases {ANALYSIS, DESIGN, CODING, TESTING, DEPLOYMENT, MAINTENANCE};
+    [HideInInspector] public Phases phase;
+    [HideInInspector] public int[] staffEachPhase;
+    [HideInInspector] public int[] statEachPhase;
+    [HideInInspector] public int dayUsed;
+    [HideInInspector] public int estimateDaysInPhase;
     [HideInInspector] public DateTime[] startDates = new DateTime[6];
     [HideInInspector] public DateTime[] finishDates = new DateTime[6];
+    public List<string> requirement1Answer;
+    public List<bool> requirement2Answer;
+    public List<bool> designAnswer;
+    [HideInInspector] public int keyInputPass;
 
     public int getAllWorkAmount()
     {

@@ -44,7 +44,7 @@ MonoBehaviour:
     isCorrect: 1
   - word: "\u0E2A\u0E27\u0E22\u0E07\u0E32\u0E21"
     isCorrect: 0
-  requirement2_new:
+  requirement2:
   - word: "\u0E2A\u0E32\u0E21\u0E32\u0E23\u0E16\u0E43\u0E0A\u0E49\u0E07\u0E32\u0E19\u0E44\u0E14\u0E49\u0E44\u0E21\u0E48\u0E15\u0E48\u0E33\u0E01\u0E27\u0E48\u0E32
       10,000 \u0E04\u0E19\u0E1E\u0E23\u0E49\u0E2D\u0E21\u0E01\u0E31\u0E19"
     isCorrect: 0
@@ -55,17 +55,6 @@ MonoBehaviour:
     isCorrect: 1
   - word: "\u0E40\u0E19\u0E49\u0E19\u0E2A\u0E35\u0E19\u0E49\u0E33\u0E40\u0E07\u0E34\u0E19\u0E01\u0E31\u0E1A\u0E2A\u0E49\u0E21\u0E40\u0E1B\u0E47\u0E19\u0E2B\u0E25\u0E31\u0E01"
     isCorrect: 0
-  requirement2:
-  - word: "\u0E41\u0E2D\u0E1B\u0E17\u0E35\u0E48\u0E21\u0E35\u0E2D\u0E22\u0E39\u0E48
-      \u0E43\u0E0A\u0E49\u0E07\u0E32\u0E19\u0E44\u0E21\u0E48\u0E2A\u0E30\u0E14\u0E27\u0E01"
-    isCorrect: 1
-  - word: "\u0E19\u0E31\u0E01\u0E40\u0E23\u0E35\u0E22\u0E19\u0E02\u0E35\u0E49\u0E40\u0E01\u0E35\u0E22\u0E08\u0E08\u0E14"
-    isCorrect: 1
-  - word: "\u0E41\u0E2D\u0E1B\u0E17\u0E35\u0E48\u0E21\u0E35\u0E2D\u0E22\u0E39\u0E48
-      \u0E17\u0E33\u0E07\u0E32\u0E19\u0E23\u0E48\u0E27\u0E21\u0E01\u0E31\u0E19\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49"
-    isCorrect: 1
-  - word: "Export \u0E40\u0E1B\u0E47\u0E19 PDF \u0E44\u0E21\u0E44\u0E14\u0E49"
-    isCorrect: 1
   balloons:
   - word: Correct1
     isCorrect: 1
@@ -102,3 +91,10 @@ MonoBehaviour:
   statEachPhase: 020000000300000004000000010000000400000000000000
   dayUsed: 50
   estimateDaysInPhase: 10
+  requirement1Answer:
+  - "\u0E43\u0E0A\u0E49\u0E07\u0E48\u0E32\u0E22"
+  - "\u0E1A\u0E19\u0E40\u0E27\u0E47\u0E1A"
+  - "\u0E40\u0E23\u0E35\u0E22\u0E1A\u0E07\u0E48\u0E32\u0E22"
+  requirement2Answer: 01010000
+  designAnswer: 0101
+  keyInputPass: 2

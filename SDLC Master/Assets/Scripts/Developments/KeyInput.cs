@@ -12,11 +12,19 @@ public class KeyInput : MonoBehaviour
     public GameObject charBlockPrefab;
     GameObject[] inputBlocks;
     GameObject[] charBlocks;
+    private Project project;
 
     int index;
 
     void Start()
     {
+        
+    }
+
+    private void OnEnable() {
+        project = ProjectManager.instance.currentProject;
+        project.keyInputPass = 0;
+
         index = 0;
         SetupKeyInput();
     }
@@ -25,15 +33,15 @@ public class KeyInput : MonoBehaviour
     {
         DestroyAllBlock();
 
-        string vocab = ProjectManager.instance.currentProject.keyInput[index].word;
-        hint.text = ProjectManager.instance.currentProject.keyInput[index].hint;
-        char[] additionalChar = ProjectManager.instance.currentProject.keyInput[index].additionalChar;
+        string vocab = project.keyInput[index].word;
+        hint.text = project.keyInput[index].hint;
+        char[] additionalChar = project.keyInput[index].additionalChar;
 
         inputBlocks = new GameObject[vocab.Length];
         charBlocks = new GameObject[vocab.Length + additionalChar.Length];
 
         //input block
-        char[] randomChars = GetrandomCharacters(ProjectManager.instance.currentProject.keyInput[index].showNum, vocab);
+        char[] randomChars = GetrandomCharacters(project.keyInput[index].showNum, vocab);
         for(int i=0; i<vocab.Length; i++)
         {
             inputBlocks[i] = (GameObject)Instantiate(inputBlockPrefab);
@@ -82,7 +90,7 @@ public class KeyInput : MonoBehaviour
                 if (Input.GetKeyDown(key))
                 {
                     string keyName = key.ToString();
-                    if (ProjectManager.instance.currentProject.keyInput[index].word.Contains(keyName))
+                    if (project.keyInput[index].word.Contains(keyName))
                     {
                         foreach(var block in inputBlocks)
                         {
@@ -111,13 +119,16 @@ public class KeyInput : MonoBehaviour
                 pass++;
             }
         }
-        if(pass >= inputBlocks.Length) return true;
+        if(pass >= inputBlocks.Length) {
+            project.keyInputPass++;
+            return true;
+        }
         else return false;
     }
 
     void NextKeyInput()
     {
-        if(index < ProjectManager.instance.currentProject.keyInput.Length)
+        if(index < project.keyInput.Length)
         {
             index++;
             SetupKeyInput();
