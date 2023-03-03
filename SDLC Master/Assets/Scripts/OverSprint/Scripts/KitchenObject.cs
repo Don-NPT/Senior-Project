@@ -30,12 +30,33 @@ public class KitchenObject : MonoBehaviour
         transform.localPosition = Vector3.zero;
     }
 
-    public IKitchenObjectParent GetkitchenObjectParent(){
+    public IKitchenObjectParent GetKitchenObjectParent(){
         return kitchenObjectParent;
     }
 
     public void DestroySelf(){
         kitchenObjectParent.ClearKitchenObject();
         Destroy(gameObject);
+    }
+
+    public bool TryGetPlate(out PlateKitchenObject plateKitchenObject){
+        if(this is PlateKitchenObject){
+            plateKitchenObject = this as PlateKitchenObject;
+            return true;
+        }else{
+            plateKitchenObject = null;
+            return false;
+        }
+    }
+
+
+    public static KitchenObject SpawnKitchenObject(KitchenObjectSO kitchenObjectSO, IKitchenObjectParent kitchenObjectParent) {
+        Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefeb);
+
+        KitchenObject kitchenObject = kitchenObjectTransform.GetComponent<KitchenObject>();
+        
+        kitchenObject.SetKitchenObjectParent(kitchenObjectParent);
+
+        return kitchenObject;
     }
 }
