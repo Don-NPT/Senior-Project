@@ -23,7 +23,7 @@ public class KeyInput : MonoBehaviour
 
     private void OnEnable() {
         project = ProjectManager.instance.currentProject;
-        project.keyInputPass = 0;
+        project.keyInputPass = new List<bool>();
 
         index = 0;
         SetupKeyInput();
@@ -120,7 +120,7 @@ public class KeyInput : MonoBehaviour
             }
         }
         if(pass >= inputBlocks.Length) {
-            project.keyInputPass++;
+            project.keyInputPass.Add(true);
             return true;
         }
         else return false;

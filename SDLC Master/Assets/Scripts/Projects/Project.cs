@@ -61,8 +61,9 @@ public class Project : ScriptableObject
     public List<string> requirement1Answer;
     public List<string> requirement2Answer;
     public List<bool> designAnswer;
-    public int keyInputPass;
+    public List<bool> keyInputPass;
     public int balloonPoint;
+    public List<string> balloonAnswer;
 
     public int getAllWorkAmount()
     {

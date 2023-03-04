@@ -2,7 +2,7 @@
 <a href="https://www.flaticon.com/free-icons/calendar" title="calendar icons">Calendar icons created by Prosymbols Premium - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/skills" title="skills icons">Skills icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/play" title="play icons">Play icons created by Freepik - Flaticon</a>
-<a href="https://www.flaticon.com/free-icons/forward" title="forward icons">Forward icons created by Pavel Kozlov - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/fast-forward" title="fast forward icons">Fast forward icons created by nawicon - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/folder" title="folder icons">Folder icons created by Good Ware - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/agile" title="agile icons">Agile icons created by Freepik - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/waterfall" title="waterfall icons">Waterfall icons created by juicy_fish - Flaticon</a>

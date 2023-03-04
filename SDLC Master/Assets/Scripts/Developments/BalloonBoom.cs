@@ -35,6 +35,7 @@ public class BalloonBoom : MonoBehaviour
                 // isStarted = true;
                 Debug.Log("Starting Balloon Boom");
                 ProjectManager.instance.currentProject.balloonPoint = 0;
+                ProjectManager.instance.currentProject.balloonAnswer = new List<string>();
                 spawnBalloon = StartCoroutine(SpawnBalloon());
             // }
             // else if(ProjectManager.instance.currentProject.phase == Project.Phases.TESTING)

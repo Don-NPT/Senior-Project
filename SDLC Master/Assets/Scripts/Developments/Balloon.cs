@@ -29,6 +29,7 @@ public class Balloon : MonoBehaviour, IPointerDownHandler
             ProjectManager.instance.currentProject.balloonPoint++;
             FindObjectOfType<AudioManager>().Play("Warning");
         }
+        ProjectManager.instance.currentProject.balloonAnswer.Add(ProjectManager.instance.currentProject.balloons[index].word);
 
         transform.DOPunchScale (new Vector3 (0.2f, 0.2f, 0.2f), .25f);
         GetComponent<Material>().DOColor(Color.green, 1);

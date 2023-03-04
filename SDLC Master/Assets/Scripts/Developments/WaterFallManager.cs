@@ -94,6 +94,7 @@ public class WaterFallManager : MonoBehaviour
                 requirementUIs[0].SetActive(false);
                 requirementUIs[1].SetActive(false);
                 designUIs[0].SetActive(true);
+                GameManager.instance.Play();
                 project.phase = Project.Phases.DESIGN;
                 break;
             case Project.Phases.DESIGN:
