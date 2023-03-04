@@ -59,7 +59,7 @@ public class Project : ScriptableObject
     [HideInInspector] public DateTime[] startDates = new DateTime[6];
     [HideInInspector] public DateTime[] finishDates = new DateTime[6];
     public List<string> requirement1Answer;
-    public List<bool> requirement2Answer;
+    public List<string> requirement2Answer;
     public List<bool> designAnswer;
     public int keyInputPass;
     public int balloonPoint;

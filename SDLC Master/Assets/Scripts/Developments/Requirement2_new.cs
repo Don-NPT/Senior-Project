@@ -18,21 +18,21 @@ public class Requirement2_new : MonoBehaviour
     {
         TMP = GetComponentsInChildren<TextMeshProUGUI>()[1];
         project = ProjectManager.instance.currentProject;
-        project.requirement2Answer = new List<bool>();
+        project.requirement2Answer = new List<string>();
         index = 0;
         TMP.text = project.requirement2[index].word;
     }
     public void Functional()
     {
-        CheckAnswer(true);
+        CheckAnswer("Functional");
     }
 
     public void NonFunctional()
     {
-        CheckAnswer(false);
+        CheckAnswer("Non-Functional");
     }
 
-    void CheckAnswer(bool answer)
+    void CheckAnswer(string answer)
     {
         project.requirement2Answer.Add(answer);
         if(index < project.requirement2.Length -1)

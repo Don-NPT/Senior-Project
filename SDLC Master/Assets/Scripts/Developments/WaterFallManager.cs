@@ -108,6 +108,7 @@ public class WaterFallManager : MonoBehaviour
             case Project.Phases.CODING:
                 currentWorkAmount = project.testingWork;
                 staffPosition = "Tester";
+                BalloonBoom.instance.Stop();
                 project.phase = Project.Phases.TESTING;
                 break;
             case Project.Phases.TESTING:

@@ -9,6 +9,7 @@ public class BalloonBoom : MonoBehaviour
     public GameObject balloonPrefab;
     public Transform canvas;
     public bool isStarted = false;
+    private Coroutine spawnBalloon;
     GameObject[] balloons;
     // Start is called before the first frame update
     void Start()
@@ -33,7 +34,8 @@ public class BalloonBoom : MonoBehaviour
             // {
                 // isStarted = true;
                 Debug.Log("Starting Balloon Boom");
-                StartCoroutine(SpawnBalloon());
+                ProjectManager.instance.currentProject.balloonPoint = 0;
+                spawnBalloon = StartCoroutine(SpawnBalloon());
             // }
             // else if(ProjectManager.instance.currentProject.phase == Project.Phases.TESTING)
             // {
@@ -51,12 +53,14 @@ public class BalloonBoom : MonoBehaviour
     }
     public void Stop() {
         // isStarted = false;
-        Debug.Log("Stopping Balloon Boom");
-        StopCoroutine(SpawnBalloon());
-        foreach (var balloon in balloons)
+        if(spawnBalloon != null)
         {
-            if(balloon.gameObject)
-                Destroy(balloon.gameObject);
+            Debug.Log("Stopping Balloon Boom");
+            StopCoroutine(spawnBalloon);
+            foreach (var balloon in balloons)
+            {
+                Destroy(balloon);
+            }
         }
     }
 

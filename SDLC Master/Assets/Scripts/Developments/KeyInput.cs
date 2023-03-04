@@ -77,7 +77,7 @@ public class KeyInput : MonoBehaviour
 
             charBlocks[i].GetComponentInChildren<TextMeshProUGUI>().text = additionalChar[i].ToString();
         }
-        RandomizeChildren();
+        // RandomizeChildren();
     }
 
     // Update is called once per frame
@@ -128,9 +128,9 @@ public class KeyInput : MonoBehaviour
 
     void NextKeyInput()
     {
+        index++;
         if(index < project.keyInput.Length)
         {
-            index++;
             SetupKeyInput();
         }else{
             gameObject.SetActive(false);

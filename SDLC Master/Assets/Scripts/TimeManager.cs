@@ -84,7 +84,8 @@ public class TimeManager : MonoBehaviour
     public void Play()
     {
         StartDayCoroutine();
-        GameManager.instance.gameState = GameState.PLAY;
+        // GameManager.instance.gameState = GameState.PLAY;
+        GameManager.instance.Play();
     }
     public void Pause()
     {

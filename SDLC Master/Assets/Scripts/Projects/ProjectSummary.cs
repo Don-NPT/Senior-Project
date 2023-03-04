@@ -22,6 +22,17 @@ public class ProjectSummary : MonoBehaviour
     public GameObject codingQuality;
     public GameObject testingQuality;
     public GameObject deploymentQuality;
+
+    [Header("Answer Blocks")]
+    public Transform requirement1;
+    public Transform requirement2;
+    public Transform design;
+    public Transform keyInput;
+    public Transform balloonBoom;
+    public Color correctColor;
+    public Color wrongColor;
+    public GameObject requirement2_text;
+    public GameObject answerButton;
     
     [Header("Others")]
     public TextMeshProUGUI reward;
@@ -53,6 +64,7 @@ public class ProjectSummary : MonoBehaviour
         model.text = "รุปแบบการทำงาน: " + project.model.modelName;
 
         SetupQuality(project);
+        SetupAnswer(project);
 
         analysisQuality.GetComponentInChildren<Button>().onClick.AddListener(delegate { ShowDetail(project, 1); });
         designQuality.GetComponentInChildren<Button>().onClick.AddListener(delegate { ShowDetail(project, 2); });
@@ -107,5 +119,54 @@ public class ProjectSummary : MonoBehaviour
         codingQuality.GetComponentInChildren<Slider>().value = project.actualCoding;
         testingQuality.GetComponentInChildren<Slider>().value = project.actualTesting;
         deploymentQuality.GetComponentInChildren<Slider>().value = project.actualDeployment;
+    }
+
+    void SetupAnswer(Project project)
+    {
+        // Setup Requirement 1
+        List<string> requirement1Answer = project.requirement1Answer;
+        for(int i=0; i<requirement1Answer.Count; i++){
+            requirement1.GetComponentsInChildren<TextMeshProUGUI>()[i].text = requirement1Answer[i];
+            foreach(var word in project.requirement1){
+                if(requirement1Answer[i] == word.word && word.isCorrect){
+                    requirement1.GetComponentsInChildren<Image>()[i+1].color = correctColor;
+                }else if(requirement1Answer[i] == word.word){
+                    requirement1.GetComponentsInChildren<Image>()[i+1].color = wrongColor;
+                }
+            }
+        }
+
+        // Setup Requirement 2
+        List<string> requirement2Answer = project.requirement2Answer;
+        GameObject[] texts = new GameObject[requirement2Answer.Count];
+        GameObject[] buttons = new GameObject[requirement2Answer.Count];
+
+        foreach(Transform child in requirement2){
+            Destroy(child.gameObject);
+        }
+
+        for(int i=0; i<requirement2Answer.Count; i++){
+            texts[i] = (GameObject)Instantiate(requirement2_text);
+            texts[i].transform.SetParent(requirement2);
+            // texts[i].transform.localScale = Vector3.one;
+            texts[i].GetComponent<TextMeshProUGUI>().text = project.requirement2[i].word;
+
+            buttons[i] = (GameObject)Instantiate(answerButton);
+            buttons[i].transform.SetParent(requirement2);
+            // buttons[i].transform.localScale = Vector3.one;
+            buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = requirement2Answer[i];
+            
+            if(requirement2Answer[i] == "Functional" && project.requirement2[i].isCorrect){
+                buttons[i].GetComponent<Image>().color = correctColor;
+            }
+            else if(requirement2Answer[i] == "Functional" && project.requirement2[i].isCorrect == false){
+                buttons[i].GetComponent<Image>().color = wrongColor;
+            }
+            else if(requirement2Answer[i] == "Non-Functional" && project.requirement2[i].isCorrect){
+                buttons[i].GetComponent<Image>().color = wrongColor;
+            }else if(requirement2Answer[i] == "Non-Functional" && project.requirement2[i].isCorrect == false){
+                buttons[i].GetComponent<Image>().color = correctColor;
+            }
+        }
     }
 }
