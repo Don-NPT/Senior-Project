@@ -166,6 +166,7 @@ public class ProjectSummary : MonoBehaviour
         for(int i=0; i<requirement2Answer.Count; i++){
             rows[i] = (GameObject)Instantiate(answerRow);
             rows[i].transform.SetParent(requirement2);
+            rows[i].transform.localScale = Vector3.one;
             rows[i].GetComponentsInChildren<TextMeshProUGUI>()[0].text = project.requirement2[i].word;
 
             // buttons[i] = (GameObject)Instantiate(answerButton);
@@ -199,6 +200,7 @@ public class ProjectSummary : MonoBehaviour
         for(int i=0; i<project.keyInput.Length; i++){
             rows[i] = (GameObject)Instantiate(answerRow);
             rows[i].transform.SetParent(keyInput);
+            rows[i].transform.localScale = Vector3.one;
             rows[i].GetComponentsInChildren<TextMeshProUGUI>()[0].text = project.keyInput[i].hint;
 
             rows[i].GetComponentsInChildren<TextMeshProUGUI>()[1].text = project.keyInput[i].word;
@@ -222,6 +224,7 @@ public class ProjectSummary : MonoBehaviour
         for(int i=0; i<project.balloonAnswer.Count; i++){
             balloons[i] = (GameObject)Instantiate(answerButton);
             balloons[i].transform.SetParent(balloonBoom);
+            balloons[i].transform.localScale = Vector3.one;
             balloons[i].GetComponentInChildren<TextMeshProUGUI>().text = project.balloonAnswer[i];
 
             foreach(var word in project.balloons){

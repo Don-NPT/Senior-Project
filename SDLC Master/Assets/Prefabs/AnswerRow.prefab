@@ -92,10 +92,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 11.75
-  m_fontSizeBase: 36
+  m_fontSize: 12
+  m_fontSizeBase: 12
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 6
   m_fontSizeMax: 18
   m_fontStyle: 1
@@ -288,9 +288,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreLayout: 0
-  m_MinWidth: 50
+  m_MinWidth: 100
   m_MinHeight: -1
-  m_PreferredWidth: 0
+  m_PreferredWidth: -1
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
@@ -396,11 +396,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3795966722152213721, guid: b8e98d53f98b01941910f6228123bcd8, type: 3}
       propertyPath: m_fontSize
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3795966722152213721, guid: b8e98d53f98b01941910f6228123bcd8, type: 3}
       propertyPath: m_fontSizeMax
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3795966722152213721, guid: b8e98d53f98b01941910f6228123bcd8, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3795966722152213721, guid: b8e98d53f98b01941910f6228123bcd8, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b8e98d53f98b01941910f6228123bcd8, type: 3}
@@ -427,9 +435,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IgnoreLayout: 0
-  m_MinWidth: 100
+  m_MinWidth: 200
   m_MinHeight: -1
-  m_PreferredWidth: 200
+  m_PreferredWidth: -1
   m_PreferredHeight: -1
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1

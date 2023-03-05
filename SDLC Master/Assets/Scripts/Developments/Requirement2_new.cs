@@ -19,6 +19,7 @@ public class Requirement2_new : MonoBehaviour
         TMP = GetComponentsInChildren<TextMeshProUGUI>()[1];
         project = ProjectManager.instance.currentProject;
         project.requirement2Answer = new List<string>();
+        project.requirement2Point = 0;
         index = 0;
         TMP.text = project.requirement2[index].word;
     }
@@ -35,15 +36,15 @@ public class Requirement2_new : MonoBehaviour
     void CheckAnswer(string answer)
     {
         project.requirement2Answer.Add(answer);
-        if(index < project.requirement2.Length -1)
-        {
-            if(project.requirement2[index].isCorrect){
+        if(project.requirement2[index].isCorrect){
                 FindObjectOfType<AudioManager>().Play("Purchase");
                 Vector3 originalScale = transform.localScale;
                 // Animate the scale of the GameObject
                 transform.DOScale(Vector3.one * 1.05f, 0.2f)
                     .SetEase(Ease.OutQuad)
                     .OnComplete(() => transform.localScale = Vector3.one);
+                WaterFallManager.instance.qualityEachPhase[0] += 5;
+                project.requirement2Point += 5;
             }else{
                 FindObjectOfType<AudioManager>().Play("Warning");
                 float shakeDuration = 0.5f;
@@ -51,7 +52,12 @@ public class Requirement2_new : MonoBehaviour
                 int shakeVibrato = 10;
                 float shakeRandomness = 90.0f;
                 transform.DOShakePosition(shakeDuration, shakeStrength, shakeVibrato, shakeRandomness);
+                WaterFallManager.instance.qualityEachPhase[0] -= 3;
+                project.requirement2Point -= 3;
             }
+        if(index < project.requirement2.Length -1)
+        {
+            
             index++;
             TMP.text = project.requirement2[index].word;
         }else{

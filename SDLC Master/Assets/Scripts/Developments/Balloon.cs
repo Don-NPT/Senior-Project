@@ -22,11 +22,13 @@ public class Balloon : MonoBehaviour, IPointerDownHandler
         if(ProjectManager.instance.currentProject.balloons[index].isCorrect)
         {
             Debug.Log("Point up");
-            ProjectManager.instance.currentProject.balloonPoint++;
+            ProjectManager.instance.currentProject.balloonPoint += 5;
+            WaterFallManager.instance.qualityEachPhase[2] += 5;
             FindObjectOfType<AudioManager>().Play("Purchase");
         }else{
             Debug.Log("Point down");
-            ProjectManager.instance.currentProject.balloonPoint++;
+            ProjectManager.instance.currentProject.balloonPoint -= 3;
+            WaterFallManager.instance.qualityEachPhase[2] -= 3;
             FindObjectOfType<AudioManager>().Play("Warning");
         }
         ProjectManager.instance.currentProject.balloonAnswer.Add(ProjectManager.instance.currentProject.balloons[index].word);

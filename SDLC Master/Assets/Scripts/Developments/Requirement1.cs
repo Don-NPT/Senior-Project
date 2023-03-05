@@ -78,7 +78,7 @@ public class Requirement1 : MonoBehaviour
 
     public void Confirm()
     {
-        int point = 0;
+        project.requirement1Point = 0;
         foreach(var button in buttons)
         {
             Sprite answerSprite = button.gameObject.GetComponent<Image>().sprite;
@@ -89,12 +89,16 @@ public class Requirement1 : MonoBehaviour
                 foreach(var word in project.requirement1){
                     if(answer == word.word && word.isCorrect){
                         button.gameObject.GetComponent<Image>().color = Color.green;
-                        point++;
+                        WaterFallManager.instance.qualityEachPhase[0] += 5;
+                        project.requirement1Point += 5;
                     }else if(answer == word.word){
                         button.gameObject.GetComponent<Image>().color = Color.red;
                     }
                 }
             }
+        }
+        if(project.requirement1Point > 0){
+            AudioManager.instance.Play("Purchase");
         }
 
         // int point = 0;
@@ -106,7 +110,7 @@ public class Requirement1 : MonoBehaviour
         //     }
         // }
         // int point = project.requirement1Answer.Count(answer => project.requirement1.Any(word => word.word == answer && word.isCorrect));
-        Debug.Log(point);
+        Debug.Log(project.requirement1Point);
         
     }
 }

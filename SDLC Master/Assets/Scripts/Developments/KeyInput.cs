@@ -29,6 +29,7 @@ public class KeyInput : MonoBehaviour
     private void OnEnable() {
         project = ProjectManager.instance.currentProject;
         project.keyInputPass = new List<bool>();
+        project.designPoint = 0;
 
         index = 0;
         SetupKeyInput();
@@ -135,6 +136,9 @@ public class KeyInput : MonoBehaviour
         }
         if(pass >= inputBlocks.Length) {
             project.keyInputPass.Add(true);
+            WaterFallManager.instance.qualityEachPhase[1] += 5;
+            project.designPoint += 5;
+            AudioManager.instance.Play("Purchase");
             return true;
         }
         else return false;
