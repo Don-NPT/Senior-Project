@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DeliveryManager : MonoBehaviour
 {
-    
+    public static DeliveryManager Instance { get; private set; }
 
     [SerializeField] private RecipeListSO recipeListSO;
 
@@ -13,30 +13,70 @@ public class DeliveryManager : MonoBehaviour
     private float spawnRecipeTimerMax = 4f;
     private int waitingRecipesMax = 4;
 
-
-    private void Awake(){
+    private void Awake()
+    {
+        Instance = this;
         waitingRecipeSOList = new List<RecipeSO>();
     }
 
-
-
-    private void Update(){
+    private void Update()
+    {
         spawnRecipeTimer -= Time.deltaTime;
-        if(spawnRecipeTimer <= 0f){
+        if (spawnRecipeTimer <= 0f)
+        {
             spawnRecipeTimer = spawnRecipeTimerMax;
 
-            if(waitingRecipeSOList.Count < waitingRecipesMax){
+            if (waitingRecipeSOList.Count < waitingRecipesMax)
+            {
                 RecipeSO waitingRecipeSO = recipeListSO.recipeSOList[Random.Range(0, recipeListSO.recipeSOList.Count)];
                 Debug.Log(waitingRecipeSO.recipeName);
                 waitingRecipeSOList.Add(waitingRecipeSO);
             }
         }
-
-        /*public void DeliverRecipe(){
-
-        }*/
-
-
     }
 
+    public void DeliverRecipe(PlateKitchenObject plateKitchenObject)
+    {
+        for (int i = 0; i < waitingRecipeSOList.Count; i++)
+        {
+            RecipeSO waitingRecipeSO = waitingRecipeSOList[i];
+
+            if (waitingRecipeSO.kitchenObjectList.Count == plateKitchenObject.GetKitchenObjectSOList().Count)
+            {
+                //มีจำนวนตรงกับวัตถุดิบ
+                bool plateContentsMatchesRecipe = true;
+                foreach (KitchenObjectSO recipeKitchenObjectSO in waitingRecipeSO.kitchenObjectList)
+                {
+                    //เช็คไปทั่วทั้งหมดในสูตร วัตถุดิบ-สูตร
+                    bool ingredientFound = false;
+                    foreach (KitchenObjectSO plateKitchenObjectSO in plateKitchenObject.GetKitchenObjectSOList())
+                    {
+                        //เช็คไปทั่วทั้งหมดในจาน วัตถุดิบ-จาน
+                        if (plateKitchenObjectSO == recipeKitchenObjectSO)
+                        {
+                            //วัตถุดิบถูกต้อง
+                            ingredientFound = true;
+                            break;
+                        }
+                    }
+                    if (!ingredientFound)
+                    {
+                        //วัตถุดิบในสูตร ไม่เจอในจาน
+                        plateContentsMatchesRecipe = false;
+                    }
+                }
+                if (plateContentsMatchesRecipe)
+                {
+                    //ผู้เล่นส่งถูกสูตร
+                    Debug.Log("Player delivered the correct recipe!");
+                    waitingRecipeSOList.RemoveAt(i);
+                    return;
+                }
+            }
+
+        }
+        //ไม่พบสูตรที่ตรงกัน
+        //ผู้เล่นไม่ได้ส่งถูกสูตร
+        Debug.Log("Player did not deliver a correct recipe");
+    }
 }
