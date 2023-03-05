@@ -72,8 +72,10 @@ public class WaterFallManager : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
 
-            progress += project.staffEachPhase[phaseIndex];
-            qualityEachPhase[phaseIndex] += project.statEachPhase[phaseIndex];
+            if(GameManager.instance.gameState != GameState.PAUSE){
+                progress += project.staffEachPhase[phaseIndex];
+                qualityEachPhase[phaseIndex] += project.statEachPhase[phaseIndex];
+            }
         }
         if(project.phase != Project.Phases.DEPLOYMENT)
             NextPhase();
