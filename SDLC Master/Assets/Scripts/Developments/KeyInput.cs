@@ -86,7 +86,7 @@ public class KeyInput : MonoBehaviour
         // RandomizeChildren();
         slider.maxValue = 15;
         slider.value = 15;
-        timer = StartCoroutine(StartTimer());
+        timer = StartCoroutine(StartTimer(15));
     }
 
     // Update is called once per frame
@@ -108,6 +108,12 @@ public class KeyInput : MonoBehaviour
                                 block.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
                             }
                         }
+                    }else{
+                        AudioManager.instance.Play("Warning");
+                        if (sliderTween != null) sliderTween.Kill();
+                        if(timer != null) StopCoroutine(timer);
+                        slider.value -= 2;
+                        timer = StartCoroutine(StartTimer((int)slider.value));
                     }
                 }
             }
@@ -151,8 +157,6 @@ public class KeyInput : MonoBehaviour
         index++;
         if(index < project.keyInput.Length)
         {
-            slider.value = 15;
-            timer = StartCoroutine(StartTimer());
             SetupKeyInput();
         }else{
             gameObject.SetActive(false);
@@ -197,10 +201,10 @@ public class KeyInput : MonoBehaviour
         }
     }
 
-    IEnumerator StartTimer()
+    IEnumerator StartTimer(int time)
     {
-        sliderTween = slider.DOValue(0, 15);
-        yield return new WaitForSeconds(15);
+        sliderTween = slider.DOValue(0, time);
+        yield return new WaitForSeconds(time);
     }
 
     public void DestroyAllBlock()
