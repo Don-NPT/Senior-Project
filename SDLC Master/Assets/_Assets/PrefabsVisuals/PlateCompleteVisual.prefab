@@ -49,6 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8c8ef5f89f80f444a2404f4459f5edb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plateKitchenObject: {fileID: 0}
+  kitchenObjectSOGameObjectList: []
 --- !u!1001 &408889405707390302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -444,7 +446,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3812876574508226177, guid: 0df961a7e3870b44f9bbce7bdf930613, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0df961a7e3870b44f9bbce7bdf930613, type: 3}
