@@ -93,7 +93,7 @@ public class WaterFallManager : MonoBehaviour
                 staffPosition = "Designer";
                 requirementUIs[0].SetActive(false);
                 requirementUIs[1].SetActive(false);
-                designUIs[0].SetActive(true);
+                designUIs[1].SetActive(true);
                 GameManager.instance.Play();
                 project.phase = Project.Phases.DESIGN;
                 break;

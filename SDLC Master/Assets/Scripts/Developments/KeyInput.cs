@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class KeyInput : MonoBehaviour
 {
@@ -10,9 +12,12 @@ public class KeyInput : MonoBehaviour
     public TextMeshProUGUI hint;
     public GameObject inputBlockPrefab;
     public GameObject charBlockPrefab;
+    public Slider slider;
     GameObject[] inputBlocks;
     GameObject[] charBlocks;
     private Project project;
+    private Coroutine timer;
+    private Tween sliderTween;
 
     int index;
 
@@ -78,6 +83,9 @@ public class KeyInput : MonoBehaviour
             charBlocks[i].GetComponentInChildren<TextMeshProUGUI>().text = additionalChar[i].ToString();
         }
         // RandomizeChildren();
+        slider.maxValue = 15;
+        slider.value = 15;
+        timer = StartCoroutine(StartTimer());
     }
 
     // Update is called once per frame
@@ -109,6 +117,12 @@ public class KeyInput : MonoBehaviour
         }
     }
 
+    private void FixedUpdate() {
+        if(slider.value <= 0){
+            NextKeyInput();
+        }
+    }
+
     bool CheckInputBlockPass()
     {
         int pass = 0;
@@ -128,9 +142,13 @@ public class KeyInput : MonoBehaviour
 
     void NextKeyInput()
     {
+        if (sliderTween != null) sliderTween.Kill();
+        if(timer != null) StopCoroutine(timer);
         index++;
         if(index < project.keyInput.Length)
         {
+            slider.value = 15;
+            timer = StartCoroutine(StartTimer());
             SetupKeyInput();
         }else{
             gameObject.SetActive(false);
@@ -173,6 +191,12 @@ public class KeyInput : MonoBehaviour
         {
             charBlocks[i].transform.SetParent(charUI);
         }
+    }
+
+    IEnumerator StartTimer()
+    {
+        sliderTween = slider.DOValue(0, 15);
+        yield return new WaitForSeconds(15);
     }
 
     public void DestroyAllBlock()

@@ -78,8 +78,8 @@ public class ProjectSummary : MonoBehaviour
         timeUsed.text = project.getOverallTimeUsed() + " / " + project.deadline + " วัน";
         Debug.Log(string.Join(", ", project.requirement1Answer));
         Debug.Log(string.Join(", ", project.requirement2Answer));
-        Debug.Log(string.Join(", ", project.designAnswer));
-        Debug.Log(project.keyInputPass);
+        // Debug.Log(string.Join(", ", project.designAnswer));
+        Debug.Log(string.Join(", ", project.keyInputPass));
         Debug.Log(project.balloonPoint);
     }
 
@@ -155,32 +155,33 @@ public class ProjectSummary : MonoBehaviour
     void SetupRequirement2(Project project)
     {
         List<string> requirement2Answer = project.requirement2Answer;
-        GameObject[] texts = new GameObject[requirement2Answer.Count];
-        GameObject[] buttons = new GameObject[requirement2Answer.Count];
+        // GameObject[] texts = new GameObject[requirement2Answer.Count];
+        // GameObject[] buttons = new GameObject[requirement2Answer.Count];
+        GameObject[] rows = new GameObject[project.requirement2Answer.Count];
 
         foreach(Transform child in requirement2){
             Destroy(child.gameObject);
         }
 
         for(int i=0; i<requirement2Answer.Count; i++){
-            texts[i] = (GameObject)Instantiate(requirement2_text);
-            texts[i].transform.SetParent(requirement2);
-            texts[i].GetComponent<TextMeshProUGUI>().text = project.requirement2[i].word;
+            rows[i] = (GameObject)Instantiate(answerRow);
+            rows[i].transform.SetParent(requirement2);
+            rows[i].GetComponentsInChildren<TextMeshProUGUI>()[0].text = project.requirement2[i].word;
 
-            buttons[i] = (GameObject)Instantiate(answerButton);
-            buttons[i].transform.SetParent(requirement2);
-            buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = requirement2Answer[i];
+            // buttons[i] = (GameObject)Instantiate(answerButton);
+            // buttons[i].transform.SetParent(requirement2);
+            rows[i].GetComponentsInChildren<TextMeshProUGUI>()[1].text = requirement2Answer[i];
             
             if(requirement2Answer[i] == "Functional" && project.requirement2[i].isCorrect){
-                buttons[i].GetComponent<Image>().color = correctColor;
+                rows[i].GetComponentInChildren<Image>().color = correctColor;
             }
             else if(requirement2Answer[i] == "Functional" && project.requirement2[i].isCorrect == false){
-                buttons[i].GetComponent<Image>().color = wrongColor;
+                rows[i].GetComponentInChildren<Image>().color = wrongColor;
             }
             else if(requirement2Answer[i] == "Non-Functional" && project.requirement2[i].isCorrect){
-                buttons[i].GetComponent<Image>().color = wrongColor;
+                rows[i].GetComponentInChildren<Image>().color = wrongColor;
             }else if(requirement2Answer[i] == "Non-Functional" && project.requirement2[i].isCorrect == false){
-                buttons[i].GetComponent<Image>().color = correctColor;
+                rows[i].GetComponentInChildren<Image>().color = correctColor;
             }
         }
     }
