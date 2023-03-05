@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recipeSOList:
   - {fileID: 11400000, guid: c09641828cdb6b843a97428a47bf3b07, type: 2}
+  - {fileID: 11400000, guid: ba1e0029b46a8024fb9fe96113ad7d6c, type: 2}
