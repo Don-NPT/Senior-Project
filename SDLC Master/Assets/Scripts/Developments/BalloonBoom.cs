@@ -9,6 +9,7 @@ public class BalloonBoom : MonoBehaviour
     public GameObject balloonPrefab;
     public Transform canvas;
     public bool isStarted = false;
+    private Coroutine spawnBalloon;
     GameObject[] balloons;
     // Start is called before the first frame update
     void Start()
@@ -28,27 +29,38 @@ public class BalloonBoom : MonoBehaviour
     }
 
     public void Initiate() {
-        
+        if(ProjectManager.instance.currentProject != null){
+            // if(ProjectManager.instance.currentProject.phase == Project.Phases.CODING && isStarted == false)
+            // {
+                // isStarted = true;
+                Debug.Log("Starting Balloon Boom");
+                ProjectManager.instance.currentProject.balloonPoint = 0;
+                ProjectManager.instance.currentProject.balloonAnswer = new List<string>();
+                spawnBalloon = StartCoroutine(SpawnBalloon());
+            // }
+            // else if(ProjectManager.instance.currentProject.phase == Project.Phases.TESTING)
+            // {
+            //     isStarted = false;
+            //     Debug.Log("Stopping Balloon Boom");
+            //     StopCoroutine(SpawnBalloon());
+            //     foreach (var balloon in balloons)
+            //     {
+            //         if(balloon.gameObject)
+            //             Destroy(balloon.gameObject);
+            //     }
+            // }
+        }
         
     }
-    private void FixedUpdate() {
-        if(ProjectManager.instance.currentProject != null){
-            if(ProjectManager.instance.currentProject.phase == Project.Phases.CODING && isStarted == false)
+    public void Stop() {
+        // isStarted = false;
+        if(spawnBalloon != null)
+        {
+            Debug.Log("Stopping Balloon Boom");
+            StopCoroutine(spawnBalloon);
+            foreach (var balloon in balloons)
             {
-                isStarted = true;
-                Debug.Log("Starting Balloon Boom");
-                StartCoroutine(SpawnBalloon());
-            }
-            else if(ProjectManager.instance.currentProject.phase == Project.Phases.TESTING)
-            {
-                isStarted = false;
-                Debug.Log("Stopping Balloon Boom");
-                StopCoroutine(SpawnBalloon());
-                foreach (var balloon in balloons)
-                {
-                    if(balloon.gameObject)
-                        Destroy(balloon.gameObject);
-                }
+                Destroy(balloon);
             }
         }
     }

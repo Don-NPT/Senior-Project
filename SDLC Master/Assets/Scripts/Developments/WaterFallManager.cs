@@ -49,6 +49,8 @@ public class WaterFallManager : MonoBehaviour
             TotalQualityEachPhase = new int[6]; 
             project.staffEachPhase = new int[6];
             project.statEachPhase = new int[6];
+            project.startDates = new System.DateTime[6];
+            project.startDates[0] = TimeManager.instance.currentDate;
             requirementUIs[0].SetActive(true);
             ProjectHUD.instance.UpdateList();
             foreach(var staff in StaffManager.instance.getAllStaff())
@@ -81,7 +83,9 @@ public class WaterFallManager : MonoBehaviour
 
     public void NextPhase()
     {
+        project.finishDates[phaseIndex] = TimeManager.instance.currentDate;
         phaseIndex++;
+        project.startDates[phaseIndex] = TimeManager.instance.currentDate;
         switch(project.phase)
         {
             case Project.Phases.ANALYSIS:
@@ -90,6 +94,7 @@ public class WaterFallManager : MonoBehaviour
                 requirementUIs[0].SetActive(false);
                 requirementUIs[1].SetActive(false);
                 designUIs[0].SetActive(true);
+                GameManager.instance.Play();
                 project.phase = Project.Phases.DESIGN;
                 break;
             case Project.Phases.DESIGN:
@@ -98,11 +103,13 @@ public class WaterFallManager : MonoBehaviour
                 designUIs[0].SetActive(false);
                 designUIs[1].SetActive(false);
                 GameManager.instance.Play();
+                BalloonBoom.instance.Initiate();
                 project.phase = Project.Phases.CODING;
                 break;
             case Project.Phases.CODING:
                 currentWorkAmount = project.testingWork;
                 staffPosition = "Tester";
+                BalloonBoom.instance.Stop();
                 project.phase = Project.Phases.TESTING;
                 break;
             case Project.Phases.TESTING:
@@ -129,6 +136,8 @@ public class WaterFallManager : MonoBehaviour
         project.actualCoding = qualityEachPhase[2];
         project.actualTesting = qualityEachPhase[3];
         project.actualDeployment = qualityEachPhase[4];
+
+        project.finishDates[phaseIndex] = TimeManager.instance.currentDate;
 
         // project.dayUsed = totalDayToFinished;
         ProjectManager.instance.FinishProject(project);
