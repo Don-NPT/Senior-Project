@@ -18,7 +18,7 @@ TagManager:
   - Ground
   - Chair
   - HUD
-  - 
+  - Counter
   - 
   - 
   - 
@@ -46,4 +46,7 @@ TagManager:
     locked: 0
   - name: UI
     uniqueID: 1700676197
+    locked: 0
+  - name: HUD
+    uniqueID: 2762752823
     locked: 0

@@ -1,0 +1,98 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5427036622764224013
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3467009525048473, guid: 550b4e6a49fe4944f90513b1be79d236, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: aa1bacc24dde76e47b2ec0dd4e82385b, type: 3}
+    - target: {fileID: 1526319495504968744, guid: 550b4e6a49fe4944f90513b1be79d236, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526319495504968744, guid: 550b4e6a49fe4944f90513b1be79d236, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526319495504968744, guid: 550b4e6a49fe4944f90513b1be79d236, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526319495504968744, guid: 550b4e6a49fe4944f90513b1be79d236, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526319495504968744, guid: 550b4e6a49fe4944f90513b1be79d236, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526319495504968744, guid: 550b4e6a49fe4944f90513b1be79d236, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526319495504968744, guid: 550b4e6a49fe4944f90513b1be79d236, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526319495504968744, guid: 550b4e6a49fe4944f90513b1be79d236, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526319495504968744, guid: 550b4e6a49fe4944f90513b1be79d236, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526319495504968744, guid: 550b4e6a49fe4944f90513b1be79d236, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -180
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526319495504968744, guid: 550b4e6a49fe4944f90513b1be79d236, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526319495504968758, guid: 550b4e6a49fe4944f90513b1be79d236, type: 3}
+      propertyPath: m_Name
+      value: ContainerCounter_MeatPattyUncooked
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314895709428473417, guid: 550b4e6a49fe4944f90513b1be79d236, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.00000002809714
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314895709428473417, guid: 550b4e6a49fe4944f90513b1be79d236, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.76604444
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314895709428473417, guid: 550b4e6a49fe4944f90513b1be79d236, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.64278764
+      objectReference: {fileID: 0}
+    - target: {fileID: 2314895709428473417, guid: 550b4e6a49fe4944f90513b1be79d236, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.000000033484866
+      objectReference: {fileID: 0}
+    - target: {fileID: 4039439038641348685, guid: 550b4e6a49fe4944f90513b1be79d236, type: 3}
+      propertyPath: baseCounter
+      value: 
+      objectReference: {fileID: 8246910015553985909}
+    - target: {fileID: 4116956333688845176, guid: 550b4e6a49fe4944f90513b1be79d236, type: 3}
+      propertyPath: kitchenObjectSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 035bb2cfb9353ef498507977bb38895c, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 550b4e6a49fe4944f90513b1be79d236, type: 3}
+--- !u!114 &8246910015553985909 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4116956333688845176, guid: 550b4e6a49fe4944f90513b1be79d236, type: 3}
+  m_PrefabInstance: {fileID: 5427036622764224013}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa3994ccd786dfc4a9d7fdb192fd6d6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
