@@ -19,7 +19,7 @@ public class KeyInput : MonoBehaviour
     private Coroutine timer;
     private Tween sliderTween;
 
-    int index;
+    public int index;
 
     void Start()
     {

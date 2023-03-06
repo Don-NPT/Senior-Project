@@ -7,7 +7,7 @@ using DG.Tweening;
 public class Requirement2_new : MonoBehaviour
 {
     TextMeshProUGUI TMP;
-    int index;
+    public int index;
     private Project project;
 
     // Start is called before the first frame update
@@ -55,13 +55,14 @@ public class Requirement2_new : MonoBehaviour
                 WaterFallManager.instance.qualityEachPhase[0] -= 3;
                 project.requirement2Point -= 3;
             }
-        if(index < project.requirement2.Length -1)
+        index++;
+        if(index < project.requirement2.Length )
         {
-            
-            index++;
             TMP.text = project.requirement2[index].word;
         }else{
+            ProjectHUD.instance.WaterfallHUDUpdate();
             gameObject.SetActive(false);
+            WaterFallManager.instance.NextPhase();
         }
     }
 }
