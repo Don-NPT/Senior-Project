@@ -29,6 +29,7 @@ public class ProjectSummary : MonoBehaviour
     public Transform design;
     public Transform keyInput;
     public Transform balloonBoom;
+    public Transform balloonBoom2;
     public Color correctColor;
     public Color wrongColor;
     public GameObject requirement2_text;
@@ -135,6 +136,9 @@ public class ProjectSummary : MonoBehaviour
 
         // Setup BalloonBoom
         SetupBalloonBoom(project);
+
+        // Setup BalloonBoom2
+        SetupBalloonBoom2(project);
     }
 
     void SetupRequirement1(Project project)
@@ -232,6 +236,30 @@ public class ProjectSummary : MonoBehaviour
                     balloons[i].GetComponentInChildren<Image>().color = correctColor;
                 }else if(project.balloonAnswer[i] == word.word){
                     balloons[i].GetComponentInChildren<Image>().color = wrongColor;
+                }
+            }
+        }
+    }
+
+    void SetupBalloonBoom2(Project project)
+    {
+        GameObject[] balloons = new GameObject[project.balloon2Answer.Count];
+
+        foreach(Transform child in balloonBoom2){
+            Destroy(child.gameObject);
+        }
+
+        for(int i=0; i<project.balloon2Answer.Count; i++){
+            balloons[i] = (GameObject)Instantiate(answerButton);
+            balloons[i].transform.SetParent(balloonBoom2);
+            balloons[i].transform.localScale = Vector3.one;
+            balloons[i].GetComponentInChildren<TextMeshProUGUI>().text = project.balloon2Answer[i];
+
+            foreach(var word in project.balloons){
+                if(project.balloon2Answer[i] == word.word && word.isCorrect){
+                    balloons[i].GetComponentInChildren<Image>().color = wrongColor;
+                }else if(project.balloon2Answer[i] == word.word){
+                    balloons[i].GetComponentInChildren<Image>().color = correctColor;
                 }
             }
         }

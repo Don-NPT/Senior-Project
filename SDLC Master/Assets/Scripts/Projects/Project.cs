@@ -68,6 +68,8 @@ public class Project : ScriptableObject
     public int keyInputPoint;
     public int balloonPoint;
     public List<string> balloonAnswer;
+    public int balloon2Point;
+    public List<string> balloon2Answer;
 
     public int getAllWorkAmount()
     {

@@ -105,18 +105,20 @@ public class WaterFallManager : MonoBehaviour
                 designUIs[0].SetActive(false);
                 designUIs[1].SetActive(false);
                 GameManager.instance.Play();
-                BalloonBoom.instance.Initiate();
+                BalloonBoom.instance.InitiateBalloonDev();
                 project.phase = Project.Phases.CODING;
                 break;
             case Project.Phases.CODING:
                 currentWorkAmount = project.testingWork;
                 staffPosition = "Tester";
                 BalloonBoom.instance.Stop();
+                BalloonBoom.instance.InitiateBalloonTest();
                 project.phase = Project.Phases.TESTING;
                 break;
             case Project.Phases.TESTING:
                 currentWorkAmount = project.deploymentWork;
                 staffPosition = "Programmer";
+                BalloonBoom.instance.Stop();
                 project.phase = Project.Phases.DEPLOYMENT;
                 break;
             case Project.Phases.DEPLOYMENT:

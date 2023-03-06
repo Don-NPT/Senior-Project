@@ -5,6 +5,7 @@ using DG.Tweening;
 public class Balloon : MonoBehaviour, IPointerDownHandler 
 {
     public int index;
+    public bool isDev;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,17 +22,35 @@ public class Balloon : MonoBehaviour, IPointerDownHandler
      {
         if(ProjectManager.instance.currentProject.balloons[index].isCorrect)
         {
-            Debug.Log("Point up");
-            ProjectManager.instance.currentProject.balloonPoint += 5;
-            WaterFallManager.instance.qualityEachPhase[2] += 5;
-            FindObjectOfType<AudioManager>().Play("Purchase");
+            if(isDev){
+                Debug.Log("Point up");
+                ProjectManager.instance.currentProject.balloonPoint += 5;
+                WaterFallManager.instance.qualityEachPhase[2] += 5;
+                FindObjectOfType<AudioManager>().Play("Purchase");
+            }else{
+                Debug.Log("Point down");
+                ProjectManager.instance.currentProject.balloon2Point -= 5;
+                WaterFallManager.instance.qualityEachPhase[3] -= 5;
+                FindObjectOfType<AudioManager>().Play("Warning");
+            }
+            
         }else{
-            Debug.Log("Point down");
-            ProjectManager.instance.currentProject.balloonPoint -= 3;
-            WaterFallManager.instance.qualityEachPhase[2] -= 3;
-            FindObjectOfType<AudioManager>().Play("Warning");
+            if(isDev){
+                Debug.Log("Point down");
+                ProjectManager.instance.currentProject.balloonPoint -= 5;
+                WaterFallManager.instance.qualityEachPhase[2] -= 5;
+                FindObjectOfType<AudioManager>().Play("Warning");
+            }else{
+                Debug.Log("Point up");
+                ProjectManager.instance.currentProject.balloon2Point += 5;
+                WaterFallManager.instance.qualityEachPhase[3] += 5;
+                FindObjectOfType<AudioManager>().Play("Purchase");
+            }
         }
-        ProjectManager.instance.currentProject.balloonAnswer.Add(ProjectManager.instance.currentProject.balloons[index].word);
+        if(isDev)
+            ProjectManager.instance.currentProject.balloonAnswer.Add(ProjectManager.instance.currentProject.balloons[index].word);
+        else
+            ProjectManager.instance.currentProject.balloon2Answer.Add(ProjectManager.instance.currentProject.balloons[index].word);
 
         transform.DOPunchScale (new Vector3 (0.2f, 0.2f, 0.2f), .25f);
         GetComponent<Material>().DOColor(Color.green, 1);
