@@ -29,6 +29,7 @@ public class ProjectSummary : MonoBehaviour
     public Transform design;
     public Transform keyInput;
     public Transform balloonBoom;
+    public Transform balloonBoom2;
     public Color correctColor;
     public Color wrongColor;
     public GameObject requirement2_text;
@@ -78,8 +79,8 @@ public class ProjectSummary : MonoBehaviour
         timeUsed.text = project.getOverallTimeUsed() + " / " + project.deadline + " วัน";
         Debug.Log(string.Join(", ", project.requirement1Answer));
         Debug.Log(string.Join(", ", project.requirement2Answer));
-        Debug.Log(string.Join(", ", project.designAnswer));
-        Debug.Log(project.keyInputPass);
+        // Debug.Log(string.Join(", ", project.designAnswer));
+        Debug.Log(string.Join(", ", project.keyInputPass));
         Debug.Log(project.balloonPoint);
     }
 
@@ -135,6 +136,9 @@ public class ProjectSummary : MonoBehaviour
 
         // Setup BalloonBoom
         SetupBalloonBoom(project);
+
+        // Setup BalloonBoom2
+        SetupBalloonBoom2(project);
     }
 
     void SetupRequirement1(Project project)
@@ -155,32 +159,34 @@ public class ProjectSummary : MonoBehaviour
     void SetupRequirement2(Project project)
     {
         List<string> requirement2Answer = project.requirement2Answer;
-        GameObject[] texts = new GameObject[requirement2Answer.Count];
-        GameObject[] buttons = new GameObject[requirement2Answer.Count];
+        // GameObject[] texts = new GameObject[requirement2Answer.Count];
+        // GameObject[] buttons = new GameObject[requirement2Answer.Count];
+        GameObject[] rows = new GameObject[project.requirement2Answer.Count];
 
         foreach(Transform child in requirement2){
             Destroy(child.gameObject);
         }
 
         for(int i=0; i<requirement2Answer.Count; i++){
-            texts[i] = (GameObject)Instantiate(requirement2_text);
-            texts[i].transform.SetParent(requirement2);
-            texts[i].GetComponent<TextMeshProUGUI>().text = project.requirement2[i].word;
+            rows[i] = (GameObject)Instantiate(answerRow);
+            rows[i].transform.SetParent(requirement2);
+            rows[i].transform.localScale = Vector3.one;
+            rows[i].GetComponentsInChildren<TextMeshProUGUI>()[0].text = project.requirement2[i].word;
 
-            buttons[i] = (GameObject)Instantiate(answerButton);
-            buttons[i].transform.SetParent(requirement2);
-            buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = requirement2Answer[i];
+            // buttons[i] = (GameObject)Instantiate(answerButton);
+            // buttons[i].transform.SetParent(requirement2);
+            rows[i].GetComponentsInChildren<TextMeshProUGUI>()[1].text = requirement2Answer[i];
             
             if(requirement2Answer[i] == "Functional" && project.requirement2[i].isCorrect){
-                buttons[i].GetComponent<Image>().color = correctColor;
+                rows[i].GetComponentInChildren<Image>().color = correctColor;
             }
             else if(requirement2Answer[i] == "Functional" && project.requirement2[i].isCorrect == false){
-                buttons[i].GetComponent<Image>().color = wrongColor;
+                rows[i].GetComponentInChildren<Image>().color = wrongColor;
             }
             else if(requirement2Answer[i] == "Non-Functional" && project.requirement2[i].isCorrect){
-                buttons[i].GetComponent<Image>().color = wrongColor;
+                rows[i].GetComponentInChildren<Image>().color = wrongColor;
             }else if(requirement2Answer[i] == "Non-Functional" && project.requirement2[i].isCorrect == false){
-                buttons[i].GetComponent<Image>().color = correctColor;
+                rows[i].GetComponentInChildren<Image>().color = correctColor;
             }
         }
     }
@@ -198,6 +204,7 @@ public class ProjectSummary : MonoBehaviour
         for(int i=0; i<project.keyInput.Length; i++){
             rows[i] = (GameObject)Instantiate(answerRow);
             rows[i].transform.SetParent(keyInput);
+            rows[i].transform.localScale = Vector3.one;
             rows[i].GetComponentsInChildren<TextMeshProUGUI>()[0].text = project.keyInput[i].hint;
 
             rows[i].GetComponentsInChildren<TextMeshProUGUI>()[1].text = project.keyInput[i].word;
@@ -221,6 +228,7 @@ public class ProjectSummary : MonoBehaviour
         for(int i=0; i<project.balloonAnswer.Count; i++){
             balloons[i] = (GameObject)Instantiate(answerButton);
             balloons[i].transform.SetParent(balloonBoom);
+            balloons[i].transform.localScale = Vector3.one;
             balloons[i].GetComponentInChildren<TextMeshProUGUI>().text = project.balloonAnswer[i];
 
             foreach(var word in project.balloons){
@@ -228,6 +236,30 @@ public class ProjectSummary : MonoBehaviour
                     balloons[i].GetComponentInChildren<Image>().color = correctColor;
                 }else if(project.balloonAnswer[i] == word.word){
                     balloons[i].GetComponentInChildren<Image>().color = wrongColor;
+                }
+            }
+        }
+    }
+
+    void SetupBalloonBoom2(Project project)
+    {
+        GameObject[] balloons = new GameObject[project.balloon2Answer.Count];
+
+        foreach(Transform child in balloonBoom2){
+            Destroy(child.gameObject);
+        }
+
+        for(int i=0; i<project.balloon2Answer.Count; i++){
+            balloons[i] = (GameObject)Instantiate(answerButton);
+            balloons[i].transform.SetParent(balloonBoom2);
+            balloons[i].transform.localScale = Vector3.one;
+            balloons[i].GetComponentInChildren<TextMeshProUGUI>().text = project.balloon2Answer[i];
+
+            foreach(var word in project.balloons){
+                if(project.balloon2Answer[i] == word.word && word.isCorrect){
+                    balloons[i].GetComponentInChildren<Image>().color = wrongColor;
+                }else if(project.balloon2Answer[i] == word.word){
+                    balloons[i].GetComponentInChildren<Image>().color = correctColor;
                 }
             }
         }

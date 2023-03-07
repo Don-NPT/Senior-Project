@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
     public GameObject pauseScreen;
     public GameObject staffToAssign;
     public bool panelOpen = false;
+    public Transform canvasTransform;
+    public GameObject moneyNotificationPrefab;
+    int previousDay;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,9 +28,10 @@ public class GameManager : MonoBehaviour
             instance = this; 
 
         FindObjectOfType<AudioManager>().Play("BGM");
-        money = 5000;
+        money = 10000;
 
         gameState = GameState.PLAY;
+        previousDay = 1;
         
     }
 
@@ -44,6 +48,17 @@ public class GameManager : MonoBehaviour
                 else Resume();
             }else{
                 panelOpen = false;
+            }
+        }
+    }
+
+    private void FixedUpdate() {
+        if (previousDay != TimeManager.instance.currentDate.Day) {
+            previousDay = TimeManager.instance.currentDate.Day;
+
+            // If it's the 1st day of the month, call the PaySalary method
+            if (previousDay == 1) {
+                PaySalary();
             }
         }
     }
@@ -68,6 +83,12 @@ public class GameManager : MonoBehaviour
     {
         money += num;
         moneyPrefab.transform.DOPunchScale (new Vector3 (0.2f, 0.2f, 0.2f), .25f);
+
+        GameObject moneyNotification = (GameObject)Instantiate(moneyNotificationPrefab);
+        moneyNotification.transform.SetParent(canvasTransform);
+        moneyNotification.transform.localScale = Vector3.one;
+        moneyNotification.transform.position = moneyPrefab.transform.position + (Vector3.up * 50);
+        Destroy(moneyNotification, 3f);
     }
 
     public void Pause()

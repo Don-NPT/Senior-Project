@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class KeyInput : MonoBehaviour
 {
@@ -10,11 +12,14 @@ public class KeyInput : MonoBehaviour
     public TextMeshProUGUI hint;
     public GameObject inputBlockPrefab;
     public GameObject charBlockPrefab;
+    public Slider slider;
     GameObject[] inputBlocks;
     GameObject[] charBlocks;
     private Project project;
+    private Coroutine timer;
+    private Tween sliderTween;
 
-    int index;
+    public int index;
 
     void Start()
     {
@@ -24,6 +29,7 @@ public class KeyInput : MonoBehaviour
     private void OnEnable() {
         project = ProjectManager.instance.currentProject;
         project.keyInputPass = new List<bool>();
+        project.designPoint = 0;
 
         index = 0;
         SetupKeyInput();
@@ -78,6 +84,9 @@ public class KeyInput : MonoBehaviour
             charBlocks[i].GetComponentInChildren<TextMeshProUGUI>().text = additionalChar[i].ToString();
         }
         // RandomizeChildren();
+        slider.maxValue = 15;
+        slider.value = 15;
+        timer = StartCoroutine(StartTimer(15));
     }
 
     // Update is called once per frame
@@ -99,6 +108,12 @@ public class KeyInput : MonoBehaviour
                                 block.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
                             }
                         }
+                    }else{
+                        AudioManager.instance.Play("Warning");
+                        if (sliderTween != null) sliderTween.Kill();
+                        if(timer != null) StopCoroutine(timer);
+                        slider.value -= 2;
+                        timer = StartCoroutine(StartTimer((int)slider.value));
                     }
                 }
             }
@@ -106,6 +121,12 @@ public class KeyInput : MonoBehaviour
             {
                 NextKeyInput();
             }
+        }
+    }
+
+    private void FixedUpdate() {
+        if(slider.value <= 0){
+            NextKeyInput();
         }
     }
 
@@ -121,6 +142,9 @@ public class KeyInput : MonoBehaviour
         }
         if(pass >= inputBlocks.Length) {
             project.keyInputPass.Add(true);
+            WaterFallManager.instance.qualityEachPhase[1] += 5;
+            project.designPoint += 5;
+            AudioManager.instance.Play("Purchase");
             return true;
         }
         else return false;
@@ -128,6 +152,8 @@ public class KeyInput : MonoBehaviour
 
     void NextKeyInput()
     {
+        if (sliderTween != null) sliderTween.Kill();
+        if(timer != null) StopCoroutine(timer);
         index++;
         if(index < project.keyInput.Length)
         {
@@ -173,6 +199,12 @@ public class KeyInput : MonoBehaviour
         {
             charBlocks[i].transform.SetParent(charUI);
         }
+    }
+
+    IEnumerator StartTimer(int time)
+    {
+        sliderTween = slider.DOValue(0, time);
+        yield return new WaitForSeconds(time);
     }
 
     public void DestroyAllBlock()

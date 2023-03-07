@@ -6,7 +6,8 @@ using TMPro;
 public class BalloonBoom : MonoBehaviour
 {
     public static BalloonBoom instance;
-    public GameObject balloonPrefab;
+    public GameObject balloonDevPrefab;
+    public GameObject balloonTestPrefab;
     public Transform canvas;
     public bool isStarted = false;
     private Coroutine spawnBalloon;
@@ -28,32 +29,27 @@ public class BalloonBoom : MonoBehaviour
         
     }
 
-    public void Initiate() {
+    public void InitiateBalloonDev() {
         if(ProjectManager.instance.currentProject != null){
-            // if(ProjectManager.instance.currentProject.phase == Project.Phases.CODING && isStarted == false)
-            // {
-                // isStarted = true;
-                Debug.Log("Starting Balloon Boom");
-                ProjectManager.instance.currentProject.balloonPoint = 0;
-                ProjectManager.instance.currentProject.balloonAnswer = new List<string>();
-                spawnBalloon = StartCoroutine(SpawnBalloon());
-            // }
-            // else if(ProjectManager.instance.currentProject.phase == Project.Phases.TESTING)
-            // {
-            //     isStarted = false;
-            //     Debug.Log("Stopping Balloon Boom");
-            //     StopCoroutine(SpawnBalloon());
-            //     foreach (var balloon in balloons)
-            //     {
-            //         if(balloon.gameObject)
-            //             Destroy(balloon.gameObject);
-            //     }
-            // }
+            Debug.Log("Starting Development Balloon Boom");
+            ProjectManager.instance.currentProject.balloonPoint = 0;
+            ProjectManager.instance.currentProject.balloonAnswer = new List<string>();
+            spawnBalloon = StartCoroutine(SpawnBalloonDev());
         }
         
     }
+
+    public void InitiateBalloonTest() {
+        if(ProjectManager.instance.currentProject != null){
+            Debug.Log("Starting Testing Balloon Boom");
+            ProjectManager.instance.currentProject.balloon2Point = 0;
+            ProjectManager.instance.currentProject.balloon2Answer = new List<string>();
+            spawnBalloon = StartCoroutine(SpawnBalloonTest());
+        }
+        
+    }
+
     public void Stop() {
-        // isStarted = false;
         if(spawnBalloon != null)
         {
             Debug.Log("Stopping Balloon Boom");
@@ -65,7 +61,7 @@ public class BalloonBoom : MonoBehaviour
         }
     }
 
-    IEnumerator SpawnBalloon()
+    IEnumerator SpawnBalloonDev()
     {
         balloons = new GameObject[30];
 
@@ -74,7 +70,7 @@ public class BalloonBoom : MonoBehaviour
             float xPos = Random.Range(0, Screen.width);
             float yPos = 0;
             Vector3 spawnPosition = new Vector3(xPos, yPos, 0f);
-            balloons[i] = (GameObject) Instantiate(balloonPrefab, spawnPosition, Quaternion.identity);
+            balloons[i] = (GameObject) Instantiate(balloonDevPrefab, spawnPosition, Quaternion.identity);
             balloons[i].transform.SetParent(canvas.transform);
             balloons[i].transform.position = spawnPosition;
 
@@ -82,6 +78,30 @@ public class BalloonBoom : MonoBehaviour
             int index = Random.Range(0, ProjectManager.instance.currentProject.balloons.Length-1);
             balloons[i].GetComponentInChildren<TextMeshProUGUI>().text = ProjectManager.instance.currentProject.balloons[index].word;
             balloons[i].GetComponent<Balloon>().index = index;
+            balloons[i].GetComponent<Balloon>().isDev = true;
+            yield return new WaitForSeconds(1);
+        }
+        
+    }
+
+    IEnumerator SpawnBalloonTest()
+    {
+        balloons = new GameObject[30];
+
+        for(int i=0; i<30; i++)
+        {
+            float xPos = Random.Range(0, Screen.width);
+            float yPos = 0;
+            Vector3 spawnPosition = new Vector3(xPos, yPos, 0f);
+            balloons[i] = (GameObject) Instantiate(balloonTestPrefab, spawnPosition, Quaternion.identity);
+            balloons[i].transform.SetParent(canvas.transform);
+            balloons[i].transform.position = spawnPosition;
+
+            // Set text
+            int index = Random.Range(0, ProjectManager.instance.currentProject.balloons.Length-1);
+            balloons[i].GetComponentInChildren<TextMeshProUGUI>().text = ProjectManager.instance.currentProject.balloons[index].word;
+            balloons[i].GetComponent<Balloon>().index = index;
+            balloons[i].GetComponent<Balloon>().isDev = false;
             yield return new WaitForSeconds(1);
         }
         

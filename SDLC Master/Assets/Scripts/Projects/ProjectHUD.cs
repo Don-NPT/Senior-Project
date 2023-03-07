@@ -28,25 +28,11 @@ public class ProjectHUD : MonoBehaviour
     {
         if(hudDetail.activeSelf && ProjectManager.instance.currentProject != null)
         {
-            hudDetail.GetComponentsInChildren<Slider>()[0].maxValue = WaterFallManager.instance.currentWorkAmount;
-            hudDetail.GetComponentsInChildren<Slider>()[0].DOValue(WaterFallManager.instance.progress, 0.3f).Play();
-            hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "ขั้นตอน: " + ProjectManager.instance.currentProject.phase.ToString();
-            // hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[8].text = "เหลือเวลา: " + (ProjectManager.instance.currentProject.deadline - DevelopmentManager.instance.currentDayUsed);
-
-            hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[3].text = WaterFallManager.instance.qualityEachPhase[0] + "/" + ProjectManager.instance.currentProject.requireAnalysis;
-            hudDetail.GetComponentsInChildren<Slider>()[1].DOValue(WaterFallManager.instance.qualityEachPhase[0],0.3f).Play();
-
-            hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[4].text = WaterFallManager.instance.qualityEachPhase[1] + "/" + ProjectManager.instance.currentProject.requireDesign;
-            hudDetail.GetComponentsInChildren<Slider>()[2].DOValue(WaterFallManager.instance.qualityEachPhase[1],0.3f).Play();
-
-            hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[5].text = WaterFallManager.instance.qualityEachPhase[2] + "/" + ProjectManager.instance.currentProject.requireCoding;
-            hudDetail.GetComponentsInChildren<Slider>()[3].DOValue(WaterFallManager.instance.qualityEachPhase[2],0.3f).Play();
-
-            hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[6].text = WaterFallManager.instance.qualityEachPhase[3] + "/" + ProjectManager.instance.currentProject.requireTesting;
-            hudDetail.GetComponentsInChildren<Slider>()[4].DOValue(WaterFallManager.instance.qualityEachPhase[3],0.3f).Play();
-
-            hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[7].text = WaterFallManager.instance.qualityEachPhase[4] + "/" + ProjectManager.instance.currentProject.requireDeployment;
-            hudDetail.GetComponentsInChildren<Slider>()[5].DOValue(WaterFallManager.instance.qualityEachPhase[4],0.3f).Play();
+            if(ProjectManager.instance.currentProject.model.modelName == "Waterfall"){
+                WaterfallHUDUpdate();
+            }else{
+                AgileHUDUpdate();
+            }
         }
     }
 
@@ -114,10 +100,39 @@ public class ProjectHUD : MonoBehaviour
         hudDetail.SetActive(false);
     }
 
-    // void FullQualityAction(int index)
-    // {
-    //     if(WaterFallManager.instance.qualityEachPhase[index] >= ProjectManager.instance.currentProject.requireCoding && WaterFallManager.instance.qualityEachPhase[index] < ProjectManager.instance.currentProject.requireCoding +5){
-    //             hudDetail.GetComponentsInChildren<Slider>()[index+1].gameObject.GetComponentsInChildren<Image>()[1].transform.DOPunchScale (new Vector3 (0.2f, 0.2f, 0.2f), .25f);;
-    //     }
-    // }
+    public void WaterfallHUDUpdate()
+    {
+        // hudDetail.GetComponentsInChildren<Slider>()[0].maxValue = WaterFallManager.instance.currentWorkAmount;
+        // hudDetail.GetComponentsInChildren<Slider>()[0].DOValue(WaterFallManager.instance.progress, 0.3f).Play();
+        if(WaterFallManager.instance.phaseIndex == 0 && FindObjectOfType<Requirement2_new>() != null){
+            hudDetail.GetComponentsInChildren<Slider>()[0].maxValue = ProjectManager.instance.currentProject.requirement2.Length;
+            hudDetail.GetComponentsInChildren<Slider>()[0].DOValue(FindObjectOfType<Requirement2_new>().index, 0.3f).Play();
+        }
+        if(WaterFallManager.instance.phaseIndex == 1 && FindObjectOfType<KeyInput>() != null){
+            hudDetail.GetComponentsInChildren<Slider>()[0].maxValue = ProjectManager.instance.currentProject.keyInput.Length;
+            hudDetail.GetComponentsInChildren<Slider>()[0].DOValue(FindObjectOfType<KeyInput>().index, 0.3f).Play();
+        }
+        
+        hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "ขั้นตอน: " + ProjectManager.instance.currentProject.phase.ToString();
+        // hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[8].text = "เหลือเวลา: " + (ProjectManager.instance.currentProject.deadline - DevelopmentManager.instance.currentDayUsed);
+
+        hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[3].text = WaterFallManager.instance.qualityEachPhase[0] + "/" + ProjectManager.instance.currentProject.requireAnalysis;
+        hudDetail.GetComponentsInChildren<Slider>()[1].DOValue(WaterFallManager.instance.qualityEachPhase[0],0.3f).Play();
+
+        hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[4].text = WaterFallManager.instance.qualityEachPhase[1] + "/" + ProjectManager.instance.currentProject.requireDesign;
+        hudDetail.GetComponentsInChildren<Slider>()[2].DOValue(WaterFallManager.instance.qualityEachPhase[1],0.3f).Play();
+
+        hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[5].text = WaterFallManager.instance.qualityEachPhase[2] + "/" + ProjectManager.instance.currentProject.requireCoding;
+        hudDetail.GetComponentsInChildren<Slider>()[3].DOValue(WaterFallManager.instance.qualityEachPhase[2],0.3f).Play();
+
+        hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[6].text = WaterFallManager.instance.qualityEachPhase[3] + "/" + ProjectManager.instance.currentProject.requireTesting;
+        hudDetail.GetComponentsInChildren<Slider>()[4].DOValue(WaterFallManager.instance.qualityEachPhase[3],0.3f).Play();
+
+        hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[7].text = WaterFallManager.instance.qualityEachPhase[4] + "/" + ProjectManager.instance.currentProject.requireDeployment;
+        hudDetail.GetComponentsInChildren<Slider>()[5].DOValue(WaterFallManager.instance.qualityEachPhase[4],0.3f).Play();
+    }
+
+    void AgileHUDUpdate(){
+        
+    }
 }
