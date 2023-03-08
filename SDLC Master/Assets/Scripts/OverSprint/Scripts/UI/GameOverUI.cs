@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameOverUI : MonoBehaviour {
 
     [SerializeField] private TextMeshProUGUI recipesDeliveredText;
+    [SerializeField] private Button BackToMainButton;
 
     private void Start() {
         KitchenGameManager.Instance.OnStateChanged += KitchenGameManager_OnStateChanged;
@@ -16,6 +19,8 @@ public class GameOverUI : MonoBehaviour {
         if (KitchenGameManager.Instance.IsGameOver()) {
             Show();
             recipesDeliveredText.text = DeliveryManager.Instance.GetSuccessfulRecipesAmount().ToString();
+            BackToMainButton.onClick.AddListener(() => { SceneManager.LoadScene("SampleScene");
+        });
         } else {
             Hide();
         }
