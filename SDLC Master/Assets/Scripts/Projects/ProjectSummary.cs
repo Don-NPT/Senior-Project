@@ -126,7 +126,7 @@ public class ProjectSummary : MonoBehaviour
     void SetupAnswer(Project project)
     {
         // Setup Requirement 1
-        SetupRequirement1(project);
+        // SetupRequirement1(project);
 
         // Setup Requirement 2
         SetupRequirement2(project);
