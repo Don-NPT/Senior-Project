@@ -64,8 +64,8 @@ public class BalloonBoom : MonoBehaviour
     IEnumerator SpawnBalloonDev()
     {
         balloons = new GameObject[30];
-
-        for(int i=0; i<30; i++)
+        int i = 0;
+        while(ProjectManager.instance.currentProject.balloonAnswer.Count < 5)
         {
             float xPos = Random.Range(0, Screen.width);
             float yPos = 0;
@@ -80,7 +80,9 @@ public class BalloonBoom : MonoBehaviour
             balloons[i].GetComponent<Balloon>().index = index;
             balloons[i].GetComponent<Balloon>().isDev = true;
             yield return new WaitForSeconds(1);
+            i++;
         }
+        WaterFallManager.instance.NextPhase();
         
     }
 
@@ -88,7 +90,8 @@ public class BalloonBoom : MonoBehaviour
     {
         balloons = new GameObject[30];
 
-        for(int i=0; i<30; i++)
+        int i = 0;
+        while(ProjectManager.instance.currentProject.balloon2Answer.Count < 5)
         {
             float xPos = Random.Range(0, Screen.width);
             float yPos = 0;
@@ -103,7 +106,9 @@ public class BalloonBoom : MonoBehaviour
             balloons[i].GetComponent<Balloon>().index = index;
             balloons[i].GetComponent<Balloon>().isDev = false;
             yield return new WaitForSeconds(1);
+            i++;
         }
+        WaterFallManager.instance.NextPhase();
         
     }
 }

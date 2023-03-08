@@ -51,6 +51,8 @@ public class WaterFallManager : MonoBehaviour
             project.statEachPhase = new int[6];
             project.startDates = new System.DateTime[6];
             project.startDates[0] = TimeManager.instance.currentDate;
+            project.staffEachPhase[phaseIndex] = StaffManager.instance.getTotalStaffbyPosition(staffPosition);
+            project.statEachPhase[phaseIndex] = StaffManager.instance.getSumStaffStat(staffPosition);
             requirementUIs[0].SetActive(true);
             ProjectHUD.instance.UpdateList();
             foreach(var staff in StaffManager.instance.getAllStaff())
@@ -61,33 +63,36 @@ public class WaterFallManager : MonoBehaviour
         }
     }
 
-    // IEnumerator UpdateProgress()
-    // {
-    //     progress = 0;
-    //     // int TotalTime = (int) Mathf.Round(project.getWorkAmountbyIndex(phaseIndex) / StaffManager.instance.getTotalStaffbyPosition(staffPosition));
-    //     project.staffEachPhase[phaseIndex] = StaffManager.instance.getTotalStaffbyPosition(staffPosition);
-    //     project.statEachPhase[phaseIndex] = StaffManager.instance.getSumStaffStat(staffPosition);
+    IEnumerator UpdateProgress()
+    {
+        progress = 0;
+        // int TotalTime = (int) Mathf.Round(project.getWorkAmountbyIndex(phaseIndex) / StaffManager.instance.getTotalStaffbyPosition(staffPosition));
+        project.staffEachPhase[phaseIndex] = StaffManager.instance.getTotalStaffbyPosition(staffPosition);
+        project.statEachPhase[phaseIndex] = StaffManager.instance.getSumStaffStat(staffPosition);
 
-    //     while(progress < currentWorkAmount)
-    //     {
-    //         yield return new WaitForSeconds(1);
+        while(progress < currentWorkAmount)
+        {
+            yield return new WaitForSeconds(1);
 
-    //         if(GameManager.instance.gameState != GameState.PAUSE){
-    //             progress += project.staffEachPhase[phaseIndex];
-    //             qualityEachPhase[phaseIndex] += project.statEachPhase[phaseIndex];
-    //         }
-    //     }
-    //     if(project.phase != Project.Phases.DEPLOYMENT)
-    //         NextPhase();
-    //     else
-    //         FinishProject();
-    // }
+            if(GameManager.instance.gameState != GameState.PAUSE){
+                progress += project.staffEachPhase[phaseIndex];
+                qualityEachPhase[phaseIndex] += project.statEachPhase[phaseIndex];
+            }
+        }
+        if(project.phase != Project.Phases.DEPLOYMENT)
+            NextPhase();
+        else
+            FinishProject();
+    }
 
     public void NextPhase()
     {
         project.finishDates[phaseIndex] = TimeManager.instance.currentDate;
         phaseIndex++;
         project.startDates[phaseIndex] = TimeManager.instance.currentDate;
+        project.staffEachPhase[phaseIndex] = StaffManager.instance.getTotalStaffbyPosition(staffPosition);
+        project.statEachPhase[phaseIndex] = StaffManager.instance.getSumStaffStat(staffPosition);
+
         switch(project.phase)
         {
             case Project.Phases.ANALYSIS:
@@ -118,6 +123,7 @@ public class WaterFallManager : MonoBehaviour
                 staffPosition = "Programmer";
                 BalloonBoom.instance.Stop();
                 project.phase = Project.Phases.DEPLOYMENT;
+                StartCoroutine(UpdateProgress());
                 break;
             case Project.Phases.DEPLOYMENT:
                 currentWorkAmount = 0;

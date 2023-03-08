@@ -155,11 +155,13 @@ public class KeyInput : MonoBehaviour
         if (sliderTween != null) sliderTween.Kill();
         if(timer != null) StopCoroutine(timer);
         index++;
+        ProjectHUD.instance.WaterfallHUDUpdate();
         if(index < project.keyInput.Length)
         {
             SetupKeyInput();
         }else{
             gameObject.SetActive(false);
+            WaterFallManager.instance.NextPhase();
         }
     }
 

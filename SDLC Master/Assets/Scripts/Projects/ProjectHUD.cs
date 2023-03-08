@@ -112,6 +112,18 @@ public class ProjectHUD : MonoBehaviour
             hudDetail.GetComponentsInChildren<Slider>()[0].maxValue = ProjectManager.instance.currentProject.keyInput.Length;
             hudDetail.GetComponentsInChildren<Slider>()[0].DOValue(FindObjectOfType<KeyInput>().index, 0.3f).Play();
         }
+        if(WaterFallManager.instance.phaseIndex == 2){
+            hudDetail.GetComponentsInChildren<Slider>()[0].maxValue = 5;
+            hudDetail.GetComponentsInChildren<Slider>()[0].DOValue(ProjectManager.instance.currentProject.balloonAnswer.Count, 0.3f).Play();
+        }
+        if(WaterFallManager.instance.phaseIndex == 3){
+            hudDetail.GetComponentsInChildren<Slider>()[0].maxValue = 5;
+            hudDetail.GetComponentsInChildren<Slider>()[0].DOValue(ProjectManager.instance.currentProject.balloon2Answer.Count, 0.3f).Play();
+        }
+        if(WaterFallManager.instance.phaseIndex == 4){
+            hudDetail.GetComponentsInChildren<Slider>()[0].maxValue = WaterFallManager.instance.currentWorkAmount;
+            hudDetail.GetComponentsInChildren<Slider>()[0].DOValue( WaterFallManager.instance.progress, 0.3f).Play();
+        }
         
         hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "ขั้นตอน: " + ProjectManager.instance.currentProject.phase.ToString();
         // hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[8].text = "เหลือเวลา: " + (ProjectManager.instance.currentProject.deadline - DevelopmentManager.instance.currentDayUsed);
