@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class DeliveryManager : MonoBehaviour
 {
@@ -77,6 +78,13 @@ public class DeliveryManager : MonoBehaviour
         RecipeSO newRecipeSO = ScriptableObject.CreateInstance<RecipeSO>();
         newRecipeSO.kitchenObjectList = new List<KitchenObjectSO>(plateKitchenObject.GetKitchenObjectSOList());
         newRecipeSO.name = "Custom Recipe";
+        
+        // Create a new asset for the new recipe
+        string recipeAssetPath = "Assets/OverSprint/ScriptableObjects/KitchenObjectSO/RecipeSO";
+        AssetDatabase.CreateFolder("Assets", "NewRecipes");
+        AssetDatabase.CreateAsset(newRecipeSO, recipeAssetPath + "/NewRecipe" + UnityEngine.Random.Range(0, 9999) + ".asset");
+        AssetDatabase.SaveAssets();
+
         waitingRecipeSOList.Add(newRecipeSO);
         Debug.Log("New recipe created: " + string.Join(", ", newRecipeSO.kitchenObjectList));
         OnRecipeSpawned?.Invoke(this, EventArgs.Empty);
