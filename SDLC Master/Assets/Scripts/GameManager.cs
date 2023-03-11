@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour
         else 
             instance = this; 
 
-        FindObjectOfType<AudioManager>().Play("BGM");
         money = 10000;
 
         gameState = GameState.PLAY;

@@ -11,6 +11,7 @@ public class KitchenGameManager : MonoBehaviour
     public event EventHandler OnStateChanged;
 
     private enum State{
+        Idle,
         WaitingToStart,
         CountdownToStart,
         GamePlaying,
@@ -27,10 +28,10 @@ public class KitchenGameManager : MonoBehaviour
 
     private void Awake(){
         Instance = this;
-        state = State.WaitingToStart;
+        state = State.Idle;
     }
 
-        private void Update() {
+    private void Update() {
         switch (state) {
             case State.WaitingToStart:
             waitingToStartTimer -= Time.deltaTime;
@@ -58,6 +59,10 @@ public class KitchenGameManager : MonoBehaviour
                 break;
         }
         Debug.Log(state);
+    }
+
+    public void StartGame(){
+        state = State.WaitingToStart;
     }
 
     public bool IsGamePlaying() {
