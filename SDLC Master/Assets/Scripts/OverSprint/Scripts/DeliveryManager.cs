@@ -82,7 +82,6 @@ public class DeliveryManager : MonoBehaviour
         
         // Create a new asset for the new recipe
         string recipeAssetPath = "Assets/OverSprint/ScriptableObjects/KitchenObjectSO/RecipeSO/";
-        AssetDatabase.CreateFolder("Assets", "NewRecipes");
         AssetDatabase.CreateAsset(newRecipeSO, recipeAssetPath + "NewRecipe" + (recipeListSO.recipeSOList.Count) + ".asset");
         AssetDatabase.SaveAssets();
 
@@ -117,6 +116,22 @@ public class DeliveryManager : MonoBehaviour
         waitingRecipeSOList.Add(waitingRecipeSO);
 
         OnRecipeSpawned?.Invoke(this, EventArgs.Empty);
+    }
+    public void ClearNewRecipeList()
+    {
+        // Loop through the list in reverse order so that we can safely remove items
+        for (int i = recipeListSO.recipeSOList.Count - 1; i > 0; i--)
+        {
+            // Check if the recipe is a NewRecipe
+            if (waitingRecipeSOList.Contains(recipeListSO.recipeSOList[i]))
+            {
+                // Remove the NewRecipe from the recipe list
+                recipeListSO.recipeSOList.RemoveAt(i);
+            }
+        }
+
+        // Clear the waitingRecipeSOList
+        waitingRecipeSOList.Clear();
     }
 
 }

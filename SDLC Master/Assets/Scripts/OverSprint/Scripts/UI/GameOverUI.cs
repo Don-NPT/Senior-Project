@@ -20,6 +20,7 @@ public class GameOverUI : MonoBehaviour {
             Show();
             recipesDeliveredText.text = DeliveryManager.Instance.GetSuccessfulRecipesAmount().ToString();
             BackToMainButton.onClick.AddListener(() => { SceneManager.LoadScene("SampleScene");
+            DeliveryManager.Instance.ClearNewRecipeList();
         });
         } else {
             Hide();
