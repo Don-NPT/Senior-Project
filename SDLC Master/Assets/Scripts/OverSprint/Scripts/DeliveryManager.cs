@@ -13,6 +13,8 @@ public class DeliveryManager : MonoBehaviour
 
     public static DeliveryManager Instance { get; private set; }
 
+    public List<string> newRecipeNames = new List<string>();
+
     [SerializeField] private RecipeListSO recipeListSO;
 
     private List<RecipeSO> waitingRecipeSOList;
@@ -76,10 +78,9 @@ public class DeliveryManager : MonoBehaviour
         }
         // No matching recipe found, add plate contents as a new recipe
         RecipeSO newRecipeSO = ScriptableObject.CreateInstance<RecipeSO>();
-        public List<string> newRecipeNames = new List<string>();
         newRecipeSO.kitchenObjectList = new List<KitchenObjectSO>(plateKitchenObject.GetKitchenObjectSOList());
         newRecipeSO.name = "Custom Recipe " + (recipeListSO.recipeSOList.Count + 1);
-        newRecipeNames.add(newRecipeSO.name);
+        newRecipeNames.Add(newRecipeSO.name);
         recipeListSO.recipeSOList.Add(newRecipeSO);
         
         // Create a new asset for the new recipe
@@ -89,6 +90,7 @@ public class DeliveryManager : MonoBehaviour
 
         waitingRecipeSOList.Add(newRecipeSO);
         Debug.Log("New recipe created: " + string.Join(", ", newRecipeSO.kitchenObjectList));
+        Debug.Log("New Recipe Names List: " + string.Join(", ", newRecipeNames));
         OnRecipeSpawned?.Invoke(this, EventArgs.Empty);
         spawnNewRecipe(); // Spawn a new recipe after a new recipe is added
         OnRecipeFailed?.Invoke(this, EventArgs.Empty);
