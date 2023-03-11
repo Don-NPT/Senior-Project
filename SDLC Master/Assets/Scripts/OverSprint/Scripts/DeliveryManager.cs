@@ -76,8 +76,10 @@ public class DeliveryManager : MonoBehaviour
         }
         // No matching recipe found, add plate contents as a new recipe
         RecipeSO newRecipeSO = ScriptableObject.CreateInstance<RecipeSO>();
+        public List<string> newRecipeNames = new List<string>();
         newRecipeSO.kitchenObjectList = new List<KitchenObjectSO>(plateKitchenObject.GetKitchenObjectSOList());
         newRecipeSO.name = "Custom Recipe " + (recipeListSO.recipeSOList.Count + 1);
+        newRecipeNames.add(newRecipeSO.name);
         recipeListSO.recipeSOList.Add(newRecipeSO);
         
         // Create a new asset for the new recipe
