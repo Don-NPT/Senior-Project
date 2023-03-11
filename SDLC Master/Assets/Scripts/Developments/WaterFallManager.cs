@@ -8,6 +8,7 @@ public class WaterFallManager : MonoBehaviour
 
     public GameObject[] requirementUIs;
     public GameObject[] designUIs;
+    public GameObject[] detailminigames;
 
     [HideInInspector]
     public int[] qualityEachPhase;
@@ -53,7 +54,11 @@ public class WaterFallManager : MonoBehaviour
             project.startDates[0] = TimeManager.instance.currentDate;
             project.staffEachPhase[phaseIndex] = StaffManager.instance.getTotalStaffbyPosition(staffPosition);
             project.statEachPhase[phaseIndex] = StaffManager.instance.getSumStaffStat(staffPosition);
-            requirementUIs[0].SetActive(true);
+            if(detailminigames[0].GetComponent<Tutorial>().Checktutorial()==true){
+                detailminigames[0].GetComponent<Tutorial>().Open();
+            }else{
+                requirementUIs[0].SetActive(true);
+            }
             ProjectHUD.instance.UpdateList();
             foreach(var staff in StaffManager.instance.getAllStaff())
             {
@@ -99,15 +104,24 @@ public class WaterFallManager : MonoBehaviour
                 currentWorkAmount = project.designWork;
                 staffPosition = "Designer";
                 requirementUIs[0].SetActive(false);
-                designUIs[0].SetActive(true);
-                GameManager.instance.Play();
+                if(detailminigames[1].GetComponent<Tutorial>().Checktutorial()==true){
+                    detailminigames[1].GetComponent<Tutorial>().Open();
+                }else{
+                    designUIs[0].SetActive(true);
+                    GameManager.instance.Play();
+                }
+                //designUIs[0].SetActive(true);
                 project.phase = Project.Phases.DESIGN;
                 break;
             case Project.Phases.DESIGN:
                 currentWorkAmount = project.codingWork;
                 staffPosition = "Programmer";
                 designUIs[0].SetActive(false);
-                GameManager.instance.Play();
+                if(detailminigames[2].GetComponent<Tutorial>().Checktutorial()==true){
+                    detailminigames[2].GetComponent<Tutorial>().Open();
+                }else{
+                    GameManager.instance.Play();
+                }
                 BalloonBoom.instance.InitiateBalloonDev();
                 project.phase = Project.Phases.CODING;
                 break;
@@ -115,6 +129,11 @@ public class WaterFallManager : MonoBehaviour
                 currentWorkAmount = project.testingWork;
                 staffPosition = "Tester";
                 BalloonBoom.instance.Stop();
+                if(detailminigames[3].GetComponent<Tutorial>().Checktutorial()==true){
+                    detailminigames[3].GetComponent<Tutorial>().Open();
+                }else{
+                    GameManager.instance.Play();
+                }
                 BalloonBoom.instance.InitiateBalloonTest();
                 project.phase = Project.Phases.TESTING;
                 break;

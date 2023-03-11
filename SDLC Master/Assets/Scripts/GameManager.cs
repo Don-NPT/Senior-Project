@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         gameState = GameState.PAUSE;
-        pauseScreen.SetActive(true);
+        //pauseScreen.SetActive(true);
     }
 
     public void Resume()
