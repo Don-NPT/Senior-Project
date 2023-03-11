@@ -97,9 +97,17 @@ public class DeliveryManager : MonoBehaviour
     private void spawnNewRecipe()
     {
         RecipeSO waitingRecipeSO = recipeListSO.recipeSOList[UnityEngine.Random.Range(0, recipeListSO.recipeSOList.Count)];
+        
+        // Check if waitingRecipeSO is already in waitingRecipeSOList
+        if (waitingRecipeSOList.Contains(waitingRecipeSO))
+        {
+            Debug.Log("Recipe already exists in waiting list: " + waitingRecipeSO.name);
+            return;
+        }
 
         waitingRecipeSOList.Add(waitingRecipeSO);
 
         OnRecipeSpawned?.Invoke(this, EventArgs.Empty);
     }
+
 }
