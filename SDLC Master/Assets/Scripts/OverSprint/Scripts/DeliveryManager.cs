@@ -28,21 +28,9 @@ public class DeliveryManager : MonoBehaviour
 
     private void Update()
     {
-        if(KitchenGameManager.Instance.IsGamePlaying()){
-            spawnRecipeTimer -= Time.deltaTime;
-            if (spawnRecipeTimer <= 0f)
-            {
-                spawnRecipeTimer = spawnRecipeTimerMax;
-
-                if (waitingRecipeSOList.Count < waitingRecipesMax)
-                {
-                    RecipeSO waitingRecipeSO = recipeListSO.recipeSOList[UnityEngine.Random.Range(0, recipeListSO.recipeSOList.Count)];
-
-                    waitingRecipeSOList.Add(waitingRecipeSO);
-
-                    OnRecipeSpawned?.Invoke(this, EventArgs.Empty);
-                }
-            }
+        if (KitchenGameManager.Instance.IsGamePlaying() && waitingRecipeSOList.Count < waitingRecipesMax)
+        {
+            spawnNewRecipe();
         }
     }
 
@@ -54,44 +42,49 @@ public class DeliveryManager : MonoBehaviour
 
             if (waitingRecipeSO.kitchenObjectList.Count == plateKitchenObject.GetKitchenObjectSOList().Count)
             {
-                //มีจำนวนตรงกับวัตถุดิบ
+                // Matching number of ingredients found
                 bool plateContentsMatchesRecipe = true;
                 foreach (KitchenObjectSO recipeKitchenObjectSO in waitingRecipeSO.kitchenObjectList)
                 {
-                    //เช็คไปทั่วทั้งหมดในสูตร วัตถุดิบ-สูตร
+                    // Check if each recipe ingredient is present in plate
                     bool ingredientFound = false;
                     foreach (KitchenObjectSO plateKitchenObjectSO in plateKitchenObject.GetKitchenObjectSOList())
                     {
-                        //เช็คไปทั่วทั้งหมดในจาน วัตถุดิบ-จาน
                         if (plateKitchenObjectSO == recipeKitchenObjectSO)
                         {
-                            //วัตถุดิบถูกต้อง
                             ingredientFound = true;
                             break;
                         }
                     }
                     if (!ingredientFound)
                     {
-                        //วัตถุดิบในสูตร ไม่เจอในจาน
                         plateContentsMatchesRecipe = false;
                     }
                 }
                 if (plateContentsMatchesRecipe)
                 {
-                    //ผู้เล่นส่งถูกสูตร
+                    // Matching recipe found
                     successfulRecipesAmount++;
                     waitingRecipeSOList.RemoveAt(i);
                     OnRecipeCompleted?.Invoke(this, EventArgs.Empty);
                     OnRecipeSuccess?.Invoke(this, EventArgs.Empty);
+                    spawnNewRecipe(); // Spawn a new recipe after a successful delivery
                     return;
                 }
             }
-
         }
-        //ไม่พบสูตรที่ตรงกัน
-        //ผู้เล่นไม่ได้ส่งถูกสูตร
+        // No matching recipe found, add plate contents as a new recipe
+        RecipeSO newRecipeSO = ScriptableObject.CreateInstance<RecipeSO>();
+        newRecipeSO.kitchenObjectList = new List<KitchenObjectSO>(plateKitchenObject.GetKitchenObjectSOList());
+        newRecipeSO.name = "Custom Recipe";
+        waitingRecipeSOList.Add(newRecipeSO);
+        Debug.Log("New recipe created: " + string.Join(", ", newRecipeSO.kitchenObjectList));
+        OnRecipeSpawned?.Invoke(this, EventArgs.Empty);
+        spawnNewRecipe(); // Spawn a new recipe after a new recipe is added
         OnRecipeFailed?.Invoke(this, EventArgs.Empty);
     }
+
+
 
     public List<RecipeSO> GetWaitingRecipeSOList(){
         return waitingRecipeSOList;
@@ -101,4 +94,12 @@ public class DeliveryManager : MonoBehaviour
         return successfulRecipesAmount;
     }
     
+    private void spawnNewRecipe()
+    {
+        RecipeSO waitingRecipeSO = recipeListSO.recipeSOList[UnityEngine.Random.Range(0, recipeListSO.recipeSOList.Count)];
+
+        waitingRecipeSOList.Add(waitingRecipeSO);
+
+        OnRecipeSpawned?.Invoke(this, EventArgs.Empty);
+    }
 }
