@@ -9,6 +9,8 @@ public class KitchenGameManager : MonoBehaviour
     public static KitchenGameManager Instance { get; private set; }
 
     public event EventHandler OnStateChanged;
+    public GameObject trackingCamera;
+    public GameObject transitionCamera;
 
     private enum State{
         Idle,
@@ -29,6 +31,12 @@ public class KitchenGameManager : MonoBehaviour
     private void Awake(){
         Instance = this;
         state = State.Idle;
+        transitionCamera.SetActive(true);
+        trackingCamera.SetActive(false);
+    }
+
+    private void Start() {
+        trackingCamera.SetActive(true);
     }
 
     private void Update() {
