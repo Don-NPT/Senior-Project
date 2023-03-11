@@ -5,7 +5,7 @@ using UnityEngine;
 public class AgileManager : MonoBehaviour
 {
     public static AgileManager instance;
-    public GameObject startUI;
+    public GameObject[] agileUI;
 
     [HideInInspector] public Project project;
     // Start is called before the first frame update
@@ -30,7 +30,7 @@ public class AgileManager : MonoBehaviour
             {
                 staff.gameObject.GetComponent<StaffController>().AssignWork();
             }
-            startUI.SetActive(true);
+            agileUI[0].SetActive(true);
             // StartCoroutine(UpdateProgress());
         }
     }
