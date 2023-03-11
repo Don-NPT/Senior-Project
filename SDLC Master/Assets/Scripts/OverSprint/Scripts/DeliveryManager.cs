@@ -77,12 +77,13 @@ public class DeliveryManager : MonoBehaviour
         // No matching recipe found, add plate contents as a new recipe
         RecipeSO newRecipeSO = ScriptableObject.CreateInstance<RecipeSO>();
         newRecipeSO.kitchenObjectList = new List<KitchenObjectSO>(plateKitchenObject.GetKitchenObjectSOList());
-        newRecipeSO.name = "Custom Recipe";
+        newRecipeSO.name = "Custom Recipe " + (recipeListSO.recipeSOList.Count + 1);
+        recipeListSO.recipeSOList.Add(newRecipeSO);
         
         // Create a new asset for the new recipe
-        string recipeAssetPath = "Assets/OverSprint/ScriptableObjects/KitchenObjectSO/RecipeSO";
+        string recipeAssetPath = "Assets/OverSprint/ScriptableObjects/KitchenObjectSO/RecipeSO/";
         AssetDatabase.CreateFolder("Assets", "NewRecipes");
-        AssetDatabase.CreateAsset(newRecipeSO, recipeAssetPath + "/NewRecipe" + UnityEngine.Random.Range(0, 9999) + ".asset");
+        AssetDatabase.CreateAsset(newRecipeSO, recipeAssetPath + "NewRecipe" + (recipeListSO.recipeSOList.Count) + ".asset");
         AssetDatabase.SaveAssets();
 
         waitingRecipeSOList.Add(newRecipeSO);
