@@ -121,8 +121,8 @@ public class WaterFallManager : MonoBehaviour
                     detailminigames[2].GetComponent<Tutorial>().Open();
                 }else{
                     GameManager.instance.Play();
+                    BalloonBoom.instance.InitiateBalloonDev();
                 }
-                BalloonBoom.instance.InitiateBalloonDev();
                 project.phase = Project.Phases.CODING;
                 break;
             case Project.Phases.CODING:
@@ -133,8 +133,8 @@ public class WaterFallManager : MonoBehaviour
                     detailminigames[3].GetComponent<Tutorial>().Open();
                 }else{
                     GameManager.instance.Play();
+                    BalloonBoom.instance.InitiateBalloonTest();
                 }
-                BalloonBoom.instance.InitiateBalloonTest();
                 project.phase = Project.Phases.TESTING;
                 break;
             case Project.Phases.TESTING:
