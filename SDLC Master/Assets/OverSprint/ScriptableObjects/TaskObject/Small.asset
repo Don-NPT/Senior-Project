@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 834a82feefb1b8a4fa8bd103d9670f5e, type: 3}
-  m_Name: NewRecipe3
+  m_Script: {fileID: 11500000, guid: dcf790b61d0907843932607bfea2f17f, type: 3}
+  m_Name: Small
   m_EditorClassIdentifier: 
-  kitchenObjectList:
-  - {fileID: 11400000, guid: 729e7d8ca3e87f441aa6c77afc900126, type: 2}
-  - {fileID: 11400000, guid: 035bb2cfb9353ef498507977bb38895c, type: 2}
-  recipeName: 
+  prefeb: {fileID: 0}
+  sprite: {fileID: 0}
+  objectName: 

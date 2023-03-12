@@ -25,15 +25,17 @@ public class PlateKitchenObject : KitchenObject
             //ไม่ใช่ของที่จะมาใส่จาน
             return false;
         }
-        if(kitchenObjectSOList.Contains(kitchenObjectSO)){
-            //มี ประเภทนี้แล้ว
-            return false;
-        }else{
+        // if(kitchenObjectSOList.Contains(kitchenObjectSO)){
+        //     //มี ประเภทนี้แล้ว
+        //     return false;
+        // }
+        else{
             kitchenObjectSOList.Add(kitchenObjectSO);
 
             OnIngredientAdded?.Invoke(this, new OnIngredientAddedEventArgs{
                 kitchenObjectSO = kitchenObjectSO
             });
+            Debug.Log(kitchenObjectSO.objectName);
             return true;
         }
     }

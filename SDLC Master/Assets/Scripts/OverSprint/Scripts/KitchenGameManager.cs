@@ -66,7 +66,7 @@ public class KitchenGameManager : MonoBehaviour
             case State.GameOver:
                 break;
         }
-        Debug.Log(state);
+        // Debug.Log(state);
     }
 
     public void StartGame(){

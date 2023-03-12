@@ -15,6 +15,7 @@ public class PlateCompleteVisual : MonoBehaviour {
 
     [SerializeField] private PlateKitchenObject plateKitchenObject;
     [SerializeField] private List<KitchenObjectSO_GameObject> kitchenObjectSOGameObjectList;
+    private int index;
 
 
     private void Start() {
@@ -23,13 +24,22 @@ public class PlateCompleteVisual : MonoBehaviour {
         foreach (KitchenObjectSO_GameObject kitchenObjectSOGameObject in kitchenObjectSOGameObjectList) {
             kitchenObjectSOGameObject.gameObject.SetActive(false);
         }
+        index=0;
     }
 
     private void PlateKitchenObject_OnIngredientAdded(object sender, PlateKitchenObject.OnIngredientAddedEventArgs e) {
-        foreach (KitchenObjectSO_GameObject kitchenObjectSOGameObject in kitchenObjectSOGameObjectList) {
-            if (kitchenObjectSOGameObject.kitchenObjectSO == e.kitchenObjectSO) {
-                kitchenObjectSOGameObject.gameObject.SetActive(true);
-            }
+        // foreach (KitchenObjectSO_GameObject kitchenObjectSOGameObject in kitchenObjectSOGameObjectList) {
+        //     if (kitchenObjectSOGameObject.kitchenObjectSO == e.kitchenObjectSO) {
+        //         kitchenObjectSOGameObject.gameObject.SetActive(true);
+        //     }
+        // }
+
+        // for(int i=0; i<kitchenObjectSOGameObjectList.Count; i++){
+        //     kitchenObjectSOGameObjectList[i].gameObject.SetActive(true);
+        // }
+        if(index < kitchenObjectSOGameObjectList.Count){
+            kitchenObjectSOGameObjectList[index].gameObject.SetActive(true);
+            index++;
         }
     }
 
