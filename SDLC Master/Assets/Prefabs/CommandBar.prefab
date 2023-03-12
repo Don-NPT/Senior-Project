@@ -569,6 +569,7 @@ GameObject:
   - component: {fileID: 11914977471471634}
   - component: {fileID: 2428851493223102473}
   - component: {fileID: 6008200104387998055}
+  - component: {fileID: 2104544992722713409}
   m_Layer: 5
   m_Name: HireBtn
   m_TagString: Untagged
@@ -690,10 +691,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f557dbb437e75e46b53174545e54476, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  assignStaff: 1
+  assignStaff: 0
   assignWork: 0
   openShop: 0
   offsetY: {x: 0, y: 2.1, z: 0}
+--- !u!114 &2104544992722713409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4309354356486080627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8757aafa1bcea1641832e1b83a4c9b99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 0}
 --- !u!1 &4424754712873501311
 GameObject:
   m_ObjectHideFlags: 0

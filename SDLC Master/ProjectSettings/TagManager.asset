@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Chair
   - PCset
+  - Staff
   layers:
   - Default
   - TransparentFX
@@ -16,8 +17,8 @@ TagManager:
   - PostProcessing
   - Ground
   - Chair
-  - 
-  - 
+  - HUD
+  - Counter
   - 
   - 
   - 
@@ -42,4 +43,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 1700676197
+    locked: 0
+  - name: HUD
+    uniqueID: 2762752823
     locked: 0

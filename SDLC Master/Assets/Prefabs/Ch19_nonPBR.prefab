@@ -1718,10 +1718,11 @@ GameObject:
   - component: {fileID: 7406328033274008113}
   - component: {fileID: 3470231112753432651}
   - component: {fileID: 2085981804897292104}
-  - component: {fileID: 9053217775699385833}
+  - component: {fileID: -127211703217520886}
+  - component: {fileID: 3707156995819655803}
   m_Layer: 0
   m_Name: Ch19_nonPBR
-  m_TagString: Untagged
+  m_TagString: Staff
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1775,7 +1776,7 @@ CapsuleCollider:
   m_Height: 2.070026
   m_Direction: 1
   m_Center: {x: 0, y: 0.53501296, z: 0}
---- !u!114 &9053217775699385833
+--- !u!114 &-127211703217520886
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1784,12 +1785,32 @@ MonoBehaviour:
   m_GameObject: {fileID: 7891222129018980491}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86149a4a5b7a56d4383bcf69db461940, type: 3}
+  m_Script: {fileID: 11500000, guid: b7354113969840a448e8ecd5e5e7090f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fname: 
+  lname: 
+  coding: 0
+  design: 0
+  social: 0
+  analysis: 0
+  wage: 0
+  isAssign: 0
+--- !u!114 &3707156995819655803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7891222129018980491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e38d2cf12a4882488ace005dc336ef6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   uiPrefab: {fileID: 5744955277718794952, guid: f38efa688f4c835488519a2527519abe, type: 3}
+  ui: {fileID: 5744955277718794952, guid: f38efa688f4c835488519a2527519abe, type: 3}
   offsetY: {x: 0, y: 2.1, z: 0}
-  customEase: 27
   progressBarPrefab: {fileID: 6994759422632325876, guid: 2044e959f8228734783cf2fcf12327f4, type: 3}
   state: 0
 --- !u!1 &8164473169928530961

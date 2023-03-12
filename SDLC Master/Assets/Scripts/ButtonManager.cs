@@ -1,5 +1,6 @@
 
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 
@@ -10,10 +11,18 @@ public class ButtonManager : MonoBehaviour, IPointerEnterHandler, IPointerDownHa
     public string clickSound = "Click";
     public bool assign = false;
     public bool doPunch = false;
-    private StaffManager staffManager;
+    public bool isTabButton = false;
+    private StaffAssigner staffAssigner;
+    public bool isSelected = false;
+
+    [Header("Sprite Transition")]
+    public bool SpriteSwap = false;
+    public Sprite defaultSprite;
+    public Sprite newSprite;
 
     private void Start() {
-        if(assign) staffManager = FindObjectOfType(typeof(StaffManager)) as StaffManager; 
+        if(assign) staffAssigner = FindObjectOfType(typeof(StaffAssigner)) as StaffAssigner; 
+        if(isTabButton) isSelected = false;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -25,8 +34,17 @@ public class ButtonManager : MonoBehaviour, IPointerEnterHandler, IPointerDownHa
     public void OnPointerDown (PointerEventData eventData) 
      {
         if(isButton) FindObjectOfType<AudioManager>().Play(clickSound);
-        if(assign) staffManager.AssignStaff();
+        if(assign) staffAssigner.AssignStaff();
         if(doPunch) transform.DOPunchScale (new Vector3 (0.2f, 0.2f, 0.2f), .25f);
+        if(isTabButton) isSelected = true;
+
+        if(SpriteSwap && GetComponent<Image>().sprite != newSprite) GetComponent<Image>().sprite = newSprite;
+        else if(SpriteSwap && GetComponent<Image>().sprite != defaultSprite) GetComponent<Image>().sprite = defaultSprite;
+     }
+
+     public void OnDisable()
+     {
+        if(isTabButton) isSelected = false;
      }
 
 

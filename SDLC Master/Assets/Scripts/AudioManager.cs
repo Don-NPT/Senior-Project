@@ -24,6 +24,8 @@ public class AudioManager : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
+
+        FindObjectOfType<AudioManager>().Play("BGM");
     }
 
     // Update is called once per frame
