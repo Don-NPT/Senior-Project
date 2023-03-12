@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13629ab59c082c544b2cd1663cfae715, type: 3}
-  m_Name: RecipeListSO
+  m_Script: {fileID: 11500000, guid: dcf790b61d0907843932607bfea2f17f, type: 3}
+  m_Name: Small
   m_EditorClassIdentifier: 
-  recipeSOList: []
+  prefeb: {fileID: 0}
+  sprite: {fileID: 0}
+  objectName: 

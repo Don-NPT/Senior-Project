@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13629ab59c082c544b2cd1663cfae715, type: 3}
-  m_Name: RecipeListSO
+  m_Script: {fileID: 11500000, guid: 7a2ed7b9211ec4c4a9b2bdb335046d0c, type: 3}
+  m_Name: TaskPlate
   m_EditorClassIdentifier: 
-  recipeSOList: []
+  prefeb: {fileID: 630135684838246574, guid: 2a1aeb502c520f645b6d947bffa6b713, type: 3}
+  sprite: {fileID: 21300000, guid: 3928afb5321bb3d489bbd4ac581b29a2, type: 3}
+  objectName: Plate
