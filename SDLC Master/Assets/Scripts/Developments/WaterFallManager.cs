@@ -13,8 +13,6 @@ public class WaterFallManager : MonoBehaviour
     [HideInInspector]
     public int[] qualityEachPhase;
     [HideInInspector]
-    public int[] TotalQualityEachPhase;
-    [HideInInspector]
     public int currentWorkAmount;
     [HideInInspector]
     public int progress;
@@ -47,7 +45,6 @@ public class WaterFallManager : MonoBehaviour
             staffPosition = "Analyst";
             phaseIndex = 0;
             qualityEachPhase = new int[6];  
-            TotalQualityEachPhase = new int[6]; 
             project.staffEachPhase = new int[6];
             project.statEachPhase = new int[6];
             project.startDates = new System.DateTime[6];
@@ -174,4 +171,78 @@ public class WaterFallManager : MonoBehaviour
         GameManager.instance.Play();
     }
 
+    public void Save()
+    {
+        WaterfallAdapter waterfallAdapter = new WaterfallAdapter();
+        if(qualityEachPhase != null && project != null){
+            waterfallAdapter.Save(qualityEachPhase,currentWorkAmount,progress,project.projectId,staffPosition,phaseIndex);
+        }else{
+            waterfallAdapter.Save(null,currentWorkAmount,0,-1,staffPosition,-1);
+        }
+    }
+
+    public void Load()
+    {
+        WaterfallAdapter waterfallAdapter = new WaterfallAdapter();
+        WaterfallAdapter saveData = waterfallAdapter.Load();
+
+        qualityEachPhase = saveData.qualityEachPhase;
+        currentWorkAmount = saveData.currentWorkAmount;
+        progress = 0;
+        if(saveData.projectIndex != -1) project = ProjectManager.instance.GetProjectbyId(saveData.projectIndex);
+        staffPosition = saveData.staffPosition;
+        phaseIndex = saveData.phaseIndex;
+
+        ProjectHUD.instance.UpdateList();
+        // Reset current phase quality
+        if(qualityEachPhase != null && qualityEachPhase.Length != 0) {qualityEachPhase[phaseIndex] = 0;}
+
+        switch(phaseIndex){
+            case 0:
+                requirementUIs[0].SetActive(true);
+                break;
+            case 1:
+                designUIs[0].SetActive(true);
+                break;
+            case 2:
+                BalloonBoom.instance.InitiateBalloonDev();
+                break;
+            case 3:
+                BalloonBoom.instance.InitiateBalloonTest();
+                break;
+            case 4:
+                StartCoroutine(UpdateProgress());
+                break;
+        }
+    }
+
+}
+
+[System.Serializable]
+public class WaterfallAdapter
+{
+    public int[] qualityEachPhase;
+    public int currentWorkAmount;
+    public int progress;
+    public int projectIndex;
+    public string staffPosition;
+    public int phaseIndex;
+
+    public void Save(int[] _qualityEachPhase, int _currentWorkAmount, int _progress, int _projectIndex, string _staffPosition, int _phaseIndex)
+    {
+        qualityEachPhase = _qualityEachPhase;
+        currentWorkAmount = _currentWorkAmount;
+        progress = _progress;
+        projectIndex = _projectIndex;
+        staffPosition = _staffPosition;
+        phaseIndex = _phaseIndex;
+
+        FileHandler.SaveToJSON<WaterfallAdapter> (this, "WaterfallAdapterSave.json");   
+    }
+
+    public WaterfallAdapter Load()
+    {
+        WaterfallAdapter dataToLoad = FileHandler.ReadFromJSON<WaterfallAdapter> ("WaterfallAdapterSave.json");
+        return dataToLoad;
+    }
 }

@@ -7,7 +7,7 @@ using UnityEngine;
 public class Project : ScriptableObject
 {
     [Header("Project Info")]
-    public string projectId;
+    public int projectId;
     public string pjName;
     [TextArea(2, 10)]
     public string description;
@@ -40,6 +40,12 @@ public class Project : ScriptableObject
     public Word[] balloons = new Word[5];
     public Keyword[] keyInput = new Keyword[2];
 
+    [Header("Agile Tasks")]
+    public int smallTasks;
+    public int mediumTasks;
+    public int largeTasks;
+    public int giantTasks;
+
     [HideInInspector] public int actualAnalysis;
     [HideInInspector] public int actualDesign;
     [HideInInspector] public int actualCoding;
@@ -58,18 +64,21 @@ public class Project : ScriptableObject
     [HideInInspector] public int estimateDaysInPhase;
     [HideInInspector] public DateTime[] startDates = new DateTime[6];
     [HideInInspector] public DateTime[] finishDates = new DateTime[6];
-    public List<string> requirement1Answer;
-    public int requirement1Point;
-    public List<string> requirement2Answer;
-    public int requirement2Point;
-    public List<bool> designAnswer;
-    public int designPoint;
-    public List<bool> keyInputPass;
-    public int keyInputPoint;
-    public int balloonPoint;
-    public List<string> balloonAnswer;
-    public int balloon2Point;
-    public List<string> balloon2Answer;
+    [HideInInspector] public List<string> requirement1Answer;
+    [HideInInspector] public int requirement1Point;
+    [HideInInspector] public List<string> requirement2Answer;
+    [HideInInspector] public int requirement2Point;
+    [HideInInspector] public List<bool> designAnswer;
+    [HideInInspector] public int designPoint;
+    [HideInInspector] public List<bool> keyInputPass;
+    [HideInInspector] public int keyInputPoint;
+    [HideInInspector] public int balloonPoint;
+    [HideInInspector] public List<string> balloonAnswer;
+    [HideInInspector] public int balloon2Point;
+    [HideInInspector] public List<string> balloon2Answer;
+
+    // Properties for Agile gameplay
+    [HideInInspector] public List<SprintTask> sprintList; 
 
     public int getAllWorkAmount()
     {

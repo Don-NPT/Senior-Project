@@ -216,4 +216,35 @@ public class DevelopmentManager : MonoBehaviour
         }
         return project.phase;
     }
+
+    public void Save()
+    {
+        DevelopmentAdapter gameAdapter = new DevelopmentAdapter();
+        gameAdapter.Save(instance);
+    }
+
+    public void Load()
+    {
+        DevelopmentAdapter developmentAdapter = new DevelopmentAdapter();
+        DevelopmentAdapter saveData = developmentAdapter.Load();
+        instance = saveData.instance;
+    }
+}
+
+[System.Serializable]
+public class DevelopmentAdapter
+{
+    public DevelopmentManager instance;
+
+    public void Save(DevelopmentManager _instance)
+    {
+        instance = _instance;
+        FileHandler.SaveToJSON<DevelopmentAdapter> (this, "DevelopmentManagerSave.json");   
+    }
+
+    public DevelopmentAdapter Load()
+    {
+        DevelopmentAdapter dataToLoad = FileHandler.ReadFromJSON<DevelopmentAdapter> ("ProjectManagerSave.json");
+        return dataToLoad;
+    }
 }

@@ -5100,6 +5100,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a81ff16edde7e424d858443addefa8f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allProjects:
+  - {fileID: 11400000, guid: 95d63c22b1ee7a9458c7659ad7e4885a, type: 2}
+  - {fileID: 11400000, guid: e50ed69cc8e3d3f48b88bf5af99f57ff, type: 2}
+  - {fileID: 11400000, guid: 7b721d60ee813d448ab03ff9d38a500f, type: 2}
   currentProjects: []
   currentProject: {fileID: 0}
   oldProject: []
@@ -21532,7 +21536,7 @@ RectTransform:
   - {fileID: 79526082}
   - {fileID: 1918083606}
   m_Father: {fileID: 847904525}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -34781,7 +34785,7 @@ RectTransform:
   - {fileID: 581284612}
   - {fileID: 814235610}
   m_Father: {fileID: 847904525}
-  m_RootOrder: 11
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -34838,6 +34842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c5ebb27f591790449276415b54a4ab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  instance: {fileID: 0}
 --- !u!1 &801872748
 GameObject:
   m_ObjectHideFlags: 0
@@ -36358,7 +36363,6 @@ RectTransform:
   - {fileID: 538599173}
   - {fileID: 678390436}
   - {fileID: 1513613746}
-  - {fileID: 801629428}
   - {fileID: 1703529152}
   - {fileID: 2116199792}
   - {fileID: 875430268}
@@ -36368,6 +36372,7 @@ RectTransform:
   - {fileID: 489800633}
   - {fileID: 1703431846}
   - {fileID: 1229011662}
+  - {fileID: 801629428}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -38131,7 +38136,7 @@ RectTransform:
   - {fileID: 922083890}
   - {fileID: 429711488}
   m_Father: {fileID: 847904525}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -40071,7 +40076,7 @@ RectTransform:
   - {fileID: 598117153}
   - {fileID: 1275346778}
   m_Father: {fileID: 847904525}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -43026,6 +43031,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: TimeManager, Assembly-CSharp
         m_MethodName: Play
         m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 801629427}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -52475,7 +52492,7 @@ RectTransform:
   - {fileID: 165456023}
   - {fileID: 1659368503}
   m_Father: {fileID: 847904525}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -54425,7 +54442,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8621915381975831610, guid: dcd7b0470764b3b49ab3b594e45b2055, type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 8621915381975831610, guid: dcd7b0470764b3b49ab3b594e45b2055, type: 3}
       propertyPath: m_AnchorMax.x
@@ -72180,7 +72197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3145689975902660759, guid: 65d78e992ad647244aaf3917bc7092c6, type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 3145689975902660759, guid: 65d78e992ad647244aaf3917bc7092c6, type: 3}
       propertyPath: m_AnchorMax.x
@@ -72394,7 +72411,7 @@ RectTransform:
   - {fileID: 526746212}
   - {fileID: 1629881532}
   m_Father: {fileID: 847904525}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -75819,6 +75836,18 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 801629427}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1749068062
 MonoBehaviour:
@@ -88214,7 +88243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 623049231146680026, guid: 2c692f301ddfe654e8ee021fb61f13d5, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 623049231146680026, guid: 2c692f301ddfe654e8ee021fb61f13d5, type: 3}
       propertyPath: m_AnchorMax.x
@@ -89194,7 +89223,7 @@ RectTransform:
   - {fileID: 1670231171}
   - {fileID: 764311300}
   m_Father: {fileID: 847904525}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

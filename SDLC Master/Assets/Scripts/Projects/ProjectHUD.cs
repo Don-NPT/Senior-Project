@@ -41,6 +41,7 @@ public class ProjectHUD : MonoBehaviour
         {
             // Setup project hud tab
             uiPrefab.SetActive(true);
+
             // uiPrefab.GetComponent<Button>().onClick.AddListener(() => {ShowDetail();});
 
             // Setup text info

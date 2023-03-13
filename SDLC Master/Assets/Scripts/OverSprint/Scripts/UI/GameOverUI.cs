@@ -21,6 +21,7 @@ public class GameOverUI : MonoBehaviour {
         if (KitchenGameManager.Instance.IsGameOver()) {
             Show();
             // recipesDeliveredText.text = DeliveryManager.Instance.GetSuccessfulRecipesAmount().ToString();
+            AgileManager.instance.project.sprintList = DeliveryManager.Instance.sprintList;
 
             foreach(Transform child in sprintListUI){
                 Destroy(child.gameObject);

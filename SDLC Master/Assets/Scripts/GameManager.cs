@@ -43,7 +43,10 @@ public class GameManager : MonoBehaviour
         {
             if(panelOpen == false)
             {
-                if(gameState == GameState.PLAY) Pause();
+                if(gameState == GameState.PLAY) {
+                    Pause();
+                    pauseScreen.SetActive(true);
+                }
                 else Resume();
             }else{
                 panelOpen = false;
