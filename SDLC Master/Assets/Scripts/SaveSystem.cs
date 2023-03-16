@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SaveSystem : MonoBehaviour
 {
-    public SaveSystem instance;
+    public static SaveSystem instance;
 
     void Start()
     {

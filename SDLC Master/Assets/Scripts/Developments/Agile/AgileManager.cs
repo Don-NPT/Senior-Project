@@ -40,7 +40,13 @@ public class AgileManager : MonoBehaviour
     public void Save()
     {
         AgileAdapter agileAdapter = new AgileAdapter();
-        agileAdapter.Save(project.projectId, phaseIndex);
+
+        if(project != null){
+            agileAdapter.Save(project.projectId, phaseIndex);
+        }else{
+            agileAdapter.Save(-1, -1);
+        }
+        
     }
 
     public void Load()
