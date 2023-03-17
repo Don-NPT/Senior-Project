@@ -21,6 +21,7 @@ MonoBehaviour:
   expense: 10000
   deadline: 60
   scale: 2
+  inProgress: 0
   analysisWork: 15
   designWork: 20
   codingWork: 15
@@ -87,7 +88,7 @@ MonoBehaviour:
   actualCoding: 60
   actualTesting: 15
   actualDeployment: 20
-  model: {fileID: 11400000, guid: fefd9c0d5471bbd4b8ed0775ef1e6143, type: 2}
+  model: {fileID: 11400000, guid: 5ef74cd8a8ad44943a62f7d834d77d1c, type: 2}
   teamIndex: 0
   state: 1
   phase: 1

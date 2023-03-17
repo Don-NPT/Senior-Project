@@ -11,7 +11,7 @@ public class AgileManager : MonoBehaviour
 
     [HideInInspector] public Project project;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (instance != null && instance != this) 
             Destroy(this); 
@@ -27,6 +27,7 @@ public class AgileManager : MonoBehaviour
         if(project != null)
         {
             project.state = Project.Status.DOING;
+            project.inProgress = true;
             ProjectHUD.instance.UpdateList();
             foreach(var staff in StaffManager.instance.getAllStaff())
             {
@@ -35,6 +36,12 @@ public class AgileManager : MonoBehaviour
             phaseIndex = 0;
             agileUI[0].SetActive(true);
         }
+    }
+
+    public void StartSprint()
+    {
+        ProjectHUD.instance.UpdateList();
+        Debug.Log("Sprint Start");
     }
 
     public void Save()
@@ -63,9 +70,10 @@ public class AgileManager : MonoBehaviour
             case 0:
                 agileUI[0].SetActive(true);
                 break;
-            // case 1:
-            //     designUIs[0].SetActive(true);
-            //     break;
+            case 1:
+                agileUI[0].SetActive(false);
+                StartSprint();
+                break;
         }
     }
 }

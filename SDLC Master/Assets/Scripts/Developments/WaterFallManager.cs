@@ -22,7 +22,7 @@ public class WaterFallManager : MonoBehaviour
     private string staffPosition;
     public int phaseIndex;
 
-    void Start()
+    void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
         if (instance != null && instance != this) 

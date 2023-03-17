@@ -13,9 +13,11 @@ public class ProjectHUD : MonoBehaviour
     public Transform parent;
     public GameObject hudDetail;
     public int projectIndex;
+    public GameObject agileHudTab;
+    public GameObject agileHudDetail;
     GameObject submitBTN;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (instance != null && instance != this) 
             Destroy(this); 
@@ -37,7 +39,7 @@ public class ProjectHUD : MonoBehaviour
     }
 
     public void UpdateList() {
-        if(ProjectManager.instance.currentProject != null)
+        if(ProjectManager.instance.currentProject != null && ProjectManager.instance.currentProject.model.modelName == "Waterfall")
         {
             // Setup project hud tab
             uiPrefab.SetActive(true);
@@ -50,6 +52,20 @@ public class ProjectHUD : MonoBehaviour
             
             hudDetail.SetActive(false);
             ShowDetail();
+        }
+        else if(ProjectManager.instance.currentProject != null && ProjectManager.instance.currentProject.model.modelName == "Agile")
+        {
+            // Setup project hud tab
+            agileHudTab.SetActive(true);
+
+            // uiPrefab.GetComponent<Button>().onClick.AddListener(() => {ShowDetail();});
+
+            // Setup text info
+            agileHudTab.GetComponentsInChildren<TextMeshProUGUI>()[0].text = ProjectManager.instance.currentProject.pjName;
+            agileHudTab.GetComponentsInChildren<TextMeshProUGUI>()[1].text = ProjectManager.instance.currentProject.state.ToString();
+            
+            agileHudDetail.SetActive(false);
+            ShowAgileDetail();
         }
     }
 
@@ -78,6 +94,23 @@ public class ProjectHUD : MonoBehaviour
             return;
         }else{
             hudDetail.SetActive(false);
+        }
+    }
+
+    public void ShowAgileDetail()
+    {
+        if(agileHudDetail.activeSelf == false){
+            // Setup project detail hud
+            agileHudDetail.SetActive(true);
+
+            submitBTN = hudDetail.transform.GetChild(5).gameObject;
+            submitBTN.SetActive(false);
+
+            // setup text info
+            
+            return;
+        }else{
+            agileHudDetail.SetActive(false);
         }
     }
 

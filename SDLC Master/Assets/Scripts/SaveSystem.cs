@@ -14,6 +14,10 @@ public class SaveSystem : MonoBehaviour
         else 
             instance = this; 
 
+        if(ProjectManager.instance.CheckProjectInProgress()){
+            SaveSystem.instance.Load();
+        }
+
     }
 
 
