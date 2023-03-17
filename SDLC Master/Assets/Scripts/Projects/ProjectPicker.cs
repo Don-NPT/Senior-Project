@@ -124,7 +124,10 @@ public class ProjectPicker : MonoBehaviour
         selectedProject.state = Project.Status.READY;
         // ProjectManager.instance.currentProjects.Add(selectedProject);
         ProjectManager.instance.currentProject = selectedProject;
-        ProjectHUD.instance.UpdateList();
+        if(selectedModel.modelName == "Waterfall"){
+            ProjectHUD.instance.UpdateList();
+        }
+        
         if(ProjectManager.instance.currentProject.model.modelName == "Waterfall") WaterFallManager.instance.InitiateWaterfall();
         else AgileManager.instance.InitiateAgile();
         

@@ -30,16 +30,12 @@ public class ProjectHUD : MonoBehaviour
     {
         if(hudDetail.activeSelf && ProjectManager.instance.currentProject != null)
         {
-            if(ProjectManager.instance.currentProject.model.modelName == "Waterfall"){
-                WaterfallHUDUpdate();
-            }else{
-                AgileHUDUpdate();
-            }
+            WaterfallHUDUpdate();
         }
     }
 
     public void UpdateList() {
-        if(ProjectManager.instance.currentProject != null && ProjectManager.instance.currentProject.model.modelName == "Waterfall")
+        if(ProjectManager.instance.currentProject != null)
         {
             // Setup project hud tab
             uiPrefab.SetActive(true);
@@ -52,20 +48,6 @@ public class ProjectHUD : MonoBehaviour
             
             hudDetail.SetActive(false);
             ShowDetail();
-        }
-        else if(ProjectManager.instance.currentProject != null && ProjectManager.instance.currentProject.model.modelName == "Agile")
-        {
-            // Setup project hud tab
-            agileHudTab.SetActive(true);
-
-            // uiPrefab.GetComponent<Button>().onClick.AddListener(() => {ShowDetail();});
-
-            // Setup text info
-            agileHudTab.GetComponentsInChildren<TextMeshProUGUI>()[0].text = ProjectManager.instance.currentProject.pjName;
-            agileHudTab.GetComponentsInChildren<TextMeshProUGUI>()[1].text = ProjectManager.instance.currentProject.state.ToString();
-            
-            agileHudDetail.SetActive(false);
-            ShowAgileDetail();
         }
     }
 
@@ -94,23 +76,6 @@ public class ProjectHUD : MonoBehaviour
             return;
         }else{
             hudDetail.SetActive(false);
-        }
-    }
-
-    public void ShowAgileDetail()
-    {
-        if(agileHudDetail.activeSelf == false){
-            // Setup project detail hud
-            agileHudDetail.SetActive(true);
-
-            submitBTN = hudDetail.transform.GetChild(5).gameObject;
-            submitBTN.SetActive(false);
-
-            // setup text info
-            
-            return;
-        }else{
-            agileHudDetail.SetActive(false);
         }
     }
 
@@ -176,9 +141,5 @@ public class ProjectHUD : MonoBehaviour
 
         hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[7].text = WaterFallManager.instance.qualityEachPhase[4] + "/" + ProjectManager.instance.currentProject.requireDeployment;
         hudDetail.GetComponentsInChildren<Slider>()[5].DOValue(WaterFallManager.instance.qualityEachPhase[4],0.3f).Play();
-    }
-
-    void AgileHUDUpdate(){
-        
     }
 }

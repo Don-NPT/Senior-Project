@@ -189,11 +189,14 @@ public class WaterFallManager : MonoBehaviour
         qualityEachPhase = saveData.qualityEachPhase;
         currentWorkAmount = saveData.currentWorkAmount;
         progress = 0;
-        if(saveData.projectIndex != -1) project = ProjectManager.instance.GetProjectbyId(saveData.projectIndex);
+        if(saveData.projectIndex != -1) {
+            project = ProjectManager.instance.GetProjectbyId(saveData.projectIndex);
+            ProjectHUD.instance.UpdateList();
+        }
         staffPosition = saveData.staffPosition;
         phaseIndex = saveData.phaseIndex;
 
-        ProjectHUD.instance.UpdateList();
+        
         // Reset current phase quality
         if(qualityEachPhase != null && qualityEachPhase.Length != 0) {qualityEachPhase[phaseIndex] = 0;}
 
