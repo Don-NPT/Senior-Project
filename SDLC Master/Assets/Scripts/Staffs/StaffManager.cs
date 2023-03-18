@@ -96,6 +96,16 @@ public class StaffManager : MonoBehaviour
         return sum;
     }
 
+    public int getAllStaffStat()
+    {
+        int sum = 0;
+        foreach(var staff in getAllStaff())
+        {
+            sum += staff.analysis;
+        }
+        return sum;
+    }
+
     public List<Staff> getAllSerializableStaff()
     {
         List<Staff> serializableStaff = new List<Staff>();
