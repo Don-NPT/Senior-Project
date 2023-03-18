@@ -13,9 +13,11 @@ public class ProjectHUD : MonoBehaviour
     public Transform parent;
     public GameObject hudDetail;
     public int projectIndex;
+    public GameObject agileHudTab;
+    public GameObject agileHudDetail;
     GameObject submitBTN;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (instance != null && instance != this) 
             Destroy(this); 
@@ -28,11 +30,7 @@ public class ProjectHUD : MonoBehaviour
     {
         if(hudDetail.activeSelf && ProjectManager.instance.currentProject != null)
         {
-            if(ProjectManager.instance.currentProject.model.modelName == "Waterfall"){
-                WaterfallHUDUpdate();
-            }else{
-                AgileHUDUpdate();
-            }
+            WaterfallHUDUpdate();
         }
     }
 
@@ -143,9 +141,5 @@ public class ProjectHUD : MonoBehaviour
 
         hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[7].text = WaterFallManager.instance.qualityEachPhase[4] + "/" + ProjectManager.instance.currentProject.requireDeployment;
         hudDetail.GetComponentsInChildren<Slider>()[5].DOValue(WaterFallManager.instance.qualityEachPhase[4],0.3f).Play();
-    }
-
-    void AgileHUDUpdate(){
-        
     }
 }

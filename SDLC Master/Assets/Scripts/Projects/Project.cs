@@ -17,6 +17,7 @@ public class Project : ScriptableObject
     public int expense;
     public int deadline;    
     public int scale;
+    public bool inProgress;
     
     [Header("Work Amount")]
     public int analysisWork;

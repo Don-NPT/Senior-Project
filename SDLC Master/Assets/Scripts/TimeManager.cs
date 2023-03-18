@@ -25,14 +25,15 @@ public class TimeManager : MonoBehaviour
     private float datetime;
     private string[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
     
-    // Start is called before the first frame update
-    void Start()
-    {
+    private void Awake() {
         // If there is an instance, and it's not me, delete myself.
         if (instance != null && instance != this) 
             Destroy(this); 
         else 
             instance = this; 
+    }
+    void Start()
+    {
 
         date = startDate;
         monthIndex = startMonthIndex;

@@ -10,14 +10,14 @@ public class ProjectManager : MonoBehaviour
     public Project currentProject;
     public List<Project> oldProject;
     
-    // Start is called before the first frame update
-    void Start()
-    {
+    void Awake() {
         if (instance != null && instance != this) 
             Destroy(this); 
         else 
             instance = this;
-
+    }
+    void Start()
+    {
         currentProjects = new List<Project>();
         oldProject = new List<Project>();
     }
@@ -41,6 +41,16 @@ public class ProjectManager : MonoBehaviour
             }
         }
         return null;
+    }
+
+    public bool CheckProjectInProgress()
+    {
+        foreach(Project project in allProjects){
+            if(project.inProgress == true){
+                return true;
+            }
+        }
+        return false;
     }
 
     public void Save()

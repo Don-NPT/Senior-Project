@@ -22,7 +22,7 @@ public class WaterFallManager : MonoBehaviour
     private string staffPosition;
     public int phaseIndex;
 
-    void Start()
+    void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
         if (instance != null && instance != this) 
@@ -189,11 +189,14 @@ public class WaterFallManager : MonoBehaviour
         qualityEachPhase = saveData.qualityEachPhase;
         currentWorkAmount = saveData.currentWorkAmount;
         progress = 0;
-        if(saveData.projectIndex != -1) project = ProjectManager.instance.GetProjectbyId(saveData.projectIndex);
+        if(saveData.projectIndex != -1) {
+            project = ProjectManager.instance.GetProjectbyId(saveData.projectIndex);
+            ProjectHUD.instance.UpdateList();
+        }
         staffPosition = saveData.staffPosition;
         phaseIndex = saveData.phaseIndex;
 
-        ProjectHUD.instance.UpdateList();
+        
         // Reset current phase quality
         if(qualityEachPhase != null && qualityEachPhase.Length != 0) {qualityEachPhase[phaseIndex] = 0;}
 
