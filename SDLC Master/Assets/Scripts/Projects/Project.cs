@@ -79,7 +79,7 @@ public class Project : ScriptableObject
     [HideInInspector] public List<string> balloon2Answer;
 
     // Properties for Agile gameplay
-    [HideInInspector] public List<SprintTask> sprintList; 
+    public List<SprintTask> sprintList;
 
     public int getAllWorkAmount()
     {

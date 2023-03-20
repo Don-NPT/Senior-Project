@@ -9,6 +9,8 @@ public class AgileManager : MonoBehaviour
     public GameObject[] agileUI;
     public int phaseIndex;
     public GameObject agileHud;
+    public int sprintIndex;
+    public GameObject projectSummaryUI;
 
     [HideInInspector] public Project project;
     // Start is called before the first frame update
@@ -34,6 +36,7 @@ public class AgileManager : MonoBehaviour
                 staff.gameObject.GetComponent<StaffController>().AssignWork();
             }
             phaseIndex = 0;
+            sprintIndex = 0;
             agileUI[0].SetActive(true);
         }
     }
@@ -42,6 +45,13 @@ public class AgileManager : MonoBehaviour
     {
         agileHud.SetActive(true);
         Debug.Log("Sprint Start");
+    }
+
+    public void NextSprint()
+    {
+        sprintIndex++;
+        if(sprintIndex < project.sprintList.Count) agileHud.SetActive(true);
+        else projectSummaryUI.SetActive(true);
     }
 
     public void Save()

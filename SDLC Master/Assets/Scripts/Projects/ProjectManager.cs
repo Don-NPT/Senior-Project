@@ -15,9 +15,7 @@ public class ProjectManager : MonoBehaviour
             Destroy(this); 
         else 
             instance = this;
-    }
-    void Start()
-    {
+
         currentProjects = new List<Project>();
         oldProject = new List<Project>();
     }
@@ -56,15 +54,24 @@ public class ProjectManager : MonoBehaviour
     public void Save()
     {
         ProjectManagerAdapter gameAdapter = new ProjectManagerAdapter();
-        gameAdapter.Save(currentProject, oldProject);
+        List<int> oldProjectId = new List<int>();
+        foreach(var project in oldProject){
+            oldProjectId.Add(project.projectId);
+        }
+        gameAdapter.Save(currentProject.projectId, oldProjectId.ToArray());
     }
 
     public void Load()
     {
         ProjectManagerAdapter projectManagerAdapter = new ProjectManagerAdapter();
         ProjectManagerAdapter saveData = projectManagerAdapter.Load();
-        currentProject = saveData.currentProject;
-        oldProject = saveData.oldProject;
+ 
+        foreach(var project in allProjects){
+            if(project.projectId == saveData.currentProject) currentProject = project;
+            foreach(var old in saveData.oldProject){
+                if(project.projectId == old) oldProject.Add(project);
+            }
+        }
     }
     
 }
@@ -72,10 +79,10 @@ public class ProjectManager : MonoBehaviour
 [System.Serializable]
 public class ProjectManagerAdapter
 {
-    public Project currentProject;
-    public List<Project> oldProject;
+    public int currentProject;
+    public int[] oldProject;
 
-    public void Save(Project _currentProject, List<Project> _oldProject)
+    public void Save(int _currentProject, int[] _oldProject)
     {
         currentProject = _currentProject;
         oldProject = _oldProject;

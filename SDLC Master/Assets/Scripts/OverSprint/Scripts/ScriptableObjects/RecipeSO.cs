@@ -16,6 +16,7 @@ public class RecipeSO : ScriptableObject
 
 }
 
+[System.Serializable]
 public class SprintTask
 {
     

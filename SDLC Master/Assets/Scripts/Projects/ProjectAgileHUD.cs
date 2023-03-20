@@ -42,23 +42,22 @@ public class ProjectAgileHUD : MonoBehaviour
             // Hide finish button
             submitBTN.SetActive(false);
             submitBTN.GetComponent<Button>().onClick.AddListener(delegate {
-                agileHudTab.SetActive(false);
+                gameObject.SetActive(false);
                 sprintReviewUI.SetActive(true);
             });
         }
 
         ClearContent();
-        Debug.Log(project.sprintList);
-        taskItem = new GameObject[project.sprintList[0].taskList.Count];
-        for(int i=0; i<project.sprintList[0].taskList.Count; i++){
-            KitchenObjectSO task = project.sprintList[0].taskList[i];
+        taskItem = new GameObject[project.sprintList[AgileManager.instance.sprintIndex].taskList.Count];
+        for(int i=0; i<project.sprintList[AgileManager.instance.sprintIndex].taskList.Count; i++){
+            KitchenObjectSO task = project.sprintList[AgileManager.instance.sprintIndex].taskList[i];
             // Spawn task item
             taskItem[i] = (GameObject) Instantiate(taskItemPrefab);
             taskItem[i].transform.SetParent(taskContent);
             taskItem[i].transform.localScale = Vector3.one;
 
             // Set text
-            taskItem[i].GetComponentsInChildren<TextMeshProUGUI>()[0].text = "งานที่ " + i;
+            taskItem[i].GetComponentsInChildren<TextMeshProUGUI>()[0].text = "งานที่ " + (i+1);
             taskItem[i].GetComponentsInChildren<Image>()[0].sprite = task.sprite;
 
             // Set Slider
@@ -92,6 +91,7 @@ public class ProjectAgileHUD : MonoBehaviour
     IEnumerator UpdateProgress(GameObject[] taskItem)
     {
         for(int i=0; i<taskItem.Length; i++){
+            project.sprintList[AgileManager.instance.sprintIndex].taskList[i].dayUsed = 0;
             while(taskItem[i].GetComponentsInChildren<Slider>()[0].value < taskItem[i].GetComponentsInChildren<Slider>()[0].maxValue)
             {
                 yield return new WaitForSeconds(1);
@@ -101,11 +101,16 @@ public class ProjectAgileHUD : MonoBehaviour
                     float quality = taskItem[i].GetComponentsInChildren<Slider>()[1].value + StaffManager.instance.getAllStaffStat();
                     taskItem[i].GetComponentsInChildren<Slider>()[0].DOValue(progress, 0.3f);
                     taskItem[i].GetComponentsInChildren<Slider>()[1].DOValue(quality, 0.3f);
+                    project.sprintList[AgileManager.instance.sprintIndex].taskList[i].dayUsed++;
                     // taskItem[i].GetComponentsInChildren<Slider>()[0].value += StaffManager.instance.getTotalStaff();
                 }
             }
         }
         submitBTN.SetActive(true);
+        List<KitchenObjectSO> tasks = project.sprintList[AgileManager.instance.sprintIndex].taskList;
+        for(int i=0; i<tasks.Count; i++){
+            tasks[i].quality = (int) Mathf.Round(taskItem[i].GetComponentsInChildren<Slider>()[1].value);
+        }
     }
 
     // Update is called once per frame
