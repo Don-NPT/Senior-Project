@@ -16,6 +16,7 @@ public class ProjectAgileHUD : MonoBehaviour
     public GameObject sprintReviewUI;
     public Transform taskContent;
     public GameObject taskItemPrefab;
+    public TextMeshProUGUI dayLeftText;
 
     private Project project;
     private GameObject[] taskItem;
@@ -91,7 +92,12 @@ public class ProjectAgileHUD : MonoBehaviour
 
     IEnumerator UpdateProgress(GameObject[] taskItem)
     {
+        GameManager.instance.Play();
+        TimeManager.instance.Play();
         int day = 0;
+        int dayLeft = 14;
+        dayLeftText.text = "เหลือเวลา: " + dayLeft.ToString() + " วัน";
+        
         for(int i=0; i<taskItem.Length; i++){
             if(day > 14) break;
             project.sprintList[AgileManager.instance.sprintIndex].taskList[i].dayUsed = 0;
@@ -101,6 +107,8 @@ public class ProjectAgileHUD : MonoBehaviour
 
                 if(GameManager.instance.gameState != GameState.PAUSE){
                     day++;
+                    dayLeft--;
+                    dayLeftText.text = "เหลือเวลา: " + dayLeft.ToString() + " วัน";
                     float progress = taskItem[i].GetComponentsInChildren<Slider>()[0].value + StaffManager.instance.getTotalStaff();
                     float quality = taskItem[i].GetComponentsInChildren<Slider>()[1].value + StaffManager.instance.getAllStaffStat();
                     taskItem[i].GetComponentsInChildren<Slider>()[0].DOValue(progress, 0.3f);
@@ -116,6 +124,8 @@ public class ProjectAgileHUD : MonoBehaviour
         for(int i=0; i<tasks.Count; i++){
             tasks[i].quality = (int) Mathf.Round(taskItem[i].GetComponentsInChildren<Slider>()[1].value);
         }
+        GameManager.instance.Play();
+        TimeManager.instance.Pause();
     }
 
     // Update is called once per frame

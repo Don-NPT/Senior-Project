@@ -91522,6 +91522,7 @@ MonoBehaviour:
   sprintReviewUI: {fileID: 1635054834}
   taskContent: {fileID: 789221803}
   taskItemPrefab: {fileID: 6802338479714856838, guid: 30c55a0f5879ca3468def13e5ab03c01, type: 3}
+  dayLeftText: {fileID: 1163174683}
 --- !u!222 &1716842672
 CanvasRenderer:
   m_ObjectHideFlags: 0
