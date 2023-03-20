@@ -71,7 +71,26 @@ public class SprintRetrospective : MonoBehaviour
         if(largeTasks.Count == 0) taskRows[2].SetActive(false);
         if(giantTasks.Count == 0) taskRows[3].SetActive(false);
 
-        thisSprint.text = "Hello World";
-        allSprint.text = "Hello World";
+        int sumComplete = 0;
+        foreach(var task in project.sprintList[sprintIndex].taskList){
+            if(task.isComplete) sumComplete++;
+        }
+        thisSprint.text = sumComplete + " / " + project.sprintList[sprintIndex].taskList.Count;
+
+        sumComplete = 0;
+        for(int i=sprintIndex; i>=0; i--){
+            foreach(var task in project.sprintList[i].taskList){
+                if(task.isComplete) sumComplete++;
+            }
+        }
+
+        int sumTasks = 0;
+        foreach(var sprint in project.sprintList){
+            foreach(var task in sprint.taskList){
+                sumTasks++;
+            }
+        }
+
+        allSprint.text = sumComplete + " / " + sumTasks;
     }
 }

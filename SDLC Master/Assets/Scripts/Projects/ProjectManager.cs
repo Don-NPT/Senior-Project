@@ -9,6 +9,7 @@ public class ProjectManager : MonoBehaviour
     public List<Project> currentProjects;
     public Project currentProject;
     public List<Project> oldProject;
+    public List<KitchenObjectSO> AllTasks;
     
     void Awake() {
         if (instance != null && instance != this) 

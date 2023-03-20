@@ -8,6 +8,7 @@ public class SprintReview : MonoBehaviour
     public GameObject[] taskRows;
     public TextMeshProUGUI feedback;
     private Project project;
+    private string[] feedbackStrings;
     private void OnEnable() {
         project = ProjectManager.instance.currentProject;
         int sprintIndex = AgileManager.instance.sprintIndex;
@@ -69,7 +70,30 @@ public class SprintReview : MonoBehaviour
         if(mediumTasks.Count == 0) taskRows[1].SetActive(false);
         if(largeTasks.Count == 0) taskRows[2].SetActive(false);
         if(giantTasks.Count == 0) taskRows[3].SetActive(false);
+    
+        int sumActual = project.sprintList[sprintIndex].GetSumQuality();
+        int sumRequire = project.sprintList[sprintIndex].GetSumRequireQuality();
+
+        float diff = (float)sumActual/sumRequire;
+        Debug.Log(sumActual);
+        Debug.Log(sumRequire);
+        Debug.Log(diff);
+
+        if(diff >= 1){
+            feedback.text = "สุดยอดมากคร้าบ สาธุ";
+        }
+        else if(diff >= 0.7){
+            feedback.text = "ทำดีมาก ทำต่อไปนะคร้าบ";
+        }
+        else if(diff >= 0.5){
+            feedback.text = "ใช้ได้ ไม่เลวทีเดียว";
+        }
+        else if(diff >= 0.3){
+            feedback.text = "เห...ทำได้แค่นี้หรอ";
+        }
+        else{
+            feedback.text = "เลือกงานเมื่อพร้อมนะครับ\nพนักงานคุณดูไม่พร้อมเลย";
+        }
         
-        feedback.text = "Hello World";
     }
 }

@@ -36,8 +36,9 @@ public class ProjectAgileHUD : MonoBehaviour
             agileHudTab.SetActive(true);
 
             // Setup text info
-            agileHudTab.GetComponentsInChildren<TextMeshProUGUI>()[0].text = ProjectManager.instance.currentProject.pjName;
-            agileHudTab.GetComponentsInChildren<TextMeshProUGUI>()[1].text = ProjectManager.instance.currentProject.state.ToString();
+            agileHudTab.GetComponentsInChildren<TextMeshProUGUI>()[0].text = project.pjName;
+            agileHudTab.GetComponentsInChildren<TextMeshProUGUI>()[1].text = project.state.ToString();
+            GetComponentsInChildren<TextMeshProUGUI>()[2].text = "โมเดล: Agile (" + project.sprintList[AgileManager.instance.sprintIndex].sprintName + ")";
 
             // Hide finish button
             submitBTN.SetActive(false);
@@ -68,20 +69,20 @@ public class ProjectAgileHUD : MonoBehaviour
 
             switch(task.objectName){
                 case "งานขนาดเล็ก":
-                    taskItem[i].GetComponentsInChildren<Slider>()[0].maxValue = 10;
-                    taskItem[i].GetComponentsInChildren<Slider>()[1].maxValue = 50;
+                    taskItem[i].GetComponentsInChildren<Slider>()[0].maxValue = ProjectManager.instance.AllTasks[0].dayToFinish;
+                    taskItem[i].GetComponentsInChildren<Slider>()[1].maxValue = ProjectManager.instance.AllTasks[0].requireQuality;
                     break;
                 case "งานขนาดกลาง":
-                    taskItem[i].GetComponentsInChildren<Slider>()[0].maxValue = 25;
-                    taskItem[i].GetComponentsInChildren<Slider>()[1].maxValue = 100;
+                    taskItem[i].GetComponentsInChildren<Slider>()[0].maxValue = ProjectManager.instance.AllTasks[1].dayToFinish;
+                    taskItem[i].GetComponentsInChildren<Slider>()[1].maxValue = ProjectManager.instance.AllTasks[1].requireQuality;
                     break;
                 case "งานขนาดใหญ่":
-                    taskItem[i].GetComponentsInChildren<Slider>()[0].maxValue = 50;
-                    taskItem[i].GetComponentsInChildren<Slider>()[1].maxValue = 250;
+                    taskItem[i].GetComponentsInChildren<Slider>()[0].maxValue = ProjectManager.instance.AllTasks[2].dayToFinish;
+                    taskItem[i].GetComponentsInChildren<Slider>()[1].maxValue = ProjectManager.instance.AllTasks[2].requireQuality;
                     break;
                 case "งานแบบเบิ้มๆ":
-                    taskItem[i].GetComponentsInChildren<Slider>()[0].maxValue = 100;
-                    taskItem[i].GetComponentsInChildren<Slider>()[1].maxValue = 500;
+                    taskItem[i].GetComponentsInChildren<Slider>()[0].maxValue = ProjectManager.instance.AllTasks[3].dayToFinish;
+                    taskItem[i].GetComponentsInChildren<Slider>()[1].maxValue = ProjectManager.instance.AllTasks[3].requireQuality;
                     break;
             }
         }
@@ -90,13 +91,16 @@ public class ProjectAgileHUD : MonoBehaviour
 
     IEnumerator UpdateProgress(GameObject[] taskItem)
     {
+        int day = 0;
         for(int i=0; i<taskItem.Length; i++){
+            if(day > 14) break;
             project.sprintList[AgileManager.instance.sprintIndex].taskList[i].dayUsed = 0;
             while(taskItem[i].GetComponentsInChildren<Slider>()[0].value < taskItem[i].GetComponentsInChildren<Slider>()[0].maxValue)
             {
                 yield return new WaitForSeconds(1);
 
                 if(GameManager.instance.gameState != GameState.PAUSE){
+                    day++;
                     float progress = taskItem[i].GetComponentsInChildren<Slider>()[0].value + StaffManager.instance.getTotalStaff();
                     float quality = taskItem[i].GetComponentsInChildren<Slider>()[1].value + StaffManager.instance.getAllStaffStat();
                     taskItem[i].GetComponentsInChildren<Slider>()[0].DOValue(progress, 0.3f);
@@ -105,6 +109,7 @@ public class ProjectAgileHUD : MonoBehaviour
                     // taskItem[i].GetComponentsInChildren<Slider>()[0].value += StaffManager.instance.getTotalStaff();
                 }
             }
+            project.sprintList[AgileManager.instance.sprintIndex].taskList[i].isComplete = true;
         }
         submitBTN.SetActive(true);
         List<KitchenObjectSO> tasks = project.sprintList[AgileManager.instance.sprintIndex].taskList;

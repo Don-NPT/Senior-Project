@@ -11,8 +11,10 @@ public class KitchenObjectSO : ScriptableObject
     public Transform prefeb;
     public Sprite sprite;
     public string objectName;
-    public int quality;
+    public int dayToFinish;
     public int requireQuality;
-    public int dayUsed;
+    [HideInInspector] public int quality;
+    [HideInInspector] public int dayUsed;
+    [HideInInspector] public bool isComplete;
 
 }
