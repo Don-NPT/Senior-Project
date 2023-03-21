@@ -44,4 +44,28 @@ public class SprintTask
         return sum;
     }
 
+    public int GetDuration(){
+        int sum = 0;
+        foreach(var task in taskList){
+            sum += task.dayToFinish;
+        }
+        return sum;
+    }
+
+    public int GetNumFinishedTasks(){
+        int sum = 0;
+        foreach(var task in taskList){
+            if(task.isComplete == true) sum += task.dayToFinish;
+        }
+        return sum;
+    }
+
+    public int GetNumAllTasks(){
+        int sum = 0;
+        foreach(var task in taskList){
+            sum += task.dayToFinish;
+        }
+        return sum;
+    }
+
 }
