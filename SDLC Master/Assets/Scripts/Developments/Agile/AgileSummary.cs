@@ -10,6 +10,7 @@ public class AgileSummary : MonoBehaviour
     public Transform qualityList;
     public GameObject sprintPanel;
     public Transform footerPanel;
+    public Transform rightPanel;
     public GameObject detailPrefab;
     public Color[] qualityColors;
     private GameObject detail;
@@ -64,7 +65,11 @@ public class AgileSummary : MonoBehaviour
     }
 
     void SetupRightPanel(){
-
+        rightPanel.GetComponentsInChildren<TextMeshProUGUI>()[0].text = project.pjName;
+        rightPanel.GetComponentsInChildren<TextMeshProUGUI>()[3].text = "+" + project.reward;
+        rightPanel.GetComponentsInChildren<TextMeshProUGUI>()[5].text = "-" + project.expense;
+        rightPanel.GetComponentsInChildren<TextMeshProUGUI>()[7].text = StaffManager.instance.getAllStaffStat() + " หน่วย";
+        rightPanel.GetComponentsInChildren<TextMeshProUGUI>()[9].text = "??? หน่วย";
     }
 
     void ShowDetail(SprintTask sprint, int index)

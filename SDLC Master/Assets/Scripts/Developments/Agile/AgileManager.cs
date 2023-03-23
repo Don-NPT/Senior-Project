@@ -51,7 +51,10 @@ public class AgileManager : MonoBehaviour
     {
         sprintIndex++;
         if(sprintIndex < project.sprintList.Count) agileHud.SetActive(true);
-        else projectSummaryUI.SetActive(true);
+        else {
+            GameManager.instance.AddMoney(project.reward);
+            projectSummaryUI.SetActive(true);
+        }
     }
 
     public void Save()

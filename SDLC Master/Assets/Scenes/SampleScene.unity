@@ -17965,6 +17965,7 @@ MonoBehaviour:
   qualityList: {fileID: 1230629907}
   sprintPanel: {fileID: 2118288512715873407, guid: 349640fb2321c894397527d9f5310638, type: 3}
   footerPanel: {fileID: 440102352}
+  rightPanel: {fileID: 932367259}
   detailPrefab: {fileID: 4513071862908584088, guid: 035a83f373cd9764c9c7e15527d2a8da, type: 3}
   qualityColors:
   - {r: 0.28235295, g: 0.9607844, b: 0.35686275, a: 1}
@@ -71225,10 +71226,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PanelOpener, Assembly-CSharp
-        m_MethodName: ClosePanel
-        m_Mode: 1
+      - m_Target: {fileID: 352643935}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -114558,6 +114559,42 @@ PrefabInstance:
       propertyPath: canvasTransform
       value: 
       objectReference: {fileID: 847904525}
+    - target: {fileID: 1903449018176442472, guid: 884c66ce4fa029741826c96586a40d14, type: 3}
+      propertyPath: colors.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1903449018176442472, guid: 884c66ce4fa029741826c96586a40d14, type: 3}
+      propertyPath: colors.Array.data[0].a
+      value: 0.43137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 1903449018176442472, guid: 884c66ce4fa029741826c96586a40d14, type: 3}
+      propertyPath: colors.Array.data[0].b
+      value: 0.4862745
+      objectReference: {fileID: 0}
+    - target: {fileID: 1903449018176442472, guid: 884c66ce4fa029741826c96586a40d14, type: 3}
+      propertyPath: colors.Array.data[0].g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1903449018176442472, guid: 884c66ce4fa029741826c96586a40d14, type: 3}
+      propertyPath: colors.Array.data[0].r
+      value: 0.4862745
+      objectReference: {fileID: 0}
+    - target: {fileID: 1903449018176442472, guid: 884c66ce4fa029741826c96586a40d14, type: 3}
+      propertyPath: colors.Array.data[1].a
+      value: 0.5686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 1903449018176442472, guid: 884c66ce4fa029741826c96586a40d14, type: 3}
+      propertyPath: colors.Array.data[1].b
+      value: 0.29803923
+      objectReference: {fileID: 0}
+    - target: {fileID: 1903449018176442472, guid: 884c66ce4fa029741826c96586a40d14, type: 3}
+      propertyPath: colors.Array.data[1].g
+      value: 0.38431373
+      objectReference: {fileID: 0}
+    - target: {fileID: 1903449018176442472, guid: 884c66ce4fa029741826c96586a40d14, type: 3}
+      propertyPath: colors.Array.data[1].r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1903449018176442472, guid: 884c66ce4fa029741826c96586a40d14, type: 3}
       propertyPath: moneyNotificationPrefab
       value: 
