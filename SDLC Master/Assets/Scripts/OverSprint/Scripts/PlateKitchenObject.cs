@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlateKitchenObject : KitchenObject
 {
+    private int kitchenhold = 0;
+    private int kitchenholdMax =15;
 
     public event EventHandler <OnIngredientAddedEventArgs> OnIngredientAdded;
     public class OnIngredientAddedEventArgs : EventArgs {
@@ -30,6 +32,9 @@ public class PlateKitchenObject : KitchenObject
         //     return false;
         // }
         else{
+            if((kitchenhold + kitchenObjectSO.size) <= kitchenholdMax){
+            kitchenhold += kitchenObjectSO.size;
+            
             kitchenObjectSOList.Add(kitchenObjectSO);
 
             OnIngredientAdded?.Invoke(this, new OnIngredientAddedEventArgs{
@@ -37,6 +42,11 @@ public class PlateKitchenObject : KitchenObject
             });
             Debug.Log(kitchenObjectSO.objectName);
             return true;
+            }
+            else{
+                Debug.Log("เกิน limit sprint");
+                return false;
+            }
         }
     }
 
