@@ -17,6 +17,7 @@ MonoBehaviour:
   objectName: "\u0E07\u0E32\u0E19\u0E02\u0E19\u0E32\u0E14\u0E01\u0E25\u0E32\u0E07"
   dayToFinish: 3
   requireQuality: 30
+  size: 3
   quality: 42
   dayUsed: 2
   isComplete: 1
