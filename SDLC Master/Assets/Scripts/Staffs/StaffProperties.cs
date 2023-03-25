@@ -17,6 +17,51 @@ public class StaffProperties : MonoBehaviour
     public Vector3 location;
     public Quaternion rotation;
 
+    public int GetStaffStat(){
+        switch(position)
+            {
+                case "Analyst":
+                    return analysis;
+                case "Designer":
+                    return design;
+                case "Programmer":
+                    return coding;
+                case "Tester":
+                    return testing;
+            }
+        return 0;
+    }
+
+    public Sprite GetStaffLogo(){
+        switch(position)
+            {
+                case "Analyst":
+                    return StaffManager.instance.positionLogos[0];
+                case "Designer":
+                    return StaffManager.instance.positionLogos[1];
+                case "Programmer":
+                    return StaffManager.instance.positionLogos[2];
+                case "Tester":
+                    return StaffManager.instance.positionLogos[3];
+            }
+        return null;
+    }
+
+    public Color GetStaffColor(){
+        switch(position)
+            {
+                case "Analyst":
+                    return StaffManager.instance.positionColors[0];
+                case "Designer":
+                    return StaffManager.instance.positionColors[1];
+                case "Programmer":
+                    return StaffManager.instance.positionColors[2];
+                case "Tester":
+                    return StaffManager.instance.positionColors[3];
+            }
+        return Color.white;
+    }
+
     public Staff getSerializable()
     {
         location = transform.position;
