@@ -6,6 +6,8 @@ public class StaffManager : MonoBehaviour
 {   
     public static StaffManager instance;
     public GameObject staffPrefab;
+    public Sprite[] positionLogos;
+    public Color[] positionColors;
 
     // Start is called before the first frame update
     void Awake()

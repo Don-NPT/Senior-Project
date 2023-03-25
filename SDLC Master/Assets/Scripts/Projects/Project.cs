@@ -80,6 +80,7 @@ public class Project : ScriptableObject
 
     // Properties for Agile gameplay
     public List<SprintTask> sprintList;
+    [HideInInspector] public string PO_id;
 
     public int getAllWorkAmount()
     {
