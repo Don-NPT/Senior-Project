@@ -21,7 +21,7 @@ MonoBehaviour:
   expense: 12000
   deadline: 60
   scale: 2
-  inProgress: 1
+  inProgress: 0
   analysisWork: 15
   designWork: 20
   codingWork: 15
