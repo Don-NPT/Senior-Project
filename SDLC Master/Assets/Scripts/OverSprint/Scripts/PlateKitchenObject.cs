@@ -2,11 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class PlateKitchenObject : KitchenObject
 {
     private int kitchenhold = 0;
     private int kitchenholdMax =15;
+    public Slider progressBar;
 
     public event EventHandler <OnIngredientAddedEventArgs> OnIngredientAdded;
     public class OnIngredientAddedEventArgs : EventArgs {
@@ -20,6 +23,12 @@ public class PlateKitchenObject : KitchenObject
 
     private void Awake() {
         kitchenObjectSOList = new List<KitchenObjectSO>();
+        progressBar.maxValue = kitchenholdMax;
+        progressBar.value = 0;
+    }
+
+    private void FixedUpdate() {
+        progressBar.value = kitchenhold;
     }
 
     public bool TryAddIngredient(KitchenObjectSO kitchenObjectSO){
@@ -45,6 +54,7 @@ public class PlateKitchenObject : KitchenObject
             }
             else{
                 Debug.Log("เกิน limit sprint");
+                progressBar.transform.DOShakeScale(0.2f, 1, 10, 90);
                 return false;
             }
         }
