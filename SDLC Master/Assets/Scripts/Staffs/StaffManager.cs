@@ -6,9 +6,11 @@ public class StaffManager : MonoBehaviour
 {   
     public static StaffManager instance;
     public GameObject staffPrefab;
+    public Sprite[] positionLogos;
+    public Color[] positionColors;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
         if (instance != null && instance != this) 
@@ -92,6 +94,16 @@ public class StaffManager : MonoBehaviour
                         break;
                 }
             }
+        }
+        return sum;
+    }
+
+    public int getAllStaffStat()
+    {
+        int sum = 0;
+        foreach(var staff in getAllStaff())
+        {
+            sum += staff.analysis;
         }
         return sum;
     }

@@ -85,7 +85,13 @@ public class StaffList : MonoBehaviour
 
         // Set staff name on the list
         string name = staffs[i].GetComponent<StaffProperties>().fname;
-        staffItem[i].GetComponentsInChildren<TextMeshProUGUI>()[0].text = name;
+        staffItem[i].GetComponentsInChildren<TextMeshProUGUI>()[1].text = name;
+
+        // Set logo and color
+        staffItem[i].GetComponentsInChildren<Image>()[1].sprite = staffs[i].GetComponent<StaffProperties>().GetStaffLogo();
+        staffItem[i].GetComponentsInChildren<Image>()[1].color = staffs[i].GetComponent<StaffProperties>().GetStaffColor();
+        staffItem[i].GetComponentsInChildren<TextMeshProUGUI>()[0].text = staffs[i].GetComponent<StaffProperties>().GetStaffStat().ToString();
+        staffItem[i].GetComponentsInChildren<TextMeshProUGUI>()[0].color = staffs[i].GetComponent<StaffProperties>().GetStaffColor();
 
         // Set assign button according the isAssign
         if(staffs[i].GetComponent<StaffProperties>().isAssign)

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SaveSystem : MonoBehaviour
 {
-    public SaveSystem instance;
+    public static SaveSystem instance;
 
     void Start()
     {
@@ -13,6 +13,10 @@ public class SaveSystem : MonoBehaviour
             Destroy(this); 
         else 
             instance = this; 
+
+        if(ProjectManager.instance.CheckProjectInProgress()){
+            SaveSystem.instance.Load();
+        }
 
     }
 

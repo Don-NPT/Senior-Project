@@ -34,15 +34,39 @@ public class StaffGenerator : MonoBehaviour
         {
             rightText = rightContent.GetComponentsInChildren<TextMeshProUGUI>();
             rightText[0].text = tempStaff[index].fname;
-            rightText[1].text = "Analysis: " + tempStaff[index].analysis.ToString();
-            rightText[2].text = "Design: " + tempStaff[index].design.ToString();
-            rightText[3].text = "Coding: " + tempStaff[index].coding.ToString();
-            rightText[4].text = "Testing: " + tempStaff[index].testing.ToString();
-            rightText[5].text = "ตำแหน่ง: " + tempStaff[index].position.ToString();
-            rightText[6].text = "ค่าจ้าง: " + tempStaff[index].wage.ToString() + " บาท/เดือน";
+            
+           int abilityIndex = -1;
+            if (tempStaff[index].position.ToString() == "Analyst")
+                abilityIndex = 0;
+            else if (tempStaff[index].position.ToString() == "Designer")
+                abilityIndex = 1;
+            else if (tempStaff[index].position.ToString() == "Programmer")
+                abilityIndex = 2;
+            else if (tempStaff[index].position.ToString() == "Tester")
+                abilityIndex = 3;
+            
+            switch (abilityIndex)
+            {
+                case 0:
+                    rightText[1].text = "ความสามารถ : " + tempStaff[index].analysis.ToString();
+                    break;
+                case 1:
+                    rightText[1].text = "ความสามารถ : " + tempStaff[index].design.ToString();
+                    break;
+                case 2:
+                    rightText[1].text = "ความสามารถ : " + tempStaff[index].coding.ToString();
+                    break;
+                case 3:
+                    rightText[1].text = "ความสามารถ : " + tempStaff[index].testing.ToString();
+                    break;
+                default:
+                    rightText[1].text = "ความสามารถ : ? ";
+                    break;
+            }
+            
+            rightText[2].text = "ตำแหน่ง: " + tempStaff[index].position.ToString();
+            rightText[3].text = "ค่าจ้าง: " + tempStaff[index].wage.ToString() + " บาท/เดือน";
         }
-        
-    
     }
 
     private void OnEnable() {

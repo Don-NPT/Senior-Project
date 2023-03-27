@@ -9,10 +9,9 @@ public class ProjectManager : MonoBehaviour
     public List<Project> currentProjects;
     public Project currentProject;
     public List<Project> oldProject;
+    public List<KitchenObjectSO> AllTasks;
     
-    // Start is called before the first frame update
-    void Start()
-    {
+    void Awake() {
         if (instance != null && instance != this) 
             Destroy(this); 
         else 
@@ -43,18 +42,37 @@ public class ProjectManager : MonoBehaviour
         return null;
     }
 
+    public bool CheckProjectInProgress()
+    {
+        foreach(Project project in allProjects){
+            if(project.inProgress == true){
+                return true;
+            }
+        }
+        return false;
+    }
+
     public void Save()
     {
         ProjectManagerAdapter gameAdapter = new ProjectManagerAdapter();
-        gameAdapter.Save(currentProject, oldProject);
+        List<int> oldProjectId = new List<int>();
+        foreach(var project in oldProject){
+            oldProjectId.Add(project.projectId);
+        }
+        gameAdapter.Save(currentProject.projectId, oldProjectId.ToArray());
     }
 
     public void Load()
     {
         ProjectManagerAdapter projectManagerAdapter = new ProjectManagerAdapter();
         ProjectManagerAdapter saveData = projectManagerAdapter.Load();
-        currentProject = saveData.currentProject;
-        oldProject = saveData.oldProject;
+ 
+        foreach(var project in allProjects){
+            if(project.projectId == saveData.currentProject) currentProject = project;
+            foreach(var old in saveData.oldProject){
+                if(project.projectId == old) oldProject.Add(project);
+            }
+        }
     }
     
 }
@@ -62,10 +80,10 @@ public class ProjectManager : MonoBehaviour
 [System.Serializable]
 public class ProjectManagerAdapter
 {
-    public Project currentProject;
-    public List<Project> oldProject;
+    public int currentProject;
+    public int[] oldProject;
 
-    public void Save(Project _currentProject, List<Project> _oldProject)
+    public void Save(int _currentProject, int[] _oldProject)
     {
         currentProject = _currentProject;
         oldProject = _oldProject;

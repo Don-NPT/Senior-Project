@@ -19,8 +19,10 @@ public class SprintPlanning : MonoBehaviour
 
     IEnumerator ChangeScene()
     {
-        director.Play();   
+        director.Play();  
+         
         yield return new WaitForSeconds(1);
+        SaveSystem.instance.Save();
         SceneManager.LoadScene(2);
     }
 }

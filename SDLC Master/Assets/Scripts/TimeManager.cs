@@ -25,14 +25,15 @@ public class TimeManager : MonoBehaviour
     private float datetime;
     private string[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
     
-    // Start is called before the first frame update
-    void Start()
-    {
+    private void Awake() {
         // If there is an instance, and it's not me, delete myself.
         if (instance != null && instance != this) 
             Destroy(this); 
         else 
             instance = this; 
+    }
+    void Start()
+    {
 
         date = startDate;
         monthIndex = startMonthIndex;
@@ -100,7 +101,7 @@ public class TimeManager : MonoBehaviour
     public void Save()
     {
         TimeAdapter timeAdapter = new TimeAdapter();
-        timeAdapter.Save(date, monthIndex, year);
+        timeAdapter.Save(currentDate.Day, currentDate.Month, currentDate.Year);
     }
 
     public void Load()
@@ -108,8 +109,9 @@ public class TimeManager : MonoBehaviour
         TimeAdapter timeAdapter = new TimeAdapter();
         TimeAdapter saveData = timeAdapter.Load();
         date = saveData.date;
-        monthIndex = saveData.monthIndex;
+        monthIndex = saveData.month;
         year = saveData.year;
+        currentDate= new DateTime(saveData.year, saveData.month, saveData.date);
 
         datetime = date;
     }
@@ -119,13 +121,13 @@ public class TimeManager : MonoBehaviour
 public class TimeAdapter
 {
     public int date;
-    public int monthIndex;
+    public int month;
     public int year;
 
-    public void Save(int _date, int _monthIndex, int _year)
+    public void Save(int _date, int _month, int _year)
     {
         date = _date;
-        monthIndex = _monthIndex;
+        month = _month;
         year = _year;
         FileHandler.SaveToJSON<TimeAdapter> (this, "timesave.json");   
     }

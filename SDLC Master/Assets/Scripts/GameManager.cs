@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 using TMPro;
 using DG.Tweening;
@@ -17,15 +18,18 @@ public class GameManager : MonoBehaviour
     public bool panelOpen = false;
     public Transform canvasTransform;
     public GameObject moneyNotificationPrefab;
+    public Color[] colors;
     int previousDay;
-    // Start is called before the first frame update
-    void Start()
-    {
+    
+    private void Awake() {
         // If there is an instance, and it's not me, delete myself.
         if (instance != null && instance != this) 
             Destroy(this); 
         else 
             instance = this; 
+    }
+    void Start()
+    {
 
         money = 10000;
 
@@ -90,6 +94,10 @@ public class GameManager : MonoBehaviour
         moneyNotification.transform.SetParent(canvasTransform);
         moneyNotification.transform.localScale = Vector3.one;
         moneyNotification.transform.position = moneyPrefab.transform.position + (Vector3.up * 50);
+
+        if(num > 0) moneyNotification.GetComponent<Image>().color = colors[0];
+        else if(num < 0) moneyNotification.GetComponent<Image>().color = colors[1];
+
         Destroy(moneyNotification, 3f);
     }
 

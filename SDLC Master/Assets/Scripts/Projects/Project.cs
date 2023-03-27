@@ -17,6 +17,7 @@ public class Project : ScriptableObject
     public int expense;
     public int deadline;    
     public int scale;
+    public bool inProgress;
     
     [Header("Work Amount")]
     public int analysisWork;
@@ -78,7 +79,8 @@ public class Project : ScriptableObject
     [HideInInspector] public List<string> balloon2Answer;
 
     // Properties for Agile gameplay
-    [HideInInspector] public List<SprintTask> sprintList; 
+    public List<SprintTask> sprintList;
+    [HideInInspector] public string PO_id;
 
     public int getAllWorkAmount()
     {

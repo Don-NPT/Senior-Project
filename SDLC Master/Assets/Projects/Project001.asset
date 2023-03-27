@@ -17,10 +17,11 @@ MonoBehaviour:
   description: "\u0E02\u0E49\u0E2D\u0E40\u0E2A\u0E19\u0E2D\u0E42\u0E1B\u0E23\u0E40\u0E08\u0E04\u0E08\u0E32\u0E01\u0E1A\u0E23\u0E34\u0E29\u0E31\u0E17
     A"
   requirement: 
-  reward: 25000
-  expense: 10000
+  reward: 50000
+  expense: 12000
   deadline: 60
   scale: 2
+  inProgress: 0
   analysisWork: 15
   designWork: 20
   codingWork: 15
@@ -87,7 +88,7 @@ MonoBehaviour:
   actualCoding: 60
   actualTesting: 15
   actualDeployment: 20
-  model: {fileID: 11400000, guid: fefd9c0d5471bbd4b8ed0775ef1e6143, type: 2}
+  model: {fileID: 11400000, guid: 5ef74cd8a8ad44943a62f7d834d77d1c, type: 2}
   teamIndex: 0
   state: 1
   phase: 1
@@ -114,3 +115,8 @@ MonoBehaviour:
   balloonAnswer: []
   balloon2Point: 0
   balloon2Answer: []
+  sprintList:
+  - taskList:
+    - {fileID: 11400000, guid: 06e4b0972b91500408bffb2f8b6f97e0, type: 2}
+    sprintName: Sprint 1
+  PO_id: 002

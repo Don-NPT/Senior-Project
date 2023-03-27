@@ -48,9 +48,13 @@ public class GameOverUI : MonoBehaviour {
                 i++;
             }
 
-            BackToMainButton.onClick.AddListener(() => { SceneManager.LoadScene("SampleScene");
-            DeliveryManager.Instance.ClearNewRecipeList();
-        });
+            BackToMainButton.onClick.AddListener(() => { 
+                AgileManager.instance.phaseIndex = 1;
+                ProjectManager.instance.currentProject.sprintList = DeliveryManager.Instance.sprintList;
+                AgileManager.instance.Save();
+                SceneManager.LoadScene("SampleScene");
+                DeliveryManager.Instance.ClearNewRecipeList();      
+            });
         } else {
             Hide();
         }

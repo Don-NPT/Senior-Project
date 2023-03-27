@@ -8,10 +8,13 @@ public class AgileManager : MonoBehaviour
     public static AgileManager instance;
     public GameObject[] agileUI;
     public int phaseIndex;
+    public GameObject agileHud;
+    public int sprintIndex;
+    public GameObject projectSummaryUI;
 
     [HideInInspector] public Project project;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (instance != null && instance != this) 
             Destroy(this); 
@@ -27,20 +30,43 @@ public class AgileManager : MonoBehaviour
         if(project != null)
         {
             project.state = Project.Status.DOING;
-            ProjectHUD.instance.UpdateList();
+            project.inProgress = true;
             foreach(var staff in StaffManager.instance.getAllStaff())
             {
                 staff.gameObject.GetComponent<StaffController>().AssignWork();
             }
             phaseIndex = 0;
+            sprintIndex = 0;
             agileUI[0].SetActive(true);
+        }
+    }
+
+    public void StartSprint()
+    {
+        agileHud.SetActive(true);
+        Debug.Log("Sprint Start");
+    }
+
+    public void NextSprint()
+    {
+        sprintIndex++;
+        if(sprintIndex < project.sprintList.Count) agileHud.SetActive(true);
+        else {
+            GameManager.instance.AddMoney(project.reward);
+            projectSummaryUI.SetActive(true);
         }
     }
 
     public void Save()
     {
         AgileAdapter agileAdapter = new AgileAdapter();
-        agileAdapter.Save(project.projectId, phaseIndex);
+
+        if(project != null){
+            agileAdapter.Save(project.projectId, phaseIndex);
+        }else{
+            agileAdapter.Save(-1, -1);
+        }
+        
     }
 
     public void Load()
@@ -51,15 +77,14 @@ public class AgileManager : MonoBehaviour
         project = ProjectManager.instance.GetProjectbyId(saveData.projectIndex);
         phaseIndex = saveData.phaseIndex;
 
-        ProjectHUD.instance.UpdateList();
-
         switch(phaseIndex){
             case 0:
                 agileUI[0].SetActive(true);
                 break;
-            // case 1:
-            //     designUIs[0].SetActive(true);
-            //     break;
+            case 1:
+                agileUI[0].SetActive(false);
+                StartSprint();
+                break;
         }
     }
 }
