@@ -116,6 +116,8 @@ public class WaterFallManager : MonoBehaviour
                 designUIs[0].SetActive(false);
                 if(detailminigames[2].GetComponent<Tutorial>().Checktutorial()==true){
                     detailminigames[2].GetComponent<Tutorial>().Open();
+                }else if(detailminigames[2].GetComponent<Tutorial>().Checktutorial()==false){
+                    detailminigames[4].GetComponent<Tutorial>().Open();
                 }else{
                     GameManager.instance.Play();
                     BalloonBoom.instance.InitiateBalloonDev();
@@ -128,6 +130,8 @@ public class WaterFallManager : MonoBehaviour
                 BalloonBoom.instance.Stop();
                 if(detailminigames[3].GetComponent<Tutorial>().Checktutorial()==true){
                     detailminigames[3].GetComponent<Tutorial>().Open();
+                }else if(detailminigames[3].GetComponent<Tutorial>().Checktutorial()==false){
+                    detailminigames[5].GetComponent<Tutorial>().Open();
                 }else{
                     GameManager.instance.Play();
                     BalloonBoom.instance.InitiateBalloonTest();

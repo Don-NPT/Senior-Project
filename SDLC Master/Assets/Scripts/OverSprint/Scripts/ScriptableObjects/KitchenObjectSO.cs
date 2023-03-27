@@ -17,5 +17,6 @@ public class KitchenObjectSO : ScriptableObject
     [HideInInspector] public int quality;
     [HideInInspector] public int dayUsed;
     [HideInInspector] public bool isComplete;
+    [HideInInspector] public bool fromPreviousSprint;
 
 }
