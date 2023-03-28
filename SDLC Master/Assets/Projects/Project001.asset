@@ -17,7 +17,7 @@ MonoBehaviour:
   description: "\u0E02\u0E49\u0E2D\u0E40\u0E2A\u0E19\u0E2D\u0E42\u0E1B\u0E23\u0E40\u0E08\u0E04\u0E08\u0E32\u0E01\u0E1A\u0E23\u0E34\u0E29\u0E31\u0E17
     A"
   requirement: 
-  reward: 50000
+  reward: 80000
   expense: 12000
   deadline: 60
   scale: 2
@@ -27,11 +27,11 @@ MonoBehaviour:
   codingWork: 15
   testingWork: 15
   deploymentWork: 5
-  requireAnalysis: 40
-  requireDesign: 42
-  requireCoding: 55
-  requireTesting: 50
-  requireDeployment: 25
+  requireAnalysis: 15
+  requireDesign: 20
+  requireCoding: 25
+  requireTesting: 25
+  requireDeployment: 15
   requirement1:
   - word: "\u0E43\u0E0A\u0E49\u0E07\u0E48\u0E32\u0E22"
     isCorrect: 1
@@ -57,36 +57,38 @@ MonoBehaviour:
   - word: "\u0E40\u0E19\u0E49\u0E19\u0E2A\u0E35\u0E19\u0E49\u0E33\u0E40\u0E07\u0E34\u0E19\u0E01\u0E31\u0E1A\u0E2A\u0E49\u0E21\u0E40\u0E1B\u0E47\u0E19\u0E2B\u0E25\u0E31\u0E01"
     isCorrect: 0
   balloons:
-  - word: Correct1
+  - word: "\u0E01\u0E32\u0E23\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23"
     isCorrect: 1
-  - word: Correct2
+  - word: "\u0E01\u0E32\u0E23\u0E2D\u0E2D\u0E01\u0E41\u0E1A\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
     isCorrect: 1
-  - word: Correct3
+  - word: "\u0E01\u0E32\u0E23\u0E17\u0E14\u0E2A\u0E2D\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
     isCorrect: 1
-  - word: Wrong1
+  - word: Scrum Board
     isCorrect: 0
-  - word: Wrong2
+  - word: Print Risk
     isCorrect: 0
-  - word: Wrong3
+  - word: "\u0E1B\u0E23\u0E30\u0E0A\u0E38\u0E21\u0E1B\u0E23\u0E30\u0E08\u0E33\u0E27\u0E31\u0E19"
     isCorrect: 0
   keyInput:
-  - word: UX
-    hint: "\u0E1B\u0E23\u0E30\u0E2A\u0E1A\u0E01\u0E32\u0E23\u0E13\u0E4C\u0E02\u0E2D\u0E07\u0E1C\u0E39\u0E49\u0E43\u0E0A\u0E49\u0E07\u0E32\u0E19\u0E43\u0E19\u0E14\u0E49\u0E32\u0E19\u0E04\u0E27\u0E32\u0E21\u0E23\u0E39\u0E49\u0E2A\u0E36\u0E01\u0E17\u0E35\u0E48\u0E15\u0E2D\u0E1A\u0E2A\u0E19\u0E2D\u0E07\u0E15\u0E48\u0E2D\u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49\u0E07\u0E32\u0E19
-      Product (\u0E15\u0E31\u0E27\u0E22\u0E48\u0E2D)"
-    showNum: 0
-    additionalChar: 4100460049005a00
-  - word: RESPONSIVE
-    hint: "\u0E01\u0E32\u0E23\u0E14\u0E35\u0E44\u0E0B\u0E19\u0E4C\u0E2B\u0E19\u0E49\u0E32\u0E40\u0E27\u0E47\u0E1A\u0E41\u0E1A\u0E1A\u0E17\u0E35\u0E48\u0E2A\u0E32\u0E23\u0E16\u0E1B\u0E23\u0E31\u0E1A\u0E02\u0E19\u0E32\u0E14\u0E15\u0E32\u0E21\u0E2B\u0E19\u0E49\u0E32\u0E08\u0E2D"
-    showNum: 3
+  - word: SYSTEMTESTING
+    hint: "\u0E40\u0E1B\u0E47\u0E19\u0E04\u0E33\u0E40\u0E23\u0E35\u0E22\u0E01\u0E02\u0E31\u0E49\u0E19\u0E15\u0E2D\u0E19\u0E2B\u0E25\u0E31\u0E01\u0E08\u0E32\u0E01\u0E01\u0E32\u0E23\u0E1E\u0E31\u0E12\u0E19\u0E32\u0E0B\u0E2D\u0E1F\u0E15\u0E4C\u0E41\u0E27\u0E23\u0E4C
+      \u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E43\u0E2B\u0E49\u0E1C\u0E39\u0E49\u0E1E\u0E31\u0E12\u0E19\u0E32\u0E17\u0E23\u0E32\u0E1A\u0E27\u0E48\u0E32\u0E0B\u0E2D\u0E1F\u0E15\u0E4C\u0E41\u0E27\u0E23\u0E4C\u0E44\u0E14\u0E49\u0E15\u0E2D\u0E1A\u0E2A\u0E19\u0E2D\u0E07\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23\u0E44\u0E14\u0E49\u0E16\u0E39\u0E01\u0E15\u0E49\u0E2D\u0E07\u0E15\u0E32\u0E21\u0E17\u0E35\u0E48\u0E27\u0E32\u0E07\u0E44\u0E27\u0E49\u0E2B\u0E23\u0E37\u0E2D\u0E44\u0E21\u0E48"
+    showNum: 6
+    additionalChar: 
+  - word: ARCHITECTURE
+    hint: "\u0E2B\u0E21\u0E32\u0E22\u0E16\u0E36\u0E07\u0E01\u0E32\u0E23\u0E2D\u0E2D\u0E01\u0E41\u0E1A\u0E1A\u0E42\u0E04\u0E23\u0E07\u0E2A\u0E23\u0E49\u0E32\u0E07\u0E02\u0E2D\u0E07\u0E23\u0E30\u0E1A\u0E1A\u0E17\u0E35\u0E48\u0E43\u0E0A\u0E49\u0E07\u0E32\u0E19\u0E2D\u0E22\u0E39\u0E48
+      \u0E44\u0E21\u0E48\u0E27\u0E48\u0E32\u0E08\u0E30\u0E40\u0E1B\u0E47\u0E19 \u0E10\u0E32\u0E19\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25,
+      \u0E40\u0E04\u0E23\u0E37\u0E2D\u0E02\u0E48\u0E32\u0E22\u0E2B\u0E23\u0E37\u0E2D\u0E0B\u0E2D\u0E1F\u0E15\u0E4C\u0E41\u0E27\u0E23\u0E4C"
+    showNum: 5
     additionalChar: 
   smallTasks: 10
   mediumTasks: 6
   largeTasks: 3
   giantTasks: 1
   actualAnalysis: 4
-  actualDesign: 5
-  actualCoding: 5
-  actualTesting: 5
+  actualDesign: 10
+  actualCoding: 25
+  actualTesting: 25
   actualDeployment: 20
   model: {fileID: 11400000, guid: fefd9c0d5471bbd4b8ed0775ef1e6143, type: 2}
   teamIndex: 0
@@ -111,19 +113,20 @@ MonoBehaviour:
   designPoint: 0
   keyInputPass: 
   keyInputPoint: 0
-  balloonPoint: 10
+  balloonPoint: 25
   balloonAnswer:
-  - Wrong2
-  - Correct1
-  - Correct1
-  - Correct1
-  balloon2Point: 5
+  - "\u0E01\u0E32\u0E23\u0E2D\u0E2D\u0E01\u0E41\u0E1A\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
+  - "\u0E01\u0E32\u0E23\u0E17\u0E14\u0E2A\u0E2D\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
+  - "\u0E01\u0E32\u0E23\u0E2D\u0E2D\u0E01\u0E41\u0E1A\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
+  - "\u0E01\u0E32\u0E23\u0E2D\u0E2D\u0E01\u0E41\u0E1A\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
+  - "\u0E01\u0E32\u0E23\u0E2D\u0E2D\u0E01\u0E41\u0E1A\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
+  balloon2Point: 25
   balloon2Answer:
-  - Wrong2
-  - Wrong1
-  - Wrong1
-  - Correct2
-  - Correct2
+  - Scrum Board
+  - Print Risk
+  - Print Risk
+  - Scrum Board
+  - Scrum Board
   sprintList:
   - taskList:
     - {fileID: 11400000, guid: 06e4b0972b91500408bffb2f8b6f97e0, type: 2}
@@ -132,24 +135,21 @@ MonoBehaviour:
     - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
     sprintName: Sprint 1
   - taskList:
-    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
     - {fileID: 11400000, guid: dfe92c9d6ac10a84894ee655abc66332, type: 2}
-    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
-    - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
+    - {fileID: 11400000, guid: dfe92c9d6ac10a84894ee655abc66332, type: 2}
     - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
     sprintName: Sprint 2
   - taskList:
     - {fileID: 11400000, guid: dfe92c9d6ac10a84894ee655abc66332, type: 2}
-    - {fileID: 11400000, guid: dfe92c9d6ac10a84894ee655abc66332, type: 2}
+    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
+    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
+    - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
     - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
     sprintName: Sprint 3
   - taskList:
     - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
     - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
-    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
-    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
     - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
-    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
     - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
     - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
     sprintName: Sprint 4
