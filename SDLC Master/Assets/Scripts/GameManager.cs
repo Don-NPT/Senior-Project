@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public Transform canvasTransform;
     public GameObject moneyNotificationPrefab;
     public Color[] colors;
+    public GameObject notificationUI;
     int previousDay;
     
     private void Awake() {
@@ -98,7 +99,14 @@ public class GameManager : MonoBehaviour
         if(num > 0) moneyNotification.GetComponent<Image>().color = colors[0];
         else if(num < 0) moneyNotification.GetComponent<Image>().color = colors[1];
 
+        moneyNotification.GetComponentInChildren<TextMeshProUGUI>().text = num.ToString();
+
         Destroy(moneyNotification, 3f);
+    }
+
+    public void ToggleNotification(string content){
+        notificationUI.GetComponent<PanelOpener>().OpenPanelPunch();
+        notificationUI.GetComponentsInChildren<TextMeshProUGUI>()[0].text = content;
     }
 
     public void Pause()

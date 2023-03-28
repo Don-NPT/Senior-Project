@@ -86,7 +86,7 @@ public class AgileSummary : MonoBehaviour
             detail.transform.SetSiblingIndex(index);
             detail.SetActive(true);
             detail.GetComponentsInChildren<TextMeshProUGUI>()[1].text = sprint.GetDuration() + " วัน";
-            detail.GetComponentsInChildren<TextMeshProUGUI>()[3].text = "??? บาท";
+            detail.GetComponentsInChildren<TextMeshProUGUI>()[3].text = sprint.taskList.Count + " งาน";
             // detail.GetComponentsInChildren<TextMeshProUGUI>()[5].text = project.staffEachPhase[index-1].ToString() + " คน";
             // detail.GetComponentsInChildren<TextMeshProUGUI>()[7].text = project.statEachPhase[index-1].ToString() + " หน่วย";
         }
