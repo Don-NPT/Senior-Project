@@ -17,20 +17,21 @@ MonoBehaviour:
   description: "\u0E02\u0E49\u0E2D\u0E40\u0E2A\u0E19\u0E2D\u0E42\u0E1B\u0E23\u0E40\u0E08\u0E04\u0E08\u0E32\u0E01\u0E1A\u0E23\u0E34\u0E29\u0E31\u0E17
     B"
   requirement: 
-  reward: 45000
-  expense: 0
+  reward: 150000
+  expense: 50000
   deadline: 90
-  scale: 4
-  analysisWork: 0
-  designWork: 0
-  codingWork: 0
-  testingWork: 0
-  deploymentWork: 0
-  requireAnalysis: 0
-  requireDesign: 0
-  requireCoding: 0
-  requireTesting: 0
-  requireDeployment: 0
+  scale: 3
+  inProgress: 0
+  analysisWork: 20
+  designWork: 30
+  codingWork: 25
+  testingWork: 25
+  deploymentWork: 10
+  requireAnalysis: 20
+  requireDesign: 30
+  requireCoding: 30
+  requireTesting: 30
+  requireDeployment: 15
   requirement1:
   - word: Sometext
     isCorrect: 1
@@ -45,34 +46,42 @@ MonoBehaviour:
   - word: Sometext
     isCorrect: 1
   requirement2:
-  - word: Sometext
+  - word: "\u0E23\u0E30\u0E1A\u0E1A\u0E15\u0E49\u0E2D\u0E07\u0E2A\u0E32\u0E21\u0E32\u0E23\u0E16\u0E1A\u0E31\u0E19\u0E17\u0E36\u0E01\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E25\u0E39\u0E01\u0E04\u0E49\u0E32\u0E44\u0E14\u0E49"
     isCorrect: 1
-  - word: Sometext
+  - word: "\u0E23\u0E30\u0E1A\u0E1A\u0E15\u0E49\u0E2D\u0E07\u0E2A\u0E32\u0E21\u0E32\u0E23\u0E16\u0E41\u0E2A\u0E14\u0E07\u0E1C\u0E25\u0E23\u0E32\u0E22\u0E07\u0E32\u0E19\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E25\u0E39\u0E01\u0E04\u0E49\u0E32\u0E44\u0E14\u0E49"
     isCorrect: 1
-  - word: Sometext
-    isCorrect: 1
-  - word: Sometext
-    isCorrect: 1
+  - word: "\u0E23\u0E30\u0E1A\u0E1A\u0E15\u0E49\u0E2D\u0E07\u0E2A\u0E32\u0E21\u0E32\u0E23\u0E16\u0E23\u0E2D\u0E07\u0E23\u0E31\u0E1A\u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49\u0E07\u0E32\u0E19\u0E1E\u0E23\u0E49\u0E2D\u0E21\u0E01\u0E31\u0E19\u0E44\u0E14\u0E49
+      100 \u0E04\u0E19 "
+    isCorrect: 0
+  - word: "\u0E23\u0E30\u0E1A\u0E1A\u0E15\u0E49\u0E2D\u0E07\u0E21\u0E35\u0E01\u0E32\u0E23
+      backup \u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E2D\u0E22\u0E48\u0E32\u0E07\u0E19\u0E49\u0E2D\u0E22\u0E27\u0E31\u0E19\u0E25\u0E30
+      1 \u0E04\u0E23\u0E31\u0E49\u0E07 "
+    isCorrect: 0
   balloons:
-  - word: Sometext
+  - word: "\u0E01\u0E32\u0E23\u0E27\u0E32\u0E07\u0E41\u0E1C\u0E19\u0E42\u0E04\u0E23\u0E07\u0E01\u0E32\u0E23"
     isCorrect: 1
-  - word: Sometext
+  - word: "\u0E01\u0E32\u0E23\u0E2D\u0E2D\u0E01\u0E41\u0E1A\u0E1A\u0E2A\u0E16\u0E32\u0E1B\u0E31\u0E15\u0E22\u0E01\u0E23\u0E23\u0E21"
     isCorrect: 1
-  - word: Sometext
+  - word: "\u0E01\u0E32\u0E23\u0E15\u0E34\u0E14\u0E15\u0E32\u0E21\u0E04\u0E27\u0E32\u0E21\u0E04\u0E37\u0E1A\u0E2B\u0E19\u0E49\u0E32"
     isCorrect: 1
-  - word: Sometext
-    isCorrect: 1
-  - word: Sometext
-    isCorrect: 1
+  - word: "\u0E2A\u0E16\u0E32\u0E19\u0E30 Sprint"
+    isCorrect: 0
+  - word: Sprint Review
+    isCorrect: 0
   keyInput:
-  - word: Sometext
-    hint: description
-    showNum: 0
+  - word: RiskManagement
+    hint: "\u0E01\u0E32\u0E23\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C
+      \u0E1B\u0E23\u0E30\u0E40\u0E21\u0E34\u0E13\u0E41\u0E25\u0E30\u0E08\u0E31\u0E14\u0E01\u0E32\u0E23\u0E04\u0E27\u0E32\u0E21\u0E40\u0E2A\u0E35\u0E48\u0E22\u0E07\u0E17\u0E35\u0E48\u0E2D\u0E32\u0E08\u0E40\u0E01\u0E34\u0E14\u0E02\u0E36\u0E49\u0E19\u0E43\u0E19\u0E01\u0E32\u0E23\u0E14\u0E33\u0E40\u0E19\u0E34\u0E19\u0E07\u0E32\u0E19"
+    showNum: 5
     additionalChar: 
-  - word: Sometext
-    hint: description
-    showNum: 0
+  - word: ProgressTracking
+    hint: "\u0E15\u0E34\u0E14\u0E15\u0E32\u0E21\u0E04\u0E27\u0E32\u0E21\u0E04\u0E37\u0E1A\u0E2B\u0E19\u0E49\u0E32\u0E02\u0E2D\u0E07\u0E01\u0E32\u0E23\u0E1B\u0E0F\u0E34\u0E1A\u0E31\u0E15\u0E34\u0E07\u0E32\u0E19"
+    showNum: 5
     additionalChar: 
+  smallTasks: 9
+  mediumTasks: 6
+  largeTasks: 3
+  giantTasks: 2
   actualAnalysis: 0
   actualDesign: 0
   actualCoding: 0
@@ -98,3 +107,13 @@ MonoBehaviour:
   balloonAnswer: []
   balloon2Point: 0
   balloon2Answer: []
+  sprintList:
+  - taskList: []
+    sprintName: 
+  - taskList: []
+    sprintName: 
+  - taskList: []
+    sprintName: 
+  - taskList: []
+    sprintName: 
+  PO_id: 
