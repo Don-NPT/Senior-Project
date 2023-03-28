@@ -121,8 +121,16 @@ public class ProjectAgileHUD : MonoBehaviour
         }
         submitBTN.SetActive(true);
         List<KitchenObjectSO> tasks = project.sprintList[AgileManager.instance.sprintIndex].taskList;
+        // Save quality
         for(int i=0; i<tasks.Count; i++){
             tasks[i].quality = (int) Mathf.Round(taskItem[i].GetComponentsInChildren<Slider>()[1].value);
+        }
+        // Add unfinished tasks to next sprint
+        foreach(var task in tasks){
+            if(task.isComplete == false){
+                task.fromPreviousSprint = true;
+                project.sprintList[AgileManager.instance.sprintIndex+1].taskList.Add(task);
+            }
         }
         GameManager.instance.Play();
         TimeManager.instance.Pause();

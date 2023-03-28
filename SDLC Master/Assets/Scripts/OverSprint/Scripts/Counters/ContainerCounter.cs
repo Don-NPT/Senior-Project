@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class ContainerCounter : BaseCounter
 {
@@ -24,6 +25,21 @@ public class ContainerCounter : BaseCounter
         numoftaskmedium = project.mediumTasks;
         numoftasklarge = project.largeTasks;
         numoftasksgiant = project.giantTasks;
+
+        switch(kitchenObjectSO.objectName){
+            case "งานขนาดเล็ก":
+                GetComponentInChildren<TextMeshProUGUI>().text = project.smallTasks.ToString();
+                break;
+            case "งานขนาดกลาง":
+                GetComponentInChildren<TextMeshProUGUI>().text = project.mediumTasks.ToString();
+                break;
+            case "งานขนาดใหญ่":
+                GetComponentInChildren<TextMeshProUGUI>().text = project.largeTasks.ToString();
+                break;
+            case "งานแบบเบิ้มๆ":
+                GetComponentInChildren<TextMeshProUGUI>().text = project.giantTasks.ToString();
+                break;
+        }
     }
 
     public override void Interact(Player player)
@@ -32,6 +48,7 @@ public class ContainerCounter : BaseCounter
             //ไม่ได้ถืออะไรอยู่
             if(kitchenObjectSO.objectName == "งานขนาดเล็ก" && numoftasksmall > 0){
                 numoftasksmall--;
+                GetComponentInChildren<TextMeshProUGUI>().text = numoftasksmall.ToString();
                 Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefeb);
                 kitchenObjectTransform.GetComponent<KitchenObject>().SetKitchenObjectParent(player);
                 OnplayerGrabbedObject?.Invoke(this, EventArgs.Empty);
@@ -39,6 +56,7 @@ public class ContainerCounter : BaseCounter
             }
             if(kitchenObjectSO.objectName == "งานขนาดกลาง" && numoftaskmedium > 0){
                 numoftaskmedium--;
+                GetComponentInChildren<TextMeshProUGUI>().text = numoftaskmedium.ToString();
                 Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefeb);
                 kitchenObjectTransform.GetComponent<KitchenObject>().SetKitchenObjectParent(player);
                 OnplayerGrabbedObject?.Invoke(this, EventArgs.Empty);
@@ -46,6 +64,7 @@ public class ContainerCounter : BaseCounter
             }
             if(kitchenObjectSO.objectName == "งานขนาดใหญ่" && numoftasklarge > 0){
                 numoftasklarge--;
+                GetComponentInChildren<TextMeshProUGUI>().text = numoftasklarge.ToString();
                 Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefeb);
                 kitchenObjectTransform.GetComponent<KitchenObject>().SetKitchenObjectParent(player);
                 OnplayerGrabbedObject?.Invoke(this, EventArgs.Empty);
@@ -53,6 +72,7 @@ public class ContainerCounter : BaseCounter
             }
             if(kitchenObjectSO.objectName == "งานแบบเบิ้มๆ" && numoftasksgiant > 0){
                 numoftasksgiant--;
+                GetComponentInChildren<TextMeshProUGUI>().text = numoftasksgiant.ToString();
                 Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefeb);
                 kitchenObjectTransform.GetComponent<KitchenObject>().SetKitchenObjectParent(player);
                 OnplayerGrabbedObject?.Invoke(this, EventArgs.Empty);
