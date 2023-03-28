@@ -16,21 +16,22 @@ MonoBehaviour:
   pjName: Project Senior
   description: "\u0E02\u0E49\u0E2D\u0E40\u0E2A\u0E19\u0E2D\u0E42\u0E1B\u0E23\u0E40\u0E08\u0E04\u0E08\u0E32\u0E01\u0E1A\u0E23\u0E34\u0E29\u0E31\u0E17
     ICT"
-  reward: 70000
+  requirement: 
+  reward: 250000
+  expense: 100000
   deadline: 120
-  dayUsed: 0
-  scale: 5
-  estimateDaysInPhase: 25
-  analysisWork: 0
-  designWork: 0
-  codingWork: 0
-  testingWork: 0
-  deploymentWork: 0
-  actualAnalysis: 0
-  actualDesign: 0
-  actualCoding: 0
-  actualTesting: 0
-  actualDeployment: 0
+  scale: 4
+  inProgress: 0
+  analysisWork: 20
+  designWork: 35
+  codingWork: 35
+  testingWork: 30
+  deploymentWork: 15
+  requireAnalysis: 30
+  requireDesign: 30
+  requireCoding: 35
+  requireTesting: 35
+  requireDeployment: 20
   requirement1:
   - word: Sometext
     isCorrect: 1
@@ -44,45 +45,73 @@ MonoBehaviour:
     isCorrect: 1
   - word: Sometext
     isCorrect: 1
-  requirement2_new:
-  - word: Sometext
-    isCorrect: 1
-  - word: Sometext
-    isCorrect: 1
-  - word: Sometext
-    isCorrect: 1
-  - word: Sometext
-    isCorrect: 1
   requirement2:
-  - word: Sometext
+  - word: "\u0E23\u0E30\u0E1A\u0E1A\u0E15\u0E49\u0E2D\u0E07\u0E2A\u0E32\u0E21\u0E32\u0E23\u0E16\u0E15\u0E23\u0E27\u0E08\u0E2A\u0E2D\u0E1A\u0E04\u0E27\u0E32\u0E21\u0E16\u0E39\u0E01\u0E15\u0E49\u0E2D\u0E07\u0E02\u0E2D\u0E07\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E17\u0E35\u0E48\u0E23\u0E31\u0E1A\u0E40\u0E02\u0E49\u0E32\u0E21\u0E32\u0E44\u0E14\u0E49 "
     isCorrect: 1
-  - word: Sometext
+  - word: "\u0E23\u0E30\u0E1A\u0E1A\u0E15\u0E49\u0E2D\u0E07\u0E2A\u0E32\u0E21\u0E32\u0E23\u0E16\u0E2A\u0E48\u0E07\u0E2D\u0E35\u0E40\u0E21\u0E25\u0E4C\u0E41\u0E08\u0E49\u0E07\u0E40\u0E15\u0E37\u0E2D\u0E19\u0E44\u0E14\u0E49 "
     isCorrect: 1
-  - word: Sometext
-    isCorrect: 1
-  - word: Sometext
-    isCorrect: 1
+  - word: "\u0E23\u0E30\u0E1A\u0E1A\u0E15\u0E49\u0E2D\u0E07\u0E2A\u0E32\u0E21\u0E32\u0E23\u0E16\u0E43\u0E2B\u0E49\u0E1A\u0E23\u0E34\u0E01\u0E32\u0E23\u0E44\u0E14\u0E49
+      24 \u0E0A\u0E31\u0E48\u0E27\u0E42\u0E21\u0E07\u0E15\u0E48\u0E2D\u0E27\u0E31\u0E19 "
+    isCorrect: 0
+  - word: "\u0E23\u0E30\u0E1A\u0E1A\u0E15\u0E49\u0E2D\u0E07\u0E21\u0E35\u0E01\u0E32\u0E23\u0E1B\u0E49\u0E2D\u0E07\u0E01\u0E31\u0E19\u0E01\u0E32\u0E23\u0E40\u0E02\u0E49\u0E32\u0E16\u0E36\u0E07\u0E02\u0E49\u0E2D\u0E21\u0E39\u0E25\u0E42\u0E14\u0E22\u0E44\u0E21\u0E48\u0E44\u0E14\u0E49\u0E23\u0E31\u0E1A\u0E2D\u0E19\u0E38\u0E0D\u0E32\u0E15 "
+    isCorrect: 0
   balloons:
-  - word: Sometext
+  - word: "\u0E01\u0E32\u0E23\u0E08\u0E31\u0E14\u0E01\u0E32\u0E23\u0E40\u0E2D\u0E01\u0E2A\u0E32\u0E23"
     isCorrect: 1
-  - word: Sometext
+  - word: "\u0E01\u0E32\u0E23\u0E17\u0E14\u0E2A\u0E2D\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
     isCorrect: 1
-  - word: Sometext
+  - word: "\u0E01\u0E32\u0E23\u0E1E\u0E31\u0E12\u0E19\u0E32\u0E15\u0E48\u0E2D\u0E40\u0E19\u0E37\u0E48\u0E2D\u0E07"
     isCorrect: 1
-  - word: Sometext
-    isCorrect: 1
-  - word: Sometext
-    isCorrect: 1
+  - word: "\u0E41\u0E1E\u0E25\u0E19\u0E01\u0E32\u0E23\u0E4C\u0E14"
+    isCorrect: 0
+  - word: Sprint Retrospective
+    isCorrect: 0
   keyInput:
-  - word: Sometext
-    hint: description
-    showNum: 0
+  - word: RequirementAnalysis
+    hint: "\u0E01\u0E32\u0E23\u0E28\u0E36\u0E01\u0E29\u0E32\u0E41\u0E25\u0E30\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23\u0E02\u0E2D\u0E07\u0E23\u0E30\u0E1A\u0E1A\u0E17\u0E35\u0E48\u0E08\u0E30\u0E2A\u0E23\u0E49\u0E32\u0E07\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E43\u0E2B\u0E49\u0E40\u0E02\u0E49\u0E32\u0E43\u0E08\u0E41\u0E25\u0E30\u0E23\u0E30\u0E1A\u0E38\u0E04\u0E38\u0E13\u0E2A\u0E21\u0E1A\u0E31\u0E15\u0E34\u0E41\u0E25\u0E30\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23\u0E02\u0E2D\u0E07\u0E23\u0E30\u0E1A\u0E1A"
+    showNum: 6
     additionalChar: 
-  - word: Sometext
-    hint: description
-    showNum: 0
+  - word: Development
+    hint: "\u0E01\u0E32\u0E23\u0E40\u0E02\u0E35\u0E22\u0E19\u0E41\u0E25\u0E30\u0E1E\u0E31\u0E12\u0E19\u0E32\u0E0B\u0E2D\u0E1F\u0E15\u0E4C\u0E41\u0E27\u0E23\u0E4C\u0E02\u0E36\u0E49\u0E19\u0E15\u0E32\u0E21\u0E01\u0E32\u0E23\u0E2D\u0E2D\u0E01\u0E41\u0E1A\u0E1A\u0E23\u0E30\u0E1A\u0E1A
+      \u0E42\u0E14\u0E22\u0E43\u0E0A\u0E49\u0E40\u0E17\u0E04\u0E42\u0E19\u0E42\u0E25\u0E22\u0E35\u0E41\u0E25\u0E30\u0E40\u0E04\u0E23\u0E37\u0E48\u0E2D\u0E07\u0E21\u0E37\u0E2D\u0E15\u0E48\u0E32\u0E07\u0E46"
+    showNum: 3
     additionalChar: 
+  smallTasks: 12
+  mediumTasks: 6
+  largeTasks: 3
+  giantTasks: 1
+  actualAnalysis: 0
+  actualDesign: 0
+  actualCoding: 0
+  actualTesting: 0
+  actualDeployment: 0
   model: {fileID: 11400000, guid: 5ef74cd8a8ad44943a62f7d834d77d1c, type: 2}
   teamIndex: 3
   state: 1
   phase: 0
+  staffEachPhase: 
+  statEachPhase: 
+  dayUsed: 0
+  estimateDaysInPhase: 25
+  requirement1Answer: []
+  requirement1Point: 0
+  requirement2Answer: []
+  requirement2Point: 0
+  designAnswer: 
+  designPoint: 0
+  keyInputPass: 
+  keyInputPoint: 0
+  balloonPoint: 0
+  balloonAnswer: []
+  balloon2Point: 0
+  balloon2Answer: []
+  sprintList:
+  - taskList: []
+    sprintName: 
+  - taskList: []
+    sprintName: 
+  - taskList: []
+    sprintName: 
+  - taskList: []
+    sprintName: 
+  PO_id: 
