@@ -105,6 +105,16 @@ public class DeliveryManager : MonoBehaviour
             sprintIndex++;
         }
         
+        GameObject[] counters = GameObject.FindGameObjectsWithTag("ContainerCounter");
+        int sumEmpty = 0;
+        foreach(var counter in counters){
+            if(counter.GetComponent<ContainerCounter>().numTasks == 0){
+                sumEmpty++;
+            }
+        }
+        if(sumEmpty == 4){
+            KitchenGameManager.Instance.SetGameOver();
+        }
     }
 
 

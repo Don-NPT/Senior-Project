@@ -831,7 +831,7 @@ GameObject:
   - component: {fileID: 5679777480465565065}
   m_Layer: 10
   m_Name: ContainerCounter_LargeTask
-  m_TagString: Untagged
+  m_TagString: ContainerCounter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -843,7 +843,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7124220725424753351}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
   m_LocalPosition: {x: -1.04, y: 0.821187, z: -2.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -880,11 +880,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   counterTopPoint: {fileID: 4376383654758291221}
-  kitchenObjectSO: {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
-  numoftasksmall: 0
-  numoftaskmedium: 0
-  numoftasklarge: 0
-  numoftasksgiant: 0
+  kitchenObjectSO: {fileID: 11400000, guid: dfe92c9d6ac10a84894ee655abc66332, type: 2}
+  numTasks: 0
 --- !u!1 &7530464066338521654
 GameObject:
   m_ObjectHideFlags: 0

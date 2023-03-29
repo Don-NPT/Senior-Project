@@ -12,7 +12,7 @@ public class KitchenGameManager : MonoBehaviour
     public GameObject trackingCamera;
     public GameObject transitionCamera;
 
-    private enum State{
+    public enum State{
         Idle,
         WaitingToStart,
         CountdownToStart,
@@ -20,7 +20,7 @@ public class KitchenGameManager : MonoBehaviour
         GameOver,
     }
 
-    private State state;
+    public State state;
     private float waitingToStartTimer = 1f;
     private float countdownToStartTimer = 3f;
     private float gamePlayingTimer;
@@ -66,7 +66,13 @@ public class KitchenGameManager : MonoBehaviour
             case State.GameOver:
                 break;
         }
+        
         // Debug.Log(state);
+    }
+
+    public void SetGameOver(){
+        state = State.GameOver;
+        OnStateChanged?.Invoke(this, EventArgs.Empty);
     }
 
     public void StartGame(){

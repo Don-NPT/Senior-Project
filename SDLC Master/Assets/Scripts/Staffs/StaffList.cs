@@ -59,7 +59,7 @@ public class StaffList : MonoBehaviour
     
         staffs = GameObject.FindGameObjectsWithTag("Staff");
         staffItem = new GameObject[staffs.Length];
-
+        Debug.Log(staffs.Length);
         for(int i=0;i<staffs.Length;i++)
         {
             if(staffs[i].GetComponent<StaffProperties>().position == positionToShow || positionToShow == "All")
@@ -101,7 +101,7 @@ public class StaffList : MonoBehaviour
 
     void KickoutStaff(int index){
         if(ProjectManager.instance.currentProject == null){
-            Debug.Log("Kick out staff '" + staffs[index].GetComponent<StaffProperties>().fname + "'");
+            // Debug.Log("Kick out staff '" + staffs[index].GetComponent<StaffProperties>().fname + "'");
             Destroy(staffs[index]);
             ManageStaffItem();
         }else{

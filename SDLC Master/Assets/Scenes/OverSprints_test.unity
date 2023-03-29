@@ -4544,7 +4544,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 859714150}
-  m_LocalRotation: {x: 0.38268343, y: -0.000000015896621, z: 0.000000006584596, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268343, y: -0.000000015896621, z: 0.000000006584597, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 6, z: -9.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -11505,7 +11505,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2063894109}
-  m_LocalRotation: {x: 0.38268343, y: -0.000000015896621, z: 0.000000006584596, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268343, y: -0.000000015896621, z: 0.000000006584597, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 6, z: -9.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -12043,10 +12043,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3695458985595951662, guid: 4450a95b79c2734449de44b31269ddf4, type: 3}
-      propertyPath: kitchenObjectSO
-      value: 
-      objectReference: {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4450a95b79c2734449de44b31269ddf4, type: 3}
 --- !u!4 &1910315889691138863
@@ -12343,10 +12339,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1334304638}
     m_Modifications:
-    - target: {fileID: 5679777480465565065, guid: c5847fcf8ec65c74cb0166f000fc147c, type: 3}
-      propertyPath: kitchenObjectSO
-      value: 
-      objectReference: {fileID: 11400000, guid: dfe92c9d6ac10a84894ee655abc66332, type: 2}
     - target: {fileID: 7124220725424753351, guid: c5847fcf8ec65c74cb0166f000fc147c, type: 3}
       propertyPath: m_Name
       value: ContainerCounter_LargeTask
@@ -12602,10 +12594,6 @@ PrefabInstance:
     - target: {fileID: 820488635568688949, guid: 811d78169cce5b34b8cdb4aac34713a4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2776143795625110155, guid: 811d78169cce5b34b8cdb4aac34713a4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 811d78169cce5b34b8cdb4aac34713a4, type: 3}

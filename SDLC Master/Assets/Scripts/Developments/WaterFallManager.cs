@@ -190,36 +190,38 @@ public class WaterFallManager : MonoBehaviour
         WaterfallAdapter waterfallAdapter = new WaterfallAdapter();
         WaterfallAdapter saveData = waterfallAdapter.Load();
 
-        qualityEachPhase = saveData.qualityEachPhase;
-        currentWorkAmount = saveData.currentWorkAmount;
-        progress = 0;
-        if(saveData.projectIndex != -1) {
-            project = ProjectManager.instance.GetProjectbyId(saveData.projectIndex);
-            ProjectHUD.instance.UpdateList();
-        }
-        staffPosition = saveData.staffPosition;
-        phaseIndex = saveData.phaseIndex;
+        if(ProjectManager.instance.currentProject.model.modelName == "Waterfall"){
+            qualityEachPhase = saveData.qualityEachPhase;
+            currentWorkAmount = saveData.currentWorkAmount;
+            progress = 0;
+            if(saveData.projectIndex != -1) {
+                project = ProjectManager.instance.GetProjectbyId(saveData.projectIndex);
+                ProjectHUD.instance.UpdateList();
+            }
+            staffPosition = saveData.staffPosition;
+            phaseIndex = saveData.phaseIndex;
 
-        
-        // Reset current phase quality
-        if(qualityEachPhase != null && qualityEachPhase.Length != 0) {qualityEachPhase[phaseIndex] = 0;}
+            
+            // Reset current phase quality
+            if(qualityEachPhase != null && qualityEachPhase.Length != 0) {qualityEachPhase[phaseIndex] = 0;}
 
-        switch(phaseIndex){
-            case 0:
-                requirementUIs[0].SetActive(true);
-                break;
-            case 1:
-                designUIs[0].SetActive(true);
-                break;
-            case 2:
-                BalloonBoom.instance.InitiateBalloonDev();
-                break;
-            case 3:
-                BalloonBoom.instance.InitiateBalloonTest();
-                break;
-            case 4:
-                StartCoroutine(UpdateProgress());
-                break;
+            switch(phaseIndex){
+                case 0:
+                    requirementUIs[0].SetActive(true);
+                    break;
+                case 1:
+                    designUIs[0].SetActive(true);
+                    break;
+                case 2:
+                    BalloonBoom.instance.InitiateBalloonDev();
+                    break;
+                case 3:
+                    BalloonBoom.instance.InitiateBalloonTest();
+                    break;
+                case 4:
+                    StartCoroutine(UpdateProgress());
+                    break;
+            }
         }
     }
 

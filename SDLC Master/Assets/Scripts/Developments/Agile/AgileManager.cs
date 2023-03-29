@@ -80,7 +80,8 @@ public class AgileManager : MonoBehaviour
         project = ProjectManager.instance.GetProjectbyId(saveData.projectIndex);
         phaseIndex = saveData.phaseIndex;
 
-        switch(phaseIndex){
+        if(ProjectManager.instance.currentProject.model.modelName == "Agile"){
+            switch(phaseIndex){
             case 0:
                 agileUI[0].SetActive(true);
                 break;
@@ -88,6 +89,7 @@ public class AgileManager : MonoBehaviour
                 agileUI[0].SetActive(false);
                 StartSprint();
                 break;
+        }
         }
     }
 }

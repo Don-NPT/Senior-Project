@@ -6,6 +6,7 @@ using TMPro;
 
 public class AgileSummary : MonoBehaviour
 {
+    public static AgileSummary instance;
     public TextMeshProUGUI titleTotalQuality;
     public Transform qualityList;
     public GameObject sprintPanel;
@@ -15,9 +16,25 @@ public class AgileSummary : MonoBehaviour
     public Color[] qualityColors;
     private GameObject detail;
     private Project project;
+
+    void Start()
+    {
+        if (instance != null && instance != this) 
+            Destroy(this); 
+        else 
+            instance = this;
+    }
     
     private void OnEnable() {
         project = ProjectManager.instance.currentProject;
+
+        SetupLeftPanel();
+        SetupRightPanel();
+    }
+
+    public void ShowOldProject(int index){
+        gameObject.SetActive(true);
+        project = ProjectManager.instance.oldProject[index];
 
         SetupLeftPanel();
         SetupRightPanel();
