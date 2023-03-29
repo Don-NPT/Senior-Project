@@ -26,15 +26,16 @@ public class AgileSummary : MonoBehaviour
     }
     
     private void OnEnable() {
-        project = ProjectManager.instance.currentProject;
-
-        SetupLeftPanel();
-        SetupRightPanel();
+        if(ProjectManager.instance.currentProject != null){
+            project = ProjectManager.instance.currentProject;
+            SetupLeftPanel();
+            SetupRightPanel();
+        }
     }
 
     public void ShowOldProject(int index){
-        gameObject.SetActive(true);
         project = ProjectManager.instance.oldProject[index];
+        gameObject.SetActive(true);
 
         SetupLeftPanel();
         SetupRightPanel();
@@ -111,6 +112,13 @@ public class AgileSummary : MonoBehaviour
             detail.SetActive(false);
         }
         
+    }
+
+    private void OnDisable() {
+        if(ProjectManager.instance.currentProject != null){
+            ProjectManager.instance.oldProject.Add(project);
+            ProjectManager.instance.currentProject = null;
+        }
     }
 
     int GetProjectQuality(){

@@ -112,7 +112,7 @@ public class DeliveryManager : MonoBehaviour
                 sumEmpty++;
             }
         }
-        if(sumEmpty == 4){
+        if(sumEmpty == 4 && GameObject.FindGameObjectsWithTag("Task").Length == 0){
             KitchenGameManager.Instance.SetGameOver();
         }
     }

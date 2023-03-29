@@ -81,9 +81,9 @@ MonoBehaviour:
       \u0E40\u0E04\u0E23\u0E37\u0E2D\u0E02\u0E48\u0E32\u0E22\u0E2B\u0E23\u0E37\u0E2D\u0E0B\u0E2D\u0E1F\u0E15\u0E4C\u0E41\u0E27\u0E23\u0E4C"
     showNum: 5
     additionalChar: 
-  smallTasks: 10
-  mediumTasks: 6
-  largeTasks: 3
+  smallTasks: 1
+  mediumTasks: 1
+  largeTasks: 1
   giantTasks: 1
   actualAnalysis: 4
   actualDesign: 10
@@ -130,10 +130,7 @@ MonoBehaviour:
   sprintList:
   - taskList:
     - {fileID: 11400000, guid: 06e4b0972b91500408bffb2f8b6f97e0, type: 2}
+    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
     - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
     sprintName: Sprint 1
-  - taskList:
-    - {fileID: 11400000, guid: dfe92c9d6ac10a84894ee655abc66332, type: 2}
-    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
-    sprintName: Sprint 2
   PO_id: 004
