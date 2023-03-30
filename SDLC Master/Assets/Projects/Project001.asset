@@ -85,17 +85,17 @@ MonoBehaviour:
   mediumTasks: 6
   largeTasks: 3
   giantTasks: 1
-  actualAnalysis: 4
-  actualDesign: 10
-  actualCoding: 25
-  actualTesting: -25
+  actualAnalysis: 0
+  actualDesign: 6
+  actualCoding: 10
+  actualTesting: 24
   actualDeployment: 20
   model: {fileID: 11400000, guid: fefd9c0d5471bbd4b8ed0775ef1e6143, type: 2}
   teamIndex: 0
   state: 1
-  phase: 1
-  staffEachPhase: 010000000100000000000000000000000000000000000000
-  statEachPhase: 020000000200000000000000000000000000000000000000
+  phase: 2
+  staffEachPhase: 010000000100000001000000000000000000000000000000
+  statEachPhase: 020000000200000003000000000000000000000000000000
   dayUsed: 50
   estimateDaysInPhase: 10
   requirement1Answer:
@@ -108,24 +108,24 @@ MonoBehaviour:
   - Non-Functional
   - Non-Functional
   - Non-Functional
-  requirement2Point: 4
+  requirement2Point: 0
   designAnswer: 
-  designPoint: 0
-  keyInputPass: 
+  designPoint: 3
+  keyInputPass: 01
   keyInputPoint: 0
   balloonPoint: 0
   balloonAnswer: []
-  balloon2Point: -25
+  balloon2Point: 24
   balloon2Answer:
-  - "\u0E01\u0E32\u0E23\u0E17\u0E14\u0E2A\u0E2D\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
   - "\u0E01\u0E32\u0E23\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23"
-  - "\u0E01\u0E32\u0E23\u0E17\u0E14\u0E2A\u0E2D\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
-  - "\u0E01\u0E32\u0E23\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23"
-  - "\u0E01\u0E32\u0E23\u0E17\u0E14\u0E2A\u0E2D\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
+  - Print Risk
+  - "\u0E01\u0E32\u0E23\u0E2D\u0E2D\u0E01\u0E41\u0E1A\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
+  - "\u0E01\u0E32\u0E23\u0E2D\u0E2D\u0E01\u0E41\u0E1A\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
+  - Print Risk
   sprintList:
   - taskList:
     - {fileID: 11400000, guid: 06e4b0972b91500408bffb2f8b6f97e0, type: 2}
     - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
     - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
     sprintName: Sprint 1
-  PO_id: 004
+  PO_id: 002
