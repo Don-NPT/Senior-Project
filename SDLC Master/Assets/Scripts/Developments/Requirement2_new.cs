@@ -39,14 +39,20 @@ public class Requirement2_new : MonoBehaviour
     void CheckAnswer(string answer)
     {
         project.requirement2Answer.Add(answer);
-        if(project.requirement2[index].isCorrect){
+        bool isCorrect; 
+        if(answer == "Functional"){
+            isCorrect = true;
+        }else{
+            isCorrect = false;
+        }
+        if(isCorrect == project.requirement2[index].isCorrect){
                 FindObjectOfType<AudioManager>().Play("Purchase");
                 Vector3 originalScale = transform.localScale;
                 // Animate the scale of the GameObject
                 transform.DOScale(Vector3.one * 1.05f, 0.2f)
                     .SetEase(Ease.OutQuad)
                     .OnComplete(() => transform.localScale = Vector3.one);
-                calculateQuality = (int)Mathf.Round((StaffManager.instance.getSumStaffStat("Analyst")/(project.scale * 15)) * pointCorrect);
+                calculateQuality = (int)Mathf.Round(((float)StaffManager.instance.getSumStaffStat("Analyst")/((float)(project.scale * 15))) * pointCorrect);
                 WaterFallManager.instance.qualityEachPhase[0] += calculateQuality;
                 project.requirement2Point += calculateQuality;
             }else{
@@ -56,7 +62,7 @@ public class Requirement2_new : MonoBehaviour
                 int shakeVibrato = 10;
                 float shakeRandomness = 90.0f;
                 transform.DOShakePosition(shakeDuration, shakeStrength, shakeVibrato, shakeRandomness);
-                calculateQuality = (int)Mathf.Round((StaffManager.instance.getSumStaffStat("Analyst")/(project.scale * 15)) * pointWrong);
+                calculateQuality = (int)Mathf.Round(((float)StaffManager.instance.getSumStaffStat("Analyst")/((float)(project.scale * 15))) * pointWrong);
                 WaterFallManager.instance.qualityEachPhase[0] += calculateQuality;
                 project.requirement2Point += calculateQuality;
             }
