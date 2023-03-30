@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 5520578022956169434}
   m_Layer: 0
   m_Name: SmallTask
-  m_TagString: Untagged
+  m_TagString: Task
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

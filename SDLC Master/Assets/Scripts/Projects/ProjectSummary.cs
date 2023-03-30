@@ -48,7 +48,6 @@ public class ProjectSummary : MonoBehaviour
             Destroy(this); 
         else 
             instance = this;
-
     }
 
     // Update is called once per frame
