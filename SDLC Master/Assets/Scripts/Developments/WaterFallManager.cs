@@ -5,6 +5,8 @@ using UnityEngine;
 public class WaterFallManager : MonoBehaviour
 {
     public static WaterFallManager instance;
+    public int pointWrong;
+    private int calculateQuality;
 
     public GameObject[] requirementUIs;
     public GameObject[] designUIs;
@@ -78,7 +80,8 @@ public class WaterFallManager : MonoBehaviour
 
             if(GameManager.instance.gameState != GameState.PAUSE){
                 progress += project.staffEachPhase[phaseIndex];
-                qualityEachPhase[phaseIndex] += project.statEachPhase[phaseIndex];
+                calculateQuality = (int)Mathf.Round(((float)StaffManager.instance.getSumStaffStat("Programmer")/((float)(project.scale * 15))) * pointWrong);
+                qualityEachPhase[phaseIndex] += calculateQuality;
             }
         }
         if(project.phase != Project.Phases.DEPLOYMENT)

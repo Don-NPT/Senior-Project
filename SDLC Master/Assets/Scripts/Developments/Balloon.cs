@@ -43,11 +43,13 @@ public class Balloon : MonoBehaviour, IPointerDownHandler
         }else{
             if(isDev){
                 Debug.Log("Point down");
+                calculateQuality = (int)Mathf.Round(((float)StaffManager.instance.getSumStaffStat("Programmer")/((float)(project.scale * 15))) * pointWrong);
                 ProjectManager.instance.currentProject.balloonPoint += pointWrong;
                 WaterFallManager.instance.qualityEachPhase[2] += pointWrong;
                 FindObjectOfType<AudioManager>().Play("Warning");
             }else{
                 Debug.Log("Point up");
+                calculateQuality = (int)Mathf.Round(((float)StaffManager.instance.getSumStaffStat("Programmer")/((float)(project.scale * 15))) * pointCorrect);
                 ProjectManager.instance.currentProject.balloon2Point += pointCorrect;
                 WaterFallManager.instance.qualityEachPhase[3] += pointCorrect;
                 FindObjectOfType<AudioManager>().Play("Purchase");

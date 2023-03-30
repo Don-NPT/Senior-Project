@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
         if(num > 0) moneyNotification.GetComponent<Image>().color = colors[0];
         else if(num < 0) moneyNotification.GetComponent<Image>().color = colors[1];
 
-        moneyNotification.GetComponentInChildren<TextMeshProUGUI>().text = num.ToString();
+        moneyNotification.GetComponentInChildren<TextMeshProUGUI>().text = num.ToString("C0");
 
         Destroy(moneyNotification, 3f);
     }
