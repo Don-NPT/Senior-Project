@@ -53,6 +53,7 @@ public class AgileManager : MonoBehaviour
         if(sprintIndex < project.sprintList.Count) agileHud.SetActive(true);
         else {
             GameManager.instance.AddMoney(project.reward);
+            project.inProgress = false;
             projectSummaryUI.SetActive(true);
         }
     }
@@ -77,7 +78,8 @@ public class AgileManager : MonoBehaviour
         project = ProjectManager.instance.GetProjectbyId(saveData.projectIndex);
         phaseIndex = saveData.phaseIndex;
 
-        switch(phaseIndex){
+        if(ProjectManager.instance.currentProject.model.modelName == "Agile"){
+            switch(phaseIndex){
             case 0:
                 agileUI[0].SetActive(true);
                 break;
@@ -85,6 +87,7 @@ public class AgileManager : MonoBehaviour
                 agileUI[0].SetActive(false);
                 StartSprint();
                 break;
+        }
         }
     }
 }

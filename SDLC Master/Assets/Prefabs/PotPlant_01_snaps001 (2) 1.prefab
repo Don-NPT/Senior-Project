@@ -13,12 +13,13 @@ GameObject:
   - component: {fileID: 5119064330069690451}
   - component: {fileID: 1031452681330756180}
   - component: {fileID: 5025602255714170989}
+  - component: {fileID: 207488171353970586}
   m_Layer: 0
   m_Name: PotPlant_01_snaps001 (2) 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 8
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &5140550714440299703
 Transform:
@@ -27,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5142410847081606391}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.237305, y: 0.1400001, z: 2.718346}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -114,3 +115,18 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0.82400006, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &207488171353970586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5142410847081606391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bdad944a062b5540b489084208095a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiPrefab: {fileID: 5744955277718794952, guid: c8606ccae6caffa49bfacceb2d4b91cb, type: 3}
+  offsetY: {x: 0, y: 2.1, z: 0}
+  price: 100

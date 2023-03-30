@@ -8,7 +8,8 @@ public class ProjectOld : MonoBehaviour
 {
     public GameObject projectOldItemPrefab;
     public Transform content;
-    public GameObject projectOldDetail;
+    public GameObject waterfallSummary;
+    public GameObject agileSummary;
     GameObject[] projectOldItem;
     // Start is called before the first frame update
     void Start()
@@ -48,7 +49,11 @@ public class ProjectOld : MonoBehaviour
     void ShowOldProjectDetail(int index)
     {
         content.transform.parent.gameObject.SetActive(false);
-        projectOldDetail.SetActive(true);
+        if(ProjectManager.instance.oldProject[index].model.modelName == "Waterfall"){
+            ProjectSummary.instance.ViewProjectSummary(ProjectManager.instance.oldProject[index]);
+        }else{
+            AgileSummary.instance.ShowOldProject(index);
+        }
 
         // TextMeshProUGUI[] texts = projectOldDetail.GetComponentsInChildren<TextMeshProUGUI>();
         // Project project =  ProjectManager.instance.oldProject[index];

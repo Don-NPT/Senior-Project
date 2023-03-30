@@ -6,6 +6,7 @@ using TMPro;
 
 public class AgileSummary : MonoBehaviour
 {
+    public static AgileSummary instance;
     public TextMeshProUGUI titleTotalQuality;
     public Transform qualityList;
     public GameObject sprintPanel;
@@ -15,9 +16,26 @@ public class AgileSummary : MonoBehaviour
     public Color[] qualityColors;
     private GameObject detail;
     private Project project;
+
+    void Start()
+    {
+        if (instance != null && instance != this) 
+            Destroy(this); 
+        else 
+            instance = this;
+    }
     
     private void OnEnable() {
-        project = ProjectManager.instance.currentProject;
+        if(ProjectManager.instance.currentProject != null){
+            project = ProjectManager.instance.currentProject;
+            SetupLeftPanel();
+            SetupRightPanel();
+        }
+    }
+
+    public void ShowOldProject(int index){
+        project = ProjectManager.instance.oldProject[index];
+        gameObject.SetActive(true);
 
         SetupLeftPanel();
         SetupRightPanel();
@@ -86,7 +104,7 @@ public class AgileSummary : MonoBehaviour
             detail.transform.SetSiblingIndex(index);
             detail.SetActive(true);
             detail.GetComponentsInChildren<TextMeshProUGUI>()[1].text = sprint.GetDuration() + " วัน";
-            detail.GetComponentsInChildren<TextMeshProUGUI>()[3].text = "??? บาท";
+            detail.GetComponentsInChildren<TextMeshProUGUI>()[3].text = sprint.taskList.Count + " งาน";
             // detail.GetComponentsInChildren<TextMeshProUGUI>()[5].text = project.staffEachPhase[index-1].ToString() + " คน";
             // detail.GetComponentsInChildren<TextMeshProUGUI>()[7].text = project.statEachPhase[index-1].ToString() + " หน่วย";
         }
@@ -94,6 +112,13 @@ public class AgileSummary : MonoBehaviour
             detail.SetActive(false);
         }
         
+    }
+
+    private void OnDisable() {
+        if(ProjectManager.instance.currentProject != null){
+            ProjectManager.instance.oldProject.Add(project);
+            ProjectManager.instance.currentProject = null;
+        }
     }
 
     int GetProjectQuality(){

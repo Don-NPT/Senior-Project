@@ -13,7 +13,7 @@ public class SprintRetrospective : MonoBehaviour
         project = ProjectManager.instance.currentProject;
         int sprintIndex = AgileManager.instance.sprintIndex;
 
-        GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Sprint " + (sprintIndex+1) + " Review";
+        GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Sprint " + (sprintIndex+1) + " Retrospective";
 
         List<KitchenObjectSO> smallTasks = new List<KitchenObjectSO>();
         List<KitchenObjectSO> mediumTasks = new List<KitchenObjectSO>();

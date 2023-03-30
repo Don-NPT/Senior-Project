@@ -121,15 +121,19 @@ public class ProjectPicker : MonoBehaviour
 
     public void ConfirmProject()
     {
-        selectedProject.state = Project.Status.READY;
-        // ProjectManager.instance.currentProjects.Add(selectedProject);
-        ProjectManager.instance.currentProject = selectedProject;
-        if(selectedModel.modelName == "Waterfall"){
-            ProjectHUD.instance.UpdateList();
+        if(ProjectManager.instance.currentProject == null){
+            selectedProject.state = Project.Status.READY;
+            // ProjectManager.instance.currentProjects.Add(selectedProject);
+            ProjectManager.instance.currentProject = selectedProject;
+            if(selectedModel.modelName == "Waterfall"){
+                ProjectHUD.instance.UpdateList();
+            }
+            
+            if(ProjectManager.instance.currentProject.model.modelName == "Waterfall") WaterFallManager.instance.InitiateWaterfall();
+            else AgileManager.instance.InitiateAgile();
+        }else{
+            GameManager.instance.ToggleNotification("ไม่สามารถรับโปรเจคใหม่ขณะนี้ได้");
         }
-        
-        if(ProjectManager.instance.currentProject.model.modelName == "Waterfall") WaterFallManager.instance.InitiateWaterfall();
-        else AgileManager.instance.InitiateAgile();
         
         selectedProject = null;
         selectedModel = null;

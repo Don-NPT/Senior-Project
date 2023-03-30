@@ -21,16 +21,9 @@ public class StaffList : MonoBehaviour
     void OnEnable()
     {
         DestroyAllStaffItem();
+        positionToShow = "All";
 
-        staffs = GameObject.FindGameObjectsWithTag("Staff");
-        staffItem = new GameObject[staffs.Length];
-
-        for(int i=0;i<staffs.Length;i++)
-        {
-            {
-                SetupStaffItem(i);
-            }
-        }
+        ManageStaffItem();
     }
 
     public void CheckSelectedTab(int index)
@@ -63,10 +56,10 @@ public class StaffList : MonoBehaviour
 
     public void ManageStaffItem() {
         DestroyAllStaffItem();
-
+    
         staffs = GameObject.FindGameObjectsWithTag("Staff");
         staffItem = new GameObject[staffs.Length];
-
+        Debug.Log(staffs.Length);
         for(int i=0;i<staffs.Length;i++)
         {
             if(staffs[i].GetComponent<StaffProperties>().position == positionToShow || positionToShow == "All")
@@ -94,11 +87,25 @@ public class StaffList : MonoBehaviour
         staffItem[i].GetComponentsInChildren<TextMeshProUGUI>()[0].color = staffs[i].GetComponent<StaffProperties>().GetStaffColor();
 
         // Set assign button according the isAssign
+        int index = i;
         if(staffs[i].GetComponent<StaffProperties>().isAssign)
         {
             staffItem[i].GetComponentInChildren<Button>().gameObject.SetActive(false);
+            staffItem[i].GetComponentsInChildren<Button>()[0].onClick.AddListener(delegate { KickoutStaff(index); });
         }else{
             staffItem[i].GetComponentInChildren<Button>().gameObject.SetActive(true);
+            staffItem[i].GetComponentsInChildren<Button>()[1].onClick.AddListener(delegate { KickoutStaff(index); });
+        }
+
+    }
+
+    void KickoutStaff(int index){
+        if(ProjectManager.instance.currentProject == null){
+            // Debug.Log("Kick out staff '" + staffs[index].GetComponent<StaffProperties>().fname + "'");
+            Destroy(staffs[index]);
+            ManageStaffItem();
+        }else{
+            GameManager.instance.ToggleNotification("ไม่สามารถไล่พนักงานระหว่างทำโปรเจคได้");
         }
     }
 
