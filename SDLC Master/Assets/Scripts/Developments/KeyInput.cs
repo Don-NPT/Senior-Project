@@ -21,6 +21,7 @@ public class KeyInput : MonoBehaviour
     private Project project;
     private Coroutine timer;
     private Tween sliderTween;
+    private int calculateQuality;
 
     public int index;
 
@@ -145,8 +146,9 @@ public class KeyInput : MonoBehaviour
         }
         if(pass >= inputBlocks.Length) {
             project.keyInputPass.Add(true);
-            WaterFallManager.instance.qualityEachPhase[1] += (int)Mathf.Round(pointCorrect);
-            project.designPoint += pointCorrect;
+            calculateQuality = (int)Mathf.Round(((float)StaffManager.instance.getSumStaffStat("Designer")/((float)(project.scale * 15))) * pointCorrect);
+            WaterFallManager.instance.qualityEachPhase[1] += calculateQuality;
+            project.designPoint += calculateQuality;
             AudioManager.instance.Play("Purchase");
             return true;
         }

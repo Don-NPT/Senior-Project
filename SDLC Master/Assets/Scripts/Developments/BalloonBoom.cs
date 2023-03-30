@@ -8,6 +8,7 @@ public class BalloonBoom : MonoBehaviour
     public static BalloonBoom instance;
     public int pointCorrect;
     public int pointWrong;
+    public int calculateQuality;
     public GameObject balloonDevPrefab;
     public GameObject balloonTestPrefab;
     public Transform canvas;

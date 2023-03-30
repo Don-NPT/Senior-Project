@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
 
-        money = 10000;
+        money = 100000;
 
         gameState = GameState.PLAY;
         previousDay = 1;
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moneyPrefab.text = money.ToString();
+        moneyPrefab.text = money.ToString("C0");
 
         if(Input.GetButtonDown("Cancel"))
         {
