@@ -7,6 +7,9 @@ using DG.Tweening;
 
 public class KeyInput : MonoBehaviour
 {
+    public int maxTime;
+    public int pointCorrect;
+    public int pointWrong;
     public Transform inputUI;
     public Transform charUI;
     public TextMeshProUGUI hint;
@@ -84,9 +87,9 @@ public class KeyInput : MonoBehaviour
             charBlocks[i].GetComponentInChildren<TextMeshProUGUI>().text = additionalChar[i].ToString();
         }
         // RandomizeChildren();
-        slider.maxValue = 15;
-        slider.value = 15;
-        timer = StartCoroutine(StartTimer(15));
+        slider.maxValue = maxTime;
+        slider.value = maxTime;
+        timer = StartCoroutine(StartTimer(maxTime));
     }
 
     // Update is called once per frame
@@ -112,7 +115,7 @@ public class KeyInput : MonoBehaviour
                         AudioManager.instance.Play("Warning");
                         if (sliderTween != null) sliderTween.Kill();
                         if(timer != null) StopCoroutine(timer);
-                        slider.value -= 2;
+                        slider.value -= pointWrong;
                         timer = StartCoroutine(StartTimer((int)slider.value));
                     }
                 }
@@ -142,8 +145,8 @@ public class KeyInput : MonoBehaviour
         }
         if(pass >= inputBlocks.Length) {
             project.keyInputPass.Add(true);
-            WaterFallManager.instance.qualityEachPhase[1] += 5;
-            project.designPoint += 5;
+            WaterFallManager.instance.qualityEachPhase[1] += pointCorrect;
+            project.designPoint += pointCorrect;
             AudioManager.instance.Play("Purchase");
             return true;
         }

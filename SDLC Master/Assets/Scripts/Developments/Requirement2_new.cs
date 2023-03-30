@@ -7,6 +7,8 @@ using DG.Tweening;
 public class Requirement2_new : MonoBehaviour
 {
     TextMeshProUGUI TMP;
+    public int pointCorrect;
+    public int pointWrong;
     public int index;
     private Project project;
 
@@ -43,8 +45,8 @@ public class Requirement2_new : MonoBehaviour
                 transform.DOScale(Vector3.one * 1.05f, 0.2f)
                     .SetEase(Ease.OutQuad)
                     .OnComplete(() => transform.localScale = Vector3.one);
-                WaterFallManager.instance.qualityEachPhase[0] += 5;
-                project.requirement2Point += 5;
+                WaterFallManager.instance.qualityEachPhase[0] += pointCorrect;
+                project.requirement2Point += pointCorrect;
             }else{
                 FindObjectOfType<AudioManager>().Play("Warning");
                 float shakeDuration = 0.5f;
@@ -52,8 +54,8 @@ public class Requirement2_new : MonoBehaviour
                 int shakeVibrato = 10;
                 float shakeRandomness = 90.0f;
                 transform.DOShakePosition(shakeDuration, shakeStrength, shakeVibrato, shakeRandomness);
-                WaterFallManager.instance.qualityEachPhase[0] -= 3;
-                project.requirement2Point -= 3;
+                WaterFallManager.instance.qualityEachPhase[0] += pointWrong;
+                project.requirement2Point += pointWrong;
             }
         index++;
         if(index < project.requirement2.Length )

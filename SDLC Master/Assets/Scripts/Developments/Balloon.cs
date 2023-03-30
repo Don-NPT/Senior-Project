@@ -20,30 +20,32 @@ public class Balloon : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown (PointerEventData eventData) 
      {
+        int pointCorrect = BalloonBoom.instance.pointCorrect;
+        int pointWrong = BalloonBoom.instance.pointWrong;
         if(ProjectManager.instance.currentProject.balloons[index].isCorrect)
         {
             if(isDev){
                 Debug.Log("Point up");
-                ProjectManager.instance.currentProject.balloonPoint += 5;
-                WaterFallManager.instance.qualityEachPhase[2] += 5;
+                ProjectManager.instance.currentProject.balloonPoint += pointCorrect;
+                WaterFallManager.instance.qualityEachPhase[2] += pointCorrect;
                 FindObjectOfType<AudioManager>().Play("Purchase");
             }else{
                 Debug.Log("Point down");
-                ProjectManager.instance.currentProject.balloon2Point -= 5;
-                WaterFallManager.instance.qualityEachPhase[3] -= 5;
+                ProjectManager.instance.currentProject.balloon2Point += pointWrong;
+                WaterFallManager.instance.qualityEachPhase[3] += pointWrong;
                 FindObjectOfType<AudioManager>().Play("Warning");
             }
             
         }else{
             if(isDev){
                 Debug.Log("Point down");
-                ProjectManager.instance.currentProject.balloonPoint -= 5;
-                WaterFallManager.instance.qualityEachPhase[2] -= 5;
+                ProjectManager.instance.currentProject.balloonPoint += pointWrong;
+                WaterFallManager.instance.qualityEachPhase[2] += pointWrong;
                 FindObjectOfType<AudioManager>().Play("Warning");
             }else{
                 Debug.Log("Point up");
-                ProjectManager.instance.currentProject.balloon2Point += 5;
-                WaterFallManager.instance.qualityEachPhase[3] += 5;
+                ProjectManager.instance.currentProject.balloon2Point += pointCorrect;
+                WaterFallManager.instance.qualityEachPhase[3] += pointCorrect;
                 FindObjectOfType<AudioManager>().Play("Purchase");
             }
         }
