@@ -145,7 +145,7 @@ public class KeyInput : MonoBehaviour
         }
         if(pass >= inputBlocks.Length) {
             project.keyInputPass.Add(true);
-            WaterFallManager.instance.qualityEachPhase[1] += pointCorrect;
+            WaterFallManager.instance.qualityEachPhase[1] += (int)Mathf.Round(pointCorrect);
             project.designPoint += pointCorrect;
             AudioManager.instance.Play("Purchase");
             return true;
