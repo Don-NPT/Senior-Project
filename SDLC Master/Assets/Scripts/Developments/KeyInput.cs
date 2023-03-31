@@ -87,7 +87,8 @@ public class KeyInput : MonoBehaviour
 
             charBlocks[i].GetComponentInChildren<TextMeshProUGUI>().text = additionalChar[i].ToString();
         }
-        // RandomizeChildren();
+        RandomizeChildren();
+        ResetCharAlpha();
         slider.maxValue = maxTime;
         slider.value = maxTime;
         timer = StartCoroutine(StartTimer(maxTime));
@@ -110,6 +111,7 @@ public class KeyInput : MonoBehaviour
                             if(block.GetComponentInChildren<TextMeshProUGUI>().text == keyName)
                             {
                                 block.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
+                                LowerCharAlpha(keyName);
                             }
                         }
                     }else{
@@ -191,20 +193,34 @@ public class KeyInput : MonoBehaviour
         return randomCharacters;
     }
 
-    public void RandomizeChildren()
+    private void RandomizeChildren()
     {
-        int n = charBlocks.Length;
-        for (int i = 0; i < n; i++)
+        for (int i = 0; i < charBlocks.Length; i++)
         {
-            int randomIndex = Random.Range(0, n);
-            GameObject temp = charBlocks[i];
-            charBlocks[i] = charBlocks[randomIndex];
-            charBlocks[randomIndex] = temp;
+            int randomIndex = Random.Range(0, charBlocks.Length-1);
+            string temp = charBlocks[i].GetComponentInChildren<TextMeshProUGUI>().text;
+            charBlocks[i].GetComponentInChildren<TextMeshProUGUI>().text = charBlocks[randomIndex].GetComponentInChildren<TextMeshProUGUI>().text;
+            charBlocks[randomIndex].GetComponentInChildren<TextMeshProUGUI>().text = temp;
         }
+    }
 
-        for (int i = 0; i < n; i++)
-        {
-            charBlocks[i].transform.SetParent(charUI);
+    void LowerCharAlpha(string character){
+        foreach(var charBlock in charBlocks){
+            if(charBlock.GetComponentInChildren<TextMeshProUGUI>().text == character && charBlock.activeSelf){
+                // charBlock.SetActive(false);
+                Color color = charBlock.GetComponent<Image>().color;
+                color.a = 0.3f;
+                charBlock.GetComponent<Image>().color = color;
+            }
+        }
+    }
+
+    void ResetCharAlpha(){
+        foreach(var charBlock in charBlocks){
+            // charBlock.SetActive(false);
+            Color color = charBlock.GetComponent<Image>().color;
+            color.a = 1f;
+            charBlock.GetComponent<Image>().color = color;
         }
     }
 
