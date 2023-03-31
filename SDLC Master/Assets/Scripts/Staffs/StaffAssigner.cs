@@ -72,6 +72,7 @@ public class StaffAssigner : MonoBehaviour
                     var rotationVector = obj.transform.rotation.eulerAngles;
                     rotationVector.y += 180;
                     GameObject staff = GameManager.instance.staffToAssign;
+                    Debug.Log(staff.GetComponent<StaffProperties>().fname);
                     staff.transform.position = obj.transform.position+yOffset;
                     staff.transform.rotation = Quaternion.Euler(rotationVector);
                     staff.GetComponent<StaffProperties>().isAssign = true;

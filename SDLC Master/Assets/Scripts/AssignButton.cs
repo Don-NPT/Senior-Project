@@ -27,14 +27,16 @@ public class AssignButton : MonoBehaviour, IPointerEnterHandler, IPointerDownHan
         staffAssigner.AssignStaff();
         transform.DOPunchScale (new Vector3 (0.2f, 0.2f, 0.2f), .25f);
 
-        string staffName = transform.parent.GetComponentsInChildren<TextMeshProUGUI>()[0].text;
+        string staffName = transform.parent.GetComponentsInChildren<TextMeshProUGUI>()[1].text;
         GameObject[] allStaffs = GameObject.FindGameObjectsWithTag("Staff");
         foreach(var staff in allStaffs)
         {
+            // Debug.Log(staff.GetComponent<StaffProperties>().fname);
             var name = staff.GetComponent<StaffProperties>().fname;
-            if(name  == staffName)
+            if(name == staffName)
                 // staffToAssign = staff;
                 GameManager.instance.staffToAssign = staff;
+                // Debug.Log(name + " : " + staffName);
         }
 
         GameObject staffListUI =  GameObject.Find("/Canvas/StaffList");
