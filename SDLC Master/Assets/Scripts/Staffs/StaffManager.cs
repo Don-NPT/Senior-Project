@@ -108,6 +108,17 @@ public class StaffManager : MonoBehaviour
         return sum;
     }
 
+    public StaffProperties GetStaffbyID(string id)
+    {
+        GameObject[] staffs = GameObject.FindGameObjectsWithTag("Staff");
+        for(int i=0; i<staffs.Length; i++)
+        {
+            if(staffs[i].GetComponent<StaffProperties>().id == id)
+                return staffs[i].GetComponent<StaffProperties>();
+        }
+        return null;
+    }
+
     public List<Staff> getAllSerializableStaff()
     {
         List<Staff> serializableStaff = new List<Staff>();
