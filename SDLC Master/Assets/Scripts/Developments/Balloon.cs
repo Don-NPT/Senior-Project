@@ -34,7 +34,7 @@ public class Balloon : MonoBehaviour, IPointerDownHandler
                 FindObjectOfType<AudioManager>().Play("Purchase");
             }else{
                 Debug.Log("Point down");
-                calculateQuality = (int)Mathf.Round(((float)StaffManager.instance.getSumStaffStat("Programmer")/((float)(project.scale * 15))) * pointWrong);
+                calculateQuality = (int)Mathf.Round(((float)StaffManager.instance.getSumStaffStat("Tester")/((float)(project.scale * 15))) * pointWrong);
                 ProjectManager.instance.currentProject.balloon2Point += calculateQuality;
                 WaterFallManager.instance.qualityEachPhase[3] += calculateQuality;
                 FindObjectOfType<AudioManager>().Play("Warning");
@@ -44,14 +44,14 @@ public class Balloon : MonoBehaviour, IPointerDownHandler
             if(isDev){
                 Debug.Log("Point down");
                 calculateQuality = (int)Mathf.Round(((float)StaffManager.instance.getSumStaffStat("Programmer")/((float)(project.scale * 15))) * pointWrong);
-                ProjectManager.instance.currentProject.balloonPoint += pointWrong;
-                WaterFallManager.instance.qualityEachPhase[2] += pointWrong;
+                ProjectManager.instance.currentProject.balloonPoint += calculateQuality;
+                WaterFallManager.instance.qualityEachPhase[2] += calculateQuality;
                 FindObjectOfType<AudioManager>().Play("Warning");
             }else{
                 Debug.Log("Point up");
-                calculateQuality = (int)Mathf.Round(((float)StaffManager.instance.getSumStaffStat("Programmer")/((float)(project.scale * 15))) * pointCorrect);
-                ProjectManager.instance.currentProject.balloon2Point += pointCorrect;
-                WaterFallManager.instance.qualityEachPhase[3] += pointCorrect;
+                calculateQuality = (int)Mathf.Round(((float)StaffManager.instance.getSumStaffStat("Tester")/((float)(project.scale * 15))) * pointCorrect);
+                ProjectManager.instance.currentProject.balloon2Point += calculateQuality;
+                WaterFallManager.instance.qualityEachPhase[3] += calculateQuality;
                 FindObjectOfType<AudioManager>().Play("Purchase");
             }
         }
