@@ -119,6 +119,18 @@ public class StaffManager : MonoBehaviour
         return null;
     }
 
+    public void TrainStaff(StaffProperties staff){
+        Debug.Log(staff.fname);
+        staff.analysis += 2;
+        staff.design += 2;
+        staff.coding += 2;
+        staff.testing += 2;
+    }
+
+    public void KickoutStaff(StaffProperties staff){
+        Destroy(staff.gameObject);
+    }
+
     public List<Staff> getAllSerializableStaff()
     {
         List<Staff> serializableStaff = new List<Staff>();

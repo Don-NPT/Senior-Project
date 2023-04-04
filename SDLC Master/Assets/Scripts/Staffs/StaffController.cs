@@ -63,9 +63,10 @@ public class StaffController : MonoBehaviour
                     if(ui == null)
                     {
                         ui = (GameObject)Instantiate(uiPrefab, FindObjectOfType<Canvas>().transform);
-                        foreach(CommandBar child in ui.GetComponentsInChildren<CommandBar>()){
-                            child.Setup(gameObject);
-                        }
+                        // foreach(CommandBar child in ui.GetComponentsInChildren<CommandBar>()){
+                        //     child.Setup(gameObject);
+                        // }
+                        ui.GetComponent<StaffBar>().SetupWithUI(gameObject, ui);
                         RectTransform[] childrenTransform = ui.GetComponentsInChildren<RectTransform>();
                         StartCoroutine(ChildPopup(childrenTransform));
                         
@@ -113,7 +114,7 @@ public class StaffController : MonoBehaviour
             showUI = false;
             // ui.gameObject.transform.DOScale(0, 0.05f).SetEase(Ease.InBounce);
             // ui.gameObject.transform.DOKill(false);
-            Destroy(ui.gameObject);
+            Destroy(ui.gameObject, 0.2f);
         }
     }
 
