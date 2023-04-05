@@ -58,11 +58,11 @@ MonoBehaviour:
       1 \u0E04\u0E23\u0E31\u0E49\u0E07 "
     isCorrect: 0
   balloons:
-  - word: "\u0E01\u0E32\u0E23\u0E27\u0E32\u0E07\u0E41\u0E1C\u0E19\u0E42\u0E04\u0E23\u0E07\u0E01\u0E32\u0E23"
+  - word: "\u0E27\u0E32\u0E07\u0E41\u0E1C\u0E19\u0E42\u0E04\u0E23\u0E07\u0E01\u0E32\u0E23"
     isCorrect: 1
-  - word: "\u0E01\u0E32\u0E23\u0E2D\u0E2D\u0E01\u0E41\u0E1A\u0E1A\u0E2A\u0E16\u0E32\u0E1B\u0E31\u0E15\u0E22\u0E01\u0E23\u0E23\u0E21"
+  - word: "\u0E2D\u0E2D\u0E01\u0E41\u0E1A\u0E1A\u0E42\u0E04\u0E23\u0E07\u0E2A\u0E23\u0E49\u0E32\u0E07\u0E23\u0E30\u0E1A\u0E1A"
     isCorrect: 1
-  - word: "\u0E01\u0E32\u0E23\u0E15\u0E34\u0E14\u0E15\u0E32\u0E21\u0E04\u0E27\u0E32\u0E21\u0E04\u0E37\u0E1A\u0E2B\u0E19\u0E49\u0E32"
+  - word: "\u0E15\u0E34\u0E14\u0E15\u0E32\u0E21\u0E04\u0E27\u0E32\u0E21\u0E04\u0E37\u0E1A\u0E2B\u0E19\u0E49\u0E32"
     isCorrect: 1
   - word: "\u0E2A\u0E16\u0E32\u0E19\u0E30 Sprint"
     isCorrect: 0
@@ -82,35 +82,45 @@ MonoBehaviour:
   mediumTasks: 6
   largeTasks: 3
   giantTasks: 2
-  actualAnalysis: 0
+  actualAnalysis: 2
   actualDesign: 0
-  actualCoding: 0
+  actualCoding: 8
   actualTesting: 0
-  actualDeployment: 0
+  actualDeployment: 12
   model: {fileID: 11400000, guid: fefd9c0d5471bbd4b8ed0775ef1e6143, type: 2}
   teamIndex: 0
-  state: 1
-  phase: 2
-  staffEachPhase: 010000000100000001000000000000000000000000000000
-  statEachPhase: 020000000200000003000000000000000000000000000000
+  state: 3
+  phase: 4
+  staffEachPhase: 010000000100000001000000010000000100000000000000
+  statEachPhase: 020000000200000003000000040000000400000000000000
   dayUsed: 0
   estimateDaysInPhase: 15
   requirement1Answer: []
   requirement1Point: 0
   requirement2Answer:
   - Non-Functional
-  - Non-Functional
-  - Non-Functional
-  - Non-Functional
-  requirement2Point: 4
+  - Functional
+  - Functional
+  - Functional
+  requirement2Point: 2
   designAnswer: 
   designPoint: 0
   keyInputPass: 
   keyInputPoint: 0
-  balloonPoint: 0
-  balloonAnswer: []
+  balloonPoint: 8
+  balloonAnswer:
+  - "\u0E2A\u0E16\u0E32\u0E19\u0E30 Sprint"
+  - "\u0E01\u0E32\u0E23\u0E15\u0E34\u0E14\u0E15\u0E32\u0E21\u0E04\u0E27\u0E32\u0E21\u0E04\u0E37\u0E1A\u0E2B\u0E19\u0E49\u0E32"
+  - "\u0E01\u0E32\u0E23\u0E2D\u0E2D\u0E01\u0E41\u0E1A\u0E1A\u0E2A\u0E16\u0E32\u0E1B\u0E31\u0E15\u0E22\u0E01\u0E23\u0E23\u0E21"
+  - "\u0E2A\u0E16\u0E32\u0E19\u0E30 Sprint"
+  - "\u0E01\u0E32\u0E23\u0E15\u0E34\u0E14\u0E15\u0E32\u0E21\u0E04\u0E27\u0E32\u0E21\u0E04\u0E37\u0E1A\u0E2B\u0E19\u0E49\u0E32"
   balloon2Point: 0
-  balloon2Answer: []
+  balloon2Answer:
+  - "\u0E01\u0E32\u0E23\u0E15\u0E34\u0E14\u0E15\u0E32\u0E21\u0E04\u0E27\u0E32\u0E21\u0E04\u0E37\u0E1A\u0E2B\u0E19\u0E49\u0E32"
+  - "\u0E01\u0E32\u0E23\u0E27\u0E32\u0E07\u0E41\u0E1C\u0E19\u0E42\u0E04\u0E23\u0E07\u0E01\u0E32\u0E23"
+  - "\u0E01\u0E32\u0E23\u0E2D\u0E2D\u0E01\u0E41\u0E1A\u0E1A\u0E2A\u0E16\u0E32\u0E1B\u0E31\u0E15\u0E22\u0E01\u0E23\u0E23\u0E21"
+  - "\u0E01\u0E32\u0E23\u0E15\u0E34\u0E14\u0E15\u0E32\u0E21\u0E04\u0E27\u0E32\u0E21\u0E04\u0E37\u0E1A\u0E2B\u0E19\u0E49\u0E32"
+  - "\u0E01\u0E32\u0E23\u0E27\u0E32\u0E07\u0E41\u0E1C\u0E19\u0E42\u0E04\u0E23\u0E07\u0E01\u0E32\u0E23"
   sprintList:
   - taskList: []
     sprintName: 

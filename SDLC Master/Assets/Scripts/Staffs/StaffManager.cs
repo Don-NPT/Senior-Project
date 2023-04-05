@@ -9,6 +9,8 @@ public class StaffManager : MonoBehaviour
     public Sprite[] positionLogos;
     public Color[] positionColors;
 
+
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -23,7 +25,7 @@ public class StaffManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public int getTotalStaff()
@@ -43,6 +45,7 @@ public class StaffManager : MonoBehaviour
         }
         return sum;
     }
+
 
     public List<StaffProperties> getAllStaff()
     {
