@@ -11,6 +11,7 @@ public class StaffList : MonoBehaviour
     GameObject[] staffItem;
     public Transform rightContent;
     public Transform leftContent;
+    public GameObject staffDetailContent;
     string positionToShow;
     // Start is called before the first frame update
     void Start()
@@ -86,17 +87,41 @@ public class StaffList : MonoBehaviour
         staffItem[i].GetComponentsInChildren<TextMeshProUGUI>()[0].text = staffs[i].GetComponent<StaffProperties>().GetStaffStat().ToString();
         staffItem[i].GetComponentsInChildren<TextMeshProUGUI>()[0].color = staffs[i].GetComponent<StaffProperties>().GetStaffColor();
 
-        // Set assign button according the isAssign
         int index = i;
+
+        staffDetailContent.SetActive(false);
+        staffItem[i].GetComponentsInChildren<Button>()[0].onClick.AddListener(delegate { ShowStaffDetail(staffs[index].GetComponent<StaffProperties>()); });
+
+        // Set assign button according the isAssign
+        
         if(staffs[i].GetComponent<StaffProperties>().isAssign)
         {
-            staffItem[i].GetComponentInChildren<Button>().gameObject.SetActive(false);
-            staffItem[i].GetComponentsInChildren<Button>()[0].onClick.AddListener(delegate { KickoutStaff(index); });
+            staffItem[i].GetComponentsInChildren<Button>()[1].gameObject.SetActive(false);
+            staffItem[i].GetComponentsInChildren<Button>()[1].onClick.AddListener(delegate { 
+                StaffManager.instance.TrainStaff(staffs[index].GetComponent<StaffProperties>().GetComponent<StaffProperties>()); 
+                ShowStaffDetail(staffs[index].GetComponent<StaffProperties>());
+                staffItem[i].GetComponentsInChildren<TextMeshProUGUI>()[0].text = staffs[i].GetComponent<StaffProperties>().GetStaffStat().ToString();
+            });
+            staffItem[i].GetComponentsInChildren<Button>()[2].onClick.AddListener(delegate { KickoutStaff(index); });
         }else{
-            staffItem[i].GetComponentInChildren<Button>().gameObject.SetActive(true);
-            staffItem[i].GetComponentsInChildren<Button>()[1].onClick.AddListener(delegate { KickoutStaff(index); });
+            staffItem[i].GetComponentsInChildren<Button>()[1].gameObject.SetActive(true);
+            staffItem[i].GetComponentsInChildren<Button>()[2].onClick.AddListener(delegate { 
+                StaffManager.instance.TrainStaff(staffs[index].GetComponent<StaffProperties>().GetComponent<StaffProperties>()); 
+                ShowStaffDetail(staffs[index].GetComponent<StaffProperties>());
+                staffItem[i].GetComponentsInChildren<TextMeshProUGUI>()[0].text = staffs[i].GetComponent<StaffProperties>().GetStaffStat().ToString();
+             });
+            staffItem[i].GetComponentsInChildren<Button>()[3].onClick.AddListener(delegate { KickoutStaff(index); });
         }
 
+    }
+
+    void ShowStaffDetail(StaffProperties staff){
+        staffDetailContent.SetActive(true);
+
+        staffDetailContent.GetComponentsInChildren<TextMeshProUGUI>()[0].text = staff.fname;
+        staffDetailContent.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "ค่าสถานะ: " + staff.GetStaffStat() + " หน่วย";
+        staffDetailContent.GetComponentsInChildren<TextMeshProUGUI>()[2].text = "ตำแหน่ง: " + staff.position;
+        staffDetailContent.GetComponentsInChildren<TextMeshProUGUI>()[3].text = "ค่าจ้าง: " + staff.wage.ToString("C0") + " บาท";
     }
 
     void KickoutStaff(int index){
