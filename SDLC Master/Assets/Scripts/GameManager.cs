@@ -86,6 +86,12 @@ public class GameManager : MonoBehaviour
         return money;
     }
 
+    public int PayTrainStaff()
+    {
+        money -= 10000;
+        return money;
+    }
+
     public void AddMoney(int num)
     {
         money += num;

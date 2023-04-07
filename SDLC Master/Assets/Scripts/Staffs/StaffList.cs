@@ -12,11 +12,12 @@ public class StaffList : MonoBehaviour
     public Transform rightContent;
     public Transform leftContent;
     public GameObject staffDetailContent;
+    public StaffBar staffbar;
     string positionToShow;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     void OnEnable()
@@ -98,7 +99,10 @@ public class StaffList : MonoBehaviour
         {
             staffItem[i].GetComponentsInChildren<Button>()[1].gameObject.SetActive(false);
             staffItem[i].GetComponentsInChildren<Button>()[1].onClick.AddListener(delegate { 
+                if(GameManager.instance.getMoney() > 10000){
+                GameManager.instance.PayTrainStaff();
                 StaffManager.instance.TrainStaff(staffs[index].GetComponent<StaffProperties>().GetComponent<StaffProperties>()); 
+                }
                 ShowStaffDetail(staffs[index].GetComponent<StaffProperties>());
                 staffItem[i].GetComponentsInChildren<TextMeshProUGUI>()[0].text = staffs[i].GetComponent<StaffProperties>().GetStaffStat().ToString();
             });
@@ -106,7 +110,10 @@ public class StaffList : MonoBehaviour
         }else{
             staffItem[i].GetComponentsInChildren<Button>()[1].gameObject.SetActive(true);
             staffItem[i].GetComponentsInChildren<Button>()[2].onClick.AddListener(delegate { 
+                if(GameManager.instance.getMoney() > 10000){
+                GameManager.instance.PayTrainStaff();
                 StaffManager.instance.TrainStaff(staffs[index].GetComponent<StaffProperties>().GetComponent<StaffProperties>()); 
+                }
                 ShowStaffDetail(staffs[index].GetComponent<StaffProperties>());
                 staffItem[i].GetComponentsInChildren<TextMeshProUGUI>()[0].text = staffs[i].GetComponent<StaffProperties>().GetStaffStat().ToString();
              });

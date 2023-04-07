@@ -598,7 +598,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floatingText: {fileID: 1426533845201594948, guid: 5abb10ffcc9ff0a4fb1977567ae8b2c4, type: 3}
+  floatingText2: {fileID: 1426533845201594948, guid: bbf941e04f3d33843ae4685c2c6f6c3d, type: 3}
   trainFX: {fileID: 2347216654952466688, guid: d02a18c5dcff3a744a8d5a5850b721e8, type: 3}
+  trainFX2: {fileID: 2347216654952466688, guid: f8024db8aa4600d4e9f3a051b672faf7, type: 3}
   trainFXOffset: {x: 2, y: 0, z: -0.5}
 --- !u!1 &7919622639675596826
 GameObject:
