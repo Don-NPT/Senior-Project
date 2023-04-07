@@ -114,7 +114,7 @@ public class StaffController : MonoBehaviour
             showUI = false;
             // ui.gameObject.transform.DOScale(0, 0.05f).SetEase(Ease.InBounce);
             // ui.gameObject.transform.DOKill(false);
-            Destroy(ui.gameObject, 0.2f);
+            Destroy(ui.gameObject, 0.5f);
         }
     }
 

@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class StaffManager : MonoBehaviour
 {   
     public static StaffManager instance;
     public GameObject staffPrefab;
+    public GameObject staffDetail;
     public Sprite[] positionLogos;
     public Color[] positionColors;
 
@@ -120,6 +122,15 @@ public class StaffManager : MonoBehaviour
                 return staffs[i].GetComponent<StaffProperties>();
         }
         return null;
+    }
+
+    public void ShowStaffDetail(StaffProperties staff){
+        staffDetail.GetComponent<PanelOpener>().OpenPanelPunch();
+
+        staffDetail.GetComponentsInChildren<TextMeshProUGUI>()[0].text = staff.fname;
+        staffDetail.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "ค่าสถานะ: " + staff.GetStaffStat() + " หน่วย";
+        staffDetail.GetComponentsInChildren<TextMeshProUGUI>()[2].text = "ตำแหน่ง: " + staff.position;
+        staffDetail.GetComponentsInChildren<TextMeshProUGUI>()[3].text = "ค่าจ้าง: " + staff.wage.ToString("C0") + " บาท";
     }
 
     public void TrainStaff(StaffProperties staff){

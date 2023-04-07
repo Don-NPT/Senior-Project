@@ -26,11 +26,17 @@ public class StaffBar : MonoBehaviour
         Button[] buttons = GetComponentsInChildren<Button>();
         
         buttons[0].onClick.AddListener(delegate { 
+            Debug.Log("Show staff detail");
+            StaffManager.instance.ShowStaffDetail(staffGO.GetComponent<StaffProperties>());
+        });
+        buttons[1].onClick.AddListener(delegate { 
+            Debug.Log("Train staff");
             StaffManager.instance.TrainStaff(staffGO.GetComponent<StaffProperties>());
             CreateText();
             CreateFX();
         });
-        buttons[1].onClick.AddListener(delegate { 
+        buttons[2].onClick.AddListener(delegate { 
+            Debug.Log("Kick out staff");
             StaffManager.instance.KickoutStaff(staffGO.GetComponent<StaffProperties>());
         });
     }
