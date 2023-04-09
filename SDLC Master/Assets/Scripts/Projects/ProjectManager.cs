@@ -8,7 +8,7 @@ public class ProjectManager : MonoBehaviour
     public Project[] allProjects;
     public List<Project> currentProjects;
     public Project currentProject;
-    public List<Project> oldProject = new List<Project>();
+    public List<Project> oldProject;
     public List<KitchenObjectSO> AllTasks;
     
     void Awake() {

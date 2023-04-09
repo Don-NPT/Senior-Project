@@ -21,7 +21,7 @@ public class WaterFallManager : MonoBehaviour
     [HideInInspector]
     public Project project;
 
-    public string staffPosition;
+    private string staffPosition;
     public int phaseIndex;
 
     void Awake()
