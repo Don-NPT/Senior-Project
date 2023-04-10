@@ -76,6 +76,7 @@ public class BalloonBoom : MonoBehaviour
             balloons[i] = (GameObject) Instantiate(balloonDevPrefab, spawnPosition, Quaternion.identity);
             balloons[i].transform.SetParent(canvas.transform);
             balloons[i].transform.position = spawnPosition;
+            Debug.Log("Balloon dev count "+ i);
 
             // Set text
             int index = Random.Range(0, ProjectManager.instance.currentProject.balloons.Length-1);
@@ -102,6 +103,7 @@ public class BalloonBoom : MonoBehaviour
             balloons[i] = (GameObject) Instantiate(balloonTestPrefab, spawnPosition, Quaternion.identity);
             balloons[i].transform.SetParent(canvas.transform);
             balloons[i].transform.position = spawnPosition;
+            Debug.Log("Balloon test count "+ i);
 
             // Set text
             int index = Random.Range(0, ProjectManager.instance.currentProject.balloons.Length-1);

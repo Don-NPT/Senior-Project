@@ -25,6 +25,7 @@ public class ProjectManager : MonoBehaviour
     {
         currentProject = null;
         oldProject.Add(project);
+        Debug.Log("OldprojectId "+oldProject[0].projectId);
     }
 
     public int getNumOldProject()

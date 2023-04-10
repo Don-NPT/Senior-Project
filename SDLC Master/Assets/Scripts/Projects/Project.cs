@@ -15,7 +15,8 @@ public class Project : ScriptableObject
     public string requirement;
     public int reward;
     public int expense;
-    public int deadline;    
+    public int deadline;
+    private int dayremain;
     public int scale;
     public bool inProgress;
     
@@ -65,6 +66,7 @@ public class Project : ScriptableObject
     [HideInInspector] public int estimateDaysInPhase;
     [HideInInspector] public DateTime[] startDates = new DateTime[6];
     [HideInInspector] public DateTime[] finishDates = new DateTime[6];
+    [HideInInspector] public DateTime[] currentDates = new DateTime[6];
     [HideInInspector] public List<string> requirement1Answer;
     [HideInInspector] public int requirement1Point;
     [HideInInspector] public List<string> requirement2Answer;
@@ -112,6 +114,14 @@ public class Project : ScriptableObject
         for (int i=0; i<6 ; i++)
         {
             result += (finishDates[i] - startDates[i]).Days;
+        }
+        return result;
+    }
+    public int getTimeRemain(){
+        int result = 0;
+        for (int i=0; i<6 ; i++)
+        {
+            result += (finishDates[i] - currentDates[i]).Days;
         }
         return result;
     }
