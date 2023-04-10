@@ -39,6 +39,7 @@ public class WaterFallManager : MonoBehaviour
         Debug.Log("Start Waterfall Development");
 
         project = ProjectManager.instance.currentProject;
+        Debug.Log("Project id = " + project.projectId);
         if(project != null)
         {
             project.state = Project.Status.DOING;
@@ -80,6 +81,7 @@ public class WaterFallManager : MonoBehaviour
 
             if(GameManager.instance.gameState != GameState.PAUSE){
                 progress += project.staffEachPhase[phaseIndex];
+                Debug.Log("Progress "+progress);
                 calculateQuality = (int)Mathf.Round(((float)StaffManager.instance.getSumStaffStat("Programmer")/((float)(project.scale * 15))) * pointWrong);
                 qualityEachPhase[phaseIndex] += calculateQuality;
             }

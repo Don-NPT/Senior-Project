@@ -53,6 +53,7 @@ public class Requirement2_new : MonoBehaviour
                     .SetEase(Ease.OutQuad)
                     .OnComplete(() => transform.localScale = Vector3.one);
                 calculateQuality = (int)Mathf.Round(((float)StaffManager.instance.getSumStaffStat("Analyst")/((float)(project.scale * 15))) * pointCorrect);
+                Debug.Log("QualityCorrect "+calculateQuality);
                 WaterFallManager.instance.qualityEachPhase[0] += calculateQuality;
                 project.requirement2Point += calculateQuality;
             }else{
@@ -63,6 +64,7 @@ public class Requirement2_new : MonoBehaviour
                 float shakeRandomness = 90.0f;
                 transform.DOShakePosition(shakeDuration, shakeStrength, shakeVibrato, shakeRandomness);
                 calculateQuality = (int)Mathf.Round(((float)StaffManager.instance.getSumStaffStat("Analyst")/((float)(project.scale * 15))) * pointWrong);
+                Debug.Log("QualityWrong "+calculateQuality);
                 WaterFallManager.instance.qualityEachPhase[0] += calculateQuality;
                 project.requirement2Point += calculateQuality;
             }
