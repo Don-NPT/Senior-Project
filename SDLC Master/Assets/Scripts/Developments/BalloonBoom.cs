@@ -14,7 +14,7 @@ public class BalloonBoom : MonoBehaviour
     public Transform canvas;
     public bool isStarted = false;
     private Coroutine spawnBalloon;
-    GameObject[] balloons;
+    List<GameObject> balloons;
     // Start is called before the first frame update
     void Start()
     {
@@ -66,14 +66,14 @@ public class BalloonBoom : MonoBehaviour
 
     IEnumerator SpawnBalloonDev()
     {
-        balloons = new GameObject[30];
+        balloons = new List<GameObject>();
         int i = 0;
         while(ProjectManager.instance.currentProject.balloonAnswer.Count < 5)
         {
             float xPos = Random.Range(0, Screen.width);
             float yPos = 0;
             Vector3 spawnPosition = new Vector3(xPos, yPos, 0f);
-            balloons[i] = (GameObject) Instantiate(balloonDevPrefab, spawnPosition, Quaternion.identity);
+            balloons.Add((GameObject) Instantiate(balloonDevPrefab, spawnPosition, Quaternion.identity));
             balloons[i].transform.SetParent(canvas.transform);
             balloons[i].transform.position = spawnPosition;
             Debug.Log("Balloon dev count "+ i);
@@ -92,7 +92,7 @@ public class BalloonBoom : MonoBehaviour
 
     IEnumerator SpawnBalloonTest()
     {
-        balloons = new GameObject[30];
+        balloons = new List<GameObject>();
 
         int i = 0;
         while(ProjectManager.instance.currentProject.balloon2Answer.Count < 5)
@@ -100,7 +100,7 @@ public class BalloonBoom : MonoBehaviour
             float xPos = Random.Range(0, Screen.width);
             float yPos = 0;
             Vector3 spawnPosition = new Vector3(xPos, yPos, 0f);
-            balloons[i] = (GameObject) Instantiate(balloonTestPrefab, spawnPosition, Quaternion.identity);
+            balloons.Add((GameObject) Instantiate(balloonTestPrefab, spawnPosition, Quaternion.identity));
             balloons[i].transform.SetParent(canvas.transform);
             balloons[i].transform.position = spawnPosition;
             Debug.Log("Balloon test count "+ i);

@@ -16,6 +16,8 @@ public class ProjectHUD : MonoBehaviour
     public GameObject agileHudTab;
     public GameObject agileHudDetail;
     GameObject submitBTN;
+    int dayUsed;
+    Coroutine timer;
     // Start is called before the first frame update
     void Awake()
     {
@@ -47,6 +49,8 @@ public class ProjectHUD : MonoBehaviour
             uiPrefab.GetComponentsInChildren<TextMeshProUGUI>()[1].text = ProjectManager.instance.currentProject.state.ToString();
             
             hudDetail.SetActive(false);
+            dayUsed = 0;
+            timer = StartCoroutine(StartTimer());
             ShowDetail();
         }
     }
@@ -79,6 +83,17 @@ public class ProjectHUD : MonoBehaviour
         }
     }
 
+    IEnumerator StartTimer(){
+        // for(int i=0; i<ProjectManager.instance.currentProject.deadline; i++){
+        //     yield return new WaitForSeconds(1);
+        //     dayUsed += 1;
+        // }
+        while(true){
+            yield return new WaitForSeconds(1);
+            dayUsed += 1;
+        }
+    }
+
     public void ShowFinishBTN(Project project)
     {
         if(hudDetail.activeSelf){
@@ -87,6 +102,7 @@ public class ProjectHUD : MonoBehaviour
                 Debug.Log("Submit");
                 GameManager.instance.AddMoney(project.reward);
                 GameManager.instance.Play();
+                StopCoroutine(timer);
                 ProjectSummary.instance.ViewProjectSummary(ProjectManager.instance.oldProject[ProjectManager.instance.oldProject.Count-1]);
                 HideHUD();
             });
@@ -141,5 +157,12 @@ public class ProjectHUD : MonoBehaviour
 
         hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[7].text = WaterFallManager.instance.qualityEachPhase[4] + "/" + ProjectManager.instance.currentProject.requireDeployment;
         hudDetail.GetComponentsInChildren<Slider>()[5].DOValue(WaterFallManager.instance.qualityEachPhase[4],0.3f).Play();
+
+        hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[8].text = "เหลือเวลา: " + (ProjectManager.instance.currentProject.deadline - dayUsed);
+        if((ProjectManager.instance.currentProject.deadline - dayUsed) < 0){
+            hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[8].color = Color.red;
+        }else{
+            hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[8].color = Color.white;
+        }
     }
 }
