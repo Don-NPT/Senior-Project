@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using Photon.Pun;
 
 public class Username : MonoBehaviour
 {
@@ -18,7 +17,6 @@ public class Username : MonoBehaviour
             UsernamePage.SetActive(true);
         }else
         {
-            PhotonNetwork.NickName = PlayerPrefs.GetString("Username");
 
             MyUsername.text = PlayerPrefs.GetString("Username");
 
@@ -29,7 +27,6 @@ public class Username : MonoBehaviour
     // Update is called once per frame
     public void SaveUsername()
     {
-        PhotonNetwork.NickName = inputField.text;
 
         PlayerPrefs.SetString("Username" , inputField.text);
 

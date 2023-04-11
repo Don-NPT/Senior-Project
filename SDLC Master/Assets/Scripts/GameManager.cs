@@ -23,7 +23,6 @@ public class GameManager : MonoBehaviour
     
     public Color[] colors;
     public GameObject notificationUI;
-    public string username;
     int previousDay;
     
     private void Awake() {
