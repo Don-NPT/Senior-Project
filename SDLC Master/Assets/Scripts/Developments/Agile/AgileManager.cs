@@ -24,27 +24,27 @@ public class AgileManager : MonoBehaviour
 
     public void InitiateAgile()
     {
-        Debug.Log("Start Agile Development");
+            Debug.Log("Start Agile Development");
 
-        project = ProjectManager.instance.currentProject;
-        if(project != null)
-        {
-            project.state = Project.Status.DOING;
-            project.inProgress = true;
-            foreach(var staff in StaffManager.instance.getAllStaff())
+            project = ProjectManager.instance.currentProject;
+            if(project != null)
             {
-                staff.gameObject.GetComponent<StaffController>().AssignWork();
+                project.state = Project.Status.DOING;
+                project.inProgress = true;
+                foreach(var staff in StaffManager.instance.getAllStaff())
+                {
+                    staff.gameObject.GetComponent<StaffController>().AssignWork();
+                }
+                phaseIndex = 0;
+                sprintIndex = 0;
+                agileUI[0].SetActive(true);
             }
-            phaseIndex = 0;
-            sprintIndex = 0;
-            agileUI[0].SetActive(true);
-        }
     }
 
     public void StartSprint()
     {
-        agileHud.SetActive(true);
-        Debug.Log("Sprint Start");
+            agileHud.SetActive(true);
+            Debug.Log("Sprint Start");
     }
 
     public void NextSprint()
