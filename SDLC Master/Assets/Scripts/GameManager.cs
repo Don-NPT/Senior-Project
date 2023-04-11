@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     // public Transform canvasTransform;
     // public GameObject moneyNotificationPrefab;
     public GameObject moneyNotification;
+    public string username;
     
     public Color[] colors;
     public GameObject notificationUI;

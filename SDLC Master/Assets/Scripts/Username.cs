@@ -36,5 +36,6 @@ public class Username : MonoBehaviour
         MyUsername.text = inputField.text;
 
         UsernamePage.SetActive(false);
+        GameManager.instance.username = inputField.text;
     }
 }
