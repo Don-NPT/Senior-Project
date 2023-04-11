@@ -6,14 +6,14 @@ public class WaterFallManager : MonoBehaviour
 {
     public static WaterFallManager instance;
     public int pointWrong;
-    private int calculateQuality;
+    private float calculateQuality;
 
     public GameObject[] requirementUIs;
     public GameObject[] designUIs;
     public GameObject[] detailminigames;
 
     [HideInInspector]
-    public int[] qualityEachPhase;
+    public float[] qualityEachPhase;
     [HideInInspector]
     public int currentWorkAmount;
     [HideInInspector]
@@ -47,7 +47,7 @@ public class WaterFallManager : MonoBehaviour
             currentWorkAmount = project.analysisWork;
             staffPosition = "Analyst";
             phaseIndex = 0;
-            qualityEachPhase = new int[6];  
+            qualityEachPhase = new float[6];  
             project.staffEachPhase = new int[6];
             project.statEachPhase = new int[6];
             project.startDates = new System.DateTime[6];
@@ -82,7 +82,8 @@ public class WaterFallManager : MonoBehaviour
             if(GameManager.instance.gameState != GameState.PAUSE){
                 progress += project.staffEachPhase[phaseIndex];
                 Debug.Log("Progress "+progress);
-                calculateQuality = (int)Mathf.Round(((float)StaffManager.instance.getSumStaffStat("Programmer")/((float)(project.scale * 15))) * pointWrong);
+                calculateQuality = ((float)StaffManager.instance.getSumStaffStat("Programmer")/((float)(project.scale * 15))) * pointWrong;
+                calculateQuality = calculateQuality * SkillManager.instance.GetQualityBonus();
                 qualityEachPhase[phaseIndex] += calculateQuality;
             }
         }
@@ -164,11 +165,11 @@ public class WaterFallManager : MonoBehaviour
         Debug.Log("FINISHED!!");
         project.state = Project.Status.FINISHED;
 
-        project.actualAnalysis = qualityEachPhase[0];
-        project.actualDesign = qualityEachPhase[1];
-        project.actualCoding = qualityEachPhase[2];
-        project.actualTesting = qualityEachPhase[3];
-        project.actualDeployment = qualityEachPhase[4];
+        project.actualAnalysis = (int) Mathf.Round(qualityEachPhase[0]);
+        project.actualDesign = (int) Mathf.Round(qualityEachPhase[1]);
+        project.actualCoding = (int) Mathf.Round(qualityEachPhase[2]);
+        project.actualTesting = (int) Mathf.Round(qualityEachPhase[3]);
+        project.actualDeployment = (int) Mathf.Round(qualityEachPhase[4]);
 
         project.finishDates[phaseIndex] = TimeManager.instance.currentDate;
 
@@ -235,14 +236,14 @@ public class WaterFallManager : MonoBehaviour
 [System.Serializable]
 public class WaterfallAdapter
 {
-    public int[] qualityEachPhase;
+    public float[] qualityEachPhase;
     public int currentWorkAmount;
     public int progress;
     public int projectIndex;
     public string staffPosition;
     public int phaseIndex;
 
-    public void Save(int[] _qualityEachPhase, int _currentWorkAmount, int _progress, int _projectIndex, string _staffPosition, int _phaseIndex)
+    public void Save(float[] _qualityEachPhase, int _currentWorkAmount, int _progress, int _projectIndex, string _staffPosition, int _phaseIndex)
     {
         qualityEachPhase = _qualityEachPhase;
         currentWorkAmount = _currentWorkAmount;

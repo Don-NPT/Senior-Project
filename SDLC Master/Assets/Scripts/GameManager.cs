@@ -16,8 +16,10 @@ public class GameManager : MonoBehaviour
     public GameObject pauseScreen;
     public GameObject staffToAssign;
     public bool panelOpen = false;
-    public Transform canvasTransform;
-    public GameObject moneyNotificationPrefab;
+    // public Transform canvasTransform;
+    // public GameObject moneyNotificationPrefab;
+    public GameObject moneyNotification;
+    
     public Color[] colors;
     public GameObject notificationUI;
     int previousDay;
@@ -97,17 +99,22 @@ public class GameManager : MonoBehaviour
         money += num;
         moneyPrefab.transform.DOPunchScale (new Vector3 (0.2f, 0.2f, 0.2f), .25f);
 
-        GameObject moneyNotification = (GameObject)Instantiate(moneyNotificationPrefab);
-        moneyNotification.transform.SetParent(canvasTransform);
-        moneyNotification.transform.localScale = Vector3.one;
-        moneyNotification.transform.position = moneyPrefab.transform.position + (Vector3.up * 50);
+        StartCoroutine(ShowNotification(num));
+    }
 
-        if(num > 0) moneyNotification.GetComponent<Image>().color = colors[0];
-        else if(num < 0) moneyNotification.GetComponent<Image>().color = colors[1];
+    IEnumerator ShowNotification(int num){
+        moneyNotification.SetActive(true);
 
-        moneyNotification.GetComponentInChildren<TextMeshProUGUI>().text = num.ToString("C0");
-
-        Destroy(moneyNotification, 3f);
+        if(num > 0) {
+            moneyNotification.GetComponentInChildren<TextMeshProUGUI>().text = "+" + num;
+            moneyNotification.GetComponent<Image>().color = GameManager.instance.colors[0];
+        }
+        else if(num < 0) {
+            moneyNotification.GetComponentInChildren<TextMeshProUGUI>().text = num.ToString("C0");
+            moneyNotification.GetComponent<Image>().color = GameManager.instance.colors[1];
+        }
+        yield return new WaitForSeconds(1);
+        moneyNotification.SetActive(false);
     }
 
     public void ToggleNotification(string content){

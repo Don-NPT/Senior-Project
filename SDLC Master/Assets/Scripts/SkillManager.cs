@@ -13,6 +13,7 @@ public class SkillManager : MonoBehaviour
     public Transform qualityTree;
     public Transform speedTree;
     public TextMeshProUGUI skillPointText;
+    public GameObject skillNotification;
     private bool[] qualityUnlock;
     private bool[] speedUnlock;
 
@@ -45,35 +46,35 @@ public class SkillManager : MonoBehaviour
                 LearnQualitySkill(index);
             });
         }
-        for(int i=0; i<4; i++){
-            int index = i;
-            speedTree.GetComponentsInChildren<Outline>()[i].enabled = speedUnlock[i];
-            speedTree.GetComponentsInChildren<Outline>()[i].gameObject.GetComponent<Button>().onClick.AddListener(delegate { 
-                LearnSpeedSkill(index);
-            });
-        }
+        // for(int i=0; i<4; i++){
+        //     int index = i;
+        //     speedTree.GetComponentsInChildren<Outline>()[i].enabled = speedUnlock[i];
+        //     speedTree.GetComponentsInChildren<Outline>()[i].gameObject.GetComponent<Button>().onClick.AddListener(delegate { 
+        //         LearnSpeedSkill(index);
+        //     });
+        // }
     }
 
     void LearnQualitySkill(int index){
-        if(index == 0 && skillPoint >= CheckPrice(index)) {qualityUnlock[index] = true; skillPoint -= CheckPrice(index);}
+        if(index == 0 && skillPoint >= CheckPrice(index)) {qualityUnlock[index] = true; AddSkillPoint(-CheckPrice(index));}
         else if(qualityUnlock[index-1] == true && skillPoint >= CheckPrice(index)){
             qualityUnlock[index] = true;
-            skillPoint -= CheckPrice(index);
+            AddSkillPoint(-CheckPrice(index));
         }
         else{
             AudioManager.instance.Play("Warning");
         }
     }
-    void LearnSpeedSkill(int index){
-        if(index == 0 && skillPoint >= CheckPrice(index)) {speedUnlock[index] = true; skillPoint -= CheckPrice(index); }
-        else if(speedUnlock[index-1] == true && skillPoint >= CheckPrice(index)){
-            speedUnlock[index] = true;
-            skillPoint -= CheckPrice(index);
-        }
-        else{
-            AudioManager.instance.Play("Warning");
-        }
-    }
+    // void LearnSpeedSkill(int index){
+    //     if(index == 0 && skillPoint >= CheckPrice(index)) {speedUnlock[index] = true; AddSkillPoint(-CheckPrice(index)); }
+    //     else if(speedUnlock[index-1] == true && skillPoint >= CheckPrice(index)){
+    //         speedUnlock[index] = true;
+    //         AddSkillPoint(-CheckPrice(index));
+    //     }
+    //     else{
+    //         AudioManager.instance.Play("Warning");
+    //     }
+    // }
 
     int CheckPrice(int index){
         switch(index){
@@ -99,27 +100,47 @@ public class SkillManager : MonoBehaviour
 
         switch(lastIndex){
             case -1:
-                return 0;
+                return 1;
             case 0:
-                return 0.05f;
+                return 1.05f;
             case 1:
-                return 0.1f;
+                return 1.1f;
             case 2:
-                return 0.15f;
+                return 1.15f;
             case 3:
-                return 0.2f;
+                return 1.2f;
         }
         return 0;
+    }
+
+    public void AddSkillPoint(int point){
+        skillPoint += point;
+        StartCoroutine(ShowNotification(point));
+    }
+
+    IEnumerator ShowNotification(int point){
+        skillNotification.SetActive(true);
+
+        if(point > 0) {
+            skillNotification.GetComponentInChildren<TextMeshProUGUI>().text = "+" + point;
+            skillNotification.GetComponent<Image>().color = GameManager.instance.colors[0];
+        }
+        else if(point < 0) {
+            skillNotification.GetComponentInChildren<TextMeshProUGUI>().text = point.ToString();
+            skillNotification.GetComponent<Image>().color = GameManager.instance.colors[1];
+        }
+        yield return new WaitForSeconds(1);
+        skillNotification.SetActive(false);
     }
 
     public void ResetSkill(){
         for(int i=0; i<4; i++){
             if(qualityUnlock[i]){
-                skillPoint += CheckPrice(i);
+                AddSkillPoint(CheckPrice(i));
                 qualityUnlock[i] = false;
             }
             if(speedUnlock[i]){
-                skillPoint += CheckPrice(i);
+                AddSkillPoint(CheckPrice(i));
                 speedUnlock[i] = false;
             }
         }

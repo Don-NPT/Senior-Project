@@ -101,6 +101,7 @@ public class ProjectHUD : MonoBehaviour
             submitBTN.GetComponent<Button>().onClick.AddListener(delegate {
                 Debug.Log("Submit");
                 GameManager.instance.AddMoney(project.reward);
+                SkillManager.instance.AddSkillPoint(project.skillPointReward);
                 GameManager.instance.Play();
                 StopCoroutine(timer);
                 ProjectSummary.instance.ViewProjectSummary(ProjectManager.instance.oldProject[ProjectManager.instance.oldProject.Count-1]);
@@ -143,19 +144,19 @@ public class ProjectHUD : MonoBehaviour
         hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "ขั้นตอน: " + ProjectManager.instance.currentProject.phase.ToString();
         // hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[8].text = "เหลือเวลา: " + (ProjectManager.instance.currentProject.deadline - DevelopmentManager.instance.currentDayUsed);
 
-        hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[3].text = WaterFallManager.instance.qualityEachPhase[0] + "/" + ProjectManager.instance.currentProject.requireAnalysis;
+        hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[3].text = (int)WaterFallManager.instance.qualityEachPhase[0] + "/" + ProjectManager.instance.currentProject.requireAnalysis;
         hudDetail.GetComponentsInChildren<Slider>()[1].DOValue(WaterFallManager.instance.qualityEachPhase[0],0.3f).Play();
 
-        hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[4].text = WaterFallManager.instance.qualityEachPhase[1] + "/" + ProjectManager.instance.currentProject.requireDesign;
+        hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[4].text = (int)WaterFallManager.instance.qualityEachPhase[1] + "/" + ProjectManager.instance.currentProject.requireDesign;
         hudDetail.GetComponentsInChildren<Slider>()[2].DOValue(WaterFallManager.instance.qualityEachPhase[1],0.3f).Play();
 
-        hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[5].text = WaterFallManager.instance.qualityEachPhase[2] + "/" + ProjectManager.instance.currentProject.requireCoding;
+        hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[5].text = (int)WaterFallManager.instance.qualityEachPhase[2] + "/" + ProjectManager.instance.currentProject.requireCoding;
         hudDetail.GetComponentsInChildren<Slider>()[3].DOValue(WaterFallManager.instance.qualityEachPhase[2],0.3f).Play();
 
-        hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[6].text = WaterFallManager.instance.qualityEachPhase[3] + "/" + ProjectManager.instance.currentProject.requireTesting;
+        hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[6].text = (int)WaterFallManager.instance.qualityEachPhase[3] + "/" + ProjectManager.instance.currentProject.requireTesting;
         hudDetail.GetComponentsInChildren<Slider>()[4].DOValue(WaterFallManager.instance.qualityEachPhase[3],0.3f).Play();
 
-        hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[7].text = WaterFallManager.instance.qualityEachPhase[4] + "/" + ProjectManager.instance.currentProject.requireDeployment;
+        hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[7].text = (int)WaterFallManager.instance.qualityEachPhase[4] + "/" + ProjectManager.instance.currentProject.requireDeployment;
         hudDetail.GetComponentsInChildren<Slider>()[5].DOValue(WaterFallManager.instance.qualityEachPhase[4],0.3f).Play();
 
         hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[8].text = "เหลือเวลา: " + (ProjectManager.instance.currentProject.deadline - dayUsed);

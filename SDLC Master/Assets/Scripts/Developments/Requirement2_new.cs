@@ -10,7 +10,7 @@ public class Requirement2_new : MonoBehaviour
     public float pointCorrect;
     public float pointWrong;
     public int index;
-    private int calculateQuality = 0;
+    private float calculateQuality = 0;
     private Project project;
 
     // Start is called before the first frame update
@@ -52,7 +52,8 @@ public class Requirement2_new : MonoBehaviour
                 transform.DOScale(Vector3.one * 1.05f, 0.2f)
                     .SetEase(Ease.OutQuad)
                     .OnComplete(() => transform.localScale = Vector3.one);
-                calculateQuality = (int)Mathf.Round(((float)StaffManager.instance.getSumStaffStat("Analyst")/((float)(project.scale * 15))) * pointCorrect);
+                calculateQuality = ((float)StaffManager.instance.getSumStaffStat("Analyst")/((float)(project.scale * 15))) * pointCorrect;
+                calculateQuality = calculateQuality * SkillManager.instance.GetQualityBonus();
                 Debug.Log("QualityCorrect "+calculateQuality);
                 WaterFallManager.instance.qualityEachPhase[0] += calculateQuality;
                 project.requirement2Point += calculateQuality;
@@ -63,7 +64,8 @@ public class Requirement2_new : MonoBehaviour
                 int shakeVibrato = 10;
                 float shakeRandomness = 90.0f;
                 transform.DOShakePosition(shakeDuration, shakeStrength, shakeVibrato, shakeRandomness);
-                calculateQuality = (int)Mathf.Round(((float)StaffManager.instance.getSumStaffStat("Analyst")/((float)(project.scale * 15))) * pointWrong);
+                calculateQuality = ((float)StaffManager.instance.getSumStaffStat("Analyst")/((float)(project.scale * 15))) * pointWrong;
+                calculateQuality = calculateQuality * SkillManager.instance.GetQualityBonus();
                 Debug.Log("QualityWrong "+calculateQuality);
                 WaterFallManager.instance.qualityEachPhase[0] += calculateQuality;
                 project.requirement2Point += calculateQuality;
