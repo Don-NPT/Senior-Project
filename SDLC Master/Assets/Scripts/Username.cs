@@ -12,13 +12,13 @@ public class Username : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(GameManager.instance.username == "" || GameManager.instance.username == null)
+        if(PlayerPrefs.GetString("Username") == "" || PlayerPrefs.GetString("Username") == null)
         {
             UsernamePage.SetActive(true);
         }else
         {
 
-            MyUsername.text = GameManager.instance.username;
+            MyUsername.text = PlayerPrefs.GetString("Username");
 
             UsernamePage.SetActive(false);
         }
@@ -27,6 +27,8 @@ public class Username : MonoBehaviour
     // Update is called once per frame
     public void SaveUsername()
     {
+
+        PlayerPrefs.SetString("Username" , inputField.text);
 
         MyUsername.text = inputField.text;
 

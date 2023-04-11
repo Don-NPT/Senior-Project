@@ -23,18 +23,20 @@ public class Balloon : MonoBehaviour, IPointerDownHandler
      {
         int pointCorrect = BalloonBoom.instance.pointCorrect;
         int pointWrong = BalloonBoom.instance.pointWrong;
-        int calculateQuality = BalloonBoom.instance.calculateQuality;
+        float calculateQuality = BalloonBoom.instance.calculateQuality;
         if(ProjectManager.instance.currentProject.balloons[index].isCorrect)
         {
             if(isDev){
                 Debug.Log("Point up");
-                calculateQuality = (int)Mathf.Round(((float)StaffManager.instance.getSumStaffStat("Programmer")/((float)(project.scale * 15))) * pointCorrect);
+                calculateQuality = ((float)StaffManager.instance.getSumStaffStat("Programmer")/((float)(project.scale * 15))) * pointCorrect;
+                calculateQuality = calculateQuality * SkillManager.instance.GetQualityBonus();
                 ProjectManager.instance.currentProject.balloonPoint += calculateQuality;
                 WaterFallManager.instance.qualityEachPhase[2] += calculateQuality;
                 FindObjectOfType<AudioManager>().Play("Purchase");
             }else{
                 Debug.Log("Point down");
-                calculateQuality = (int)Mathf.Round(((float)StaffManager.instance.getSumStaffStat("Tester")/((float)(project.scale * 15))) * pointWrong);
+                calculateQuality = ((float)StaffManager.instance.getSumStaffStat("Tester")/((float)(project.scale * 15))) * pointWrong;
+                calculateQuality = calculateQuality * SkillManager.instance.GetQualityBonus();
                 ProjectManager.instance.currentProject.balloon2Point += calculateQuality;
                 WaterFallManager.instance.qualityEachPhase[3] += calculateQuality;
                 FindObjectOfType<AudioManager>().Play("Warning");
@@ -43,13 +45,15 @@ public class Balloon : MonoBehaviour, IPointerDownHandler
         }else{
             if(isDev){
                 Debug.Log("Point down");
-                calculateQuality = (int)Mathf.Round(((float)StaffManager.instance.getSumStaffStat("Programmer")/((float)(project.scale * 15))) * pointWrong);
+                calculateQuality = ((float)StaffManager.instance.getSumStaffStat("Programmer")/((float)(project.scale * 15))) * pointWrong;
+                calculateQuality = calculateQuality * SkillManager.instance.GetQualityBonus();
                 ProjectManager.instance.currentProject.balloonPoint += calculateQuality;
                 WaterFallManager.instance.qualityEachPhase[2] += calculateQuality;
                 FindObjectOfType<AudioManager>().Play("Warning");
             }else{
                 Debug.Log("Point up");
-                calculateQuality = (int)Mathf.Round(((float)StaffManager.instance.getSumStaffStat("Tester")/((float)(project.scale * 15))) * pointCorrect);
+                calculateQuality = ((float)StaffManager.instance.getSumStaffStat("Tester")/((float)(project.scale * 15))) * pointCorrect;
+                calculateQuality = calculateQuality * SkillManager.instance.GetQualityBonus();
                 ProjectManager.instance.currentProject.balloon2Point += calculateQuality;
                 WaterFallManager.instance.qualityEachPhase[3] += calculateQuality;
                 FindObjectOfType<AudioManager>().Play("Purchase");

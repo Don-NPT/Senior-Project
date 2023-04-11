@@ -21,7 +21,7 @@ public class KeyInput : MonoBehaviour
     private Project project;
     private Coroutine timer;
     private Tween sliderTween;
-    private int calculateQuality;
+    private float calculateQuality;
 
     public int index;
 
@@ -150,6 +150,7 @@ public class KeyInput : MonoBehaviour
         if(pass >= inputBlocks.Length) {
             project.keyInputPass.Add(true);
             calculateQuality = (int)Mathf.Round(((float)StaffManager.instance.getSumStaffStat("Designer")/((float)(project.scale * 15))) * pointCorrect);
+            calculateQuality = calculateQuality * SkillManager.instance.GetQualityBonus();
             WaterFallManager.instance.qualityEachPhase[1] += calculateQuality;
             project.designPoint += calculateQuality;
             AudioManager.instance.Play("Purchase");

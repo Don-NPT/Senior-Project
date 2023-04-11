@@ -19,6 +19,7 @@ MonoBehaviour:
   requirement: 
   reward: 250000
   expense: 100000
+  skillPointReward: 2
   deadline: 120
   scale: 4
   inProgress: 0

@@ -15,6 +15,7 @@ public class Project : ScriptableObject
     public string requirement;
     public int reward;
     public int expense;
+    public int skillPointReward;
     public int deadline;
     private int dayremain;
     public int scale;
@@ -70,14 +71,14 @@ public class Project : ScriptableObject
     [HideInInspector] public List<string> requirement1Answer;
     [HideInInspector] public int requirement1Point;
     [HideInInspector] public List<string> requirement2Answer;
-    [HideInInspector] public int requirement2Point;
+    [HideInInspector] public float requirement2Point;
     [HideInInspector] public List<bool> designAnswer;
-    [HideInInspector] public int designPoint;
+    [HideInInspector] public float designPoint;
     [HideInInspector] public List<bool> keyInputPass;
-    [HideInInspector] public int keyInputPoint;
-    [HideInInspector] public int balloonPoint;
+    [HideInInspector] public float keyInputPoint;
+    [HideInInspector] public float balloonPoint;
     [HideInInspector] public List<string> balloonAnswer;
-    [HideInInspector] public int balloon2Point;
+    [HideInInspector] public float balloon2Point;
     [HideInInspector] public List<string> balloon2Answer;
 
     // Properties for Agile gameplay
