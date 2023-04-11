@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public GameObject moneyNotificationPrefab;
     public Color[] colors;
     public GameObject notificationUI;
+    public string username;
     int previousDay;
     
     private void Awake() {
@@ -31,12 +32,11 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-
         money = 100000;
 
         gameState = GameState.PLAY;
         previousDay = 1;
-        
+        username = "";
     }
 
     // Update is called once per frame
