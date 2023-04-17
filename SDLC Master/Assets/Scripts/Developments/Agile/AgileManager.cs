@@ -78,7 +78,7 @@ public class AgileManager : MonoBehaviour
         project = ProjectManager.instance.GetProjectbyId(saveData.projectIndex);
         phaseIndex = saveData.phaseIndex;
 
-        if(ProjectManager.instance.currentProject.model.modelName == "Agile"){
+        if(ProjectManager.instance.currentProject != null && ProjectManager.instance.currentProject.model.modelName == "Agile"){
             switch(phaseIndex){
             case 0:
                 agileUI[0].SetActive(true);

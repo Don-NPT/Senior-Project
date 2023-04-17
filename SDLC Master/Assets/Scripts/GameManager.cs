@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     
     public Color[] colors;
     public GameObject notificationUI;
+    public TMP_Text UsernameHud;
+    public GameObject UsernameForm;
     int previousDay;
     
     private void Awake() {
@@ -38,7 +40,13 @@ public class GameManager : MonoBehaviour
 
         gameState = GameState.PLAY;
         previousDay = 1;
-        username = "";
+
+        if(username != "" && username != null){
+            UsernameForm.SetActive(false);
+            UsernameHud.text = username;
+        }else{
+            UsernameForm.SetActive(true);
+        }
     }
 
     // Update is called once per frame
@@ -157,7 +165,7 @@ public class GameManager : MonoBehaviour
     public void Save()
     {
         GameAdapter gameAdapter = new GameAdapter();
-        gameAdapter.Save(money);
+        gameAdapter.Save(money, username);
     }
 
     public void Load()
@@ -165,6 +173,8 @@ public class GameManager : MonoBehaviour
         GameAdapter gameAdapter = new GameAdapter();
         GameAdapter saveData = gameAdapter.Load();
         money = saveData.money;
+        username = saveData.username;
+
     }
 }
 
@@ -172,10 +182,12 @@ public class GameManager : MonoBehaviour
 public class GameAdapter
 {
     public int money;
+    public string username;
 
-    public void Save(int _money)
+    public void Save(int _money, string _username)
     {
         money = _money;
+        username = _username;
         FileHandler.SaveToJSON<GameAdapter> (this, "gamesave.json");   
     }
 

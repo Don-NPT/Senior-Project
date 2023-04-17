@@ -196,7 +196,7 @@ public class WaterFallManager : MonoBehaviour
         WaterfallAdapter waterfallAdapter = new WaterfallAdapter();
         WaterfallAdapter saveData = waterfallAdapter.Load();
 
-        if(ProjectManager.instance.currentProject.model.modelName == "Waterfall"){
+        if(ProjectManager.instance.currentProject != null && ProjectManager.instance.currentProject.model.modelName == "Waterfall"){
             qualityEachPhase = saveData.qualityEachPhase;
             currentWorkAmount = saveData.currentWorkAmount;
             progress = 0;

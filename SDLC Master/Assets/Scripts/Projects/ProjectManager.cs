@@ -56,11 +56,17 @@ public class ProjectManager : MonoBehaviour
     public void Save()
     {
         ProjectManagerAdapter gameAdapter = new ProjectManagerAdapter();
+
+        int id = -1;
+        if(currentProject != null){
+            id = currentProject.projectId;
+        }
+        
         List<int> oldProjectId = new List<int>();
         foreach(var project in oldProject){
             oldProjectId.Add(project.projectId);
         }
-        gameAdapter.Save(currentProject.projectId, oldProjectId.ToArray());
+        gameAdapter.Save(id, oldProjectId.ToArray());
     }
 
     public void Load()

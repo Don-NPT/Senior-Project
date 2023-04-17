@@ -10,19 +10,20 @@ public class Username : MonoBehaviour
     public TMP_Text MyUsername;
         
     // Start is called before the first frame update
-    void Start()
-    {
-        if(GameManager.instance.username == "" || GameManager.instance.username == null)
-        {
-            UsernamePage.SetActive(true);
-        }else
-        {
+    // void Awake()
+    // {
+        
+        // if(GameManager.instance.username == "" || GameManager.instance.username == null)
+        // {
+            // UsernamePage.SetActive(true);
+        // }else
+        // {
 
-            MyUsername.text = GameManager.instance.username;
+        //     MyUsername.text = GameManager.instance.username;
 
-            UsernamePage.SetActive(false);
-        }
-    }
+        //     UsernamePage.SetActive(false);
+        // }
+    // }
 
     // Update is called once per frame
     public void SaveUsername()

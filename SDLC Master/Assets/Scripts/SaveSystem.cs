@@ -6,7 +6,7 @@ public class SaveSystem : MonoBehaviour
 {
     public static SaveSystem instance;
 
-    void Start()
+    void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
         if (instance != null && instance != this) 
@@ -14,10 +14,16 @@ public class SaveSystem : MonoBehaviour
         else 
             instance = this; 
 
+    }
+
+    private void Start() {
         if(ProjectManager.instance.CheckProjectInProgress()){
             SaveSystem.instance.Load();
         }
-
+        else if(GlobalVariable.isLoad){
+            SaveSystem.instance.Load();
+            GlobalVariable.isLoad = false;
+        }
     }
 
 
@@ -30,6 +36,7 @@ public class SaveSystem : MonoBehaviour
         ProjectManager.instance.Save();
         WaterFallManager.instance.Save();
         AgileManager.instance.Save();
+        Debug.Log("Game Saved!");
     }
 
     public void Load()
@@ -42,6 +49,7 @@ public class SaveSystem : MonoBehaviour
         ProjectManager.instance.Load();
         WaterFallManager.instance.Load();
         AgileManager.instance.Load();
+        Debug.Log("Game Loaded!");
 
         // GameManager.instance.Resume();
     }
