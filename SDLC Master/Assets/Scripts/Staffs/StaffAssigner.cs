@@ -8,6 +8,7 @@ public class StaffAssigner : MonoBehaviour
     public GameObject staffPreviewPrefab;
     public GameObject PCsetPrefab;
     public GameObject PCsetPreviewPrefab;
+    public Material[] shirtMats;
     private GameObject[] PCsets;
     private GameObject preview;
 
@@ -76,6 +77,7 @@ public class StaffAssigner : MonoBehaviour
                     staff.transform.position = obj.transform.position+yOffset;
                     staff.transform.rotation = Quaternion.Euler(rotationVector);
                     staff.GetComponent<StaffProperties>().isAssign = true;
+                    staff.GetComponentsInChildren<SkinnedMeshRenderer>()[2].material = GetShirtColor(staff.GetComponent<StaffProperties>().position);
                     // GameObject staff = (GameObject)Instantiate(staffPrefab, obj.transform.position+yOffset, Quaternion.Euler(rotationVector));
                     staff_Selected = false;
                     if(preview != null) Destroy(preview);
@@ -95,5 +97,20 @@ public class StaffAssigner : MonoBehaviour
                 PCsets[i].SetActive(false);
             }
             Debug.Log(PCsets.Length);
+    }
+
+    Material GetShirtColor(string position){
+        switch(position)
+            {
+                case "Analyst":
+                    return shirtMats[0];
+                case "Designer":
+                    return shirtMats[1];
+                case "Programmer":
+                    return shirtMats[2];
+                case "Tester":
+                    return shirtMats[3];
+            }
+        return null;
     }
 }
