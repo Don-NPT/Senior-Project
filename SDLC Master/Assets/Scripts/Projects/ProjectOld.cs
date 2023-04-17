@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
 public class ProjectOld : MonoBehaviour
 {
@@ -19,8 +20,12 @@ public class ProjectOld : MonoBehaviour
 
     private void OnEnable() {
         projectOldItem = new GameObject[ProjectManager.instance.getNumOldProject()];
+        
+        var oldProjects = ProjectManager.instance.oldProject.GroupBy(p => p.projectId)
+                              .Select(group => group.Last())
+                              .ToList();
 
-        for(int i=0; i<ProjectManager.instance.getNumOldProject(); i++)
+        for(int i=0; i<oldProjects.Count; i++)
         {
             // Spawn Old project items
             projectOldItem[i] = (GameObject)Instantiate(projectOldItemPrefab);
@@ -29,8 +34,8 @@ public class ProjectOld : MonoBehaviour
 
             // set text for project confirm
             TextMeshProUGUI[] projectOldText = projectOldItem[i].GetComponentsInChildren<TextMeshProUGUI>();
-            Project project =  ProjectManager.instance.oldProject[i];
-            projectOldText[0].text = ProjectManager.instance.oldProject[i].pjName;
+            Project project =  oldProjects[i];
+            projectOldText[0].text = project.pjName;
             projectOldText[2].text = project.getAllActualQuality() + "/" + project.getAllWorkAmount();
             Slider slider = projectOldItem[i].GetComponentInChildren<Slider>();
             slider.maxValue = project.getAllWorkAmount();
