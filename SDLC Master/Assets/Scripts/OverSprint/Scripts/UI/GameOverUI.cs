@@ -52,6 +52,7 @@ public class GameOverUI : MonoBehaviour {
                 AgileManager.instance.phaseIndex = 1;
                 ProjectManager.instance.currentProject.sprintList = DeliveryManager.Instance.sprintList;
                 AgileManager.instance.Save();
+                GlobalVariable.isLoad = true;
                 SceneManager.LoadScene("SampleScene");
                 DeliveryManager.Instance.ClearNewRecipeList();      
             });

@@ -178,8 +178,8 @@ public class StaffManager : MonoBehaviour
             Vector3 position = new Vector3(saveStaff.location[0],saveStaff.location[1],saveStaff.location[2]);
             Quaternion rotation = new Quaternion(saveStaff.rotation[0],saveStaff.rotation[1],saveStaff.rotation[2],saveStaff.rotation[3]);
             GameObject staff = (GameObject)Instantiate(staffPrefab, position, rotation);
-
             staff.GetComponent<StaffProperties>().setData(saveStaff);
+            staff.GetComponentsInChildren<SkinnedMeshRenderer>()[2].material = FindObjectOfType<StaffAssigner>().GetShirtColor(staff.GetComponent<StaffProperties>().position);
         }
         // money = saveData.money;
     }

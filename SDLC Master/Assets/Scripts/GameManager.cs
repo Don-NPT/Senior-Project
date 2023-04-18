@@ -47,6 +47,9 @@ public class GameManager : MonoBehaviour
         }else{
             UsernameForm.SetActive(true);
         }
+        if(ProjectManager.instance.CheckProjectInProgress()){
+            UsernameForm.SetActive(false);
+        }
     }
 
     // Update is called once per frame

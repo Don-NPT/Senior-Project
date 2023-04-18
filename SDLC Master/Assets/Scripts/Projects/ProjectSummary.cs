@@ -91,9 +91,8 @@ public class ProjectSummary : MonoBehaviour
             detailUI.SetActive(true);
 
             detailUI.GetComponentsInChildren<TextMeshProUGUI>()[1].text = project.getTimeUsed(index-1) + " วัน";
-            detailUI.GetComponentsInChildren<TextMeshProUGUI>()[3].text = "??? บาท";
-            detailUI.GetComponentsInChildren<TextMeshProUGUI>()[5].text = project.staffEachPhase[index-1].ToString() + " คน";
-            detailUI.GetComponentsInChildren<TextMeshProUGUI>()[7].text = project.statEachPhase[index-1].ToString() + " หน่วย";
+            detailUI.GetComponentsInChildren<TextMeshProUGUI>()[3].text = project.staffEachPhase[index-1].ToString() + " คน";
+            detailUI.GetComponentsInChildren<TextMeshProUGUI>()[5].text = project.statEachPhase[index-1].ToString() + " หน่วย";
 
         }else{
             detailUI.SetActive(false);

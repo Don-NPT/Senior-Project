@@ -99,7 +99,7 @@ public class StaffAssigner : MonoBehaviour
             Debug.Log(PCsets.Length);
     }
 
-    Material GetShirtColor(string position){
+    public Material GetShirtColor(string position){
         switch(position)
             {
                 case "Analyst":
