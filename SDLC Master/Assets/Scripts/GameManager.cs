@@ -49,6 +49,7 @@ public class GameManager : MonoBehaviour
         }
         if(ProjectManager.instance.CheckProjectInProgress()){
             UsernameForm.SetActive(false);
+            UsernameHud.text = username;
         }
     }
 
