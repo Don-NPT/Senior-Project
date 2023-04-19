@@ -20,7 +20,7 @@ public class SaveSystem : MonoBehaviour
         if(ProjectManager.instance.CheckProjectInProgress()){
             SaveSystem.instance.Load();
         }
-        else if(GlobalVariable.isLoad){
+        else if(PlayerPrefs.GetInt("isLoad") == 1){
             SaveSystem.instance.Load();
             GlobalVariable.isLoad = false;
         }

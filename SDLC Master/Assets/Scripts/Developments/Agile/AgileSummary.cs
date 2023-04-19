@@ -57,7 +57,7 @@ public class AgileSummary : MonoBehaviour
             sprintRow[i].transform.localScale = Vector3.one;
 
             sprintRow[i].GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Sprint " + (i+1);
-            sprintRow[i].GetComponentsInChildren<TextMeshProUGUI>()[1].text = project.sprintList[i].GetSumQuality() + " / " + project.sprintList[i].GetSumQuality();
+            sprintRow[i].GetComponentsInChildren<TextMeshProUGUI>()[1].text = project.sprintList[i].GetSumQuality() + " / " + project.sprintList[i].GetSumRequireQuality();
             sprintRow[i].GetComponentInChildren<Slider>().maxValue = project.sprintList[i].GetSumRequireQuality();
             sprintRow[i].GetComponentInChildren<Slider>().value = project.sprintList[i].GetSumQuality();
 

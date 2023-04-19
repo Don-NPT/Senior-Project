@@ -43,13 +43,11 @@ public class GameManager : MonoBehaviour
 
         if(username != "" && username != null){
             UsernameForm.SetActive(false);
-            UsernameHud.text = username;
         }else{
             UsernameForm.SetActive(true);
         }
         if(ProjectManager.instance.CheckProjectInProgress()){
             UsernameForm.SetActive(false);
-            UsernameHud.text = username;
         }
     }
 
@@ -178,6 +176,7 @@ public class GameManager : MonoBehaviour
         GameAdapter saveData = gameAdapter.Load();
         money = saveData.money;
         username = saveData.username;
+        UsernameHud.text = username;
 
     }
 }

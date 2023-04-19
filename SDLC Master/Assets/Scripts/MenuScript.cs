@@ -9,11 +9,13 @@ public class MenuScript : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         GlobalVariable.isLoad = false;
+        PlayerPrefs.SetInt("isLoad", 0);
     }
 
     public void LoadGame(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         GlobalVariable.isLoad = true;
+        PlayerPrefs.SetInt("isLoad", 1);
         // StartCoroutine(LoadSave());
         // GameObject.Find("GameManager").GetComponent<SaveSystem>().Load();
         // FindObjectOfType<SaveSystem>().Load();
