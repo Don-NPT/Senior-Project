@@ -16,6 +16,12 @@ public class GameManager : MonoBehaviour
     public GameObject playerDetail;
     public GameState gameState;
     public GameObject pauseScreen;
+
+    [Header("Building Room")]
+    public GameObject blackBoardWall;
+    public GameObject secondRoom;
+    public GameObject thirdRoom;
+
     [HideInInspector] public GameObject staffToAssign;
     [HideInInspector] public bool panelOpen = false;
     // public Transform canvasTransform;
@@ -25,6 +31,7 @@ public class GameManager : MonoBehaviour
     
     public Color[] colors;
     public GameObject notificationUI;
+    public GameObject levelNotificationUI;
     public TMP_Text UsernameHud;
     public GameObject UsernameForm;
     int previousDay;
@@ -117,6 +124,24 @@ public class GameManager : MonoBehaviour
 
     public void LevelUp(){
         level++;
+        Debug.Log("level: " + level);
+        UsernameHud.text = username + " lv." + level;
+
+        levelNotificationUI.GetComponent<PanelOpener>().OpenPanelPunch();
+        levelNotificationUI.GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Level Up - เลเวล " + level;
+        levelNotificationUI.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "เพิ่มจำนวนพนักงานสูงสุดเป็น " + StaffManager.instance.maxStaff[level-1] + " คน";
+        levelNotificationUI.GetComponentsInChildren<TextMeshProUGUI>()[2].gameObject.SetActive(true);
+
+        if(level == 2){
+            blackBoardWall.SetActive(false);
+            secondRoom.SetActive(true);    
+        }
+        else if(level == 4){
+            thirdRoom.SetActive(true);
+        }else{
+            levelNotificationUI.GetComponentsInChildren<TextMeshProUGUI>()[2].gameObject.SetActive(false);
+        }
+
     }
 
     public int GetLevel(){

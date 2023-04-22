@@ -98,6 +98,7 @@ public class ProjectHUD : MonoBehaviour
     {
         if(hudDetail.activeSelf){
             submitBTN.SetActive(true);
+            submitBTN.GetComponent<Button>().onClick.RemoveAllListeners();
             submitBTN.GetComponent<Button>().onClick.AddListener(delegate {
                 Debug.Log("Submit");
                 GameManager.instance.AddMoney(project.reward);

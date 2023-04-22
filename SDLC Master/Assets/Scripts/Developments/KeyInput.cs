@@ -126,7 +126,7 @@ public class KeyInput : MonoBehaviour
                         if (sliderTween != null) sliderTween.Kill();
                         if(timer != null) StopCoroutine(timer);
                         slider.value -= pointWrong;
-                        Debug.Log("เวลาลด"+slider.value);
+                        // Debug.Log("เวลาลด"+slider.value);
                         timer = StartCoroutine(StartTimer((int)slider.value));
 
                         Color color = Color.red;
