@@ -81,7 +81,7 @@ public class WaterFallManager : MonoBehaviour
 
             if(GameManager.instance.gameState != GameState.PAUSE){
                 progress += project.staffEachPhase[phaseIndex];
-                Debug.Log("Progress "+progress);
+                // Debug.Log("Progress "+progress);
                 calculateQuality = ((float)StaffManager.instance.getSumStaffStat("Programmer")/((float)(project.scale * 15))) * pointWrong;
                 calculateQuality = calculateQuality * SkillManager.instance.GetQualityBonus();
                 qualityEachPhase[phaseIndex] += calculateQuality;
