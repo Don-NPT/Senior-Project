@@ -1,5 +1,6 @@
 using UnityEngine.EventSystems;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 
 public class Balloon : MonoBehaviour, IPointerDownHandler 
@@ -33,6 +34,7 @@ public class Balloon : MonoBehaviour, IPointerDownHandler
                 ProjectManager.instance.currentProject.balloonPoint += calculateQuality;
                 WaterFallManager.instance.qualityEachPhase[2] += calculateQuality;
                 FindObjectOfType<AudioManager>().Play("Purchase");
+                GetComponent<Image>().DOColor(Color.green, 0.2f);
             }else{
                 Debug.Log("Point down");
                 calculateQuality = ((float)StaffManager.instance.getSumStaffStat("Tester")/((float)(project.scale * 15))) * pointWrong;
@@ -40,6 +42,7 @@ public class Balloon : MonoBehaviour, IPointerDownHandler
                 ProjectManager.instance.currentProject.balloon2Point += calculateQuality;
                 WaterFallManager.instance.qualityEachPhase[3] += calculateQuality;
                 FindObjectOfType<AudioManager>().Play("Warning");
+                GetComponent<Image>().DOColor(Color.red, 0.2f);
             }
             
         }else{
@@ -50,6 +53,7 @@ public class Balloon : MonoBehaviour, IPointerDownHandler
                 ProjectManager.instance.currentProject.balloonPoint += calculateQuality;
                 WaterFallManager.instance.qualityEachPhase[2] += calculateQuality;
                 FindObjectOfType<AudioManager>().Play("Warning");
+                GetComponent<Image>().DOColor(Color.red, 0.2f);
             }else{
                 Debug.Log("Point up");
                 calculateQuality = ((float)StaffManager.instance.getSumStaffStat("Tester")/((float)(project.scale * 15))) * pointCorrect;
@@ -57,6 +61,7 @@ public class Balloon : MonoBehaviour, IPointerDownHandler
                 ProjectManager.instance.currentProject.balloon2Point += calculateQuality;
                 WaterFallManager.instance.qualityEachPhase[3] += calculateQuality;
                 FindObjectOfType<AudioManager>().Play("Purchase");
+                GetComponent<Image>().DOColor(Color.green, 0.2f);
             }
         }
         if(isDev)
@@ -64,8 +69,7 @@ public class Balloon : MonoBehaviour, IPointerDownHandler
         else
             ProjectManager.instance.currentProject.balloon2Answer.Add(ProjectManager.instance.currentProject.balloons[index].word);
 
-        transform.DOPunchScale (new Vector3 (0.2f, 0.2f, 0.2f), .25f);
-        GetComponent<Material>().DOColor(Color.green, 1);
-        Destroy(gameObject, 0.25f);
+        transform.DOPunchScale (new Vector3 (0.2f, 0.2f, 0.2f), .3f);
+        Destroy(gameObject, 0.3f);
      }
 }

@@ -16,6 +16,7 @@ public class KeyInput : MonoBehaviour
     public GameObject inputBlockPrefab;
     public GameObject charBlockPrefab;
     public Slider slider;
+    public GameObject bg;
     GameObject[] inputBlocks;
     GameObject[] charBlocks;
     private Project project;
@@ -23,7 +24,7 @@ public class KeyInput : MonoBehaviour
     private Tween sliderTween;
     private float calculateQuality;
 
-    public int index;
+    [HideInInspector] public int index;
 
     void Start()
     {
@@ -112,6 +113,12 @@ public class KeyInput : MonoBehaviour
                             {
                                 block.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
                                 LowerCharAlpha(keyName);
+
+                                Color color = Color.green;
+                                color.a = 0;
+                                bg.GetComponent<Image>().color = color;
+                                bg.SetActive(true);
+                                bg.GetComponent<Image>().DOFade(0.2f, 0.3f).OnComplete(()=> bg.GetComponent<Image>().DOFade(0, 0.3f).OnComplete(()=> bg.SetActive(false)));
                             }
                         }
                     }else{
@@ -121,6 +128,12 @@ public class KeyInput : MonoBehaviour
                         slider.value -= pointWrong;
                         Debug.Log("เวลาลด"+slider.value);
                         timer = StartCoroutine(StartTimer((int)slider.value));
+
+                        Color color = Color.red;
+                        color.a = 0;
+                        bg.GetComponent<Image>().color = color;
+                        bg.SetActive(true);
+                        bg.GetComponent<Image>().DOFade(0.2f, 0.3f).OnComplete(()=> bg.GetComponent<Image>().DOFade(0, 0.3f).OnComplete(()=> bg.SetActive(false)));
                     }
                 }
             }
