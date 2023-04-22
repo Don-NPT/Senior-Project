@@ -10,16 +10,18 @@ public enum GameState {PLAY, PAUSE, FASTFORWARD}
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    private int level;
     private int money;
     public TextMeshProUGUI moneyPrefab;
+    public GameObject playerDetail;
     public GameState gameState;
     public GameObject pauseScreen;
-    public GameObject staffToAssign;
-    public bool panelOpen = false;
+    [HideInInspector] public GameObject staffToAssign;
+    [HideInInspector] public bool panelOpen = false;
     // public Transform canvasTransform;
     // public GameObject moneyNotificationPrefab;
     public GameObject moneyNotification;
-    public string username;
+    [HideInInspector] public string username;
     
     public Color[] colors;
     public GameObject notificationUI;
@@ -37,6 +39,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         money = 100000;
+        level = 1;
 
         gameState = GameState.PLAY;
         previousDay = 1;
@@ -112,6 +115,14 @@ public class GameManager : MonoBehaviour
         StartCoroutine(ShowNotification(num));
     }
 
+    public void LevelUp(){
+        level++;
+    }
+
+    public int GetLevel(){
+        return level;
+    }
+
     IEnumerator ShowNotification(int num){
         moneyNotification.SetActive(true);
 
@@ -130,6 +141,15 @@ public class GameManager : MonoBehaviour
     public void ToggleNotification(string content){
         notificationUI.GetComponent<PanelOpener>().OpenPanelPunch();
         notificationUI.GetComponentsInChildren<TextMeshProUGUI>()[0].text = content;
+    }
+
+    public void ShowPlayerDetail(){
+        playerDetail.GetComponent<PanelOpener>().OpenPanelPunch();
+
+        playerDetail.GetComponentsInChildren<TextMeshProUGUI>()[0].text = username;
+        playerDetail.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "เลเวล: " + level;
+        playerDetail.GetComponentsInChildren<TextMeshProUGUI>()[2].text = "จำนวนพนักงาน: " + StaffManager.instance.getTotalStaff() + " / " + StaffManager.instance.maxStaff[level-1];
+        playerDetail.GetComponentsInChildren<TextMeshProUGUI>()[3].text = "เงิน: " + money.ToString("C0") + " บาท";
     }
 
     public void Pause()
@@ -167,7 +187,7 @@ public class GameManager : MonoBehaviour
     public void Save()
     {
         GameAdapter gameAdapter = new GameAdapter();
-        gameAdapter.Save(money, username);
+        gameAdapter.Save(money, level, username);
     }
 
     public void Load()
@@ -175,8 +195,9 @@ public class GameManager : MonoBehaviour
         GameAdapter gameAdapter = new GameAdapter();
         GameAdapter saveData = gameAdapter.Load();
         money = saveData.money;
+        level = saveData.level;
         username = saveData.username;
-        UsernameHud.text = username;
+        UsernameHud.text = username + " lv." + level;
 
     }
 }
@@ -185,11 +206,13 @@ public class GameManager : MonoBehaviour
 public class GameAdapter
 {
     public int money;
+    public int level;
     public string username;
 
-    public void Save(int _money, string _username)
+    public void Save(int _money, int _level, string _username)
     {
         money = _money;
+        level = _level;
         username = _username;
         FileHandler.SaveToJSON<GameAdapter> (this, "gamesave.json");   
     }

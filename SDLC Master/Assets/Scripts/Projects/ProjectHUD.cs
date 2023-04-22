@@ -101,6 +101,7 @@ public class ProjectHUD : MonoBehaviour
             submitBTN.GetComponent<Button>().onClick.AddListener(delegate {
                 Debug.Log("Submit");
                 GameManager.instance.AddMoney(project.reward);
+                GameManager.instance.LevelUp();
                 SkillManager.instance.AddSkillPoint(project.skillPointReward);
                 GameManager.instance.Play();
                 StopCoroutine(timer);

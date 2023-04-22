@@ -111,7 +111,13 @@ public class StaffGenerator : MonoBehaviour
 
     public void HireStaff()
     {
-        if(index >= 0)
+        bool canHire = true;
+        if(StaffManager.instance.getTotalStaff() >= StaffManager.instance.maxStaff[GameManager.instance.GetLevel()-1]){
+            GameManager.instance.ToggleNotification("จำนวนพนักงานถึงขีดจำกัดแล้ว (สามารถเพิ่มเลเวลเพื่อเพิ่มขีดจำกัดได้)");
+            canHire = false;
+        }
+
+        if(index >= 0 && canHire)
         {
             // Create staff as GameObject outside of the screen
             GameObject staff = (GameObject)Instantiate(staffPrefab, new Vector3(5000,5000,5000), Quaternion.identity);

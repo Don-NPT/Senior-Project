@@ -6,6 +6,7 @@ using TMPro;
 public class StaffManager : MonoBehaviour
 {   
     public static StaffManager instance;
+    public int[] maxStaff;
     public GameObject staffPrefab;
     public GameObject staffDetail;
     public Sprite[] positionLogos;
@@ -22,12 +23,6 @@ public class StaffManager : MonoBehaviour
         else 
             instance = this;
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public int getTotalStaff()

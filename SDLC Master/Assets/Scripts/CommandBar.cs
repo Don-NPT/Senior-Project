@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class CommandBar : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler
 {
+    public bool seeDetail = false;
     public bool assignStaff = false;
     // public bool assignWork = false;
     public bool openShop = false;
@@ -44,6 +45,7 @@ public class CommandBar : MonoBehaviour, IPointerEnterHandler, IPointerDownHandl
     public void OnPointerDown (PointerEventData eventData) 
     {
         FindObjectOfType<AudioManager>().Play("Click");
+        if(seeDetail) GameManager.instance.ShowPlayerDetail();
         if(assignStaff) staffAssigner.AssignStaff();
         // if(assignWork) staffGO.GetComponent<PlayerController>().AssignWork();
         if(openShop) ShopOpener.instance.OpenPanel();

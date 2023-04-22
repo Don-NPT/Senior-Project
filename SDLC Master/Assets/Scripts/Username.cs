@@ -28,7 +28,7 @@ public class Username : MonoBehaviour
     // Update is called once per frame
     public void SaveUsername()
     {
-        MyUsername.text = inputField.text;
+        MyUsername.text = inputField.text + " lv." + GameManager.instance.GetLevel();
 
         UsernamePage.SetActive(false);
         GameManager.instance.username = inputField.text;
