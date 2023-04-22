@@ -143,6 +143,8 @@ public class GameManager : MonoBehaviour
             }else{
                 levelNotificationUI.GetComponentsInChildren<TextMeshProUGUI>()[2].gameObject.SetActive(false);
             }
+
+            AudioManager.instance.Play("Purchase");
         }
     }
 

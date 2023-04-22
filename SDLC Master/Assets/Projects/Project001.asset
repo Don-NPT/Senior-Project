@@ -28,11 +28,11 @@ MonoBehaviour:
   codingWork: 15
   testingWork: 15
   deploymentWork: 5
-  requireAnalysis: 15
-  requireDesign: 20
-  requireCoding: 25
-  requireTesting: 25
-  requireDeployment: 15
+  requireAnalysis: 24
+  requireDesign: 24
+  requireCoding: 24
+  requireTesting: 24
+  requireDeployment: 16
   requirement1:
   - word: "\u0E43\u0E0A\u0E49\u0E07\u0E48\u0E32\u0E22"
     isCorrect: 1
@@ -86,17 +86,17 @@ MonoBehaviour:
   mediumTasks: 6
   largeTasks: 3
   giantTasks: 1
-  actualAnalysis: 8
-  actualDesign: 0
-  actualCoding: 11
-  actualTesting: 1
+  actualAnalysis: 24
+  actualDesign: 24
+  actualCoding: 24
+  actualTesting: 20
   actualDeployment: 20
-  model: {fileID: 11400000, guid: 5ef74cd8a8ad44943a62f7d834d77d1c, type: 2}
+  model: {fileID: 11400000, guid: fefd9c0d5471bbd4b8ed0775ef1e6143, type: 2}
   teamIndex: 0
-  state: 1
-  phase: 0
-  staffEachPhase: 010000000000000000000000000000000000000000000000
-  statEachPhase: 020000000000000000000000000000000000000000000000
+  state: 3
+  phase: 4
+  staffEachPhase: 010000000100000001000000010000000100000000000000
+  statEachPhase: 040000000400000004000000040000000400000000000000
   dayUsed: 50
   estimateDaysInPhase: 10
   requirement1Answer:
@@ -104,26 +104,30 @@ MonoBehaviour:
   - "\u0E1A\u0E19\u0E40\u0E04\u0E23\u0E37\u0E48\u0E2D\u0E07"
   - "\u0E40\u0E23\u0E35\u0E22\u0E1A\u0E07\u0E48\u0E32\u0E22"
   requirement1Point: 0
-  requirement2Answer: []
-  requirement2Point: 0
+  requirement2Answer:
+  - Non-Functional
+  - Functional
+  - Functional
+  - Non-Functional
+  requirement2Point: 24
   designAnswer: 
-  designPoint: 0
-  keyInputPass: 
+  designPoint: 24
+  keyInputPass: 0101
   keyInputPoint: 0
-  balloonPoint: 11
+  balloonPoint: 24
   balloonAnswer:
-  - "\u0E01\u0E32\u0E23\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23"
-  - Scrum Board
-  - Scrum Board
-  - "\u0E01\u0E32\u0E23\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23"
-  - "\u0E01\u0E32\u0E23\u0E17\u0E14\u0E2A\u0E2D\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
-  balloon2Point: 1
+  - "\u0E17\u0E14\u0E2A\u0E2D\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
+  - "\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23"
+  - "\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23"
+  - "\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23"
+  - "\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23"
+  balloon2Point: 20.266668
   balloon2Answer:
-  - "\u0E01\u0E32\u0E23\u0E17\u0E14\u0E2A\u0E2D\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
-  - "\u0E01\u0E32\u0E23\u0E17\u0E14\u0E2A\u0E2D\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
   - Scrum Board
-  - "\u0E01\u0E32\u0E23\u0E17\u0E14\u0E2A\u0E2D\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
-  - "\u0E01\u0E32\u0E23\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23"
+  - Print Risk
+  - Scrum Board
+  - Scrum Board
+  - "\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23"
   sprintList:
   - taskList:
     - {fileID: 11400000, guid: 06e4b0972b91500408bffb2f8b6f97e0, type: 2}
