@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moneyPrefab.text = money.ToString("C0");
+        moneyPrefab.text = money.ToString("N0");
 
         if(Input.GetButtonDown("Cancel"))
         {

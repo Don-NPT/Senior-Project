@@ -84,8 +84,8 @@ public class AgileSummary : MonoBehaviour
 
     void SetupRightPanel(){
         rightPanel.GetComponentsInChildren<TextMeshProUGUI>()[0].text = project.pjName;
-        rightPanel.GetComponentsInChildren<TextMeshProUGUI>()[3].text = "+" + project.reward;
-        rightPanel.GetComponentsInChildren<TextMeshProUGUI>()[5].text = "-" + project.expense;
+        rightPanel.GetComponentsInChildren<TextMeshProUGUI>()[3].text = "+" + project.finalReward.ToString("N0");
+        rightPanel.GetComponentsInChildren<TextMeshProUGUI>()[5].text = "-" + project.expense.ToString("N0");
         rightPanel.GetComponentsInChildren<TextMeshProUGUI>()[7].text = StaffManager.instance.getAllStaffStat() + " หน่วย";
         rightPanel.GetComponentsInChildren<TextMeshProUGUI>()[9].text = StaffManager.instance.GetStaffbyID(project.PO_id).analysis + " หน่วย";
     }

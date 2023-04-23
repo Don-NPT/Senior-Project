@@ -14,6 +14,7 @@ public class Project : ScriptableObject
     [TextArea(5, 10)]
     public string requirement;
     public int reward;
+    [HideInInspector] public int finalReward;
     public int expense;
     public int skillPointReward;
     public int deadline;

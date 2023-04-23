@@ -64,6 +64,7 @@ public class WaterFallManager : MonoBehaviour
             {
                 staff.gameObject.GetComponent<StaffController>().AssignWork();
             }
+            GameManager.instance.AddMoney(-project.expense);
             // StartCoroutine(UpdateProgress());
         }
     }

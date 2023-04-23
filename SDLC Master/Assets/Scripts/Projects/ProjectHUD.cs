@@ -101,8 +101,40 @@ public class ProjectHUD : MonoBehaviour
             submitBTN.GetComponent<Button>().onClick.RemoveAllListeners();
             submitBTN.GetComponent<Button>().onClick.AddListener(delegate {
                 Debug.Log("Submit");
-                GameManager.instance.AddMoney(project.reward);
-                GameManager.instance.LevelUp();
+
+                int rewardMoney = project.reward;
+                bool pass = true;
+
+                if(project.actualAnalysis < project.requireAnalysis){
+                    rewardMoney -= (int) Mathf.Round(project.reward * 0.05f);
+                }
+                if(project.actualDesign < project.requireAnalysis){
+                    rewardMoney -= (int) Mathf.Round(project.reward * 0.05f);
+                }
+                if(project.actualCoding < project.requireAnalysis){
+                    rewardMoney -= (int) Mathf.Round(project.reward * 0.05f);
+                }
+                if(project.actualTesting < project.requireAnalysis){
+                    rewardMoney -= (int) Mathf.Round(project.reward * 0.05f);
+                }
+                if(project.actualDeployment < project.requireAnalysis){
+                    rewardMoney -= (int) Mathf.Round(project.reward * 0.05f);
+                }
+                if(project.getAllActualQuality() < project.getAllRequireQuality()){
+                    pass = false;
+                }
+
+                Debug.Log(rewardMoney + " / " + project.reward);
+
+                GameManager.instance.AddMoney(rewardMoney);
+                project.finalReward = rewardMoney;
+                
+                if(pass){
+                    GameManager.instance.LevelUp();
+                }else{
+                    GameManager.instance.ToggleNotification("คุณภาพของโปรเจคไม่ถึงเกณที่กำหนด โดนหักเงิน " + (project.reward - rewardMoney).ToString("N0") + " บาท");
+                }
+
                 SkillManager.instance.AddSkillPoint(project.skillPointReward);
                 GameManager.instance.Play();
                 StopCoroutine(timer);

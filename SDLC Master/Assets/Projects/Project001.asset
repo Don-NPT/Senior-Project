@@ -18,6 +18,7 @@ MonoBehaviour:
     A"
   requirement: 
   reward: 80000
+  finalReward: 64000
   expense: 12000
   skillPointReward: 2
   deadline: 60
@@ -83,17 +84,17 @@ MonoBehaviour:
     showNum: 5
     additionalChar: 
   smallTasks: 10
-  mediumTasks: 6
-  largeTasks: 3
-  giantTasks: 1
-  actualAnalysis: 24
-  actualDesign: 24
+  mediumTasks: 5
+  largeTasks: 0
+  giantTasks: 0
+  actualAnalysis: 15
+  actualDesign: 12
   actualCoding: 24
   actualTesting: 20
   actualDeployment: 20
-  model: {fileID: 11400000, guid: fefd9c0d5471bbd4b8ed0775ef1e6143, type: 2}
+  model: {fileID: 11400000, guid: 5ef74cd8a8ad44943a62f7d834d77d1c, type: 2}
   teamIndex: 0
-  state: 3
+  state: 1
   phase: 4
   staffEachPhase: 010000000100000001000000010000000100000000000000
   statEachPhase: 040000000400000004000000040000000400000000000000
@@ -105,33 +106,56 @@ MonoBehaviour:
   - "\u0E40\u0E23\u0E35\u0E22\u0E1A\u0E07\u0E48\u0E32\u0E22"
   requirement1Point: 0
   requirement2Answer:
-  - Non-Functional
   - Functional
   - Functional
-  - Non-Functional
-  requirement2Point: 24
+  - Functional
+  - Functional
+  requirement2Point: 14.666667
   designAnswer: 
-  designPoint: 24
-  keyInputPass: 0101
+  designPoint: 12
+  keyInputPass: 01
   keyInputPoint: 0
   balloonPoint: 24
   balloonAnswer:
+  - "\u0E2D\u0E2D\u0E01\u0E41\u0E1A\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
+  - "\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23"
   - "\u0E17\u0E14\u0E2A\u0E2D\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
   - "\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23"
-  - "\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23"
-  - "\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23"
-  - "\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23"
-  balloon2Point: 20.266668
+  - "\u0E2D\u0E2D\u0E01\u0E41\u0E1A\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
+  balloon2Point: 20.266666
   balloon2Answer:
+  - "\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23"
+  - Print Risk
   - Scrum Board
   - Print Risk
   - Scrum Board
-  - Scrum Board
-  - "\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23"
   sprintList:
   - taskList:
     - {fileID: 11400000, guid: 06e4b0972b91500408bffb2f8b6f97e0, type: 2}
-    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
+    - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
+    - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
+    - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
+    - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
     - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
     sprintName: Sprint 1
-  PO_id: 001
+  - taskList:
+    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
+    - {fileID: 11400000, guid: dfe92c9d6ac10a84894ee655abc66332, type: 2}
+    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
+    - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
+    - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
+    sprintName: Sprint 2
+  - taskList:
+    - {fileID: 11400000, guid: dfe92c9d6ac10a84894ee655abc66332, type: 2}
+    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
+    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
+    - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
+    - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
+    sprintName: Sprint 3
+  - taskList:
+    - {fileID: 11400000, guid: dfe92c9d6ac10a84894ee655abc66332, type: 2}
+    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
+    - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
+    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
+    sprintName: Sprint 4
+  PO_id: 003

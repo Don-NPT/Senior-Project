@@ -38,6 +38,7 @@ public class AgileManager : MonoBehaviour
                 phaseIndex = 0;
                 sprintIndex = 0;
                 agileUI[0].SetActive(true);
+                GameManager.instance.AddMoney(-project.expense);
             }
     }
 
@@ -52,8 +53,31 @@ public class AgileManager : MonoBehaviour
         sprintIndex++;
         if(sprintIndex < project.sprintList.Count) agileHud.SetActive(true);
         else {
-            GameManager.instance.AddMoney(project.reward);
-            GameManager.instance.LevelUp();
+            int rewardMoney = project.reward;
+            bool pass = true;
+
+            foreach(var sprint in project.sprintList){
+                if(sprint.GetNumFinishedTasks() < sprint.GetNumAllTasks()){
+                    rewardMoney -= (int) Mathf.Round(project.reward * 0.05f);
+                    pass = false;
+                }
+                if(sprint.GetSumQuality() < sprint.GetSumRequireQuality()){
+                    rewardMoney -= (int) Mathf.Round(project.reward * 0.05f);
+                    pass = false;
+                }
+            }
+
+            Debug.Log(rewardMoney + " / " + project.reward);
+
+            GameManager.instance.AddMoney(rewardMoney);
+            project.finalReward = rewardMoney;
+
+            if(pass){
+                GameManager.instance.LevelUp();
+            }else{
+                GameManager.instance.ToggleNotification("คุณภาพของโปรเจคไม่ถึงเกณที่กำหนด โดนหักเงิน " + (project.reward - rewardMoney).ToString("N0") + " บาท");
+            }
+        
             project.inProgress = false;
             projectSummaryUI.SetActive(true);
         }

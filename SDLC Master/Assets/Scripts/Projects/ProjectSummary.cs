@@ -73,8 +73,8 @@ public class ProjectSummary : MonoBehaviour
         testingQuality.GetComponentInChildren<Button>().onClick.AddListener(delegate { ShowDetail(project, 4); });
         deploymentQuality.GetComponentInChildren<Button>().onClick.AddListener(delegate { ShowDetail(project, 5); });
 
-        reward.text = project.reward.ToString();
-        expense.text = project.expense.ToString();
+        reward.text = "+" + project.finalReward.ToString("N0");
+        expense.text = "-" + project.expense.ToString("N0");
         timeUsed.text = project.getOverallTimeUsed() + " / " + project.deadline + " วัน";
         Debug.Log(string.Join(", ", project.requirement1Answer));
         Debug.Log(string.Join(", ", project.requirement2Answer));
