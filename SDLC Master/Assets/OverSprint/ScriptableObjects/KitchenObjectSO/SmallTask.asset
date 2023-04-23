@@ -15,9 +15,10 @@ MonoBehaviour:
   prefeb: {fileID: 3660799866615536148, guid: 3125c6df0fa479d4b9ef27e17d271976, type: 3}
   sprite: {fileID: 21300000, guid: f07cea5ec40038d42b6f7d791708c515, type: 3}
   objectName: "\u0E07\u0E32\u0E19\u0E02\u0E19\u0E32\u0E14\u0E40\u0E25\u0E47\u0E01"
-  dayToFinish: 1
-  requireQuality: 10
+  dayToFinish: 4
+  requireQuality: 25
   size: 1
-  quality: 42
-  dayUsed: 2
-  isComplete: 1
+  quality: 0
+  dayUsed: 0
+  isComplete: 0
+  fromPreviousSprint: 1
