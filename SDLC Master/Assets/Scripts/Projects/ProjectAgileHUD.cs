@@ -97,12 +97,23 @@ public class ProjectAgileHUD : MonoBehaviour
         int day = 0;
         int dayLeft = 14;
         dayLeftText.text = "เหลือเวลา: " + dayLeft.ToString() + " วัน";
-        
-        for(int i=0; i<taskItem.Length; i++){
-            if(day > 14) break;
+
+        for(int i=0; i<project.sprintList[AgileManager.instance.sprintIndex].taskList.Count; i++){
             project.sprintList[AgileManager.instance.sprintIndex].taskList[i].dayUsed = 0;
+            project.sprintList[AgileManager.instance.sprintIndex].taskList[i].isComplete = false;
+        }
+
+        for(int i=0; i<taskItem.Length; i++){
+            if(day > 14 || dayLeft <= 0) break;
+            
+            int taskDay = 0;
+            project.sprintList[AgileManager.instance.sprintIndex].taskList[i].dayUsed = 0;
+
             while(taskItem[i].GetComponentsInChildren<Slider>()[0].value < taskItem[i].GetComponentsInChildren<Slider>()[0].maxValue)
             {
+                if(taskDay*StaffManager.instance.getTotalStaff() >= project.sprintList[AgileManager.instance.sprintIndex].taskList[i].dayToFinish){
+                    break;
+                }
                 yield return new WaitForSeconds(1);
 
                 if(GameManager.instance.gameState != GameState.PAUSE){
@@ -110,20 +121,25 @@ public class ProjectAgileHUD : MonoBehaviour
                     dayLeft--;
                     dayLeftText.text = "เหลือเวลา: " + dayLeft.ToString() + " วัน";
                     float progress = taskItem[i].GetComponentsInChildren<Slider>()[0].value + StaffManager.instance.getTotalStaff();
-                    float quality = taskItem[i].GetComponentsInChildren<Slider>()[1].value + StaffManager.instance.getAllStaffStat() * SkillManager.instance.GetQualityBonus();
+                    float quality = taskItem[i].GetComponentsInChildren<Slider>()[1].value + ((float)StaffManager.instance.getAllStaffStat()/((float)(project.scale * 15))) * SkillManager.instance.GetQualityBonus() * 180;
                     taskItem[i].GetComponentsInChildren<Slider>()[0].DOValue(progress, 0.3f);
                     taskItem[i].GetComponentsInChildren<Slider>()[1].DOValue(quality, 0.3f);
                     project.sprintList[AgileManager.instance.sprintIndex].taskList[i].dayUsed++;
                     // taskItem[i].GetComponentsInChildren<Slider>()[0].value += StaffManager.instance.getTotalStaff();
-                }
+                    Debug.Log(((float)StaffManager.instance.getAllStaffStat()/((float)(project.scale * 15))) * SkillManager.instance.GetQualityBonus() * 180);
+                }  
+                taskDay++;
             }
+
             project.sprintList[AgileManager.instance.sprintIndex].taskList[i].isComplete = true;
         }
+        // project.sprintList[AgileManager.instance.sprintIndex].taskList[1].isComplete = true;
         submitBTN.SetActive(true);
         List<KitchenObjectSO> tasks = project.sprintList[AgileManager.instance.sprintIndex].taskList;
         // Save quality
         for(int i=0; i<tasks.Count; i++){
             tasks[i].quality = (int) Mathf.Round(taskItem[i].GetComponentsInChildren<Slider>()[1].value);
+            // Debug.Log(tasks[i].isComplete);
         }
         // Add unfinished tasks to next sprint
         foreach(var task in tasks){
