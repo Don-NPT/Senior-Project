@@ -53,13 +53,19 @@ public class ProjectPicker : MonoBehaviour
         TextMeshProUGUI[] projectDetailText = projectDetail.GetComponentsInChildren<TextMeshProUGUI>();
         projectDetailText[0].text = projects[index].pjName;
         projectDetailText[1].text = projects[index].description;
-        projectDetailText[3].text = "Analysis: " + projects[index].analysisWork.ToString();
-        projectDetailText[4].text = "Design: " + projects[index].designWork.ToString();
-        projectDetailText[5].text = "Coding: " + projects[index].codingWork.ToString();
-        projectDetailText[6].text = "Testing: " + projects[index].testingWork.ToString();
-        projectDetailText[7].text = "Deployment: " + projects[index].deploymentWork.ToString();
-        projectDetailText[8].text = "ผลตอบแทน: " + projects[index].reward.ToString() + " บาท";
-        projectDetailText[9].text = "ต้องการภายใน: " + projects[index].deadline.ToString() + " วัน";
+        projectDetailText[2].text = "Waterfall Model";
+        projectDetailText[3].text = "Analysis: " + projects[index].analysisWork.ToString() +" งาน";
+        projectDetailText[4].text = "Design: " + projects[index].designWork.ToString()+" งาน";
+        projectDetailText[5].text = "Coding: " + projects[index].codingWork.ToString()+" งาน";
+        projectDetailText[6].text = "Testing: " + projects[index].testingWork.ToString()+" งาน";
+        projectDetailText[7].text = "Deployment: " + projects[index].deploymentWork.ToString()+" งาน";
+        projectDetailText[8].text = "Agile Model";
+        projectDetailText[9].text = "Small Task: "+ projects[index].smallTasks.ToString()+" งาน";;
+        projectDetailText[10].text = "Medium Task: "+ projects[index].mediumTasks.ToString()+" งาน";;
+        projectDetailText[11].text = "Large Task: "+ projects[index].largeTasks.ToString()+" งาน";;
+        projectDetailText[12].text = "Giant Task: "+ projects[index].giantTasks.ToString()+" งาน";;
+        projectDetailText[13].text = "ผลตอบแทน: " + projects[index].reward.ToString() + " บาท";
+        projectDetailText[14].text = "ต้องการภายใน: " + projects[index].deadline.ToString() + " วัน";
     }
 
     public void selectProject(int index)
