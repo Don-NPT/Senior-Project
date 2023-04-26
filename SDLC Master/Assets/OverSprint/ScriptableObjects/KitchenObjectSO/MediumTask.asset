@@ -16,9 +16,9 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 08b1d60ac9c8d3f428fdc33da8b3f863, type: 3}
   objectName: "\u0E07\u0E32\u0E19\u0E02\u0E19\u0E32\u0E14\u0E01\u0E25\u0E32\u0E07"
   dayToFinish: 12
-  requireQuality: 100
+  requireQuality: 120
   size: 3
-  quality: 75
-  dayUsed: 3
-  isComplete: 1
+  quality: 82
+  dayUsed: 0
+  isComplete: 0
   fromPreviousSprint: 1

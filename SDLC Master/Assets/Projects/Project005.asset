@@ -17,6 +17,7 @@ MonoBehaviour:
   description: "\u0E42\u0E1B\u0E23\u0E40\u0E08\u0E04\u0E17\u0E35\u0E48\u0E08\u0E31\u0E14\u0E02\u0E36\u0E49\u0E19\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E41\u0E2A\u0E14\u0E07\u0E04\u0E27\u0E32\u0E21\u0E2A\u0E38\u0E14\u0E22\u0E2D\u0E14\u0E41\u0E2B\u0E48\u0E07\u0E1B\u0E35"
   requirement: 
   reward: 600000
+  finalReward: 0
   expense: 200000
   skillPointReward: 0
   deadline: 70
@@ -113,5 +114,7 @@ MonoBehaviour:
     sprintName: Sprint 1
   - taskList:
     - {fileID: 11400000, guid: dfe92c9d6ac10a84894ee655abc66332, type: 2}
+    - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
+    - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
     sprintName: Sprint 2
   PO_id: 003

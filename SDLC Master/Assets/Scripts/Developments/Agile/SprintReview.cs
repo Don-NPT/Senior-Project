@@ -54,10 +54,10 @@ public class SprintReview : MonoBehaviour
         taskRows[3].GetComponentsInChildren<TextMeshProUGUI>()[0].text = "งานแบบเบิ้มๆ (x" + giantTasks.Count + ")";
 
         // Setup Each Quality
-        if(smallTasks.Count > 0) taskRows[0].GetComponentsInChildren<TextMeshProUGUI>()[1].text = smallTasks[0].quality + " / " + smallTasks[0].requireQuality;
-        if(mediumTasks.Count > 0) taskRows[1].GetComponentsInChildren<TextMeshProUGUI>()[1].text = mediumTasks[0].quality + " / " + mediumTasks[0].requireQuality;
-        if(largeTasks.Count > 0) taskRows[2].GetComponentsInChildren<TextMeshProUGUI>()[1].text = largeTasks[0].quality + " / " + largeTasks[0].requireQuality;
-        if(giantTasks.Count > 0) taskRows[3].GetComponentsInChildren<TextMeshProUGUI>()[1].text = giantTasks[0].quality + " / " + giantTasks[0].requireQuality;
+        if(smallTasks.Count > 0) taskRows[0].GetComponentsInChildren<TextMeshProUGUI>()[1].text = GetTaskQuality(smallTasks) + " / " + smallTasks[0].requireQuality;
+        if(mediumTasks.Count > 0) taskRows[1].GetComponentsInChildren<TextMeshProUGUI>()[1].text = GetTaskQuality(mediumTasks) + " / " + mediumTasks[0].requireQuality;
+        if(largeTasks.Count > 0) taskRows[2].GetComponentsInChildren<TextMeshProUGUI>()[1].text = GetTaskQuality(largeTasks) + " / " + largeTasks[0].requireQuality;
+        if(giantTasks.Count > 0) taskRows[3].GetComponentsInChildren<TextMeshProUGUI>()[1].text = GetTaskQuality(giantTasks) + " / " + giantTasks[0].requireQuality;
 
         // Setup Total Quality
         if(smallTasks.Count > 0) taskRows[0].GetComponentsInChildren<TextMeshProUGUI>()[2].text = totalQualities[0] + " / " + (smallTasks[0].requireQuality * smallTasks.Count);
@@ -95,5 +95,13 @@ public class SprintReview : MonoBehaviour
             feedback.text = "เลือกงานเมื่อพร้อมนะครับ\nพนักงานคุณดูไม่พร้อมเลย";
         }
         
+    }
+
+    int GetTaskQuality(List<KitchenObjectSO> tasks){
+        int maxQuality = 0;
+        foreach(var task in tasks){
+            if(task.quality != 0 && task.quality > maxQuality) maxQuality = task.quality;
+        }
+        return maxQuality;
     }
 }
