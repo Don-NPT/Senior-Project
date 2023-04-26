@@ -2,17 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Linq;
 
 public class SprintRetrospective : MonoBehaviour
 {
     public GameObject[] taskRows;
     public TextMeshProUGUI thisSprint;
     public TextMeshProUGUI allSprint;
+    public GameObject[] postItBoxes;
+    public GameObject postItPrefab;
+    public string[] randomMad;
+    public string[] randomSad;
+    public string[] randomGlad;
+    public string[] TooMuchTaskFeedback;
+    public string[] OkTaskFeedback;
+    public string[] goodQualityFeedbacks;
+    public string[] lowQualityFeedbacks;
     private Project project;
+    private int sprintIndex;
     private void OnEnable() {
         project = ProjectManager.instance.currentProject;
-        int sprintIndex = AgileManager.instance.sprintIndex;
+        sprintIndex = AgileManager.instance.sprintIndex;
 
+        SetupLeft();
+        SetupRight();
+    }
+
+    void SetupLeft(){
         GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Sprint " + (sprintIndex+1) + " Retrospective";
 
         List<KitchenObjectSO> smallTasks = new List<KitchenObjectSO>();
@@ -93,4 +109,106 @@ public class SprintRetrospective : MonoBehaviour
 
         allSprint.text = sumComplete + " / " + sumTasks;
     }
+
+    void SetupRight(){
+        int numMad = UnityEngine.Random.Range(1, 4);
+        int numSad = UnityEngine.Random.Range(1, 4);
+        int numGlad = UnityEngine.Random.Range(1, 4);
+
+        if(IsTaskOverload()){
+            GameObject taskOverload = (GameObject) Instantiate(postItPrefab);
+            taskOverload.transform.SetParent(postItBoxes[0].transform);
+            taskOverload.transform.localScale = Vector3.one;
+            taskOverload.GetComponentInChildren<TextMeshProUGUI>().text = TooMuchTaskFeedback[UnityEngine.Random.Range(0, TooMuchTaskFeedback.Length)];
+        }else{
+            GameObject taskok = (GameObject) Instantiate(postItPrefab);
+            taskok.transform.SetParent(postItBoxes[2].transform);
+            taskok.transform.localScale = Vector3.one;
+            taskok.GetComponentInChildren<TextMeshProUGUI>().text = OkTaskFeedback[UnityEngine.Random.Range(0, OkTaskFeedback.Length)];
+        }
+
+        if(IsTooLowQuality()){
+            GameObject lowQuality = (GameObject) Instantiate(postItPrefab);
+            lowQuality.transform.SetParent(postItBoxes[1].transform);
+            lowQuality.transform.localScale = Vector3.one;
+            lowQuality.GetComponentInChildren<TextMeshProUGUI>().text = lowQualityFeedbacks[UnityEngine.Random.Range(0, lowQualityFeedbacks.Length)];
+        }
+        else{
+            GameObject okQuality = (GameObject) Instantiate(postItPrefab);
+            okQuality.transform.SetParent(postItBoxes[2].transform);
+            okQuality.transform.localScale = Vector3.one;
+            okQuality.GetComponentInChildren<TextMeshProUGUI>().text = goodQualityFeedbacks[UnityEngine.Random.Range(0, goodQualityFeedbacks.Length)];
+        }
+
+        List<string> madList = randomMad.ToList();
+        for(int i=0; i<numMad; i++){
+            GameObject postIt = (GameObject) Instantiate(postItPrefab);
+            postIt.transform.SetParent(postItBoxes[0].transform);
+            postIt.transform.localScale = Vector3.one;
+            int index = UnityEngine.Random.Range(0, madList.Count);
+            postIt.GetComponentInChildren<TextMeshProUGUI>().text = madList[index];
+            madList.RemoveAt(index);
+        }
+
+        List<string> sadList = randomSad.ToList();
+        for(int i=0; i<numSad; i++){
+            GameObject postIt = (GameObject) Instantiate(postItPrefab);
+            postIt.transform.SetParent(postItBoxes[1].transform);
+            postIt.transform.localScale = Vector3.one;
+            int index = UnityEngine.Random.Range(0, sadList.Count);
+            postIt.GetComponentInChildren<TextMeshProUGUI>().text = sadList[index];
+            sadList.RemoveAt(index);
+        }
+
+        List<string> gladList = randomGlad.ToList();
+        for(int i=0; i<numGlad; i++){
+            GameObject postIt = (GameObject) Instantiate(postItPrefab);
+            postIt.transform.SetParent(postItBoxes[2].transform);
+            postIt.transform.localScale = Vector3.one;
+            int index = UnityEngine.Random.Range(0, gladList.Count);
+            postIt.GetComponentInChildren<TextMeshProUGUI>().text = gladList[index];
+            gladList.RemoveAt(index);
+        }
+    }
+
+    private void OnDisable() {
+        foreach(Transform item in postItBoxes[0].transform){
+            Destroy(item.gameObject);
+        }
+        foreach(Transform item in postItBoxes[1].transform){
+            Destroy(item.gameObject);
+        }
+        foreach(Transform item in postItBoxes[2].transform){
+            Destroy(item.gameObject);
+        }
+    }
+
+    bool IsTaskOverload(){
+        foreach(var task in project.sprintList[sprintIndex].taskList){
+            if(task.isComplete == false) return true;
+        }
+        return false;
+    }
+
+    bool IsTooLowQuality(){
+        if(GetProjectQuality() < GetProjectRequireQuality()) return true;
+        else return false;
+    }
+
+    int GetProjectQuality(){
+        int sum = 0;
+        foreach(var sprint in project.sprintList){
+            sum += sprint.GetSumQuality();            
+        }
+        return sum;
+    }
+
+    int GetProjectRequireQuality(){
+        int sum = 0;
+        foreach(var sprint in project.sprintList){
+            sum += sprint.GetSumRequireQuality();            
+        }
+        return sum;
+    }
+
 }
