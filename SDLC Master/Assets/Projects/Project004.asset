@@ -18,6 +18,7 @@ MonoBehaviour:
     Avy"
   requirement: 
   reward: 500000
+  finalReward: 450000
   expense: 225000
   skillPointReward: 2
   deadline: 90
@@ -73,7 +74,7 @@ MonoBehaviour:
       \u0E17\u0E35\u0E48\u0E40\u0E19\u0E49\u0E19\u0E44\u0E1B\u0E17\u0E32\u0E07\u0E1B\u0E23\u0E30\u0E2A\u0E34\u0E17\u0E18\u0E34\u0E20\u0E32\u0E1E"
     showNum: 3
     additionalChar: 
-  - word: 'PRODUCTTESTING    '
+  - word: PRODUCTTESTING
     hint: "\u0E23\u0E39\u0E1B\u0E41\u0E1A\u0E1A\u0E01\u0E32\u0E23\u0E17\u0E14\u0E2A\u0E2D\u0E1A
       \u0E17\u0E35\u0E48\u0E17\u0E33\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E15\u0E23\u0E27\u0E08\u0E2A\u0E2D\u0E1A\u0E1C\u0E25\u0E34\u0E15\u0E20\u0E31\u0E13\u0E11\u0E4C"
     showNum: 3
@@ -82,31 +83,45 @@ MonoBehaviour:
   mediumTasks: 8
   largeTasks: 3
   giantTasks: 2
-  actualAnalysis: 0
+  actualAnalysis: 53
   actualDesign: 0
-  actualCoding: 0
-  actualTesting: 0
-  actualDeployment: 0
-  model: {fileID: 11400000, guid: 5ef74cd8a8ad44943a62f7d834d77d1c, type: 2}
+  actualCoding: 46
+  actualTesting: 16
+  actualDeployment: 38
+  model: {fileID: 11400000, guid: fefd9c0d5471bbd4b8ed0775ef1e6143, type: 2}
   teamIndex: 3
-  state: 1
-  phase: 0
-  staffEachPhase: 
-  statEachPhase: 
+  state: 3
+  phase: 4
+  staffEachPhase: 040000000400000002000000030000000300000000000000
+  statEachPhase: 16000000160000000d000000130000001300000000000000
   dayUsed: 0
   estimateDaysInPhase: 25
   requirement1Answer: []
   requirement1Point: 0
-  requirement2Answer: []
-  requirement2Point: 0
+  requirement2Answer:
+  - Functional
+  - Non-Functional
+  - Non-Functional
+  - Non-Functional
+  requirement2Point: 52.8
   designAnswer: 
   designPoint: 0
   keyInputPass: 
   keyInputPoint: 0
-  balloonPoint: 0
-  balloonAnswer: []
-  balloon2Point: 0
-  balloon2Answer: []
+  balloonPoint: 45.6
+  balloonAnswer:
+  - "\u0E08\u0E31\u0E14\u0E01\u0E32\u0E23\u0E40\u0E1B\u0E25\u0E35\u0E48\u0E22\u0E19\u0E41\u0E1B\u0E25\u0E07"
+  - "\u0E1A\u0E33\u0E23\u0E38\u0E07\u0E23\u0E31\u0E01\u0E29\u0E32\u0E23\u0E30\u0E1A\u0E1A"
+  - "\u0E08\u0E31\u0E14\u0E01\u0E32\u0E23\u0E40\u0E1B\u0E25\u0E35\u0E48\u0E22\u0E19\u0E41\u0E1B\u0E25\u0E07"
+  - "\u0E08\u0E31\u0E14\u0E01\u0E32\u0E23\u0E40\u0E1B\u0E25\u0E35\u0E48\u0E22\u0E19\u0E41\u0E1B\u0E25\u0E07"
+  - "\u0E1A\u0E33\u0E23\u0E38\u0E07\u0E23\u0E31\u0E01\u0E29\u0E32\u0E23\u0E30\u0E1A\u0E1A"
+  balloon2Point: 16.32
+  balloon2Answer:
+  - "\u0E08\u0E31\u0E14\u0E01\u0E32\u0E23\u0E40\u0E1B\u0E25\u0E35\u0E48\u0E22\u0E19\u0E41\u0E1B\u0E25\u0E07"
+  - "\u0E08\u0E31\u0E14\u0E01\u0E32\u0E23\u0E40\u0E1B\u0E25\u0E35\u0E48\u0E22\u0E19\u0E41\u0E1B\u0E25\u0E07"
+  - "\u0E01\u0E32\u0E23\u0E40\u0E01\u0E47\u0E1A backlog"
+  - "\u0E1A\u0E23\u0E34\u0E2B\u0E32\u0E23\u0E04\u0E27\u0E32\u0E21\u0E40\u0E2A\u0E35\u0E48\u0E22\u0E07"
+  - "\u0E08\u0E31\u0E14\u0E01\u0E32\u0E23\u0E40\u0E1B\u0E25\u0E35\u0E48\u0E22\u0E19\u0E41\u0E1B\u0E25\u0E07"
   sprintList:
   - taskList: []
     sprintName: 

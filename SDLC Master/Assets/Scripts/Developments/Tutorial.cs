@@ -18,6 +18,7 @@ public class Tutorial : MonoBehaviour
         gameObject.SetActive(true);
         hasOpen=true;
     }
+
     private void OnDisable() {
         GameManager.instance.Play();
     }

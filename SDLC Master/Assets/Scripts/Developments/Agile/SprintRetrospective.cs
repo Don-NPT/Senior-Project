@@ -113,7 +113,7 @@ public class SprintRetrospective : MonoBehaviour
     void SetupRight(){
         int numMad = UnityEngine.Random.Range(1, 4);
         int numSad = UnityEngine.Random.Range(1, 4);
-        int numGlad = UnityEngine.Random.Range(1, 4);
+        int numGlad = UnityEngine.Random.Range(1, 2);
 
         if(IsTaskOverload()){
             GameObject taskOverload = (GameObject) Instantiate(postItPrefab);
@@ -141,33 +141,45 @@ public class SprintRetrospective : MonoBehaviour
         }
 
         List<string> madList = randomMad.ToList();
+        Debug.Log("madlist = "+madList.Count);
         for(int i=0; i<numMad; i++){
             GameObject postIt = (GameObject) Instantiate(postItPrefab);
             postIt.transform.SetParent(postItBoxes[0].transform);
             postIt.transform.localScale = Vector3.one;
             int index = UnityEngine.Random.Range(0, madList.Count);
+            Debug.Log("indexmad = "+index);
             postIt.GetComponentInChildren<TextMeshProUGUI>().text = madList[index];
-            madList.RemoveAt(index);
+            if (madList.Count > 0) {
+                madList.RemoveAt(index);
+            }
         }
 
         List<string> sadList = randomSad.ToList();
+        Debug.Log("sadlist = "+sadList.Count);
         for(int i=0; i<numSad; i++){
             GameObject postIt = (GameObject) Instantiate(postItPrefab);
             postIt.transform.SetParent(postItBoxes[1].transform);
             postIt.transform.localScale = Vector3.one;
             int index = UnityEngine.Random.Range(0, sadList.Count);
+            Debug.Log("indexsad = "+index);
             postIt.GetComponentInChildren<TextMeshProUGUI>().text = sadList[index];
-            sadList.RemoveAt(index);
+            if (sadList.Count > 0) {
+                sadList.RemoveAt(index);
+            }
         }
 
         List<string> gladList = randomGlad.ToList();
+        Debug.Log("gladlist = "+gladList.Count);
         for(int i=0; i<numGlad; i++){
             GameObject postIt = (GameObject) Instantiate(postItPrefab);
             postIt.transform.SetParent(postItBoxes[2].transform);
             postIt.transform.localScale = Vector3.one;
             int index = UnityEngine.Random.Range(0, gladList.Count);
+            Debug.Log("indexglad = "+index);
             postIt.GetComponentInChildren<TextMeshProUGUI>().text = gladList[index];
-            gladList.RemoveAt(index);
+            if (gladList.Count > 0) {
+                gladList.RemoveAt(index);
+            }
         }
     }
 

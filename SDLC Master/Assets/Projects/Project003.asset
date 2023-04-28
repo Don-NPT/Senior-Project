@@ -18,6 +18,7 @@ MonoBehaviour:
     ICT"
   requirement: 
   reward: 250000
+  finalReward: 0
   expense: 100000
   skillPointReward: 2
   deadline: 120
@@ -115,4 +116,4 @@ MonoBehaviour:
     sprintName: 
   - taskList: []
     sprintName: 
-  PO_id: 
+  PO_id: 003
