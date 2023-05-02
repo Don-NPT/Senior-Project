@@ -36,6 +36,7 @@ public class SaveSystem : MonoBehaviour
         ProjectManager.instance.Save();
         WaterFallManager.instance.Save();
         AgileManager.instance.Save();
+        BuildManager.instance.Save();
         Debug.Log("Game Saved!");
     }
 
@@ -44,11 +45,12 @@ public class SaveSystem : MonoBehaviour
         // var dataToLoad = FileHandler.ReadFromJSON<T> ("timesave.json");
         // TimeManager.instance.Load(dataToLoad);
         TimeManager.instance.Load();
-        GameManager.instance.Load(); 
+        GameManager.instance.Load();
         StaffManager.instance.Load();
         ProjectManager.instance.Load();
         WaterFallManager.instance.Load();
         AgileManager.instance.Load();
+        BuildManager.instance.Load();
         Debug.Log("Game Loaded!");
 
         // GameManager.instance.Resume();

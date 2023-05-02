@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
+using System;
 
 public class BuildManager : MonoBehaviour
 {
     // private GameManager gameManager;
+    public static BuildManager instance;
     public BuildPreset[] buildPreset;
     private GameObject prefab;
     private GameObject previewPrefab;
@@ -22,6 +24,16 @@ public class BuildManager : MonoBehaviour
     public LayerMask mask;
 
     private GameObject preview;
+    public List<BuildObjData> buildObjDataList = new List<BuildObjData>();
+
+    private void Awake() {
+    // If there is an instance, and it's not me, delete myself.
+    if (instance != null && instance != this) 
+        Destroy(this); 
+    else 
+        instance = this; 
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,7 +72,7 @@ public class BuildManager : MonoBehaviour
             }
     }
 
-    void PlaceObject()
+    public void PlaceObject()
     {
         if(GameManager.instance.getMoney() >= buildPreset[buildIndex].price)
         {
@@ -73,6 +85,8 @@ public class BuildManager : MonoBehaviour
                 buildObj.transform.DOScale(1, 0.5f).SetEase(customEase);
                 GameManager.instance.AddMoney(-1*buildPreset[buildIndex].price);
                 FindObjectOfType<AudioManager>().Play("Purchase");
+                buildObjDataList.Add(new BuildObjData(buildIndex, buildObj.transform.position, buildObj.transform.rotation));
+                Debug.Log("buildObjDataList.Count "+buildObjDataList.Count);
             }else{
                 FindObjectOfType<AudioManager>().Play("Warning");
             }
@@ -103,4 +117,76 @@ public class BuildManager : MonoBehaviour
         closeButton.SetActive(false);
         Destroy(preview);
     }
+
+    public void Save()
+    {
+        if (buildObjDataList != null)
+        {
+            Debug.Log("ตรงนี้1");
+            BuildObjData.Save(buildObjDataList);
+        }
+        else
+        {
+            Debug.LogWarning("buildObjDataList is null, cannot save data.");
+        }
+    }
+
+
+
+    public void Load()
+    {
+        List<BuildObjData> dataToLoad = BuildObjData.Load();
+        if (dataToLoad.Count > 0)
+        {
+            Debug.Log("ตรงนี้5");
+            buildObjDataList = dataToLoad;
+            foreach (BuildObjData data in dataToLoad)
+            {
+                GameObject buildObj = (GameObject)Instantiate(buildPreset[data.index].prefab, data.position, data.rotation);
+                buildObj.transform.localScale = new Vector3(0.1f,0.1f,0.1f);
+                buildObj.transform.DOScale(1, 0.5f).SetEase(customEase);
+            }
+        }
+    }
+
 }
+
+[Serializable]
+public class BuildObjData {
+
+    public BuildObjData(int _index, Vector3 _position, Quaternion _rotation)
+    {
+        index = _index;
+        position = _position;
+        rotation = _rotation;
+    }
+
+    public static void Save(List<BuildObjData> _buildObjDataList)
+    {
+        Debug.Log("ตรงนี้2 " + _buildObjDataList.Count);
+        FileHandler.SaveToJSON<List<BuildObjData>>(_buildObjDataList, "BuildObj.json");
+    }
+
+    public static List<BuildObjData> Load()
+    {
+        List<BuildObjData> dataToLoad = FileHandler.ReadFromJSON<List<BuildObjData>>("BuildObj.json");
+        Debug.Log("dataToLoad "+ dataToLoad);
+        if (dataToLoad != null)
+        {
+            Debug.Log("ตรงนี้3");
+            return dataToLoad;
+        }
+        else
+        {
+            Debug.Log("ตรงนี้4");
+            return new List<BuildObjData>();
+        }
+    }
+
+    public int index;
+    public Vector3 position;
+    public Quaternion rotation;
+}
+
+
+

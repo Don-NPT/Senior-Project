@@ -152,6 +152,16 @@ public class GameManager : MonoBehaviour
         return level;
     }
 
+    public void LevelCheck(){
+            if(level == 2){
+                blackBoardWall.SetActive(false);
+                secondRoom.SetActive(true);    
+            }
+            else if(level == 4){
+                thirdRoom.SetActive(true);
+            }
+    }
+
     IEnumerator ShowNotification(int num){
         moneyNotification.SetActive(true);
 
@@ -227,6 +237,7 @@ public class GameManager : MonoBehaviour
         level = saveData.level;
         username = saveData.username;
         UsernameHud.text = username + " lv." + level;
+        LevelCheck();
 
     }
 }
