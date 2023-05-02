@@ -17,7 +17,7 @@ MonoBehaviour:
   description: "\u0E42\u0E1B\u0E23\u0E40\u0E08\u0E04\u0E17\u0E35\u0E48\u0E08\u0E31\u0E14\u0E02\u0E36\u0E49\u0E19\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E41\u0E2A\u0E14\u0E07\u0E04\u0E27\u0E32\u0E21\u0E2A\u0E38\u0E14\u0E22\u0E2D\u0E14\u0E41\u0E2B\u0E48\u0E07\u0E1B\u0E35"
   requirement: 
   reward: 600000
-  finalReward: 0
+  finalReward: 540000
   expense: 200000
   skillPointReward: 0
   deadline: 70
@@ -77,44 +77,56 @@ MonoBehaviour:
     hint: "\u0E40\u0E1B\u0E47\u0E19\u0E01\u0E32\u0E23\u0E15\u0E23\u0E27\u0E08\u0E2A\u0E2D\u0E1A\u0E27\u0E48\u0E32\u0E0B\u0E2D\u0E1F\u0E15\u0E4C\u0E41\u0E27\u0E23\u0E4C\u0E17\u0E33\u0E07\u0E32\u0E19\u0E44\u0E14\u0E49\u0E15\u0E23\u0E07\u0E15\u0E32\u0E21\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23\u0E41\u0E25\u0E30\u0E2A\u0E2D\u0E14\u0E04\u0E25\u0E49\u0E2D\u0E07\u0E01\u0E31\u0E1A\u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49\u0E07\u0E32\u0E19\u0E08\u0E23\u0E34\u0E07\u0E2B\u0E23\u0E37\u0E2D\u0E44\u0E21\u0E48"
     showNum: 3
     additionalChar: 
-  smallTasks: 1
-  mediumTasks: 1
-  largeTasks: 1
-  giantTasks: 1
-  actualAnalysis: 0
+  smallTasks: 15
+  mediumTasks: 10
+  largeTasks: 9
+  giantTasks: 3
+  actualAnalysis: 6
   actualDesign: 0
-  actualCoding: 0
-  actualTesting: 0
-  actualDeployment: 0
+  actualCoding: 4
+  actualTesting: 6
+  actualDeployment: 40
   model: {fileID: 11400000, guid: 5ef74cd8a8ad44943a62f7d834d77d1c, type: 2}
   teamIndex: 3
   state: 1
-  phase: 0
-  staffEachPhase: 
-  statEachPhase: 
+  phase: 4
+  staffEachPhase: 010000000100000001000000010000000100000000000000
+  statEachPhase: 040000000400000004000000040000000400000000000000
   dayUsed: 0
   estimateDaysInPhase: 25
   requirement1Answer: []
   requirement1Point: 0
-  requirement2Answer: []
-  requirement2Point: 0
+  requirement2Answer:
+  - Non-Functional
+  - Non-Functional
+  - Non-Functional
+  - Non-Functional
+  requirement2Point: 5.52381
   designAnswer: 
   designPoint: 0
   keyInputPass: 
   keyInputPoint: 0
-  balloonPoint: 0
-  balloonAnswer: []
-  balloon2Point: 0
-  balloon2Answer: []
+  balloonPoint: 3.6571429
+  balloonAnswer:
+  - "\u0E01\u0E32\u0E23\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E41\u0E25\u0E30\u0E2D\u0E2D\u0E01\u0E41\u0E1A\u0E1A\u0E42\u0E04\u0E23\u0E07\u0E2A\u0E23\u0E49\u0E32\u0E07\u0E1E\u0E37\u0E49\u0E19\u0E10\u0E32\u0E19"
+  - "\u0E01\u0E32\u0E23\u0E2A\u0E23\u0E49\u0E32\u0E07 user story"
+  - "\u0E01\u0E32\u0E23\u0E2A\u0E23\u0E49\u0E32\u0E07 acceptance criteria"
+  - "\u0E01\u0E32\u0E23\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E41\u0E25\u0E30\u0E2D\u0E2D\u0E01\u0E41\u0E1A\u0E1A\u0E42\u0E04\u0E23\u0E07\u0E2A\u0E23\u0E49\u0E32\u0E07\u0E1E\u0E37\u0E49\u0E19\u0E10\u0E32\u0E19"
+  - "\u0E01\u0E32\u0E23\u0E2A\u0E23\u0E49\u0E32\u0E07 user story"
+  balloon2Point: 5.7904763
+  balloon2Answer:
+  - "\u0E01\u0E32\u0E23\u0E2A\u0E23\u0E49\u0E32\u0E07 user story"
+  - "\u0E01\u0E32\u0E23\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E41\u0E25\u0E30\u0E2D\u0E2D\u0E01\u0E41\u0E1A\u0E1A\u0E42\u0E04\u0E23\u0E07\u0E2A\u0E23\u0E49\u0E32\u0E07\u0E1E\u0E37\u0E49\u0E19\u0E10\u0E32\u0E19"
+  - "\u0E01\u0E32\u0E23\u0E2A\u0E23\u0E49\u0E32\u0E07 user story"
+  - "\u0E01\u0E32\u0E23\u0E2A\u0E23\u0E49\u0E32\u0E07 acceptance criteria"
+  - "\u0E01\u0E32\u0E23\u0E2A\u0E23\u0E49\u0E32\u0E07 acceptance criteria"
   sprintList:
   - taskList:
     - {fileID: 11400000, guid: 06e4b0972b91500408bffb2f8b6f97e0, type: 2}
-    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
     - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
     sprintName: Sprint 1
   - taskList:
     - {fileID: 11400000, guid: dfe92c9d6ac10a84894ee655abc66332, type: 2}
-    - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
-    - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
+    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
     sprintName: Sprint 2
   PO_id: 003
