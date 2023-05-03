@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using DG.Tweening;
 using System;
+using System.Linq;
 
 public class BuildManager : MonoBehaviour
 {
@@ -120,39 +121,56 @@ public class BuildManager : MonoBehaviour
 
     public void Save()
     {
-        if (buildObjDataList != null)
-        {
-            Debug.Log("ตรงนี้1");
-            BuildObjData.Save(buildObjDataList);
-        }
-        else
-        {
-            Debug.LogWarning("buildObjDataList is null, cannot save data.");
-        }
+        // if (buildObjDataList != null)
+        // {
+        //     Debug.Log("ตรงนี้1");
+        //     BuildObjData.Save(buildObjDataList);
+        // }
+        // else
+        // {
+        //     Debug.LogWarning("buildObjDataList is null, cannot save data.");
+        // }
+        BuildAdapter buildAdapter = new BuildAdapter();
+        buildAdapter.Save(buildObjDataList);
     }
 
 
 
     public void Load()
     {
-        List<BuildObjData> dataToLoad = BuildObjData.Load();
-        if (dataToLoad.Count > 0)
-        {
-            Debug.Log("ตรงนี้5");
-            buildObjDataList = dataToLoad;
-            foreach (BuildObjData data in dataToLoad)
+        BuildAdapter buildAdapter = new BuildAdapter();
+        BuildAdapter saveData = buildAdapter.Load();
+
+        if(saveData.buildList.Length > 0){
+            foreach (BuildObjData prop in saveData.buildList)
             {
-                GameObject buildObj = (GameObject)Instantiate(buildPreset[data.index].prefab, data.position, data.rotation);
+                GameObject buildObj = (GameObject)Instantiate(buildPreset[prop.index].prefab, prop.position, prop.rotation);
                 buildObj.transform.localScale = new Vector3(0.1f,0.1f,0.1f);
                 buildObj.transform.DOScale(1, 0.5f).SetEase(customEase);
             }
         }
+
+        // List<BuildObjData> dataToLoad = BuildObjData.Load();
+        // if (dataToLoad.Count > 0)
+        // {
+        //     Debug.Log("ตรงนี้5");
+        //     buildObjDataList = dataToLoad;
+        //     foreach (BuildObjData data in dataToLoad)
+        //     {
+        //         GameObject buildObj = (GameObject)Instantiate(buildPreset[data.index].prefab, data.position, data.rotation);
+        //         buildObj.transform.localScale = new Vector3(0.1f,0.1f,0.1f);
+        //         buildObj.transform.DOScale(1, 0.5f).SetEase(customEase);
+        //     }
+        // }
     }
 
 }
 
 [Serializable]
 public class BuildObjData {
+    public int index;
+    public Vector3 position;
+    public Quaternion rotation;
 
     public BuildObjData(int _index, Vector3 _position, Quaternion _rotation)
     {
@@ -161,31 +179,47 @@ public class BuildObjData {
         rotation = _rotation;
     }
 
-    public static void Save(List<BuildObjData> _buildObjDataList)
+    // public static void Save(List<BuildObjData> _buildObjDataList)
+    // {
+    //     Debug.Log("ตรงนี้2 " + _buildObjDataList.Count);
+    //     FileHandler.SaveToJSON<List<BuildObjData>>(_buildObjDataList, "BuildObj.json");
+    // }
+
+    // public static List<BuildObjData> Load()
+    // {
+    //     List<BuildObjData> dataToLoad = FileHandler.ReadFromJSON<List<BuildObjData>>("BuildObj.json");
+    //     Debug.Log("dataToLoad "+ dataToLoad);
+    //     if (dataToLoad != null)
+    //     {
+    //         Debug.Log("ตรงนี้3");
+    //         return dataToLoad;
+    //     }
+    //     else
+    //     {
+    //         Debug.Log("ตรงนี้4");
+    //         return new List<BuildObjData>();
+    //     }
+    // }
+
+
+}
+
+[Serializable]
+public class BuildAdapter
+{
+    public BuildObjData[] buildList;
+
+    public void Save(List<BuildObjData> _buildObjDataList)
     {
-        Debug.Log("ตรงนี้2 " + _buildObjDataList.Count);
-        FileHandler.SaveToJSON<List<BuildObjData>>(_buildObjDataList, "BuildObj.json");
+        buildList = _buildObjDataList.ToArray();
+        FileHandler.SaveToJSON<BuildAdapter> (this, "buildsave.json");   
     }
 
-    public static List<BuildObjData> Load()
+    public BuildAdapter Load()
     {
-        List<BuildObjData> dataToLoad = FileHandler.ReadFromJSON<List<BuildObjData>>("BuildObj.json");
-        Debug.Log("dataToLoad "+ dataToLoad);
-        if (dataToLoad != null)
-        {
-            Debug.Log("ตรงนี้3");
-            return dataToLoad;
-        }
-        else
-        {
-            Debug.Log("ตรงนี้4");
-            return new List<BuildObjData>();
-        }
+        BuildAdapter dataToLoad = FileHandler.ReadFromJSON<BuildAdapter> ("buildsave.json");
+        return dataToLoad;
     }
-
-    public int index;
-    public Vector3 position;
-    public Quaternion rotation;
 }
 
 
