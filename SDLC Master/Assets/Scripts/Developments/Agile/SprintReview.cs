@@ -15,10 +15,10 @@ public class SprintReview : MonoBehaviour
 
         GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Sprint " + (sprintIndex+1) + " Review";
 
-        List<KitchenObjectSO> smallTasks = new List<KitchenObjectSO>();
-        List<KitchenObjectSO> mediumTasks = new List<KitchenObjectSO>();
-        List<KitchenObjectSO> largeTasks = new List<KitchenObjectSO>();
-        List<KitchenObjectSO> giantTasks = new List<KitchenObjectSO>();
+        List<Task> smallTasks = new List<Task>();
+        List<Task> mediumTasks = new List<Task>();
+        List<Task> largeTasks = new List<Task>();
+        List<Task> giantTasks = new List<Task>();
 
         int[] totalQualities = new int[4];
 
@@ -58,7 +58,10 @@ public class SprintReview : MonoBehaviour
         if(mediumTasks.Count > 0) taskRows[1].GetComponentsInChildren<TextMeshProUGUI>()[1].text = GetTaskQuality(mediumTasks) + " / " + mediumTasks[0].requireQuality;
         if(largeTasks.Count > 0) taskRows[2].GetComponentsInChildren<TextMeshProUGUI>()[1].text = GetTaskQuality(largeTasks) + " / " + largeTasks[0].requireQuality;
         if(giantTasks.Count > 0) taskRows[3].GetComponentsInChildren<TextMeshProUGUI>()[1].text = GetTaskQuality(giantTasks) + " / " + giantTasks[0].requireQuality;
-
+        smallTasks[smallTasks.Count -1].quality = 25;
+        foreach(var task in smallTasks){
+            Debug.Log("smalltask quality: " + task.quality);
+        }
         // Setup Total Quality
         if(smallTasks.Count > 0) taskRows[0].GetComponentsInChildren<TextMeshProUGUI>()[2].text = totalQualities[0] + " / " + (smallTasks[0].requireQuality * smallTasks.Count);
         if(mediumTasks.Count > 0) taskRows[1].GetComponentsInChildren<TextMeshProUGUI>()[2].text = totalQualities[1] + " / " + (mediumTasks[0].requireQuality * mediumTasks.Count);
@@ -97,7 +100,7 @@ public class SprintReview : MonoBehaviour
         
     }
 
-    int GetTaskQuality(List<KitchenObjectSO> tasks){
+    int GetTaskQuality(List<Task> tasks){
         int maxQuality = 0;
         foreach(var task in tasks){
             if(task.quality != 0 && task.quality > maxQuality) maxQuality = task.quality;

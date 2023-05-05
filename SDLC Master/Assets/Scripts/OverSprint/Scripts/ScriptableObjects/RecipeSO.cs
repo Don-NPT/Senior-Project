@@ -20,10 +20,10 @@ public class RecipeSO : ScriptableObject
 public class SprintTask
 {
     
-    public List<KitchenObjectSO> taskList;
+    public List<Task> taskList;
     public string sprintName;
 
-    public SprintTask (List<KitchenObjectSO> list, string name){
+    public SprintTask (List<Task> list, string name){
         taskList = list;
         sprintName = name;
     }

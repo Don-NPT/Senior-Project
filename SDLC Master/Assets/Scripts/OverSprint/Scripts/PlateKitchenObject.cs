@@ -20,9 +20,11 @@ public class PlateKitchenObject : KitchenObject
     [SerializeField] private List<KitchenObjectSO> validKitchenObjectSOList;
     
     private List<KitchenObjectSO> kitchenObjectSOList;
+    private List<Task> taskList;
 
     private void Awake() {
         kitchenObjectSOList = new List<KitchenObjectSO>();
+        taskList = new List<Task>();
         progressBar.maxValue = kitchenholdMax;
         progressBar.value = 0;
     }
@@ -45,6 +47,8 @@ public class PlateKitchenObject : KitchenObject
             kitchenhold += kitchenObjectSO.size;
             
             kitchenObjectSOList.Add(kitchenObjectSO);
+            Task task = new Task(kitchenObjectSO.prefeb, kitchenObjectSO.sprite, kitchenObjectSO.objectName, kitchenObjectSO.dayToFinish, kitchenObjectSO.requireQuality, kitchenObjectSO.size);
+            taskList.Add(task);
 
             OnIngredientAdded?.Invoke(this, new OnIngredientAddedEventArgs{
                 kitchenObjectSO = kitchenObjectSO
@@ -62,6 +66,10 @@ public class PlateKitchenObject : KitchenObject
 
     public List<KitchenObjectSO> GetKitchenObjectSOList() {
         return kitchenObjectSOList;
+    }
+
+    public List<Task> GetTaskList() {
+        return taskList;
     }
 
 }
