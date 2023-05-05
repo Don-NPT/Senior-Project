@@ -15,9 +15,9 @@ public class AgileSummary : MonoBehaviour
     public GameObject detailPrefab;
     public Color[] qualityColors;
     private GameObject detail;
-    private Project project;
+    private OldProject project;
 
-    void Start()
+    void Awake()
     {
         if (instance != null && instance != this) 
             Destroy(this); 
@@ -25,13 +25,13 @@ public class AgileSummary : MonoBehaviour
             instance = this;
     }
     
-    private void OnEnable() {
-        if(ProjectManager.instance.currentProject != null){
-            project = ProjectManager.instance.currentProject;
-            SetupLeftPanel();
-            SetupRightPanel();
-        }
-    }
+    // private void OnEnable() {
+    //     if(ProjectManager.instance.currentProject != null){
+    //         project = ProjectManager.instance.ol;
+    //         SetupLeftPanel();
+    //         SetupRightPanel();
+    //     }
+    // }
 
     public void ShowOldProject(int index){
         project = ProjectManager.instance.oldProject[index];
@@ -77,6 +77,8 @@ public class AgileSummary : MonoBehaviour
         if(diff2 >= 0.7) footerPanel.GetComponentsInChildren<Image>()[2].color = qualityColors[0];
         else if(diff2 >= 0.5) footerPanel.GetComponentsInChildren<Image>()[2].color = qualityColors[1];
         else footerPanel.GetComponentsInChildren<Image>()[2].color = qualityColors[2];
+        footerPanel.GetComponentInChildren<Slider>().maxValue = GetProjectRequireQuality();
+        footerPanel.GetComponentInChildren<Slider>().value = GetProjectQuality();
 
         footerPanel.GetComponentsInChildren<TextMeshProUGUI>()[2].text = "ใช้เวลาทั้งหมด: " + GetProjectDuration() + " วัน";
         footerPanel.GetComponentsInChildren<TextMeshProUGUI>()[3].text = "เสร็จ " + GetNumTaskFinished() + "/" + GetNumTaskAll() + " งาน"; 
@@ -114,12 +116,12 @@ public class AgileSummary : MonoBehaviour
         
     }
 
-    private void OnDisable() {
-        if(ProjectManager.instance.currentProject != null){
-            ProjectManager.instance.oldProject.Add(project);
-            ProjectManager.instance.currentProject = null;
-        }
-    }
+    // private void OnDisable() {
+    //     if(ProjectManager.instance.currentProject != null){
+    //         ProjectManager.instance.oldProject.Add(project);
+    //         ProjectManager.instance.currentProject = null;
+    //     }
+    // }
 
     int GetProjectQuality(){
         int sum = 0;

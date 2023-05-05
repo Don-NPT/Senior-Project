@@ -18,7 +18,7 @@ MonoBehaviour:
     A"
   requirement: 
   reward: 80000
-  finalReward: 72000
+  finalReward: 60000
   expense: 12000
   skillPointReward: 2
   deadline: 60
@@ -89,16 +89,17 @@ MonoBehaviour:
   giantTasks: 0
   actualAnalysis: 15
   actualDesign: 0
-  actualCoding: 20
-  actualTesting: 13
+  actualCoding: 13
+  actualTesting: 9
   actualDeployment: 20
-  model: {fileID: 11400000, guid: 5ef74cd8a8ad44943a62f7d834d77d1c, type: 2}
+  model: {fileID: 11400000, guid: fefd9c0d5471bbd4b8ed0775ef1e6143, type: 2}
   teamIndex: 0
-  state: 1
+  state: 3
   phase: 4
   staffEachPhase: 010000000100000001000000010000000100000000000000
   statEachPhase: 040000000400000004000000040000000400000000000000
-  dayUsed: 50
+  dayUsed: 32
+  dayUsedEachPhase: 02000000020000000a0000000d00000005000000
   estimateDaysInPhase: 10
   requirement1Answer:
   - "\u0E43\u0E0A\u0E49\u0E07\u0E48\u0E32\u0E22"
@@ -115,44 +116,173 @@ MonoBehaviour:
   designPoint: 0
   keyInputPass: 
   keyInputPoint: 0
-  balloonPoint: 20.266668
+  balloonPoint: 12.8
   balloonAnswer:
-  - "\u0E17\u0E14\u0E2A\u0E2D\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
-  - "\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23"
-  - "\u0E17\u0E14\u0E2A\u0E2D\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
-  - "\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23"
-  - Scrum Board
-  balloon2Point: 12.8
-  balloon2Answer:
   - Print Risk
-  - "\u0E17\u0E14\u0E2A\u0E2D\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
   - "\u0E2D\u0E2D\u0E01\u0E41\u0E1A\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
+  - Scrum Board
+  - Scrum Board
+  - "\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23"
+  balloon2Point: 9.066667
+  balloon2Answer:
+  - "\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23"
+  - "\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23"
   - "\u0E17\u0E14\u0E2A\u0E2D\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
   - Print Risk
+  - "\u0E17\u0E14\u0E2A\u0E2D\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
   sprintList:
   - taskList:
-    - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
-    - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
-    - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
-    - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
-    - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
-    - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
-    - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
-    - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
-    - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
-    - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
-    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
+    - prefeb: {fileID: 3660799866615536148, guid: 3125c6df0fa479d4b9ef27e17d271976, type: 3}
+      sprite: {fileID: 21300000, guid: f07cea5ec40038d42b6f7d791708c515, type: 3}
+      objectName: "\u0E07\u0E32\u0E19\u0E02\u0E19\u0E32\u0E14\u0E40\u0E25\u0E47\u0E01"
+      dayToFinish: 4
+      requireQuality: 25
+      size: 1
+      quality: 25
+      dayUsed: 1
+      isComplete: 1
+      fromPreviousSprint: 0
+    - prefeb: {fileID: 3660799866615536148, guid: 3125c6df0fa479d4b9ef27e17d271976, type: 3}
+      sprite: {fileID: 21300000, guid: f07cea5ec40038d42b6f7d791708c515, type: 3}
+      objectName: "\u0E07\u0E32\u0E19\u0E02\u0E19\u0E32\u0E14\u0E40\u0E25\u0E47\u0E01"
+      dayToFinish: 4
+      requireQuality: 25
+      size: 1
+      quality: 25
+      dayUsed: 1
+      isComplete: 1
+      fromPreviousSprint: 0
+    - prefeb: {fileID: 3660799866615536148, guid: 3125c6df0fa479d4b9ef27e17d271976, type: 3}
+      sprite: {fileID: 21300000, guid: f07cea5ec40038d42b6f7d791708c515, type: 3}
+      objectName: "\u0E07\u0E32\u0E19\u0E02\u0E19\u0E32\u0E14\u0E40\u0E25\u0E47\u0E01"
+      dayToFinish: 4
+      requireQuality: 25
+      size: 1
+      quality: 25
+      dayUsed: 1
+      isComplete: 1
+      fromPreviousSprint: 0
+    - prefeb: {fileID: 3660799866615536148, guid: 3125c6df0fa479d4b9ef27e17d271976, type: 3}
+      sprite: {fileID: 21300000, guid: f07cea5ec40038d42b6f7d791708c515, type: 3}
+      objectName: "\u0E07\u0E32\u0E19\u0E02\u0E19\u0E32\u0E14\u0E40\u0E25\u0E47\u0E01"
+      dayToFinish: 4
+      requireQuality: 25
+      size: 1
+      quality: 25
+      dayUsed: 1
+      isComplete: 1
+      fromPreviousSprint: 0
+    - prefeb: {fileID: 3660799866615536148, guid: 3125c6df0fa479d4b9ef27e17d271976, type: 3}
+      sprite: {fileID: 21300000, guid: f07cea5ec40038d42b6f7d791708c515, type: 3}
+      objectName: "\u0E07\u0E32\u0E19\u0E02\u0E19\u0E32\u0E14\u0E40\u0E25\u0E47\u0E01"
+      dayToFinish: 4
+      requireQuality: 25
+      size: 1
+      quality: 25
+      dayUsed: 1
+      isComplete: 1
+      fromPreviousSprint: 0
+    - prefeb: {fileID: 3660799866615536148, guid: 3125c6df0fa479d4b9ef27e17d271976, type: 3}
+      sprite: {fileID: 21300000, guid: f07cea5ec40038d42b6f7d791708c515, type: 3}
+      objectName: "\u0E07\u0E32\u0E19\u0E02\u0E19\u0E32\u0E14\u0E40\u0E25\u0E47\u0E01"
+      dayToFinish: 4
+      requireQuality: 25
+      size: 1
+      quality: 25
+      dayUsed: 1
+      isComplete: 1
+      fromPreviousSprint: 0
+    - prefeb: {fileID: 3660799866615536148, guid: 3125c6df0fa479d4b9ef27e17d271976, type: 3}
+      sprite: {fileID: 21300000, guid: f07cea5ec40038d42b6f7d791708c515, type: 3}
+      objectName: "\u0E07\u0E32\u0E19\u0E02\u0E19\u0E32\u0E14\u0E40\u0E25\u0E47\u0E01"
+      dayToFinish: 4
+      requireQuality: 25
+      size: 1
+      quality: 25
+      dayUsed: 1
+      isComplete: 1
+      fromPreviousSprint: 0
+    - prefeb: {fileID: 3660799866615536148, guid: 3125c6df0fa479d4b9ef27e17d271976, type: 3}
+      sprite: {fileID: 21300000, guid: f07cea5ec40038d42b6f7d791708c515, type: 3}
+      objectName: "\u0E07\u0E32\u0E19\u0E02\u0E19\u0E32\u0E14\u0E40\u0E25\u0E47\u0E01"
+      dayToFinish: 4
+      requireQuality: 25
+      size: 1
+      quality: 25
+      dayUsed: 1
+      isComplete: 1
+      fromPreviousSprint: 0
+    - prefeb: {fileID: 3660799866615536148, guid: 3125c6df0fa479d4b9ef27e17d271976, type: 3}
+      sprite: {fileID: 21300000, guid: f07cea5ec40038d42b6f7d791708c515, type: 3}
+      objectName: "\u0E07\u0E32\u0E19\u0E02\u0E19\u0E32\u0E14\u0E40\u0E25\u0E47\u0E01"
+      dayToFinish: 4
+      requireQuality: 25
+      size: 1
+      quality: 25
+      dayUsed: 1
+      isComplete: 1
+      fromPreviousSprint: 0
+    - prefeb: {fileID: 3660799866615536148, guid: 3125c6df0fa479d4b9ef27e17d271976, type: 3}
+      sprite: {fileID: 21300000, guid: f07cea5ec40038d42b6f7d791708c515, type: 3}
+      objectName: "\u0E07\u0E32\u0E19\u0E02\u0E19\u0E32\u0E14\u0E40\u0E25\u0E47\u0E01"
+      dayToFinish: 4
+      requireQuality: 25
+      size: 1
+      quality: 25
+      dayUsed: 1
+      isComplete: 1
+      fromPreviousSprint: 0
     sprintName: Sprint 1
   - taskList:
-    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
-    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
-    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
-    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
-    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
-    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
-    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
-    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
-    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
-    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
+    - prefeb: {fileID: 8823631340323997192, guid: 28e9b5f68ca530947925afa3d1bb7e41, type: 3}
+      sprite: {fileID: 21300000, guid: 08b1d60ac9c8d3f428fdc33da8b3f863, type: 3}
+      objectName: "\u0E07\u0E32\u0E19\u0E02\u0E19\u0E32\u0E14\u0E01\u0E25\u0E32\u0E07"
+      dayToFinish: 12
+      requireQuality: 120
+      size: 3
+      quality: 120
+      dayUsed: 3
+      isComplete: 1
+      fromPreviousSprint: 0
+    - prefeb: {fileID: 8823631340323997192, guid: 28e9b5f68ca530947925afa3d1bb7e41, type: 3}
+      sprite: {fileID: 21300000, guid: 08b1d60ac9c8d3f428fdc33da8b3f863, type: 3}
+      objectName: "\u0E07\u0E32\u0E19\u0E02\u0E19\u0E32\u0E14\u0E01\u0E25\u0E32\u0E07"
+      dayToFinish: 12
+      requireQuality: 120
+      size: 3
+      quality: 120
+      dayUsed: 3
+      isComplete: 1
+      fromPreviousSprint: 0
+    - prefeb: {fileID: 8823631340323997192, guid: 28e9b5f68ca530947925afa3d1bb7e41, type: 3}
+      sprite: {fileID: 21300000, guid: 08b1d60ac9c8d3f428fdc33da8b3f863, type: 3}
+      objectName: "\u0E07\u0E32\u0E19\u0E02\u0E19\u0E32\u0E14\u0E01\u0E25\u0E32\u0E07"
+      dayToFinish: 12
+      requireQuality: 120
+      size: 3
+      quality: 120
+      dayUsed: 3
+      isComplete: 1
+      fromPreviousSprint: 0
+    - prefeb: {fileID: 8823631340323997192, guid: 28e9b5f68ca530947925afa3d1bb7e41, type: 3}
+      sprite: {fileID: 21300000, guid: 08b1d60ac9c8d3f428fdc33da8b3f863, type: 3}
+      objectName: "\u0E07\u0E32\u0E19\u0E02\u0E19\u0E32\u0E14\u0E01\u0E25\u0E32\u0E07"
+      dayToFinish: 12
+      requireQuality: 120
+      size: 3
+      quality: 120
+      dayUsed: 3
+      isComplete: 1
+      fromPreviousSprint: 0
+    - prefeb: {fileID: 8823631340323997192, guid: 28e9b5f68ca530947925afa3d1bb7e41, type: 3}
+      sprite: {fileID: 21300000, guid: 08b1d60ac9c8d3f428fdc33da8b3f863, type: 3}
+      objectName: "\u0E07\u0E32\u0E19\u0E02\u0E19\u0E32\u0E14\u0E01\u0E25\u0E32\u0E07"
+      dayToFinish: 12
+      requireQuality: 120
+      size: 3
+      quality: 120
+      dayUsed: 2
+      isComplete: 1
+      fromPreviousSprint: 0
     sprintName: Sprint 2
-  PO_id: 003
+  PO_id: 002

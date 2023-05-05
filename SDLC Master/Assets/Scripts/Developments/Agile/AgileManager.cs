@@ -79,7 +79,10 @@ public class AgileManager : MonoBehaviour
             }
         
             project.inProgress = false;
+            ProjectManager.instance.oldProject.Add(new OldProject(project));
             projectSummaryUI.SetActive(true);
+            AgileSummary.instance.ShowOldProject(ProjectManager.instance.oldProject.Count - 1);
+            ProjectManager.instance.currentProject = null;
         }
     }
 

@@ -203,7 +203,7 @@ public class SprintRetrospective : MonoBehaviour
     }
 
     bool IsTooLowQuality(){
-        if(GetProjectQuality() < GetProjectRequireQuality()) return true;
+        if(GetProjectQuality() < GetProjectRequireQuality() * 0.9) return true;
         else return false;
     }
 

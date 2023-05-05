@@ -111,7 +111,7 @@ public class ProjectAgileHUD : MonoBehaviour
 
             while(taskItem[i].GetComponentsInChildren<Slider>()[0].value < taskItem[i].GetComponentsInChildren<Slider>()[0].maxValue)
             {
-                if(taskDay*StaffManager.instance.getTotalStaff() >= project.sprintList[AgileManager.instance.sprintIndex].taskList[i].dayToFinish){
+                if(taskDay*StaffManager.instance.getTotalStaff() >= project.sprintList[AgileManager.instance.sprintIndex].taskList[i].dayToFinish || day > 14 || dayLeft <= 0){
                     break;
                 }
                 yield return new WaitForSeconds(1);
@@ -133,6 +133,7 @@ public class ProjectAgileHUD : MonoBehaviour
 
             project.sprintList[AgileManager.instance.sprintIndex].taskList[i].isComplete = true;
         }
+        yield return new WaitForSeconds(0.3f);
         // project.sprintList[AgileManager.instance.sprintIndex].taskList[1].isComplete = true;
         submitBTN.SetActive(true);
         List<Task> tasks = project.sprintList[AgileManager.instance.sprintIndex].taskList;

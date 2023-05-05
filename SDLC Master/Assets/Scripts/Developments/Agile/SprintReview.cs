@@ -58,10 +58,7 @@ public class SprintReview : MonoBehaviour
         if(mediumTasks.Count > 0) taskRows[1].GetComponentsInChildren<TextMeshProUGUI>()[1].text = GetTaskQuality(mediumTasks) + " / " + mediumTasks[0].requireQuality;
         if(largeTasks.Count > 0) taskRows[2].GetComponentsInChildren<TextMeshProUGUI>()[1].text = GetTaskQuality(largeTasks) + " / " + largeTasks[0].requireQuality;
         if(giantTasks.Count > 0) taskRows[3].GetComponentsInChildren<TextMeshProUGUI>()[1].text = GetTaskQuality(giantTasks) + " / " + giantTasks[0].requireQuality;
-        smallTasks[smallTasks.Count -1].quality = 25;
-        foreach(var task in smallTasks){
-            Debug.Log("smalltask quality: " + task.quality);
-        }
+
         // Setup Total Quality
         if(smallTasks.Count > 0) taskRows[0].GetComponentsInChildren<TextMeshProUGUI>()[2].text = totalQualities[0] + " / " + (smallTasks[0].requireQuality * smallTasks.Count);
         if(mediumTasks.Count > 0) taskRows[1].GetComponentsInChildren<TextMeshProUGUI>()[2].text = totalQualities[1] + " / " + (mediumTasks[0].requireQuality * mediumTasks.Count);

@@ -128,6 +128,11 @@ public class ProjectHUD : MonoBehaviour
 
                 GameManager.instance.AddMoney(rewardMoney);
                 project.finalReward = rewardMoney;
+                project.dayUsed = project.getOverallTimeUsed();
+                project.dayUsedEachPhase = new int[5];
+                for(int i=0; i<5; i++){
+                    project.dayUsedEachPhase[i] = project.getTimeUsed(i);
+                }
                 
                 if(pass){
                     GameManager.instance.LevelUp();
@@ -138,7 +143,7 @@ public class ProjectHUD : MonoBehaviour
                 SkillManager.instance.AddSkillPoint(project.skillPointReward);
                 GameManager.instance.Play();
                 StopCoroutine(timer);
-                ProjectSummary.instance.ViewProjectSummary(ProjectManager.instance.oldProject[ProjectManager.instance.oldProject.Count-1]);
+                ProjectSummary.instance.ViewOldProjectSummary(ProjectManager.instance.oldProject[ProjectManager.instance.oldProject.Count-1]);
                 HideHUD();
             });
         }
