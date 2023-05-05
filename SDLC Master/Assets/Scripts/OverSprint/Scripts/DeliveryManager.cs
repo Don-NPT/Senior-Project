@@ -101,7 +101,7 @@ public class DeliveryManager : MonoBehaviour
         // spawnNewRecipe(); // Spawn a new recipe after a new recipe is added
         // OnRecipeFailed?.Invoke(this, EventArgs.Empty);
         if(sprintList.Count < 15){
-            sprintList.Add(new SprintTask(plateKitchenObject.GetKitchenObjectSOList(), "Sprint " + sprintIndex));
+            sprintList.Add(new SprintTask(plateKitchenObject.GetTaskList(), "Sprint " + sprintIndex));
             sprintIndex++;
         }
         

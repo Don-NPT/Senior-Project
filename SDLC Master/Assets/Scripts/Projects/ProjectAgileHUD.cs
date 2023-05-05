@@ -39,7 +39,7 @@ public class ProjectAgileHUD : MonoBehaviour
             // Setup text info
             agileHudTab.GetComponentsInChildren<TextMeshProUGUI>()[0].text = project.pjName;
             agileHudTab.GetComponentsInChildren<TextMeshProUGUI>()[1].text = project.state.ToString();
-            GetComponentsInChildren<TextMeshProUGUI>()[2].text = "โมเดล: Agile (" + project.sprintList[AgileManager.instance.sprintIndex].sprintName + ")";
+            GetComponentsInChildren<TextMeshProUGUI>()[3].text = "โมเดล: Agile (" + project.sprintList[AgileManager.instance.sprintIndex].sprintName + ")";
 
             // Hide finish button
             submitBTN.SetActive(false);
@@ -52,7 +52,7 @@ public class ProjectAgileHUD : MonoBehaviour
         ClearContent();
         taskItem = new GameObject[project.sprintList[AgileManager.instance.sprintIndex].taskList.Count];
         for(int i=0; i<project.sprintList[AgileManager.instance.sprintIndex].taskList.Count; i++){
-            KitchenObjectSO task = project.sprintList[AgileManager.instance.sprintIndex].taskList[i];
+            Task task = project.sprintList[AgileManager.instance.sprintIndex].taskList[i];
             // Spawn task item
             taskItem[i] = (GameObject) Instantiate(taskItemPrefab);
             taskItem[i].transform.SetParent(taskContent);
@@ -126,7 +126,7 @@ public class ProjectAgileHUD : MonoBehaviour
                     taskItem[i].GetComponentsInChildren<Slider>()[1].DOValue(quality, 0.3f);
                     project.sprintList[AgileManager.instance.sprintIndex].taskList[i].dayUsed++;
                     // taskItem[i].GetComponentsInChildren<Slider>()[0].value += StaffManager.instance.getTotalStaff();
-                    Debug.Log(((float)StaffManager.instance.getAllStaffStat()/((float)(project.scale * 15))) * SkillManager.instance.GetQualityBonus() * 180);
+                    // Debug.Log(((float)StaffManager.instance.getAllStaffStat()/((float)(project.scale * 15))) * SkillManager.instance.GetQualityBonus() * 180);
                 }  
                 taskDay++;
             }
@@ -135,10 +135,11 @@ public class ProjectAgileHUD : MonoBehaviour
         }
         // project.sprintList[AgileManager.instance.sprintIndex].taskList[1].isComplete = true;
         submitBTN.SetActive(true);
-        List<KitchenObjectSO> tasks = project.sprintList[AgileManager.instance.sprintIndex].taskList;
+        List<Task> tasks = project.sprintList[AgileManager.instance.sprintIndex].taskList;
         // Save quality
         for(int i=0; i<tasks.Count; i++){
             tasks[i].quality = (int) Mathf.Round(taskItem[i].GetComponentsInChildren<Slider>()[1].value);
+            Debug.Log(tasks[i].size + " : " + tasks[i].quality);
             // Debug.Log(tasks[i].isComplete);
         }
         // Add unfinished tasks to next sprint

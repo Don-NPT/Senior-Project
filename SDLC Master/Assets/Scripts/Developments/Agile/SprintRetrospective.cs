@@ -31,10 +31,10 @@ public class SprintRetrospective : MonoBehaviour
     void SetupLeft(){
         GetComponentsInChildren<TextMeshProUGUI>()[0].text = "Sprint " + (sprintIndex+1) + " Retrospective";
 
-        List<KitchenObjectSO> smallTasks = new List<KitchenObjectSO>();
-        List<KitchenObjectSO> mediumTasks = new List<KitchenObjectSO>();
-        List<KitchenObjectSO> largeTasks = new List<KitchenObjectSO>();
-        List<KitchenObjectSO> giantTasks = new List<KitchenObjectSO>();
+        List<Task> smallTasks = new List<Task>();
+        List<Task> mediumTasks = new List<Task>();
+        List<Task> largeTasks = new List<Task>();
+        List<Task> giantTasks = new List<Task>();
 
         int[] totalDayUsed = new int[4];
 
