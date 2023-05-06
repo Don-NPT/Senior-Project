@@ -21,11 +21,11 @@ public class ProjectOld : MonoBehaviour
     private void OnEnable() {
         projectOldItem = new GameObject[ProjectManager.instance.getNumOldProject()];
         
-        var oldProjects = ProjectManager.instance.oldProject.GroupBy(p => p.projectId)
-                              .Select(group => group.Last())
-                              .ToList();
+        // var oldProjects = ProjectManager.instance.oldProject.GroupBy(p => p.projectId)
+        //                       .Select(group => group.Last())
+        //                       .ToList();
 
-        for(int i=0; i<oldProjects.Count; i++)
+        for(int i=0; i<ProjectManager.instance.oldProject.Count; i++)
         {
             // Spawn Old project items
             projectOldItem[i] = (GameObject)Instantiate(projectOldItemPrefab);
@@ -34,14 +34,23 @@ public class ProjectOld : MonoBehaviour
 
             // set text for project confirm
             TextMeshProUGUI[] projectOldText = projectOldItem[i].GetComponentsInChildren<TextMeshProUGUI>();
-            Project project =  oldProjects[i];
+            OldProject project =  ProjectManager.instance.oldProject[i];
             projectOldText[0].text = project.pjName;
-            projectOldText[2].text = project.getAllActualQuality() + "/" + project.getAllWorkAmount();
-            Slider slider = projectOldItem[i].GetComponentInChildren<Slider>();
-            slider.maxValue = project.getAllWorkAmount();
-            slider.value = project.getAllActualQuality();
+
+            if(project.model.modelName == "Waterfall"){
+                projectOldText[2].text = project.getAllActualQuality() + "/" + project.getAllRequireQuality();
+                Slider slider = projectOldItem[i].GetComponentInChildren<Slider>();
+                slider.maxValue = project.getAllRequireQuality();
+                slider.value = project.getAllActualQuality();
+            }else{
+                projectOldText[2].text = GetAgileProjectQuality(project) + "/" + GetAgileProjectRequireQuality(project);
+                Slider slider = projectOldItem[i].GetComponentInChildren<Slider>();
+                slider.maxValue = GetAgileProjectRequireQuality(project);
+                slider.value = GetAgileProjectQuality(project);
+            }
+
             int index = i;
-            projectOldItem[i].GetComponent<Button>().onClick.AddListener(() => ShowOldProjectDetail(index));
+                projectOldItem[i].GetComponent<Button>().onClick.AddListener(() => ShowOldProjectDetail(index));
         }
     }
 
@@ -55,8 +64,9 @@ public class ProjectOld : MonoBehaviour
     {
         content.transform.parent.gameObject.SetActive(false);
         if(ProjectManager.instance.oldProject[index].model.modelName == "Waterfall"){
-            ProjectSummary.instance.ViewProjectSummary(ProjectManager.instance.oldProject[index]);
+            ProjectSummary.instance.ViewOldProjectSummary(ProjectManager.instance.oldProject[index]);
         }else{
+            
             AgileSummary.instance.ShowOldProject(index);
         }
 
@@ -76,9 +86,19 @@ public class ProjectOld : MonoBehaviour
         // texts[12].text =  "ค่าใช้จ่าย: " + 5000 + " บาท";
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    int GetAgileProjectQuality(OldProject project){
+        int sum = 0;
+        foreach(var sprint in project.sprintList){
+            sum += sprint.GetSumQuality();            
+        }
+        return sum;
+    }
+
+    int GetAgileProjectRequireQuality(OldProject project){
+        int sum = 0;
+        foreach(var sprint in project.sprintList){
+            sum += sprint.GetSumRequireQuality();            
+        }
+        return sum;
     }
 }

@@ -93,6 +93,7 @@ MonoBehaviour:
   staffEachPhase: 010000000100000001000000010000000100000000000000
   statEachPhase: 040000000400000004000000040000000400000000000000
   dayUsed: 0
+  dayUsedEachPhase: 
   estimateDaysInPhase: 25
   requirement1Answer: []
   requirement1Point: 0
@@ -122,11 +123,47 @@ MonoBehaviour:
   - "\u0E01\u0E32\u0E23\u0E2A\u0E23\u0E49\u0E32\u0E07 acceptance criteria"
   sprintList:
   - taskList:
-    - {fileID: 11400000, guid: 06e4b0972b91500408bffb2f8b6f97e0, type: 2}
-    - {fileID: 11400000, guid: d731a1dc4811a07429e1d2d530d3a526, type: 2}
+    - prefeb: {fileID: 0}
+      sprite: {fileID: 0}
+      objectName: 
+      dayToFinish: 0
+      requireQuality: 0
+      size: 0
+      quality: 0
+      dayUsed: 0
+      isComplete: 0
+      fromPreviousSprint: 0
+    - prefeb: {fileID: 0}
+      sprite: {fileID: 0}
+      objectName: 
+      dayToFinish: 0
+      requireQuality: 0
+      size: 0
+      quality: 0
+      dayUsed: 0
+      isComplete: 0
+      fromPreviousSprint: 0
     sprintName: Sprint 1
   - taskList:
-    - {fileID: 11400000, guid: dfe92c9d6ac10a84894ee655abc66332, type: 2}
-    - {fileID: 11400000, guid: c92a53d9b80eaa746861b37a8f6b5c01, type: 2}
+    - prefeb: {fileID: 0}
+      sprite: {fileID: 0}
+      objectName: 
+      dayToFinish: 0
+      requireQuality: 0
+      size: 0
+      quality: 0
+      dayUsed: 0
+      isComplete: 0
+      fromPreviousSprint: 0
+    - prefeb: {fileID: 0}
+      sprite: {fileID: 0}
+      objectName: 
+      dayToFinish: 0
+      requireQuality: 0
+      size: 0
+      quality: 0
+      dayUsed: 0
+      isComplete: 0
+      fromPreviousSprint: 0
     sprintName: Sprint 2
-  PO_id: 003
+  PO_id: 004

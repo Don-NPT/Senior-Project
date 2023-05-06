@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class ProjectManager : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class ProjectManager : MonoBehaviour
     public Project[] allProjects;
     public List<Project> currentProjects;
     public Project currentProject;
-    public List<Project> oldProject;
+    public List<OldProject> oldProject;
     public List<KitchenObjectSO> AllTasks;
     
     void Awake() {
@@ -18,14 +19,13 @@ public class ProjectManager : MonoBehaviour
             instance = this;
 
         currentProjects = new List<Project>();
-        oldProject = new List<Project>();
+        oldProject = new List<OldProject>();
     }
 
     public void FinishProject(Project project)
     {
         currentProject = null;
-        oldProject.Add(project);
-        Debug.Log("OldprojectId "+oldProject[0].projectId);
+        oldProject.Add(new OldProject(project));
     }
 
     public int getNumOldProject()
@@ -62,11 +62,11 @@ public class ProjectManager : MonoBehaviour
             id = currentProject.projectId;
         }
         
-        List<int> oldProjectId = new List<int>();
-        foreach(var project in oldProject){
-            oldProjectId.Add(project.projectId);
-        }
-        gameAdapter.Save(id, oldProjectId.ToArray());
+        // List<int> oldProjectId = new List<int>();
+        // foreach(var project in oldProject){
+        //     oldProjectId.Add(project.projectId);
+        // }
+        gameAdapter.Save(id, oldProject.ToArray());
     }
 
     public void Load()
@@ -76,10 +76,11 @@ public class ProjectManager : MonoBehaviour
  
         foreach(var project in allProjects){
             if(project.projectId == saveData.currentProject) currentProject = project;
-            foreach(var old in saveData.oldProject){
-                if(project.projectId == old) oldProject.Add(project);
-            }
+            // foreach(var old in saveData.oldProject){
+            //     if(project.projectId == old) oldProject.Add(project);
+            // }
         }
+        oldProject = saveData.oldProject.ToList();
     }
     
 }
@@ -88,9 +89,9 @@ public class ProjectManager : MonoBehaviour
 public class ProjectManagerAdapter
 {
     public int currentProject;
-    public int[] oldProject;
+    public OldProject[] oldProject;
 
-    public void Save(int _currentProject, int[] _oldProject)
+    public void Save(int _currentProject, OldProject[] _oldProject)
     {
         currentProject = _currentProject;
         oldProject = _oldProject;

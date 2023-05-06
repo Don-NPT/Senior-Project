@@ -65,6 +65,7 @@ public class Project : ScriptableObject
     [HideInInspector] public int[] staffEachPhase;
     [HideInInspector] public int[] statEachPhase;
     [HideInInspector] public int dayUsed;
+    [HideInInspector] public int[] dayUsedEachPhase;
     [HideInInspector] public int estimateDaysInPhase;
     [HideInInspector] public DateTime[] startDates = new DateTime[6];
     [HideInInspector] public DateTime[] finishDates = new DateTime[6];
@@ -169,5 +170,118 @@ public class Keyword {
     public Keyword(){
         word = "Sometext";
         hint = "description";
+    }
+}
+
+[System.Serializable]
+public class OldProject {
+    public int projectId;
+    public string pjName;
+    public string description;
+    public int reward;
+    public int finalReward;
+    public int expense;
+    public int skillPointReward;
+    public int deadline;
+    public int scale;
+    public int requireAnalysis;
+    public int requireDesign;
+    public int requireCoding;
+    public int requireTesting;
+    public int requireDeployment;
+    public Word[] requirement1;
+    public Word[] requirement2;
+    public Word[] balloons;
+    public Keyword[] keyInput;
+    public int smallTasks;
+    public int mediumTasks;
+    public int largeTasks;
+    public int giantTasks;
+    public int actualAnalysis;
+    public int actualDesign;
+    public int actualCoding;
+    public int actualTesting;
+    public int actualDeployment;
+    public SDLCModel model;
+    public int[] staffEachPhase;
+    public int[] statEachPhase;
+    public int dayUsed;
+    public int[] dayUsedEachPhase;
+    public List<string> requirement1Answer;
+    public int requirement1Point;
+    public List<string> requirement2Answer;
+    public float requirement2Point;
+    public List<bool> designAnswer;
+    public float designPoint;
+    public List<bool> keyInputPass;
+    public float keyInputPoint;
+    public float balloonPoint;
+    public List<string> balloonAnswer;
+    public float balloon2Point;
+    public List<string> balloon2Answer;
+
+    // Properties for Agile gameplay
+    public List<SprintTask> sprintList;
+    [HideInInspector] public string PO_id;
+
+    public OldProject(Project project){
+        projectId = project.projectId;
+        pjName = project.pjName;
+        description = project.description;
+        reward = project.reward;
+        finalReward = project.finalReward;
+        expense = project.expense;
+        skillPointReward = project.skillPointReward;
+        deadline = project.deadline;
+        scale = project.scale;
+        requireAnalysis = project.requireAnalysis;
+        requireDesign = project.requireDesign;
+        requireCoding = project.requireCoding;
+        requireTesting = project.requireTesting;
+        requireDeployment = project.requireDeployment;
+        requirement1 = project.requirement1;
+        requirement2 = project.requirement2;
+        balloons = project.balloons;
+        keyInput = project.keyInput;
+        smallTasks = project.smallTasks;
+        mediumTasks = project.mediumTasks;
+        largeTasks = project.largeTasks;
+        giantTasks = project.giantTasks;
+        actualAnalysis = project.actualAnalysis;
+        actualDesign = project.actualDesign;
+        actualCoding = project.actualCoding;
+        actualTesting = project.actualTesting;
+        actualDeployment = project.actualDeployment;
+        model = project.model;
+        staffEachPhase = project.staffEachPhase;
+        statEachPhase = project.statEachPhase;
+        dayUsed = project.dayUsed;
+        dayUsedEachPhase = project.dayUsedEachPhase;
+        requirement1Answer = project.requirement1Answer;
+        requirement1Point = project.requirement1Point;
+        requirement2Answer = project.requirement2Answer;
+        requirement2Point = project.requirement2Point;
+        designAnswer = project.designAnswer;
+        designPoint = project.designPoint;
+        keyInputPass = project.keyInputPass;
+        keyInputPoint = project.keyInputPoint;
+        balloonPoint = project.balloonPoint;
+        balloonAnswer = project.balloonAnswer;
+        balloon2Point = project.balloon2Point;
+        balloon2Answer = project.balloon2Answer;
+        sprintList = project.sprintList;
+        PO_id = project.PO_id;
+    }
+
+    public int getAllActualQuality()
+    {
+        int result = actualAnalysis + actualDesign + actualCoding + actualTesting + actualDeployment;
+        return result;
+    }
+
+    public int getAllRequireQuality()
+    {
+        int result = requireAnalysis + requireDesign + requireCoding + requireTesting + requireDeployment;
+        return result;
     }
 }
