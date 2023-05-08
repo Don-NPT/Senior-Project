@@ -122,6 +122,8 @@ public class ProjectAgileHUD : MonoBehaviour
                     dayLeftText.text = "เหลือเวลา: " + dayLeft.ToString() + " วัน";
                     float progress = taskItem[i].GetComponentsInChildren<Slider>()[0].value + StaffManager.instance.getTotalStaff();
                     float quality = taskItem[i].GetComponentsInChildren<Slider>()[1].value + ((float)StaffManager.instance.getAllStaffStat()/((float)(project.scale * 15))) * SkillManager.instance.GetQualityBonus() * 180;
+                    Debug.Log("Agile All staff stat =" +(float)StaffManager.instance.getAllStaffStat());
+                    Debug.Log("Agile quality =" +quality);
                     taskItem[i].GetComponentsInChildren<Slider>()[0].DOValue(progress, 0.3f);
                     taskItem[i].GetComponentsInChildren<Slider>()[1].DOValue(quality, 0.3f);
                     project.sprintList[AgileManager.instance.sprintIndex].taskList[i].dayUsed++;

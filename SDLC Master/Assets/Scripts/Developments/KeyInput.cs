@@ -163,6 +163,8 @@ public class KeyInput : MonoBehaviour
         if(pass >= inputBlocks.Length) {
             project.keyInputPass.Add(true);
             calculateQuality = (int)Mathf.Round(((float)StaffManager.instance.getSumStaffStat("Designer")/((float)(project.scale * 15))) * pointCorrect);
+            Debug.Log("Designer staff stat ="+(float)StaffManager.instance.getSumStaffStat("Designer"));
+            Debug.Log("Quality raw Designer * ans = "+calculateQuality);
             calculateQuality = calculateQuality * SkillManager.instance.GetQualityBonus();
             WaterFallManager.instance.qualityEachPhase[1] += calculateQuality;
             project.designPoint += calculateQuality;

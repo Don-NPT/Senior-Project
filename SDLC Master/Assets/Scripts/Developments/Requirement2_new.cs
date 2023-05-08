@@ -61,8 +61,10 @@ public class Requirement2_new : MonoBehaviour
                     .SetEase(Ease.OutQuad)
                     .OnComplete(() => transform.localScale = Vector3.one);
                 calculateQuality = ((float)StaffManager.instance.getSumStaffStat("Analyst")/((float)(project.scale * 15))) * pointCorrect;
+                Debug.Log("Analyst staff stat ="+(float)StaffManager.instance.getSumStaffStat("Analyst"));
+                Debug.Log("Quality raw Analyst * ans = "+calculateQuality);
                 calculateQuality = calculateQuality * SkillManager.instance.GetQualityBonus();
-                Debug.Log("QualityCorrect "+calculateQuality);
+                Debug.Log("QualityCorrect ="+calculateQuality);
                 WaterFallManager.instance.qualityEachPhase[0] += calculateQuality;
                 project.requirement2Point += calculateQuality;
             }else{
@@ -80,6 +82,8 @@ public class Requirement2_new : MonoBehaviour
 
                 transform.DOShakePosition(shakeDuration, shakeStrength, shakeVibrato, shakeRandomness);
                 calculateQuality = ((float)StaffManager.instance.getSumStaffStat("Analyst")/((float)(project.scale * 15))) * pointWrong;
+                Debug.Log("Analyst staff stat ="+(float)StaffManager.instance.getSumStaffStat("Analyst"));
+                Debug.Log("Quality raw Analyst * ans = "+calculateQuality);
                 calculateQuality = calculateQuality * SkillManager.instance.GetQualityBonus();
                 Debug.Log("QualityWrong "+calculateQuality);
                 WaterFallManager.instance.qualityEachPhase[0] += calculateQuality;

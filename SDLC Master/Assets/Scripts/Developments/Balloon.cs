@@ -30,6 +30,8 @@ public class Balloon : MonoBehaviour, IPointerDownHandler
             if(isDev){
                 Debug.Log("Point up");
                 calculateQuality = ((float)StaffManager.instance.getSumStaffStat("Programmer")/((float)(project.scale * 15))) * pointCorrect;
+                Debug.Log("Programmer coding staff stat ="+(float)StaffManager.instance.getSumStaffStat("Programmer"));
+                Debug.Log("Quality raw Programmer coding * ans = "+calculateQuality);
                 calculateQuality = calculateQuality * SkillManager.instance.GetQualityBonus();
                 ProjectManager.instance.currentProject.balloonPoint += calculateQuality;
                 WaterFallManager.instance.qualityEachPhase[2] += calculateQuality;
@@ -38,6 +40,8 @@ public class Balloon : MonoBehaviour, IPointerDownHandler
             }else{
                 Debug.Log("Point down");
                 calculateQuality = ((float)StaffManager.instance.getSumStaffStat("Tester")/((float)(project.scale * 15))) * pointWrong;
+                Debug.Log("Programmer coding staff stat ="+(float)StaffManager.instance.getSumStaffStat("Programmer"));
+                Debug.Log("Quality raw Programmer coding * ans = "+calculateQuality);
                 calculateQuality = calculateQuality * SkillManager.instance.GetQualityBonus();
                 ProjectManager.instance.currentProject.balloon2Point += calculateQuality;
                 WaterFallManager.instance.qualityEachPhase[3] += calculateQuality;
@@ -49,6 +53,8 @@ public class Balloon : MonoBehaviour, IPointerDownHandler
             if(isDev){
                 Debug.Log("Point down");
                 calculateQuality = ((float)StaffManager.instance.getSumStaffStat("Programmer")/((float)(project.scale * 15))) * pointWrong;
+                Debug.Log("Programmer testing staff stat ="+(float)StaffManager.instance.getSumStaffStat("Programmer"));
+                Debug.Log("Quality raw Programmer testing * ans = "+calculateQuality);
                 calculateQuality = calculateQuality * SkillManager.instance.GetQualityBonus();
                 ProjectManager.instance.currentProject.balloonPoint += calculateQuality;
                 WaterFallManager.instance.qualityEachPhase[2] += calculateQuality;
@@ -57,6 +63,8 @@ public class Balloon : MonoBehaviour, IPointerDownHandler
             }else{
                 Debug.Log("Point up");
                 calculateQuality = ((float)StaffManager.instance.getSumStaffStat("Tester")/((float)(project.scale * 15))) * pointCorrect;
+                Debug.Log("Programmer testing staff stat ="+(float)StaffManager.instance.getSumStaffStat("Programmer"));
+                Debug.Log("Quality raw Programmer testing * ans = "+calculateQuality);
                 calculateQuality = calculateQuality * SkillManager.instance.GetQualityBonus();
                 ProjectManager.instance.currentProject.balloon2Point += calculateQuality;
                 WaterFallManager.instance.qualityEachPhase[3] += calculateQuality;
