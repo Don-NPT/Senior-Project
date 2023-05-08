@@ -203,24 +203,11 @@ public class SprintRetrospective : MonoBehaviour
     }
 
     bool IsTooLowQuality(){
-        if(GetProjectQuality() < GetProjectRequireQuality() * 0.9) return true;
+
+        Debug.Log("Project Quality: " + project.sprintList[sprintIndex].GetSumQuality());
+        Debug.Log("Project Require: " + project.sprintList[sprintIndex].GetSumRequireQuality());
+        if(project.sprintList[sprintIndex].GetSumQuality() < project.sprintList[sprintIndex].GetSumRequireQuality()) return true;
         else return false;
-    }
-
-    int GetProjectQuality(){
-        int sum = 0;
-        foreach(var sprint in project.sprintList){
-            sum += sprint.GetSumQuality();            
-        }
-        return sum;
-    }
-
-    int GetProjectRequireQuality(){
-        int sum = 0;
-        foreach(var sprint in project.sprintList){
-            sum += sprint.GetSumRequireQuality();            
-        }
-        return sum;
     }
 
 }
