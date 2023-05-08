@@ -141,6 +141,7 @@ public class BuildManager : MonoBehaviour
         BuildAdapter buildAdapter = new BuildAdapter();
         BuildAdapter saveData = buildAdapter.Load();
 
+        buildObjDataList = saveData.buildList.ToList();
         if(saveData.buildList.Length > 0){
             foreach (BuildObjData prop in saveData.buildList)
             {

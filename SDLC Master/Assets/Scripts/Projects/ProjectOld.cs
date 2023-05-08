@@ -66,7 +66,7 @@ public class ProjectOld : MonoBehaviour
         if(ProjectManager.instance.oldProject[index].model.modelName == "Waterfall"){
             ProjectSummary.instance.ViewOldProjectSummary(ProjectManager.instance.oldProject[index]);
         }else{
-            
+            agileSummary.SetActive(true);
             AgileSummary.instance.ShowOldProject(index);
         }
 

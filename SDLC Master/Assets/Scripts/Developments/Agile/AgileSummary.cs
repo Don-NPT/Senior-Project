@@ -34,8 +34,8 @@ public class AgileSummary : MonoBehaviour
     // }
 
     public void ShowOldProject(int index){
-        project = ProjectManager.instance.oldProject[index];
         gameObject.SetActive(true);
+        project = ProjectManager.instance.oldProject[index];
 
         SetupLeftPanel();
         SetupRightPanel();

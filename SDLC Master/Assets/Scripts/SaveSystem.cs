@@ -5,6 +5,7 @@ using UnityEngine;
 public class SaveSystem : MonoBehaviour
 {
     public static SaveSystem instance;
+    public GameObject UsernameForm;
 
     void Awake()
     {
@@ -23,6 +24,7 @@ public class SaveSystem : MonoBehaviour
         else if(PlayerPrefs.GetInt("isLoad") == 1){
             SaveSystem.instance.Load();
             GlobalVariable.isLoad = false;
+            UsernameForm.SetActive(false);
         }
     }
 
