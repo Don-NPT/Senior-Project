@@ -123,6 +123,10 @@ public class AgileSummary : MonoBehaviour
     //     }
     // }
 
+    private void OnDisable() {
+        GameManager.instance.Play();
+    }
+
     int GetProjectQuality(){
         int sum = 0;
         foreach(var sprint in project.sprintList){
