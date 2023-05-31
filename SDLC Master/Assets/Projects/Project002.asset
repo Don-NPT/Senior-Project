@@ -18,6 +18,7 @@ MonoBehaviour:
     B"
   requirement: 
   reward: 150000
+  finalReward: 0
   expense: 50000
   skillPointReward: 2
   deadline: 90
@@ -59,13 +60,13 @@ MonoBehaviour:
       1 \u0E04\u0E23\u0E31\u0E49\u0E07 "
     isCorrect: 0
   balloons:
-  - word: "\u0E27\u0E32\u0E07\u0E41\u0E1C\u0E19\u0E42\u0E04\u0E23\u0E07\u0E01\u0E32\u0E23"
+  - word: Project Planning
     isCorrect: 1
-  - word: "\u0E2D\u0E2D\u0E01\u0E41\u0E1A\u0E1A\u0E42\u0E04\u0E23\u0E07\u0E2A\u0E23\u0E49\u0E32\u0E07\u0E23\u0E30\u0E1A\u0E1A"
+  - word: Documentation
     isCorrect: 1
-  - word: "\u0E15\u0E34\u0E14\u0E15\u0E32\u0E21\u0E04\u0E27\u0E32\u0E21\u0E04\u0E37\u0E1A\u0E2B\u0E19\u0E49\u0E32"
-    isCorrect: 1
-  - word: "\u0E2A\u0E16\u0E32\u0E19\u0E30 Sprint"
+  - word: Progress Tracking
+    isCorrect: 0
+  - word: Status Sprint
     isCorrect: 0
   - word: Sprint Review
     isCorrect: 0
@@ -95,6 +96,7 @@ MonoBehaviour:
   staffEachPhase: 010000000100000001000000010000000100000000000000
   statEachPhase: 020000000200000003000000040000000400000000000000
   dayUsed: 0
+  dayUsedEachPhase: 
   estimateDaysInPhase: 15
   requirement1Answer: []
   requirement1Point: 0

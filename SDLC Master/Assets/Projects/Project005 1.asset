@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Project005 1
   m_EditorClassIdentifier: 
   projectId: 5
-  pjName: Project of the year
+  pjName: Super Project
   description: "\u0E42\u0E1B\u0E23\u0E40\u0E08\u0E04\u0E17\u0E35\u0E48\u0E08\u0E31\u0E14\u0E02\u0E36\u0E49\u0E19\u0E40\u0E1E\u0E37\u0E48\u0E2D\u0E41\u0E2A\u0E14\u0E07\u0E04\u0E27\u0E32\u0E21\u0E2A\u0E38\u0E14\u0E22\u0E2D\u0E14\u0E41\u0E2B\u0E48\u0E07\u0E1B\u0E35"
   requirement: 
   reward: 600000
+  finalReward: 450000
   expense: 200000
   skillPointReward: 4
   deadline: 70
@@ -57,19 +58,18 @@ MonoBehaviour:
       log \u0E02\u0E2D\u0E07\u0E01\u0E32\u0E23\u0E43\u0E0A\u0E49\u0E07\u0E32\u0E19\u0E23\u0E30\u0E1A\u0E1A "
     isCorrect: 0
   balloons:
-  - word: "\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E41\u0E25\u0E30\u0E2D\u0E2D\u0E01\u0E41\u0E1A\u0E1A\u0E42\u0E04\u0E23\u0E07\u0E2A\u0E23\u0E49\u0E32\u0E07\u0E1E\u0E37\u0E49\u0E19\u0E10\u0E32\u0E19"
+  - word: Critical Path
     isCorrect: 1
-  - word: "\u0E2D\u0E2D\u0E01\u0E41\u0E1A\u0E1A\u0E2B\u0E19\u0E49\u0E32\u0E08\u0E2D
-      ui"
+  - word: GateKeeper
     isCorrect: 1
-  - word: "\u0E01\u0E32\u0E23\u0E2A\u0E23\u0E49\u0E32\u0E07 user story"
+  - word: User Story
     isCorrect: 0
-  - word: "\u0E2A\u0E23\u0E49\u0E32\u0E07 acceptance criteria"
+  - word: Acceptance Criteria
     isCorrect: 0
-  - word: "\u0E2A\u0E23\u0E49\u0E32\u0E07 release plan"
+  - word: Release plan
     isCorrect: 0
   keyInput:
-  - word: 'QUALITYASSURANCE    '
+  - word: QUALITYASSURANCE
     hint: "\u0E01\u0E23\u0E30\u0E1A\u0E27\u0E19\u0E01\u0E32\u0E23\u0E15\u0E23\u0E27\u0E08\u0E2A\u0E2D\u0E1A\u0E41\u0E25\u0E30\u0E15\u0E34\u0E14\u0E15\u0E32\u0E21\u0E04\u0E38\u0E13\u0E20\u0E32\u0E1E\u0E02\u0E2D\u0E07\u0E1C\u0E25\u0E34\u0E15\u0E20\u0E31\u0E13\u0E11\u0E4C\u0E2B\u0E23\u0E37\u0E2D\u0E1A\u0E23\u0E34\u0E01\u0E32\u0E23\u0E15\u0E25\u0E2D\u0E14\u0E08\u0E19\u0E01\u0E32\u0E23\u0E14\u0E33\u0E40\u0E19\u0E34\u0E19\u0E07\u0E32\u0E19\u0E17\u0E35\u0E48\u0E40\u0E01\u0E35\u0E48\u0E22\u0E27\u0E02\u0E49\u0E2D\u0E07"
     showNum: 5
     additionalChar: 
@@ -81,31 +81,46 @@ MonoBehaviour:
   mediumTasks: 10
   largeTasks: 9
   giantTasks: 3
-  actualAnalysis: 0
-  actualDesign: 0
-  actualCoding: 0
-  actualTesting: 0
-  actualDeployment: 0
-  model: {fileID: 11400000, guid: 5ef74cd8a8ad44943a62f7d834d77d1c, type: 2}
+  actualAnalysis: 2
+  actualDesign: 6
+  actualCoding: 6
+  actualTesting: 7
+  actualDeployment: 40
+  model: {fileID: 11400000, guid: fefd9c0d5471bbd4b8ed0775ef1e6143, type: 2}
   teamIndex: 3
-  state: 1
-  phase: 0
-  staffEachPhase: 
-  statEachPhase: 
-  dayUsed: 0
+  state: 3
+  phase: 4
+  staffEachPhase: 010000000100000001000000010000000100000000000000
+  statEachPhase: 040000000400000004000000040000000400000000000000
+  dayUsed: 76
+  dayUsedEachPhase: 010000000f0000000b0000000e00000023000000
   estimateDaysInPhase: 25
   requirement1Answer: []
   requirement1Point: 0
-  requirement2Answer: []
-  requirement2Point: 0
+  requirement2Answer:
+  - Non-Functional
+  - Functional
+  - Functional
+  - Functional
+  requirement2Point: 1.5238096
   designAnswer: 
-  designPoint: 0
-  keyInputPass: 
+  designPoint: 6
+  keyInputPass: 0101
   keyInputPoint: 0
-  balloonPoint: 0
-  balloonAnswer: []
-  balloon2Point: 0
-  balloon2Answer: []
+  balloonPoint: 5.7904763
+  balloonAnswer:
+  - GateKeeper
+  - User Story
+  - Critical Path
+  - Critical Path
+  - GateKeeper
+  balloon2Point: 6.857143
+  balloon2Answer:
+  - Acceptance Criteria
+  - Acceptance Criteria
+  - Acceptance Criteria
+  - User Story
+  - Acceptance Criteria
   sprintList:
   - taskList: []
     sprintName: 

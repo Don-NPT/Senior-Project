@@ -58,15 +58,15 @@ MonoBehaviour:
       1000 \u0E04\u0E19 "
     isCorrect: 0
   balloons:
-  - word: "\u0E08\u0E31\u0E14\u0E01\u0E32\u0E23\u0E40\u0E1B\u0E25\u0E35\u0E48\u0E22\u0E19\u0E41\u0E1B\u0E25\u0E07"
+  - word: Change Control
     isCorrect: 1
-  - word: "\u0E1A\u0E33\u0E23\u0E38\u0E07\u0E23\u0E31\u0E01\u0E29\u0E32\u0E23\u0E30\u0E1A\u0E1A"
+  - word: Maintenance
     isCorrect: 1
-  - word: "\u0E1A\u0E23\u0E34\u0E2B\u0E32\u0E23\u0E04\u0E27\u0E32\u0E21\u0E40\u0E2A\u0E35\u0E48\u0E22\u0E07"
+  - word: Risk Management
     isCorrect: 1
-  - word: "\u0E01\u0E32\u0E23\u0E40\u0E01\u0E47\u0E1A backlog"
+  - word: Backlog Grooming
     isCorrect: 0
-  - word: "\u0E01\u0E32\u0E23\u0E1B\u0E23\u0E30\u0E0A\u0E38\u0E21 Sprint Planning"
+  - word: Sprint Planning
     isCorrect: 0
   keyInput:
   - word: PERFORMANCETESTING
@@ -95,6 +95,7 @@ MonoBehaviour:
   staffEachPhase: 040000000400000002000000030000000300000000000000
   statEachPhase: 16000000160000000d000000130000001300000000000000
   dayUsed: 0
+  dayUsedEachPhase: 
   estimateDaysInPhase: 25
   requirement1Answer: []
   requirement1Point: 0

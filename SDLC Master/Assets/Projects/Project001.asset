@@ -59,17 +59,17 @@ MonoBehaviour:
   - word: "\u0E40\u0E19\u0E49\u0E19\u0E2A\u0E35\u0E19\u0E49\u0E33\u0E40\u0E07\u0E34\u0E19\u0E01\u0E31\u0E1A\u0E2A\u0E49\u0E21\u0E40\u0E1B\u0E47\u0E19\u0E2B\u0E25\u0E31\u0E01"
     isCorrect: 0
   balloons:
-  - word: "\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23"
+  - word: Requirement Analysis
     isCorrect: 1
-  - word: "\u0E2D\u0E2D\u0E01\u0E41\u0E1A\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
+  - word: System Design
     isCorrect: 1
-  - word: "\u0E17\u0E14\u0E2A\u0E2D\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
+  - word: System Testing
     isCorrect: 1
   - word: Scrum Board
     isCorrect: 0
   - word: Print Risk
     isCorrect: 0
-  - word: "\u0E1B\u0E23\u0E30\u0E0A\u0E38\u0E21\u0E17\u0E38\u0E01\u0E27\u0E31\u0E19"
+  - word: Daily-Meeting
     isCorrect: 0
   keyInput:
   - word: SYSTEMTESTING
@@ -94,10 +94,10 @@ MonoBehaviour:
   actualDeployment: 20
   model: {fileID: 11400000, guid: fefd9c0d5471bbd4b8ed0775ef1e6143, type: 2}
   teamIndex: 0
-  state: 3
-  phase: 4
-  staffEachPhase: 010000000100000001000000010000000100000000000000
-  statEachPhase: 040000000400000004000000040000000400000000000000
+  state: 1
+  phase: 2
+  staffEachPhase: 010000000100000001000000000000000000000000000000
+  statEachPhase: 040000000400000004000000000000000000000000000000
   dayUsed: 32
   dayUsedEachPhase: 02000000020000000a0000000d00000005000000
   estimateDaysInPhase: 10
@@ -107,22 +107,17 @@ MonoBehaviour:
   - "\u0E40\u0E23\u0E35\u0E22\u0E1A\u0E07\u0E48\u0E32\u0E22"
   requirement1Point: 0
   requirement2Answer:
+  - Non-Functional
   - Functional
   - Functional
-  - Functional
-  - Functional
-  requirement2Point: 14.666667
+  - Non-Functional
+  requirement2Point: 24
   designAnswer: 
   designPoint: 0
   keyInputPass: 
   keyInputPoint: 0
-  balloonPoint: 12.8
-  balloonAnswer:
-  - Print Risk
-  - "\u0E2D\u0E2D\u0E01\u0E41\u0E1A\u0E1A\u0E23\u0E30\u0E1A\u0E1A"
-  - Scrum Board
-  - Scrum Board
-  - "\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23"
+  balloonPoint: 0
+  balloonAnswer: []
   balloon2Point: 9.066667
   balloon2Answer:
   - "\u0E27\u0E34\u0E40\u0E04\u0E23\u0E32\u0E30\u0E2B\u0E4C\u0E04\u0E27\u0E32\u0E21\u0E15\u0E49\u0E2D\u0E07\u0E01\u0E32\u0E23"
