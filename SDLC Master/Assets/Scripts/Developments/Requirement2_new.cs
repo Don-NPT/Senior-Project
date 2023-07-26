@@ -15,10 +15,6 @@ public class Requirement2_new : MonoBehaviour
     private float calculateQuality = 0;
     private Project project;
 
-    // Start is called before the first frame update
-    private void Start() {
-        
-    }
     void OnEnable()
     {
         TMP = GetComponentsInChildren<TextMeshProUGUI>()[1];

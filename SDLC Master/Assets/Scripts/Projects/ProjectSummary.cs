@@ -50,12 +50,6 @@ public class ProjectSummary : MonoBehaviour
             instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void ViewProjectSummary(Project project)
     {
         projectSummaryUI.SetActive(true);
@@ -157,8 +151,6 @@ public class ProjectSummary : MonoBehaviour
     void SetupRequirement2(Project project)
     {
         List<string> requirement2Answer = project.requirement2Answer;
-        // GameObject[] texts = new GameObject[requirement2Answer.Count];
-        // GameObject[] buttons = new GameObject[requirement2Answer.Count];
         GameObject[] rows = new GameObject[project.requirement2Answer.Count];
 
         foreach(Transform child in requirement2){
@@ -171,8 +163,6 @@ public class ProjectSummary : MonoBehaviour
             rows[i].transform.localScale = Vector3.one;
             rows[i].GetComponentsInChildren<TextMeshProUGUI>()[0].text = project.requirement2[i].word;
 
-            // buttons[i] = (GameObject)Instantiate(answerButton);
-            // buttons[i].transform.SetParent(requirement2);
             rows[i].GetComponentsInChildren<TextMeshProUGUI>()[1].text = requirement2Answer[i];
             
             if(requirement2Answer[i] == "Functional" && project.requirement2[i].isCorrect){
@@ -191,8 +181,6 @@ public class ProjectSummary : MonoBehaviour
 
     void SetupKeyInput(Project project)
     {
-        // GameObject[] texts = new GameObject[project.keyInput.Length];
-        // GameObject[] buttons = new GameObject[project.keyInput.Length];
         GameObject[] rows = new GameObject[project.keyInput.Length];
 
         foreach(Transform child in keyInput){
@@ -347,8 +335,6 @@ public class ProjectSummary : MonoBehaviour
     void SetupOldRequirement2(OldProject project)
     {
         List<string> requirement2Answer = project.requirement2Answer;
-        // GameObject[] texts = new GameObject[requirement2Answer.Count];
-        // GameObject[] buttons = new GameObject[requirement2Answer.Count];
         GameObject[] rows = new GameObject[project.requirement2Answer.Count];
 
         foreach(Transform child in requirement2){
@@ -361,8 +347,6 @@ public class ProjectSummary : MonoBehaviour
             rows[i].transform.localScale = Vector3.one;
             rows[i].GetComponentsInChildren<TextMeshProUGUI>()[0].text = project.requirement2[i].word;
 
-            // buttons[i] = (GameObject)Instantiate(answerButton);
-            // buttons[i].transform.SetParent(requirement2);
             rows[i].GetComponentsInChildren<TextMeshProUGUI>()[1].text = requirement2Answer[i];
             
             if(requirement2Answer[i] == "Functional" && project.requirement2[i].isCorrect){
@@ -381,8 +365,6 @@ public class ProjectSummary : MonoBehaviour
 
     void SetupOldKeyInput(OldProject project)
     {
-        // GameObject[] texts = new GameObject[project.keyInput.Length];
-        // GameObject[] buttons = new GameObject[project.keyInput.Length];
         GameObject[] rows = new GameObject[project.keyInput.Length];
 
         foreach(Transform child in keyInput){

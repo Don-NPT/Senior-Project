@@ -37,7 +37,6 @@ public class PanelOpener : MonoBehaviour
         if(panel != null)
         {
             panel.SetActive(false);
-            // GameManager.instance.panelOpen = false;
         }
     }
 }

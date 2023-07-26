@@ -86,7 +86,6 @@ public class Prop : MonoBehaviour
         if(ui != null)
         {
             showUI = false;
-            // ui.gameObject.transform.DOKill(false);
             Destroy(ui.gameObject);
         }
     }

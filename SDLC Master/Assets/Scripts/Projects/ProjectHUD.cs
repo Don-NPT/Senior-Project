@@ -42,8 +42,6 @@ public class ProjectHUD : MonoBehaviour
             // Setup project hud tab
             uiPrefab.SetActive(true);
 
-            // uiPrefab.GetComponent<Button>().onClick.AddListener(() => {ShowDetail();});
-
             // Setup text info
             uiPrefab.GetComponentsInChildren<TextMeshProUGUI>()[0].text = ProjectManager.instance.currentProject.pjName;
             uiPrefab.GetComponentsInChildren<TextMeshProUGUI>()[1].text = ProjectManager.instance.currentProject.state.ToString();
@@ -84,10 +82,6 @@ public class ProjectHUD : MonoBehaviour
     }
 
     IEnumerator StartTimer(){
-        // for(int i=0; i<ProjectManager.instance.currentProject.deadline; i++){
-        //     yield return new WaitForSeconds(1);
-        //     dayUsed += 1;
-        // }
         while(true){
             yield return new WaitForSeconds(1);
             dayUsed += 1;
@@ -157,8 +151,6 @@ public class ProjectHUD : MonoBehaviour
 
     public void WaterfallHUDUpdate()
     {
-        // hudDetail.GetComponentsInChildren<Slider>()[0].maxValue = WaterFallManager.instance.currentWorkAmount;
-        // hudDetail.GetComponentsInChildren<Slider>()[0].DOValue(WaterFallManager.instance.progress, 0.3f).Play();
         if(WaterFallManager.instance.phaseIndex == 0 && FindObjectOfType<Requirement2_new>() != null){
             hudDetail.GetComponentsInChildren<Slider>()[0].maxValue = ProjectManager.instance.currentProject.requirement2.Length;
             hudDetail.GetComponentsInChildren<Slider>()[0].DOValue(FindObjectOfType<Requirement2_new>().index, 0.3f).Play();
@@ -181,7 +173,6 @@ public class ProjectHUD : MonoBehaviour
         }
         
         hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[1].text = "ขั้นตอน: " + ProjectManager.instance.currentProject.phase.ToString();
-        // hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[8].text = "เหลือเวลา: " + (ProjectManager.instance.currentProject.deadline - DevelopmentManager.instance.currentDayUsed);
 
         hudDetail.GetComponentsInChildren<TextMeshProUGUI>()[3].text = (int)WaterFallManager.instance.qualityEachPhase[0] + "/" + ProjectManager.instance.currentProject.requireAnalysis;
         hudDetail.GetComponentsInChildren<Slider>()[1].DOValue(WaterFallManager.instance.qualityEachPhase[0],0.3f).Play();

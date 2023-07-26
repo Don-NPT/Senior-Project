@@ -126,7 +126,6 @@ public class KeyInput : MonoBehaviour
                         if (sliderTween != null) sliderTween.Kill();
                         if(timer != null) StopCoroutine(timer);
                         slider.value -= pointWrong;
-                        // Debug.Log("เวลาลด"+slider.value);
                         timer = StartCoroutine(StartTimer((int)slider.value));
 
                         Color color = Color.red;
@@ -224,7 +223,6 @@ public class KeyInput : MonoBehaviour
     void LowerCharAlpha(string character){
         foreach(var charBlock in charBlocks){
             if(charBlock.GetComponentInChildren<TextMeshProUGUI>().text == character && charBlock.activeSelf){
-                // charBlock.SetActive(false);
                 Color color = charBlock.GetComponent<Image>().color;
                 color.a = 0.3f;
                 charBlock.GetComponent<Image>().color = color;
@@ -234,7 +232,6 @@ public class KeyInput : MonoBehaviour
 
     void ResetCharAlpha(){
         foreach(var charBlock in charBlocks){
-            // charBlock.SetActive(false);
             Color color = charBlock.GetComponent<Image>().color;
             color.a = 1f;
             charBlock.GetComponent<Image>().color = color;

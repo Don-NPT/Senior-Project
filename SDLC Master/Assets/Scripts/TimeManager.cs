@@ -26,7 +26,6 @@ public class TimeManager : MonoBehaviour
     private string[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
     
     private void Awake() {
-        // If there is an instance, and it's not me, delete myself.
         if (instance != null && instance != this) 
             Destroy(this); 
         else 
@@ -85,7 +84,6 @@ public class TimeManager : MonoBehaviour
     public void Play()
     {
         StartDayCoroutine();
-        // GameManager.instance.gameState = GameState.PLAY;
         GameManager.instance.Play();
     }
     public void Pause()

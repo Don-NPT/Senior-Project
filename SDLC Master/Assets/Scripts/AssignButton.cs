@@ -42,6 +42,4 @@ public class AssignButton : MonoBehaviour, IPointerEnterHandler, IPointerDownHan
         GameObject staffListUI =  GameObject.Find("/Canvas/StaffList");
         staffListUI.SetActive(false);
      }
-
-
 }

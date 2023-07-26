@@ -62,10 +62,6 @@ public class ProjectManager : MonoBehaviour
             id = currentProject.projectId;
         }
         
-        // List<int> oldProjectId = new List<int>();
-        // foreach(var project in oldProject){
-        //     oldProjectId.Add(project.projectId);
-        // }
         gameAdapter.Save(id, oldProject.ToArray());
     }
 
@@ -76,9 +72,6 @@ public class ProjectManager : MonoBehaviour
  
         foreach(var project in allProjects){
             if(project.projectId == saveData.currentProject) currentProject = project;
-            // foreach(var old in saveData.oldProject){
-            //     if(project.projectId == old) oldProject.Add(project);
-            // }
         }
         oldProject = saveData.oldProject.ToList();
     }

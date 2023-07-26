@@ -20,7 +20,6 @@ public class DevelopmentManager : MonoBehaviour
 
     void Start()
     {
-        // If there is an instance, and it's not me, delete myself.
         if (instance != null && instance != this) 
             Destroy(this); 
         else 
@@ -131,8 +130,6 @@ public class DevelopmentManager : MonoBehaviour
         project.actualDeployment = currentQualityEachPhase[4];
         project.dayUsed = totalDayToFinished;
         ProjectManager.instance.FinishProject(project);
-        // ProjectManager.instance.currentProjects.Remove(project);
-        // ProjectHUD.instance.UpdateList();
         ProjectHUD.instance.ShowFinishBTN(project);
     }
 
@@ -191,7 +188,6 @@ public class DevelopmentManager : MonoBehaviour
             }
         }
         int quality = (int) Mathf.Round(teamCapability * 0.25f);
-        // quality = (int) Mathf.Round(project.estimateDaysInPhase * ((100 - teamCapability)/100));
         return (int)quality;
     }
 

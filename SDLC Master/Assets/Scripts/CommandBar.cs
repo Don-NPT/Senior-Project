@@ -25,16 +25,12 @@ public class CommandBar : MonoBehaviour, IPointerEnterHandler, IPointerDownHandl
     public void Setup(GameObject GO)
     {
         staffGO = GO;
-        // GetComponentInParent<Transform>().position = Camera.main.WorldToScreenPoint(GO.transform.position + offsetY);
-        // Debug.Log(GetComponentInParent<Transform>().position);
     }
 
     public void SetupWithUI(GameObject GO, GameObject ui)
     {
         staffGO = GO;
         staffUIGO = ui;
-        // GetComponentInParent<Transform>().position = Camera.main.WorldToScreenPoint(GO.transform.position + offsetY);
-        // Debug.Log(GetComponentInParent<Transform>().position);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -47,7 +43,6 @@ public class CommandBar : MonoBehaviour, IPointerEnterHandler, IPointerDownHandl
         FindObjectOfType<AudioManager>().Play("Click");
         if(seeDetail) GameManager.instance.ShowPlayerDetail();
         if(assignStaff) staffAssigner.AssignStaff();
-        // if(assignWork) staffGO.GetComponent<PlayerController>().AssignWork();
         if(openShop) ShopOpener.instance.OpenPanel();
         if(hireStaff) panelOpener.OpenPanel();
         if(sellProp) {

@@ -13,18 +13,11 @@ public class StaffBar : MonoBehaviour
     public GameObject trainFX;
     public GameObject trainFX2;
     public Vector3 trainFXOffset;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     public void SetupWithUI(GameObject GO, GameObject ui)
     {
         staffGO = GO;
         staffUIGO = ui;
-        // GetComponentInParent<Transform>().position = Camera.main.WorldToScreenPoint(GO.transform.position + offsetY);
-        // Debug.Log(GetComponentInParent<Transform>().position);
         Button[] buttons = GetComponentsInChildren<Button>();
         
         buttons[0].onClick.AddListener(delegate { 
@@ -53,7 +46,6 @@ public class StaffBar : MonoBehaviour
 
     public void CreateText(int a){
         if(a == 1){
-        // GameObject text = floatingText;
         GameObject textGO = (GameObject)Instantiate(floatingText, FindObjectOfType<Canvas>().transform);
         textGO.transform.position = Camera.main.WorldToScreenPoint(staffGO.transform.position + new Vector3(0, 2.1f, 0));
         textGO.transform.DOPunchScale(new Vector3 (0.2f, 0.2f, 0.2f), .25f);

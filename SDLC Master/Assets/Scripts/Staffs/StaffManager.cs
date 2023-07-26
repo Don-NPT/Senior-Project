@@ -12,12 +12,9 @@ public class StaffManager : MonoBehaviour
     public Sprite[] positionLogos;
     public Color[] positionColors;
 
-
-
     // Start is called before the first frame update
     void Awake()
     {
-        // If there is an instance, and it's not me, delete myself.
         if (instance != null && instance != this) 
             Destroy(this); 
         else 
@@ -176,7 +173,6 @@ public class StaffManager : MonoBehaviour
             staff.GetComponent<StaffProperties>().setData(saveStaff);
             staff.GetComponentsInChildren<SkinnedMeshRenderer>()[2].material = FindObjectOfType<StaffAssigner>().GetShirtColor(staff.GetComponent<StaffProperties>().position);
         }
-        // money = saveData.money;
     }
 
 }

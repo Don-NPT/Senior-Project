@@ -12,19 +12,10 @@ public class ProjectOld : MonoBehaviour
     public GameObject waterfallSummary;
     public GameObject agileSummary;
     GameObject[] projectOldItem;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     private void OnEnable() {
         projectOldItem = new GameObject[ProjectManager.instance.getNumOldProject()];
-        
-        // var oldProjects = ProjectManager.instance.oldProject.GroupBy(p => p.projectId)
-        //                       .Select(group => group.Last())
-        //                       .ToList();
-
+  
         for(int i=0; i<ProjectManager.instance.oldProject.Count; i++)
         {
             // Spawn Old project items
@@ -69,21 +60,6 @@ public class ProjectOld : MonoBehaviour
             agileSummary.SetActive(true);
             AgileSummary.instance.ShowOldProject(index);
         }
-
-        // TextMeshProUGUI[] texts = projectOldDetail.GetComponentsInChildren<TextMeshProUGUI>();
-        // Project project =  ProjectManager.instance.oldProject[index];
-        // texts[0].text =  ProjectManager.instance.oldProject[index].pjName;
-        // texts[1].text =  "โมเดลการทำงาน: " + project.model.modelName;
-        // texts[2].text =  "ระยะเวลาที่กำหนด: " + project.deadline + " วัน";
-        // texts[3].text =  "ระยะเวลาที่ใช้ไป: " + project.dayUsed + " วัน";
-        // texts[5].text =  "คะแนนโดยรวม: " + project.getAllActualQuality() + "/" + project.getAllRequireQuality();
-        // texts[6].text =  "Analysis: " + project.actualAnalysis + "/" + project.requireAnalysis;
-        // texts[7].text =  "Design: " + project.actualDesign + "/" + project.requireDesign;
-        // texts[8].text =  "Coding: " + project.actualCoding + "/" + project.requireCoding;
-        // texts[9].text =  "Testing: " + project.actualTesting + "/" + project.requireTesting;
-        // texts[10].text =  "Deploying: " + project.actualDeployment + "/" + project.actualDeployment;
-        // texts[11].text =  "เงินตอบแทน: " + project.reward + " บาท";
-        // texts[12].text =  "ค่าใช้จ่าย: " + 5000 + " บาท";
     }
 
     int GetAgileProjectQuality(OldProject project){

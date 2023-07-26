@@ -16,12 +16,6 @@ public class BlueprintColiision : MonoBehaviour
         material.color = defaultColor;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other) {
         material.color = collisionColor;
         isCollided = true;

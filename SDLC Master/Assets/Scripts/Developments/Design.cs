@@ -11,11 +11,6 @@ public class Design : MonoBehaviour
     Button[] toolExistBtn;
     private Project project;
 
-    void Start()
-    {
-        
-    }
-
     private void OnEnable() {
         toolUsedBtn = toolUsedUI.GetComponentsInChildren<Button>();
         toolExistBtn = toolExistUI.GetComponentsInChildren<Button>();

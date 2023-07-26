@@ -14,11 +14,6 @@ public class StaffList : MonoBehaviour
     public GameObject staffDetailContent;
     public StaffBar staffbar;
     string positionToShow;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     void OnEnable()
     {
@@ -133,7 +128,6 @@ public class StaffList : MonoBehaviour
 
     void KickoutStaff(int index){
         if(ProjectManager.instance.currentProject == null){
-            // Debug.Log("Kick out staff '" + staffs[index].GetComponent<StaffProperties>().fname + "'");
             Destroy(staffs[index]);
             ManageStaffItem();
         }else{

@@ -44,19 +44,10 @@ public class Requirement1 : MonoBehaviour
         buttons[7].gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void ButtonPress(int index)
     {
         if(index % 2 == 0)
         {
-            // outlines[index].enabled = true;
-            // outlines[index+1].enabled = !outlines[index].enabled;
-
             buttons[index].gameObject.GetComponent<Image>().sprite = selectBlueSprite;
             buttons[index+1].gameObject.GetComponent<Image>().sprite = normalPinkSprite;
 
@@ -65,9 +56,6 @@ public class Requirement1 : MonoBehaviour
         }
         else if(index % 2 == 1)
         {
-            // outlines[index].enabled = true;
-            // outlines[index-1].enabled = !outlines[index].enabled;
-
             buttons[index].gameObject.GetComponent<Image>().sprite = selectPinkSprite;
             buttons[index-1].gameObject.GetComponent<Image>().sprite = normalBlueSprite;
 
@@ -100,16 +88,6 @@ public class Requirement1 : MonoBehaviour
         if(project.requirement1Point > 0){
             AudioManager.instance.Play("Purchase");
         }
-
-        // int point = 0;
-        // foreach(var answer in project.requirement1Answer){
-        //     foreach(var word in project.requirement1){
-        //         if(answer == word.word && word.isCorrect){
-        //             point++;
-        //         }
-        //     }
-        // }
-        // int point = project.requirement1Answer.Count(answer => project.requirement1.Any(word => word.word == answer && word.isCorrect));
         Debug.Log(project.requirement1Point);
         
     }

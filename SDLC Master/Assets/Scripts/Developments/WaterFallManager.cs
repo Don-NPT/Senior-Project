@@ -65,14 +65,12 @@ public class WaterFallManager : MonoBehaviour
                 staff.gameObject.GetComponent<StaffController>().AssignWork();
             }
             GameManager.instance.AddMoney(-project.expense);
-            // StartCoroutine(UpdateProgress());
         }
     }
 
     IEnumerator UpdateProgress()
     {
         progress = 0;
-        // int TotalTime = (int) Mathf.Round(project.getWorkAmountbyIndex(phaseIndex) / StaffManager.instance.getTotalStaffbyPosition(staffPosition));
         project.staffEachPhase[phaseIndex] = StaffManager.instance.getTotalStaffbyPosition(staffPosition);
         project.statEachPhase[phaseIndex] = StaffManager.instance.getSumStaffStat(staffPosition);
 
@@ -82,7 +80,6 @@ public class WaterFallManager : MonoBehaviour
 
             if(GameManager.instance.gameState != GameState.PAUSE){
                 progress += project.staffEachPhase[phaseIndex];
-                // Debug.Log("Progress "+progress);
                 calculateQuality = ((float)StaffManager.instance.getSumStaffStat("Programmer")/((float)(project.scale * 15))) * pointWrong;
                 calculateQuality = calculateQuality * SkillManager.instance.GetQualityBonus();
                 qualityEachPhase[phaseIndex] += calculateQuality;
@@ -114,7 +111,6 @@ public class WaterFallManager : MonoBehaviour
                     designUIs[0].SetActive(true);
                     GameManager.instance.Play();
                 }
-                //designUIs[0].SetActive(true);
                 project.phase = Project.Phases.DESIGN;
                 break;
             case Project.Phases.DESIGN:
@@ -158,7 +154,6 @@ public class WaterFallManager : MonoBehaviour
                 project.phase = Project.Phases.MAINTENANCE;
                 break;
         }
-        // StartCoroutine(UpdateProgress());
     }
 
     void FinishProject()
@@ -174,10 +169,7 @@ public class WaterFallManager : MonoBehaviour
 
         project.finishDates[phaseIndex] = TimeManager.instance.currentDate;
 
-        // project.dayUsed = totalDayToFinished;
         ProjectManager.instance.FinishProject(project);
-        // ProjectManager.instance.currentProjects.Remove(project);
-        // ProjectHUD.instance.UpdateList();
         ProjectHUD.instance.ShowFinishBTN(project);
         GameManager.instance.Play();
     }

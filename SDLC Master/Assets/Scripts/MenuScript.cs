@@ -16,15 +16,6 @@ public class MenuScript : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         GlobalVariable.isLoad = true;
         PlayerPrefs.SetInt("isLoad", 1);
-        // StartCoroutine(LoadSave());
-        // GameObject.Find("GameManager").GetComponent<SaveSystem>().Load();
-        // FindObjectOfType<SaveSystem>().Load();
-        // Debug.Log(GameObject.Find("GameManager"));
     }
 
-    // IEnumerator LoadSave(){
-    //     yield return new WaitForSeconds(1);
-    //     // FindObjectOfType<SaveSystem>().Load();\
-    //     Debug.Log(GameObject.Find("GameManager"));
-    // }
 }

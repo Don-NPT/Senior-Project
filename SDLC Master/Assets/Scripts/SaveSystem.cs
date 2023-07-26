@@ -31,7 +31,6 @@ public class SaveSystem : MonoBehaviour
 
     public void Save()
     {
-        // FileHandler.SaveToJSON<TimeManager> (TimeManager.instance, "timesave.json");   
         TimeManager.instance.Save(); 
         GameManager.instance.Save(); 
         StaffManager.instance.Save();
@@ -44,8 +43,6 @@ public class SaveSystem : MonoBehaviour
 
     public void Load()
     {
-        // var dataToLoad = FileHandler.ReadFromJSON<T> ("timesave.json");
-        // TimeManager.instance.Load(dataToLoad);
         TimeManager.instance.Load();
         GameManager.instance.Load();
         StaffManager.instance.Load();
@@ -55,6 +52,5 @@ public class SaveSystem : MonoBehaviour
         BuildManager.instance.Load();
         Debug.Log("Game Loaded!");
 
-        // GameManager.instance.Resume();
     }
 }

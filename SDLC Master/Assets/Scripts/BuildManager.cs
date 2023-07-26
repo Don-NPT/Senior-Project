@@ -121,15 +121,6 @@ public class BuildManager : MonoBehaviour
 
     public void Save()
     {
-        // if (buildObjDataList != null)
-        // {
-        //     Debug.Log("ตรงนี้1");
-        //     BuildObjData.Save(buildObjDataList);
-        // }
-        // else
-        // {
-        //     Debug.LogWarning("buildObjDataList is null, cannot save data.");
-        // }
         BuildAdapter buildAdapter = new BuildAdapter();
         buildAdapter.Save(buildObjDataList);
     }
@@ -150,19 +141,6 @@ public class BuildManager : MonoBehaviour
                 buildObj.transform.DOScale(1, 0.5f).SetEase(customEase);
             }
         }
-
-        // List<BuildObjData> dataToLoad = BuildObjData.Load();
-        // if (dataToLoad.Count > 0)
-        // {
-        //     Debug.Log("ตรงนี้5");
-        //     buildObjDataList = dataToLoad;
-        //     foreach (BuildObjData data in dataToLoad)
-        //     {
-        //         GameObject buildObj = (GameObject)Instantiate(buildPreset[data.index].prefab, data.position, data.rotation);
-        //         buildObj.transform.localScale = new Vector3(0.1f,0.1f,0.1f);
-        //         buildObj.transform.DOScale(1, 0.5f).SetEase(customEase);
-        //     }
-        // }
     }
 
 }
@@ -179,30 +157,6 @@ public class BuildObjData {
         position = _position;
         rotation = _rotation;
     }
-
-    // public static void Save(List<BuildObjData> _buildObjDataList)
-    // {
-    //     Debug.Log("ตรงนี้2 " + _buildObjDataList.Count);
-    //     FileHandler.SaveToJSON<List<BuildObjData>>(_buildObjDataList, "BuildObj.json");
-    // }
-
-    // public static List<BuildObjData> Load()
-    // {
-    //     List<BuildObjData> dataToLoad = FileHandler.ReadFromJSON<List<BuildObjData>>("BuildObj.json");
-    //     Debug.Log("dataToLoad "+ dataToLoad);
-    //     if (dataToLoad != null)
-    //     {
-    //         Debug.Log("ตรงนี้3");
-    //         return dataToLoad;
-    //     }
-    //     else
-    //     {
-    //         Debug.Log("ตรงนี้4");
-    //         return new List<BuildObjData>();
-    //     }
-    // }
-
-
 }
 
 [Serializable]

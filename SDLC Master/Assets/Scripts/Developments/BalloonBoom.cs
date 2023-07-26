@@ -18,18 +18,11 @@ public class BalloonBoom : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // If there is an instance, and it's not me, delete myself.
         if (instance != null && instance != this) 
             Destroy(this); 
         else 
             instance = this;
  
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void InitiateBalloonDev() {

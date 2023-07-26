@@ -109,31 +109,11 @@ public class ProjectPicker : MonoBehaviour
         print(selectedModel);
     }
 
-    // public void SelectTeam(int index)
-    // {
-    //     selectedTeam = TeamManager2.instance.teams[index];
-    //     selectedProject.teamIndex = index;
-    //     foreach(var item in teamItems)
-    //     {
-    //         item.GetComponent<Outline>().enabled = false;
-    //     }
-    //     teamItems[index].GetComponent<Outline>().enabled = true;
-
-    //     // set text for model confirm
-    //     TextMeshProUGUI[] teamConfirmText = teamConfirm.GetComponentsInChildren<TextMeshProUGUI>();
-    //     teamConfirmText[0].text = "Team " + (index+1);
-    //     teamConfirmText[1].text = "จำนวนสมาชิก: " + TeamManager2.instance.getSize(index);
-    // }
-
     public void ConfirmProject()
     {
         if(ProjectManager.instance.currentProject == null){
             selectedProject.state = Project.Status.READY;
-            // ProjectManager.instance.currentProjects.Add(selectedProject);
             ProjectManager.instance.currentProject = selectedProject;
-            // if(selectedModel.modelName == "Waterfall"){
-                // ProjectHUD.instance.UpdateList();
-            // }
             
             if(ProjectManager.instance.currentProject.model.modelName == "Waterfall") WaterFallManager.instance.InitiateWaterfall();
             else AgileManager.instance.InitiateAgile();

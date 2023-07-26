@@ -25,8 +25,6 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public GameObject staffToAssign;
     [HideInInspector] public bool panelOpen = false;
-    // public Transform canvasTransform;
-    // public GameObject moneyNotificationPrefab;
     public GameObject moneyNotification;
     [HideInInspector] public string username;
     
@@ -38,7 +36,7 @@ public class GameManager : MonoBehaviour
     int previousDay;
     
     private void Awake() {
-        // If there is an instance, and it's not me, delete myself.
+
         if (instance != null && instance != this) 
             Destroy(this); 
         else 
@@ -195,7 +193,6 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 0;
         gameState = GameState.PAUSE;
-        //pauseScreen.SetActive(true);
     }
 
     public void Resume()

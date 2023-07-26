@@ -11,7 +11,6 @@ public class StaffController : MonoBehaviour
     public GameObject uiPrefab;
     private GameObject ui;
     public Vector3 offsetY = new Vector3(0, 2.1f, 0);
-    // public Ease customEase = Ease.OutBack;
     private bool showUI = false;
     public GameObject progressBarPrefab;
     private GameObject progressBar;
@@ -45,7 +44,6 @@ public class StaffController : MonoBehaviour
         {
             state = StaffState.COMPLETE;
         }
-        // progressBar.GetComponent<ProgressBar>().UpdateBar(); 
         progressBar.GetComponentInChildren<Slider>().DOValue(DevelopmentManager.instance.currentDayInPhase, 0.3f).Play();       
     }
 
@@ -63,9 +61,6 @@ public class StaffController : MonoBehaviour
                     if(ui == null)
                     {
                         ui = (GameObject)Instantiate(uiPrefab, FindObjectOfType<Canvas>().transform);
-                        // foreach(CommandBar child in ui.GetComponentsInChildren<CommandBar>()){
-                        //     child.Setup(gameObject);
-                        // }
                         ui.GetComponent<StaffBar>().SetupWithUI(gameObject, ui);
                         RectTransform[] childrenTransform = ui.GetComponentsInChildren<RectTransform>();
                         StartCoroutine(ChildPopup(childrenTransform));
@@ -112,8 +107,6 @@ public class StaffController : MonoBehaviour
         if(ui != null)
         {
             showUI = false;
-            // ui.gameObject.transform.DOScale(0, 0.05f).SetEase(Ease.InBounce);
-            // ui.gameObject.transform.DOKill(false);
             Destroy(ui.gameObject, 0.5f);
         }
     }

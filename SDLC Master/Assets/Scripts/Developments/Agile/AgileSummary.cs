@@ -24,14 +24,6 @@ public class AgileSummary : MonoBehaviour
         else 
             instance = this;
     }
-    
-    // private void OnEnable() {
-    //     if(ProjectManager.instance.currentProject != null){
-    //         project = ProjectManager.instance.ol;
-    //         SetupLeftPanel();
-    //         SetupRightPanel();
-    //     }
-    // }
 
     public void ShowOldProject(int index){
         gameObject.SetActive(true);
@@ -107,21 +99,12 @@ public class AgileSummary : MonoBehaviour
             detail.SetActive(true);
             detail.GetComponentsInChildren<TextMeshProUGUI>()[1].text = sprint.GetDuration() + " วัน";
             detail.GetComponentsInChildren<TextMeshProUGUI>()[3].text = sprint.taskList.Count + " งาน";
-            // detail.GetComponentsInChildren<TextMeshProUGUI>()[5].text = project.staffEachPhase[index-1].ToString() + " คน";
-            // detail.GetComponentsInChildren<TextMeshProUGUI>()[7].text = project.statEachPhase[index-1].ToString() + " หน่วย";
         }
         else{
             detail.SetActive(false);
         }
         
     }
-
-    // private void OnDisable() {
-    //     if(ProjectManager.instance.currentProject != null){
-    //         ProjectManager.instance.oldProject.Add(project);
-    //         ProjectManager.instance.currentProject = null;
-    //     }
-    // }
 
     private void OnDisable() {
         GameManager.instance.Play();

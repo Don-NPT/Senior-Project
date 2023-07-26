@@ -46,13 +46,6 @@ public class SkillManager : MonoBehaviour
                 LearnQualitySkill(index);
             });
         }
-        // for(int i=0; i<4; i++){
-        //     int index = i;
-        //     speedTree.GetComponentsInChildren<Outline>()[i].enabled = speedUnlock[i];
-        //     speedTree.GetComponentsInChildren<Outline>()[i].gameObject.GetComponent<Button>().onClick.AddListener(delegate { 
-        //         LearnSpeedSkill(index);
-        //     });
-        // }
     }
 
     void LearnQualitySkill(int index){
@@ -65,16 +58,6 @@ public class SkillManager : MonoBehaviour
             AudioManager.instance.Play("Warning");
         }
     }
-    // void LearnSpeedSkill(int index){
-    //     if(index == 0 && skillPoint >= CheckPrice(index)) {speedUnlock[index] = true; AddSkillPoint(-CheckPrice(index)); }
-    //     else if(speedUnlock[index-1] == true && skillPoint >= CheckPrice(index)){
-    //         speedUnlock[index] = true;
-    //         AddSkillPoint(-CheckPrice(index));
-    //     }
-    //     else{
-    //         AudioManager.instance.Play("Warning");
-    //     }
-    // }
 
     int CheckPrice(int index){
         switch(index){

@@ -78,7 +78,6 @@ public class StaffAssigner : MonoBehaviour
                     staff.transform.rotation = Quaternion.Euler(rotationVector);
                     staff.GetComponent<StaffProperties>().isAssign = true;
                     staff.GetComponentsInChildren<SkinnedMeshRenderer>()[2].material = GetShirtColor(staff.GetComponent<StaffProperties>().position);
-                    // GameObject staff = (GameObject)Instantiate(staffPrefab, obj.transform.position+yOffset, Quaternion.Euler(rotationVector));
                     staff_Selected = false;
                     if(preview != null) Destroy(preview);
                 }

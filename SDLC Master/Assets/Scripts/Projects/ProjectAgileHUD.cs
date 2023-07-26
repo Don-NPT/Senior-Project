@@ -127,8 +127,6 @@ public class ProjectAgileHUD : MonoBehaviour
                     taskItem[i].GetComponentsInChildren<Slider>()[0].DOValue(progress, 0.3f);
                     taskItem[i].GetComponentsInChildren<Slider>()[1].DOValue(quality, 0.3f);
                     project.sprintList[AgileManager.instance.sprintIndex].taskList[i].dayUsed++;
-                    // taskItem[i].GetComponentsInChildren<Slider>()[0].value += StaffManager.instance.getTotalStaff();
-                    // Debug.Log(((float)StaffManager.instance.getAllStaffStat()/((float)(project.scale * 15))) * SkillManager.instance.GetQualityBonus() * 180);
                 }  
                 taskDay++;
             }
@@ -136,14 +134,12 @@ public class ProjectAgileHUD : MonoBehaviour
             project.sprintList[AgileManager.instance.sprintIndex].taskList[i].isComplete = true;
         }
         yield return new WaitForSeconds(0.3f);
-        // project.sprintList[AgileManager.instance.sprintIndex].taskList[1].isComplete = true;
         submitBTN.SetActive(true);
         List<Task> tasks = project.sprintList[AgileManager.instance.sprintIndex].taskList;
         // Save quality
         for(int i=0; i<tasks.Count; i++){
             tasks[i].quality = (int) Mathf.Round(taskItem[i].GetComponentsInChildren<Slider>()[1].value);
             Debug.Log(tasks[i].size + " : " + tasks[i].quality);
-            // Debug.Log(tasks[i].isComplete);
         }
         // Add unfinished tasks to next sprint
         foreach(var task in tasks){
@@ -154,15 +150,6 @@ public class ProjectAgileHUD : MonoBehaviour
         }
         GameManager.instance.Play();
         TimeManager.instance.Pause();
-    }
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        // if(agileHudDetail.activeSelf && ProjectManager.instance.currentProject != null)
-        // {
-        //     AgileHUDUpdate();
-        // }
     }
 
     public void ShowFinishBTN(Project project)
@@ -177,11 +164,7 @@ public class ProjectAgileHUD : MonoBehaviour
             });
         }
     }
-
-    // void AgileHUDUpdate(){
-    //     agileHudDetail.GetComponentsInChildren<TextMeshProUGUI>()[0].text = "โมเดล: Agile (Sprint " + "" + ")";
-    // }
-
+    
     void ClearContent(){
         foreach(Transform child in taskContent){
             Destroy(child.gameObject);
