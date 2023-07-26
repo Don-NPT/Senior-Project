@@ -11,34 +11,34 @@ public class ClearCounter : BaseCounter
 
     public override void Interact(Player player){
         if(!HasKitchenObject()){
-            //ไม่มี
+            //Empty
             if(player.HasKitchenObject()){
-                //ถืออยู่
+                //hold
                 player.GetKitchenObject().SetKitchenObjectParent(this);
             }
             else{
-                //ไม่ได้ถืออยู่
+                //don't hold
             }
         }else{
             //มี
             if(player.HasKitchenObject()){
-                //ถืออยู่
+                //hold
                 if(player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject)){
-                    //ถือจานยุค้าบ
+                    //hold task plate
                     if(plateKitchenObject.TryAddIngredient(GetKitchenObject().GetKitchenObjectSO())){
                     GetKitchenObject().DestroySelf();
                     }
                 }else{
-                    //ผู้เล่นไม่ได้ถือจาน แต่ถือบางอย่างอยู่ กุ๊กกุ๊ก กู๊ววว
+                    //don't hold task plate but hold something...may be ghost....
                     if (GetKitchenObject().TryGetPlate(out plateKitchenObject)) {
-                        //counter มีจานวางอยู่
+                        //counter have plate
                         if (plateKitchenObject.TryAddIngredient(player.GetKitchenObject().GetKitchenObjectSO())) {
                             player.GetKitchenObject().DestroySelf();
                         }
                     }
                 }
             }else{
-                //ไม่ได้ถืออะไรอยู่เยย
+                //don't hold anything
                 GetKitchenObject().SetKitchenObjectParent(player);
             }
         }

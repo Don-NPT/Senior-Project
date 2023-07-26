@@ -91,7 +91,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
         {
             if (raycastHit.transform.TryGetComponent(out BaseCounter baseCounter))
             {
-                //มี ClearCount
+                //Have ClearCount
                 if (baseCounter != selectedCounter)
                 {
                     SetSelectedCounter(baseCounter);
@@ -122,7 +122,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
 
         if (!canMove)
         {
-            //เดินไปทางทิศที่ต้องการไม่ได้
+            //Can't move to want path
 
             //แกน x เท่านั้น
             Vector3 moveDirX = new Vector3(moveDir.x, 0, 0);
@@ -130,12 +130,12 @@ public class Player : MonoBehaviour, IKitchenObjectParent
 
             if (canMove)
             {
-                //x เท่านั้น
+                //x only
                 moveDir = moveDirX;
             }
             else
             {
-                //เดินไปไม่ได้ แกน x เท่านั้น
+                //Can't move to want path axis x only
 
                 //แกน z เท่านั้น
                 Vector3 moveDirZ = new Vector3(0, 0, moveDir.z);
@@ -143,12 +143,12 @@ public class Player : MonoBehaviour, IKitchenObjectParent
 
                 if (canMove)
                 {
-                    //เดินได้ แกน x เท่านั้น
+                    //Can move axis x only
                     moveDir = moveDirZ;
                 }
                 else
                 {
-                    //เดินไม่ได้เลยทุกทาง
+                    //Can't move any path
                 }
             }
         }
@@ -159,7 +159,7 @@ public class Player : MonoBehaviour, IKitchenObjectParent
         }
 
         isWalking = moveDir != Vector3.zero;
-        //ให้หันหัวตามทิศที่เดิน โดยที ratateSpeed เป็นความเร็วหัน
+        //turn head following path speed base on ratateSpeed
         float rotateSpeed = 10f;
         transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime * rotateSpeed);
     }

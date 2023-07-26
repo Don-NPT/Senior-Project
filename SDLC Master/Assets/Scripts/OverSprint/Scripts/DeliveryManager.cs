@@ -22,7 +22,6 @@ public class DeliveryManager : MonoBehaviour
     private float spawnRecipeTimerMax = 4f;
     private int waitingRecipesMax = 4;
     private int successfulRecipesAmount;
-    // public List<List<KitchenObjectSO>> sprintList;
     public List<SprintTask> sprintList;
     private int sprintIndex;
 
@@ -36,70 +35,11 @@ public class DeliveryManager : MonoBehaviour
 
     private void Update()
     {
-        // if (KitchenGameManager.Instance.IsGamePlaying() && waitingRecipeSOList.Count < waitingRecipesMax)
-        // {
-        //     spawnNewRecipe();
-        // }
+        
     }
 
     public void DeliverRecipe(PlateKitchenObject plateKitchenObject)
     {
-        // for (int i = 0; i < waitingRecipeSOList.Count; i++)
-        // {
-        //     RecipeSO waitingRecipeSO = waitingRecipeSOList[i];
-
-        //     if (waitingRecipeSO.kitchenObjectList.Count == plateKitchenObject.GetKitchenObjectSOList().Count)
-        //     {
-        //         // Matching number of ingredients found
-        //         bool plateContentsMatchesRecipe = true;
-        //         foreach (KitchenObjectSO recipeKitchenObjectSO in waitingRecipeSO.kitchenObjectList)
-        //         {
-        //             // Check if each recipe ingredient is present in plate
-        //             bool ingredientFound = false;
-        //             foreach (KitchenObjectSO plateKitchenObjectSO in plateKitchenObject.GetKitchenObjectSOList())
-        //             {
-        //                 if (plateKitchenObjectSO == recipeKitchenObjectSO)
-        //                 {
-        //                     ingredientFound = true;
-        //                     break;
-        //                 }
-        //             }
-        //             if (!ingredientFound)
-        //             {
-        //                 plateContentsMatchesRecipe = false;
-        //             }
-        //         }
-        //         if (plateContentsMatchesRecipe)
-        //         {
-        //             // Matching recipe found
-        //             successfulRecipesAmount++;
-        //             waitingRecipeSOList.RemoveAt(i);
-        //             OnRecipeCompleted?.Invoke(this, EventArgs.Empty);
-        //             OnRecipeSuccess?.Invoke(this, EventArgs.Empty);
-        //             spawnNewRecipe(); // Spawn a new recipe after a successful delivery
-        //             return;
-        //         }
-        //     }
-        // }
-
-        // No matching recipe found, add plate contents as a new recipe
-        // RecipeSO newRecipeSO = ScriptableObject.CreateInstance<RecipeSO>();
-        // newRecipeSO.kitchenObjectList = new List<KitchenObjectSO>(plateKitchenObject.GetKitchenObjectSOList());
-        // newRecipeSO.name = "Task for sprint " + (recipeListSO.recipeSOList.Count + 1);
-        // newRecipeNames.Add(newRecipeSO.name);
-        // recipeListSO.recipeSOList.Add(newRecipeSO);
-        
-        // Create a new asset for the new recipe
-        // string recipeAssetPath = "Assets/OverSprint/ScriptableObjects/KitchenObjectSO/RecipeSO/";
-        // AssetDatabase.CreateAsset(newRecipeSO, recipeAssetPath + "NewRecipe" + (recipeListSO.recipeSOList.Count) + ".asset");
-        // AssetDatabase.SaveAssets();
-
-        // waitingRecipeSOList.Add(newRecipeSO);
-        // Debug.Log("New recipe created: " + string.Join(", ", newRecipeSO.kitchenObjectList));
-        // Debug.Log("New Recipe Names List: " + string.Join(", ", newRecipeNames));
-        // OnRecipeSpawned?.Invoke(this, EventArgs.Empty);
-        // spawnNewRecipe(); // Spawn a new recipe after a new recipe is added
-        // OnRecipeFailed?.Invoke(this, EventArgs.Empty);
         if(sprintList.Count < 15){
             sprintList.Add(new SprintTask(plateKitchenObject.GetTaskList(), "Sprint " + sprintIndex));
             sprintIndex++;

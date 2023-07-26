@@ -28,15 +28,6 @@ public class PlateCompleteVisual : MonoBehaviour {
     }
 
     private void PlateKitchenObject_OnIngredientAdded(object sender, PlateKitchenObject.OnIngredientAddedEventArgs e) {
-        // foreach (KitchenObjectSO_GameObject kitchenObjectSOGameObject in kitchenObjectSOGameObjectList) {
-        //     if (kitchenObjectSOGameObject.kitchenObjectSO == e.kitchenObjectSO) {
-        //         kitchenObjectSOGameObject.gameObject.SetActive(true);
-        //     }
-        // }
-
-        // for(int i=0; i<kitchenObjectSOGameObjectList.Count; i++){
-        //     kitchenObjectSOGameObjectList[i].gameObject.SetActive(true);
-        // }
         if(index < kitchenObjectSOGameObjectList.Count){
             kitchenObjectSOGameObjectList[index].gameObject.SetActive(true);
             index++;

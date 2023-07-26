@@ -13,19 +13,11 @@ public class ContainerCounter : BaseCounter
     [SerializeField] public KitchenObjectSO kitchenObjectSO;
 
     private Project project;
-    // public int numoftasksmall;
-    // public int numoftaskmedium;
-    // public int numoftasklarge;
-    // public int numoftasksgiant;
     public int numTasks;
 
     private void Start()
     {
         project = ProjectManager.instance.currentProject;
-        // numoftasksmall = project.smallTasks;
-        // numoftaskmedium = project.mediumTasks;
-        // numoftasklarge = project.largeTasks;
-        // numoftasksgiant = project.giantTasks;
 
         switch(kitchenObjectSO.objectName){
             case "งานขนาดเล็ก":
@@ -50,39 +42,6 @@ public class ContainerCounter : BaseCounter
     public override void Interact(Player player)
     {
         if(!player.HasKitchenObject() && numTasks > 0){
-            //ไม่ได้ถืออะไรอยู่
-            // if(kitchenObjectSO.objectName == "งานขนาดเล็ก" && numoftasksmall > 0){
-            //     numoftasksmall--;
-            //     GetComponentInChildren<TextMeshProUGUI>().text = numoftasksmall.ToString();
-            //     Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefeb);
-            //     kitchenObjectTransform.GetComponent<KitchenObject>().SetKitchenObjectParent(player);
-            //     OnplayerGrabbedObject?.Invoke(this, EventArgs.Empty);
-            //     Debug.Log("numoftasksmall "+ numoftasksmall);
-            // }
-            // if(kitchenObjectSO.objectName == "งานขนาดกลาง" && numoftaskmedium > 0){
-            //     numoftaskmedium--;
-            //     GetComponentInChildren<TextMeshProUGUI>().text = numoftaskmedium.ToString();
-            //     Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefeb);
-            //     kitchenObjectTransform.GetComponent<KitchenObject>().SetKitchenObjectParent(player);
-            //     OnplayerGrabbedObject?.Invoke(this, EventArgs.Empty);
-            //     Debug.Log("numoftaskmedium "+ numoftaskmedium);
-            // }
-            // if(kitchenObjectSO.objectName == "งานขนาดใหญ่" && numoftasklarge > 0){
-            //     numoftasklarge--;
-            //     GetComponentInChildren<TextMeshProUGUI>().text = numoftasklarge.ToString();
-            //     Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefeb);
-            //     kitchenObjectTransform.GetComponent<KitchenObject>().SetKitchenObjectParent(player);
-            //     OnplayerGrabbedObject?.Invoke(this, EventArgs.Empty);
-            //     Debug.Log("numoftasklarge "+ numoftasklarge);
-            // }
-            // if(kitchenObjectSO.objectName == "งานแบบเบิ้มๆ" && numoftasksgiant > 0){
-            //     numoftasksgiant--;
-            //     GetComponentInChildren<TextMeshProUGUI>().text = numoftasksgiant.ToString();
-            //     Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefeb);
-            //     kitchenObjectTransform.GetComponent<KitchenObject>().SetKitchenObjectParent(player);
-            //     OnplayerGrabbedObject?.Invoke(this, EventArgs.Empty);
-            //     Debug.Log("numoftasksgiant "+ numoftasksgiant);
-            // }
             numTasks--;
             GetComponentInChildren<TextMeshProUGUI>().text = numTasks.ToString();
             Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefeb);

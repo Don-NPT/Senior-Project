@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class GameOverUI : MonoBehaviour {
 
-    // [SerializeField] private TextMeshProUGUI recipesDeliveredText;
     [SerializeField] private Button BackToMainButton;
     [SerializeField] private Transform sprintListUI;
     [SerializeField] private GameObject sprintPanelPrefab;
@@ -20,7 +19,6 @@ public class GameOverUI : MonoBehaviour {
     private void KitchenGameManager_OnStateChanged(object sender, System.EventArgs e) {
         if (KitchenGameManager.Instance.IsGameOver()) {
             Show();
-            // recipesDeliveredText.text = DeliveryManager.Instance.GetSuccessfulRecipesAmount().ToString();
             AgileManager.instance.project.sprintList = DeliveryManager.Instance.sprintList;
 
             foreach(Transform child in sprintListUI){

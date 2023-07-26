@@ -38,10 +38,6 @@ public class PlateKitchenObject : KitchenObject
             //ไม่ใช่ของที่จะมาใส่จาน
             return false;
         }
-        // if(kitchenObjectSOList.Contains(kitchenObjectSO)){
-        //     //มี ประเภทนี้แล้ว
-        //     return false;
-        // }
         else{
             if((kitchenhold + kitchenObjectSO.size) <= kitchenholdMax){
             kitchenhold += kitchenObjectSO.size;

@@ -13,7 +13,7 @@ public class DeliveryCounter : BaseCounter {
     public override void Interact(Player player) {
         if (player.HasKitchenObject()) {
             if (player.GetKitchenObject().TryGetPlate(out PlateKitchenObject plateKitchenObject)) {
-                // Only accepts Plates
+                // Only accepts with task Plates
                 DeliveryManager.Instance.DeliverRecipe(plateKitchenObject);
     
                 player.GetKitchenObject().DestroySelf();

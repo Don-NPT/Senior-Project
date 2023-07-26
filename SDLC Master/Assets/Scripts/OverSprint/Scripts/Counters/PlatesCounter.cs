@@ -31,9 +31,9 @@ public class PlatesCounter : BaseCounter
 
     public override void Interact(Player player){
         if(!player.HasKitchenObject()){
-            //ในมือไม่มีอะไร
+            //Empty hand
             if(platesSpawnAmount > 0){
-                //มีจานวางอยู่ อย่างน้อย 1
+                //Have task plate at least 1
                 platesSpawnAmount--;
 
                 KitchenObject.SpawnKitchenObject(plateKitchenObjectSO, player);
